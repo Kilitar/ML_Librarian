@@ -15,3 +15,4 @@ __pycache__/
 .env.*
 eval/retrieval_prototype_results.json
 eval/retrieval_curated_full_results.json
+eval/*.local.json

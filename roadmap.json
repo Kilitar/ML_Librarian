@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Agentní kalibrace: 8 h lidského ekvivalentu hotovo za přibližně 57 min kalendářního času (~8.4×); čistý aktivní čas neinstrumentujeme. Plný index 4 196 chunků: 1 min 55 s. Kvalita důkazů je nyní priorita: audit odhalil titulkové a OCR úryvky. Experimentální query-aware reranking zvýšil na stejné 12otázkové diagnostické sadě Recall@5 0,67→0,75 a MRR@5 0,51→0,67; štítky zdrojů jsou provizorní, metriky neznamenají validovanou kvalitu odpovědí. UI ikonky zkontroloval uživatel. BYOK generování odloženo do stabilizace retrieval.",
+  "status_note": "UI úryvků: Markdown/matematika a číselná relevance; uživatel potvrdil lepší čitelnost. Nová evaluace nezměněného retrievalu: 6 odpověditelných + 3 mimo korpus CZ/EN/PL, 45 pasáží posouzeno Codexem (zatím bez potvrzení uživatelem). Hit@5 6/6, MRR@5 0,722, užitečné top-1 3/6, Precision@5 10/30. Nejde o Recall ani validovanou kvalitu odpovědí. Sada po kontrole slouží jako development/regression; další tuning vyžaduje nové held-out otázky. BYOK odloženo.",
   "tasks": [
     {
       "id": "scope",
@@ -71,7 +71,7 @@
       "estimate_hours": 1.5,
       "status": "done",
       "completed_at": "2026-10-17T11:32:57Z",
-      "detail": "Retrieval-only Streamlit evidence browser běží na 127.0.0.1:8766. Výsledky mají štítek typu (knížka pro cvičení, lupa pro teorii/analýzu) a původu (lokální ikona Coderslab pro PDF); uživatel potvrdil, že ikony se zobrazují dobře."
+      "detail": "Retrieval-only Streamlit evidence browser běží na 127.0.0.1:8766. Výsledky mají štítek typu (knížka pro cvičení, lupa pro teorii/analýzu) a původu (lokální ikona Coderslab pro PDF); uživatel potvrdil, že ikony se zobrazují dobře. Číselná relevance a Markdown/matematika úryvků publikovány; uživatel potvrdil zlepšení čitelnosti."
     },
     {
       "id": "eval",
@@ -79,7 +79,7 @@
       "title": "Held-out evaluace CZ/EN/PL",
       "estimate_hours": 2,
       "status": "in_progress",
-      "detail": "Diagnostika relevance, krátkých/OCR pasáží a experimentální intent-aware reranking. Zlepšení na stávajících 12 dotazech je orientační; gold paths potřebují ruční korekci a samostatný held-out CZ/EN/PL test."
+      "detail": "První passage-level checkpoint hotov: 9 otázek CZ/EN/PL, 45 úsudků s důvody a hashi; viz docs/EVALUATION_QUALITY.md. Slabiny: přesný algoritmus/dataset, duplicity obsahu, HTML fragmenty, chybějící abstence. Zbývá oprava původních gold paths, lidská kontrola a nové sealed held-out měření po úpravách."
     },
     {
       "id": "demo",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-17T11:35:31Z",
+  "updated_at": "2026-10-17T12:21:17.729715+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10

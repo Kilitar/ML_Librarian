@@ -1,0 +1,346 @@
+{
+  "reviewer": "Codex passage-level review; provisional, not learner-approved",
+  "rubric": {
+    "2": "Directly useful evidence for the main requested concept or exact practical task; may require complementary passages for full coverage.",
+    "1": "Related background or partial evidence; wrong dataset/algorithm for practical requests is insufficient.",
+    "0": "Does not support requested evidence."
+  },
+  "questions_sha256": "1565fca971b5e870ae6afa1286463104e9dd926a53e38c93c4f12ab44b5f314b",
+  "search_sha256": "8bccf167e75fcbeffd6c2708a94fe7ffbc57f53e4bc30426d893526c2953b3c4",
+  "corpus_fingerprint": "3e16de19771587158f1958c59d042e9f5b572a96aca23e42e6d02ab354ed26e6",
+  "queries": {
+    "ridge_cs": [
+      {
+        "chunk_id": "0e11978fe8d38b16962f",
+        "source_path": "views/01_diamonds_polynomial_critique.py",
+        "text_sha256": "4dc78b29e0a99e1257aaf49adf66c052fb8cc1e35ff0404ef73906da02a14757",
+        "grade": 2,
+        "reason": "Explains ill conditioning and the alpha-I Ridge remedy; alpha strength needs complementary evidence."
+      },
+      {
+        "chunk_id": "fca2cb84ae18a6648dd9",
+        "source_path": "01_Regression/06_regularization_exercise_2.ipynb",
+        "text_sha256": "b1075d5078c46c8b31ace31724db99b66ceae165b8ef7d7f9e8b48b31d4b03e9",
+        "grade": 1,
+        "reason": "Names L2 and multicollinearity, but only an alpha search range."
+      },
+      {
+        "chunk_id": "084b25aba605252512eb",
+        "source_path": "01_Regression/theory/04_elastic_net_theory.md",
+        "text_sha256": "e29f2ff318d88f0a3dbeb150783bd6a694c7ad36242f57b8981f08d7abb47b6a",
+        "grade": 2,
+        "reason": "Defines L2 and alpha strength; includes pure Ridge as a special case."
+      },
+      {
+        "chunk_id": "140fdf4ff5420853b18a",
+        "source_path": "01_Regression/theory/01_linear_regression_theory.md",
+        "text_sha256": "76f580677c32d07e07e02130eb14b46eb53e9e9f35deff6c17b329a922bf0959",
+        "grade": 1,
+        "reason": "Recommends Ridge but does not explain its mechanism or alpha."
+      },
+      {
+        "chunk_id": "f2bd1cbca89325c1f480",
+        "source_path": "01_Regression/theory/03_regularization_theory.md",
+        "text_sha256": "36e8dfd7b05da87e3be7f2f5a3183cf896988b2dde311e3b516065229fdb5f36",
+        "grade": 1,
+        "reason": "Explains generic regularization strength without the multicollinearity mechanism."
+      }
+    ],
+    "tree_practice_cs": [
+      {
+        "chunk_id": "cc783d01d43ae04ca98a",
+        "source_path": "views/03_xgboost_diamonds_exercise_2_critique.py",
+        "text_sha256": "2f4a9d5237beff1f7f7b0ae5326fad5e6fe546047b2785cb6c977069e06939b1",
+        "grade": 1,
+        "reason": "Diamonds but XGBoost, not the requested single regression tree."
+      },
+      {
+        "chunk_id": "eff103b3287f9787564d",
+        "source_path": "01_Regression/09_decision_tree_exercise_2.ipynb",
+        "text_sha256": "0bb5f3eda779a900634a6e242a6804fc829becf7aa9b5a519c551fbe35ac3e64",
+        "grade": 2,
+        "reason": "Exact diamond regression-tree exercise, training/evaluation and overfitting."
+      },
+      {
+        "chunk_id": "0c393040db8f3f4bc2ca",
+        "source_path": "views/01_homework_concrete_decision_tree.py",
+        "text_sha256": "8dee11fb2f0efc8b751b81800973fe0a239bcaf5b38d5909d80fceaf88734242",
+        "grade": 1,
+        "reason": "Regression tree and MAE but concrete dataset, not diamonds."
+      },
+      {
+        "chunk_id": "156163182ca8a42ea9ea",
+        "source_path": "01_Regression/06_regularization_exercise_2.ipynb",
+        "text_sha256": "8b0a38ed6246f9754bfc6bcd3fd428f6759a3e1694251d3a46a8d7ae5c9b5fbf",
+        "grade": 1,
+        "reason": "Diamonds and metrics but linear regularization instead of a tree."
+      },
+      {
+        "chunk_id": "2741e742553c5f58d98b",
+        "source_path": "views/03_xgboost_diamonds_exercise_2.py",
+        "text_sha256": "51e08f0b7b761bbc17598216f7181ef3a4cbd6419dada8cf87357741450d0c63",
+        "grade": 1,
+        "reason": "Diamonds and MAE but XGBoost instead of the requested tree."
+      }
+    ],
+    "leakage_en": [
+      {
+        "chunk_id": "1b593811c3d6a3174f46",
+        "source_path": "views/05_pca_diamonds_critique.py",
+        "text_sha256": "39420637b29181314cf69ea8d8e4f3fe3fe2567b312c445a00b1dd3c4c9c0401",
+        "grade": 1,
+        "reason": "PCA train/test leakage and Pipeline, but no explanation of fitting within CV folds."
+      },
+      {
+        "chunk_id": "0bb70353251c5596b10b",
+        "source_path": "00_Prework/theory/03_data_prep_scikit_workflow.md",
+        "text_sha256": "b28830b6ca84a60381e4478d3806691de77c62f75bedb135c9c9f2574ecd92e1",
+        "grade": 1,
+        "reason": "Pipeline example on training data; overly absolute leakage claim and no fold-level explanation."
+      },
+      {
+        "chunk_id": "4e4b634acd839f3d8103",
+        "source_path": "03_Advanced_ML_Neural_Networks/theory/01_hyperparameter_tuning_theory.md",
+        "text_sha256": "dabd94ba881cd433aad918c9462ea4fe72698224b4d1d26a2af1a72c5922bb7c",
+        "grade": 2,
+        "reason": "Explicitly explains leakage of validation-fold statistics and using preprocessing inside Pipeline."
+      },
+      {
+        "chunk_id": "8cdccdfe8944114e0fdb",
+        "source_path": "views/03_hyperparameter_tuning_theory.py",
+        "text_sha256": "fb9a35ca2e67a8988ff61e28dbf99fe13b92aa42eb4f67cb0f606873f4d88076",
+        "grade": 2,
+        "reason": "Explicitly puts preprocessing inside CV to isolate validation-fold data."
+      },
+      {
+        "chunk_id": "70e8b175b4720ebe5ab5",
+        "source_path": "01_Regression/theory/03_regularization_theory.md",
+        "text_sha256": "2652689775ef409dbebb943dbcfc491ede85174862ee0693aa93bf37cc43b296",
+        "grade": 1,
+        "reason": "Pipeline example and asserted prevention, without explaining fit isolation across folds."
+      }
+    ],
+    "logistic_practice_en": [
+      {
+        "chunk_id": "8552993d1aeee174f0a7",
+        "source_path": "02_Classification/06_logistic_regression_exercise.ipynb",
+        "text_sha256": "51d26a7a98905cf2dcd156994c3106a0e25f47ce7bb8a1023711c2c42016ce6f",
+        "grade": 2,
+        "reason": "Exact logistic-regression application to lumbar measurements."
+      },
+      {
+        "chunk_id": "b7506710b7c9ee624453",
+        "source_path": "views/02_homework_diabetes_logistic_regression.py",
+        "text_sha256": "427d29751cae1bda4da3e72c26c3f77a7015c30934771a093a54e24520295b3a",
+        "grade": 1,
+        "reason": "Logistic regression but diabetes rather than lumbar data."
+      },
+      {
+        "chunk_id": "fa3642a239f94f1b1337",
+        "source_path": "02_Classification/07_logistic_regression_lumbar_exercise_1.ipynb",
+        "text_sha256": "a08f4526257899f0a7592144257ef516b4ce4b4916715c8b17c6bcdf82f202db",
+        "grade": 2,
+        "reason": "Exact lumbar logistic-regression assignment with training and test evaluation."
+      },
+      {
+        "chunk_id": "8788b823c4427bd841d9",
+        "source_path": "views/02_decision_tree_lumbar_exercise_1.py",
+        "text_sha256": "ac4a6cd5a7574fad606c24c7824308ef939c8b0f5448bb7874e376afc90ba6d6",
+        "grade": 1,
+        "reason": "Lumbar data but decision-tree page, no logistic training in excerpt."
+      },
+      {
+        "chunk_id": "87b230cb08a205102beb",
+        "source_path": "01_Regression/12_homework_concrete_regularization.ipynb",
+        "text_sha256": "5f28c2eae14cde0f34f7fc02e9f5bc6cfc7a0941001885a9adb6bc614a292156",
+        "grade": 0,
+        "reason": "Concrete regression homework; LogisticRegression is explicitly a copy-paste error."
+      }
+    ],
+    "dbscan_pl": [
+      {
+        "chunk_id": "298e629d8ebf786352bd",
+        "source_path": "views/05_dbscan_moons_critique.py",
+        "text_sha256": "7eb985fb2294f92a9d681ffafcdb53fa8e54e6d058cf1e91c029a13998e9f9b3",
+        "grade": 1,
+        "reason": "DBSCAN core chains and noise bridging, not the requested three point definitions."
+      },
+      {
+        "chunk_id": "7fcfb9593884ecf54455",
+        "source_path": "views/05_kmeans_theory.py",
+        "text_sha256": "d8a1a058bcd321b7357ed7194b89346d8b16ca028753ce49cdcff64beee7f969",
+        "grade": 2,
+        "reason": "Direct definitions of core, border and noise using epsilon and min_samples."
+      },
+      {
+        "chunk_id": "9ba0d5480c7a3a1024d7",
+        "source_path": "05_Unsupervised_Learning/theory/01_clustering_theory.md",
+        "text_sha256": "6c60669a90927aa1241b5a72ad87179b0f8a6a5f77670e3e7b22297bc057aaea",
+        "grade": 1,
+        "reason": "Clustering-family comparison, lacks point definitions."
+      },
+      {
+        "chunk_id": "db1adfef1faa41244008",
+        "source_path": "05_Unsupervised_Learning/theory/01_kmeans_clustering_theory.md",
+        "text_sha256": "6c60669a90927aa1241b5a72ad87179b0f8a6a5f77670e3e7b22297bc057aaea",
+        "grade": 1,
+        "reason": "Duplicate clustering-family comparison from another file, lacks point definitions."
+      },
+      {
+        "chunk_id": "7cd39edfaf8a5efea9af",
+        "source_path": "05_Unsupervised_Learning/04_dbscan_moons_exercise.ipynb",
+        "text_sha256": "634e6fac0f213b903e42cf3cc992c74ad9a32d7d8eb19f3b07b002d41bfd32a1",
+        "grade": 2,
+        "reason": "Direct core/border/noise definitions."
+      }
+    ],
+    "sentiment_practice_pl": [
+      {
+        "chunk_id": "4ff3cdec14ca4755ccc8",
+        "source_path": "views/04_nlp_exercise_tfidf.py",
+        "text_sha256": "d42f7c382fb93e9e7daf072884061e77a09870c26932d6150a7391ef203cd1c9",
+        "grade": 2,
+        "reason": "TF-IDF sentiment classification exercise with LogisticRegression and LinearSVC; excerpt does not name movie corpus."
+      },
+      {
+        "chunk_id": "48aa6d67e29e907669f7",
+        "source_path": "views/04_nlp_exercise_bow.py",
+        "text_sha256": "196c7140342ad776c2c29e0cd368e5f18070a562794a765936422791a4e6ad14",
+        "grade": 1,
+        "reason": "Movie sentiment but CountVectorizer rather than TF-IDF."
+      },
+      {
+        "chunk_id": "8a89b54dda99435d48ce",
+        "source_path": "04_NLP/04_tfidf_exercise.ipynb",
+        "text_sha256": "8bf79be5a966646c0a7df97c1a7182f03f88723d30cb62d3c1b42abe32d36179",
+        "grade": 1,
+        "reason": "TF-IDF exercise step, lacks sentiment/movie context in this excerpt."
+      },
+      {
+        "chunk_id": "710b23e7838cf02520dc",
+        "source_path": "views/04_nlp_exercise_word2vec.py",
+        "text_sha256": "91f4694eb1d8d9166e87ba58966837b88f85e87ac4d1fcbfe02513ceb9bd0978",
+        "grade": 0,
+        "reason": "Word2Vec dimensionality and accuracy, not the requested TF-IDF exercise."
+      },
+      {
+        "chunk_id": "288b017a76d549c2527e",
+        "source_path": "views/04_nlp_exercise_1.py",
+        "text_sha256": "4d4f1822863a91818d30f66bf577d365a6442cad719d0a6fb3b4d60483c44b0c",
+        "grade": 1,
+        "reason": "IMDb preprocessing exercise, not TF-IDF classification."
+      }
+    ],
+    "absent_cs": [
+      {
+        "chunk_id": "e79e15431ce882a79e51",
+        "source_path": "views/05_pca_diamonds_critique.py",
+        "text_sha256": "b40a0850d11e9d4343bd8dd804669032b0bcff081a5090118a5b1f0f373fed01",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      },
+      {
+        "chunk_id": "e09727b8c6256789bad1",
+        "source_path": "00_Prework/01_google_colab_exercise.ipynb",
+        "text_sha256": "f18ca5eb8981e57083a92f38b1ea2dc9cb553165f90fad6da17a99c3bf9692aa",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      },
+      {
+        "chunk_id": "0a43c426b83ba5959f66",
+        "source_path": "views/05_isolation_forest_student_scores_critique.py",
+        "text_sha256": "f3da771bb2fefc4dc64104f95b6ebd8e3a21b45b3280ba648846984a95dacbe2",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      },
+      {
+        "chunk_id": "62236a6550dd9983ff4e",
+        "source_path": "06_Final_Project/theory/03_further_development_and_ai_trends.md",
+        "text_sha256": "ec95ac43bc6369861d98334b0c197ef55c850e8b22bf862ca5be9828fbb501d1",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      },
+      {
+        "chunk_id": "1e9bac2c7a1523a92e0c",
+        "source_path": "views/05_day_5_summary.py",
+        "text_sha256": "de5e8de1d1234dc137c040e2eb92f4dcfa46e8ac9d71c3cf42c6de8ca7eb554b",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      }
+    ],
+    "absent_en": [
+      {
+        "chunk_id": "544334d1c80c4cfc6ee6",
+        "source_path": "03_Advanced_ML_Neural_Networks/theory/06_boosting_and_xgboost_theory.md",
+        "text_sha256": "b5d6c10061188e68b736b46284e0417947ce56a1abf4e4c0e475f89174616df9",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      },
+      {
+        "chunk_id": "6bfe4a23f129160d99b1",
+        "source_path": "views/04_nlp_day_4_summary.py",
+        "text_sha256": "b395d4ffd08df450678a759cb53a8b14f735eef7a3cb3406b2f8c58daf28476c",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      },
+      {
+        "chunk_id": "1801c75d556a3bb68689",
+        "source_path": "MACHINE_LEARNING_SYLLABUS.md",
+        "text_sha256": "f68a74b2d349bb517b5526e943cfdfe50d7bccf011b37831e18fa39e999255e8",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      },
+      {
+        "chunk_id": "d39feee8366bf255d249",
+        "source_path": "00_Prework/theory/01_ml_foundations.md",
+        "text_sha256": "fea25fcc5ffd3a7b0a86b4c7347129657444acf260fac3832f2e38b45b3c6bc5",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      },
+      {
+        "chunk_id": "70e8b175b4720ebe5ab5",
+        "source_path": "01_Regression/theory/03_regularization_theory.md",
+        "text_sha256": "2652689775ef409dbebb943dbcfc491ede85174862ee0693aa93bf37cc43b296",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      }
+    ],
+    "absent_pl": [
+      {
+        "chunk_id": "f0fdcdba722c311e5c91",
+        "source_path": "views/02_metrics_lumbar.py",
+        "text_sha256": "98c8e5c96ea0f3c1f2afb113ee49483d22c24b8d5df3b014638378d02318ca45",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      },
+      {
+        "chunk_id": "d8a88a9d925d038a78a2",
+        "source_path": "03_Advanced_ML_Neural_Networks/04_random_forest_heart_exercise_1.ipynb",
+        "text_sha256": "08301be7a376ff49dab686ca9646bf14c23d091cff356e19e99aa80c650f047e",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      },
+      {
+        "chunk_id": "7c65534e1b234977e477",
+        "source_path": "02_Classification/04_classification_metrics_lumbar_exercise_1.ipynb",
+        "text_sha256": "b971e038dcf5a02b17e12f7ee6465f1336fed240bbb91b0aa1873140596da427",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      },
+      {
+        "chunk_id": "df459275e444b3a0f01f",
+        "source_path": "views/03_random_forest_heart_exercise_1.py",
+        "text_sha256": "10ea3a05de0a4505b2dd03511bba3802ec952a0ae091b71b1631f8ea0ddbd7c3",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      },
+      {
+        "chunk_id": "45c27d3ec1290156917c",
+        "source_path": "views/03_random_forest_heart_exercise_1_critique.py",
+        "text_sha256": "363e6ded8fd6700675ce532b2ab333dedeebfcb68e54567be8489588e849ae94",
+        "grade": 0,
+        "reason": "No evidence for the requested out-of-corpus fact."
+      }
+    ]
+  }
+}
