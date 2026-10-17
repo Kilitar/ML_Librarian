@@ -71,7 +71,7 @@
       "estimate_hours": 1.5,
       "status": "done",
       "completed_at": "2026-10-17T11:32:57Z",
-      "detail": "Retrieval-only Streamlit evidence browser běží na 127.0.0.1:8766. Výsledky mají štítek typu (knížka pro cvičení, lupa pro teorii/analýzu) a původu (lokální ikona Coderslab pro PDF); uživatel potvrdil, že ikony se zobrazují dobře. Číselná relevance a Markdown/matematika úryvků publikovány; uživatel potvrdil zlepšení čitelnosti. Nový výběr pasáží a viditelný E5 fallback funkčně ověřeny; relevance označena jako pořadové skóre. Bez opory: hláška a sbalené slabé shody; nejisté výsledky zůstávají viditelné. Funkčně ověřeno."
+      "detail": "Retrieval-only Streamlit evidence browser běží na 127.0.0.1:8766. Výsledky mají štítek typu (knížka pro cvičení, lupa pro teorii/analýzu) a původu (lokální ikona Coderslab pro PDF); uživatel potvrdil, že ikony se zobrazují dobře. Číselná relevance a Markdown/matematika úryvků publikovány; uživatel potvrdil zlepšení čitelnosti. Nový výběr pasáží a viditelný E5 fallback funkčně ověřeny; relevance označena jako pořadové skóre. Bez opory: hláška a sbalené slabé shody; nejisté výsledky zůstávají viditelné. Funkčně ověřeno. HTML obaly úryvků převedeny na čitelný text/Markdown; kód a matematika zachovány. 35 testů prošlo."
     },
     {
       "id": "eval",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-17T13:44:43.989417+00:00",
+  "updated_at": "2026-10-17T13:54:44.929419+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10
