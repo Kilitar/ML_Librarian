@@ -38,6 +38,10 @@ class QualityScoringTests(unittest.TestCase):
         stale["search_sha256"] = "different"
         with self.assertRaises(ValueError):
             score(self.results, stale)
+        stale = copy.deepcopy(self.judgments)
+        stale["ranking_files_sha256"] = {"constraints.py": "different"}
+        with self.assertRaises(ValueError):
+            score(self.results, stale)
         del self.judgments["queries"]["absent"]
         with self.assertRaises(ValueError):
             score(self.results, self.judgments)

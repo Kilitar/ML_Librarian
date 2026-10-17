@@ -10,6 +10,7 @@ from typing import Any
 
 import numpy as np
 from sentence_transformers import SentenceTransformer
+from constraints import constraint_adjustment, query_constraints
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -150,7 +151,8 @@ class E5SearchIndex:
         )
         return cls(documents, embeddings, model)
 
-    def search(self, query: str, *, limit: int = 5) -> list[dict[str, Any]]:
+    def search(self, query: str, *, limit: int = 5,
+               match_constraints: bool = True) -> list[dict[str, Any]]:
         query = " ".join(query.split())
         if not query:
             raise ValueError("Enter a non-empty query")
@@ -172,6 +174,18 @@ class E5SearchIndex:
             key=ranking_scores.__getitem__,
             reverse=True,
         )
+        # Rerank a bounded pool from existing semantic/quality retrieval.
+        # The corpus and its embeddings remain unchanged.
+        requested = query_constraints(query)
+        candidates = ranked[:80] if match_constraints else ranked
+        constraint_details = {}
+        for index in candidates:
+            adjustment, reasons = constraint_adjustment(
+                self.documents[index], requested, exact_task=(intent == "practice"),
+            ) if match_constraints else (0.0, [])
+            ranking_scores[index] += adjustment
+            constraint_details[index] = {"adjustment": adjustment, "reasons": reasons}
+        ranked = sorted(candidates, key=ranking_scores.__getitem__, reverse=True)
         selected = []
         seen_sources = set()
         for index in ranked:
@@ -198,6 +212,7 @@ class E5SearchIndex:
                 **source_labels,
                 "score": float(scores[int(index)]),
                 "ranking_score": ranking_scores[int(index)],
+                "constraint_match": constraint_details[index],
                 "text": document["text"],
                 "streamlit_route": document.get("streamlit_route"),
                 "streamlit_title": document.get("streamlit_title"),

@@ -10,6 +10,8 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def score(results: dict, judgments: dict) -> dict:
+    if results.get("ranking_files_sha256") != judgments.get("ranking_files_sha256"):
+        raise ValueError("Review mismatch: ranking helper files")
     for key in ("questions_sha256", "search_sha256"):
         if results[key] != judgments[key]:
             raise ValueError(f"Review mismatch: {key}")

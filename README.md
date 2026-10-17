@@ -41,3 +41,8 @@ Run the retrieval-only Streamlit evidence browser:
 Only routes explicitly marked `verified` and a configured `streamlit_base_url` are rendered as clickable course links. Inferred paths appear as candidates until checked against the live course app.
 
 See `docs/IMPLEMENTATION_PLAN.md`, `docs/GUARDRAILS.md`, `docs/LANGUAGE_SCOPE.md`, and `docs/RETRIEVAL_PROTOTYPE.md`.
+
+For the algorithm/dataset reranking comparison, run
+`.venv\Scripts\python.exe src\librarian\compare_constraints.py` and open
+`http://localhost:8765/eval/quality_comparison.local.html` with the local workspace
+HTTP server running. See `docs/CONSTRAINT_RERANKING.md` for results and limits.
