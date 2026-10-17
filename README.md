@@ -80,3 +80,8 @@ complex questions remain intact. See `docs/SEMANTIC_LAYER.md` and run
 Every result now has “Otevřít zdroj”: browse static extracted context and download
 the original snapshot file after manifest SHA-256 validation. No course page or
 notebook is executed. See `docs/SOURCE_VIEWER.md` for limits and verification.
+
+The first fixed cross-topic acceptance check is **not accepted**: PCA/scaling is
+hard rejected, one out-of-domain recipe remains uncertain, and spam metric-choice
+evidence is incomplete. See `docs/ACCEPTANCE_V1.md` and the full local review at
+`http://localhost:8765/eval/acceptance_v1_review.local.html`. Retrieval is unchanged.

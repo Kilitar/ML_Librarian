@@ -1,0 +1,167 @@
+{
+  "reviewer": "Codex provisional; human review pending",
+  "scope": "Top-one relevance and joint core coverage of first three passages, not full-answer or source-factual validation. Inspected questions now become development data.",
+  "raw_sha256": "67b82a47aa7bab680a170226606a8181bdabe265e15bcc4ef808e96d8ab95dce",
+  "judgments": [
+    {
+      "id": "av01",
+      "top1_grade": "direct",
+      "top3_covers_core": true,
+      "reason": "První úryvek explicitně uvádí ignorování menšinové třídy při vysoké accuracy. Navazující kritika zároveň zpochybňuje doporučení Weighted F1 ze zdroje; relevanci neplést s faktickou správností.",
+      "passages": [
+        {
+          "chunk_id": "cf07f2a77e6314fb422c",
+          "text_sha256": "795c717b4755ea066106a3d221e84ee2c80adc3f29d13c9a5fc73a11c77d805a"
+        },
+        {
+          "chunk_id": "50777f0f5455299001b4",
+          "text_sha256": "69d619712e49a6a94efb3a8899bf51425970f1b382eb29fc0bd9c8673e5015cc"
+        },
+        {
+          "chunk_id": "a3a0409582a5e22f8c18",
+          "text_sha256": "92c2acbc736f1360c8738afcc23a7ad4463b0fd07a74953a4426c42c745a3359"
+        }
+      ]
+    },
+    {
+      "id": "av02",
+      "top1_grade": "partial",
+      "top3_covers_core": false,
+      "reason": "První úryvek doporučuje precision pro spam. Druhý definuje precision a minimalizaci falešných poplachů, ale první tři nevysvětlují rozhodovací podmínku: vyšší cenu odfiltrování legitimní zprávy oproti propuštění spamu. Podle předem zapsaného pokrytí tedy jen částečná opora.",
+      "passages": [
+        {
+          "chunk_id": "d2b292bd4f980323939b",
+          "text_sha256": "56d3b829c1ec099cdebfd721c84ff8c9e0420ea384e445665a6df07b6803feab"
+        },
+        {
+          "chunk_id": "16833e82ee23c977debf",
+          "text_sha256": "a2628aede83355f2c239405078a98b1cc17647f6e55d89689246d61b45d0d814"
+        },
+        {
+          "chunk_id": "f3f0a71f90ecd04a3459",
+          "text_sha256": "d022b7590df40bf482bab47e069ce29ecec9f7237f3be468d74bdc8faaa43555"
+        }
+      ]
+    },
+    {
+      "id": "av03",
+      "top1_grade": "direct",
+      "top3_covers_core": true,
+      "reason": "První úryvek přímo vysvětluje leakage a ukazuje fit_transform(train) versus transform(test).",
+      "passages": [
+        {
+          "chunk_id": "7d5251f997691f75a3cb",
+          "text_sha256": "dde35eb3ebb226bed9b631b71e8569024dfa478ccbb65896510f97f2d8dcfb4c"
+        },
+        {
+          "chunk_id": "4e4b634acd839f3d8103",
+          "text_sha256": "dabd94ba881cd433aad918c9462ea4fe72698224b4d1d26a2af1a72c5922bb7c"
+        },
+        {
+          "chunk_id": "151cc97860ea1d111925",
+          "text_sha256": "11599dbcdfc9dcaba8ee6db7b458ddd4185ebed4b9b0901a75c1194db850abd3"
+        }
+      ]
+    },
+    {
+      "id": "av04",
+      "top1_grade": "direct",
+      "top3_covers_core": true,
+      "reason": "První úryvek rozlišuje binární OHE pro nominální a číselné ordinal kódování pro uspořádané kategorie. Absolutní doporučení drop=first ve zdroji vyžaduje samostatnou kontrolu; není tímto testem fakticky schváleno.",
+      "passages": [
+        {
+          "chunk_id": "9f79f6c9e640dad1cde6",
+          "text_sha256": "6f19b2deaf56f9cf33ce4e6516a1aea3b2b36ac533610127bb65d7eaa34b48d1"
+        },
+        {
+          "chunk_id": "5b2248dda9fd9dcb6584",
+          "text_sha256": "f0cc81871cf9ca6e24f71a6aaff37cf563177f039dc9df1f45cecace64ec69a5"
+        },
+        {
+          "chunk_id": "51fd3b7325e2bb4108b8",
+          "text_sha256": "1ec8fadc5b330f3dcf31dd5fb04576c60797e32c86334379a1322d743934bc7a"
+        }
+      ]
+    },
+    {
+      "id": "av05",
+      "top1_grade": "direct",
+      "top3_covers_core": true,
+      "reason": "První úryvek přímo vysvětluje globálně běžná slova a nízkou rozlišovací hodnotu; další dva stejné jádro potvrzují.",
+      "passages": [
+        {
+          "chunk_id": "9045f7026b8c40a24480",
+          "text_sha256": "6bc94581f8263ae4dbfb2787c7c6e3c9177600122beed50c27509b425d6bb51a"
+        },
+        {
+          "chunk_id": "44dd89e2884080396a6c",
+          "text_sha256": "812437213d7971d68370d0a7ab3bfc5c6718206a74307e75ed5044cb38f66b97"
+        },
+        {
+          "chunk_id": "1eb2d06c6cb089a4d2c4",
+          "text_sha256": "e0a1dc9174fb2a896914225dcb5945fed2d024341d3e99d412fe1ef9131fe8e1"
+        }
+      ]
+    },
+    {
+      "id": "av06",
+      "top1_grade": "direct",
+      "top3_covers_core": true,
+      "reason": "Kvízová zpětná vazba přesto přímo rozlišuje pravidlový ořez od lemmatu. Druhý a třetí doplňují neplatné kořeny a jazykový kontext.",
+      "passages": [
+        {
+          "chunk_id": "2f32857889208502bf4e",
+          "text_sha256": "a7edda0938c8ef6e4f8be6c409ba47ced51b6711c30520b73b2f8e35ff58f88c"
+        },
+        {
+          "chunk_id": "c807d3c3e8655940f18c",
+          "text_sha256": "f912fcb6efe15011deaa6d680e3cc4331e004eea7ab5fb186a599ab87165375e"
+        },
+        {
+          "chunk_id": "9231d4dda787140b3add",
+          "text_sha256": "d17a034eb67e1562ca2b2a39fc8f32e8687709c3bc9d04deba8e6acd36314b89"
+        }
+      ]
+    },
+    {
+      "id": "av07",
+      "top1_grade": "direct",
+      "top3_covers_core": true,
+      "reason": "První úryvek obsahuje definici noise/core/border i důvod, proč se nezadává K.",
+      "passages": [
+        {
+          "chunk_id": "8b8e9f2b183985a1a588",
+          "text_sha256": "1279db7fc95690b51c3a8201cb7df1a2852ff8936d649fa678c98e27042f370d"
+        },
+        {
+          "chunk_id": "a7dd8ac964c2e7751729",
+          "text_sha256": "c2202599c1e09a8aa204ae9dad1a73407a02ef046c873e2634296f2523b3b00e"
+        },
+        {
+          "chunk_id": "f7593deeea396351e4c6",
+          "text_sha256": "78f4e435577d655f915622ab1fe48a5f9f41eeab71aa71ac3debe0788fb91556"
+        }
+      ]
+    },
+    {
+      "id": "av08",
+      "top1_grade": "off_topic",
+      "top3_covers_core": false,
+      "reason": "První úryvek řeší vzdálenostní shlukování. Druhý standardizaci PCA jen doporučuje; první tři nevysvětlují dominanci velkého rozptylu v PCA. Gate validní otázku navíc tvrdě odmítá.",
+      "passages": [
+        {
+          "chunk_id": "ef9be1f2da7fc748f46f",
+          "text_sha256": "d4f10741a5df742d867f078cebd64b360ff7c9fec5114a1c204adf2010b9896f"
+        },
+        {
+          "chunk_id": "a5bfe6bb0be34e949355",
+          "text_sha256": "35e02e0e4d88b40143158162ae89bd7f5d44ca803f92ff28dfc2d021e65b7186"
+        },
+        {
+          "chunk_id": "553c608d6f0f2a2befc6",
+          "text_sha256": "75b8b9726e60c1d8cea2bf15467cd6a55c74efb6a8b737711bdfe44124adbef3"
+        }
+      ]
+    }
+  ]
+}

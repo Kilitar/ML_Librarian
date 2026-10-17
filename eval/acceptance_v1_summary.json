@@ -1,0 +1,58 @@
+{
+  "candidate_status": "not_accepted",
+  "reviewer": "Codex provisional; human review pending",
+  "criteria": {
+    "answerable_top1_direct_min": 6,
+    "answerable_top3_coverage_min": 7,
+    "answerable_count": 8,
+    "answerable_hard_rejections_max": 0,
+    "absent_no_support_required": 3,
+    "ambiguous_uncertain_required": 1,
+    "fallback_max": 0,
+    "exact_duplicates_max": 0,
+    "source_integrity_failures_max": 0
+  },
+  "counts": {
+    "answerable_top1_direct": 6,
+    "answerable_top3_coverage": 6,
+    "answerable_count": 8,
+    "answerable_hard_rejections": 1,
+    "absent_no_support": 2,
+    "ambiguous_uncertain": 1,
+    "fallback": 0,
+    "exact_duplicates": 0,
+    "source_integrity_failures": 0
+  },
+  "checks": {
+    "answerable_top1_direct_min": true,
+    "answerable_top3_coverage_min": false,
+    "answerable_count": true,
+    "answerable_hard_rejections_max": false,
+    "absent_no_support_required": false,
+    "ambiguous_uncertain_required": true,
+    "fallback_max": true,
+    "exact_duplicates_max": true,
+    "source_integrity_failures_max": true
+  },
+  "verified_original_sources": 39,
+  "source_errors": [],
+  "questions_sha256": "2cc40e0da3ff5d42b79c68c3970502870f2278ec97c37f0464a3b0a93d8f1148",
+  "raw_sha256": "67b82a47aa7bab680a170226606a8181bdabe265e15bcc4ef808e96d8ab95dce",
+  "retrieval_source_hashes": {
+    "search.py": "80b5fd7a8f98657c45072a0a342e512ae604b4d27cf009457a8bb40b80f74a4c",
+    "semantic_layer.py": "5c19eb64e088c4225d5b898d825e250231c19bbade031b1510e7dda7c0c0032c",
+    "domain_concepts.json": "9a58f6049cda6509dc179aea70c8aea2989f9eedb4c029598e059e64cf034030",
+    "concepts.py": "892754589b3f78ad032948a249726c8475afd0c4751de473fca497782a294180",
+    "acronyms.py": "d89d7187c311a3c941b35545f13f01813c9e12e765c0e946073905eb25ffa5a8",
+    "rerank.py": "aeef5eb8faf3a539df12959a31b86de84cf235a354e01b201d9d97151ac0812d",
+    "constraints.py": "67faea80ba0753f4556964099a6d2ac276747f1e714369d2dcb504b787cb7632",
+    "diversify.py": "38b45c357545bacf74bba8242ea930d2300243f1a405bf53b8362c571844c176",
+    "evidence_gate.py": "5abdc6adb4b869831447e85fd9ed13eb801cdbb7f53d7372ad9a5d781b442dad",
+    "hybrid.py": "6b91ca33021706e58decb4b1c5fc2968d38cfcc36b4e25bacdba5bb0e48246f9",
+    "chunk_text.py": "cc775950c08608e97c63a73eba00a2746a6d4bbc49fa540b957b5d95d53b09be",
+    "snippet_format.py": "2025e9a115e5dd52aed8043e5a954d60ba326acb84cba198b2d5d57f9ef1a487",
+    "comparisons.py": "f1c3ecc48bffba4feac64012657e71842fc23d512eb400af4e95753e485b3652",
+    "source_filters.py": "e96c8e923becafeb306cdff5bd85fa569022fdd34705691e014b19e25e005444"
+  },
+  "scope": "Top-one relevance and joint core coverage of first three passages, not full-answer or source-factual validation. Inspected questions now become development data."
+}

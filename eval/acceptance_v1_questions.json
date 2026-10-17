@@ -1,0 +1,18 @@
+{
+  "scope":"Fixed before retrieval. New formulations across topics outside the latest comparison tuning; not independent unseen-topic or human validation.",
+  "criteria":{"answerable_top1_direct_min":6,"answerable_top3_coverage_min":7,"answerable_count":8,"answerable_hard_rejections_max":0,"absent_no_support_required":3,"ambiguous_uncertain_required":1,"fallback_max":0,"exact_duplicates_max":0,"source_integrity_failures_max":0},
+  "questions":[
+    {"id":"av01","kind":"answerable","query":"Proč může mít klasifikátor s vysokou accuracy špatné výsledky na vzácné pozitivní třídě?","expected":"supported","coverage":"Nerovnováha tříd; většinová třída dominuje accuracy a pozitivní případy mohou být přehlíženy."},
+    {"id":"av02","kind":"answerable","query":"When is precision more important than recall in a spam filter?","expected":"supported","coverage":"Cena false positives: legitimní zprávy ve spamu; vztah precision/recall a kontext volby."},
+    {"id":"av03","kind":"answerable","query":"Dlaczego skalowanie trzeba dopasować tylko na zbiorze treningowym?","expected":"supported","coverage":"Zabránění data leakage; fit na train, transform na test/validaci stejnými parametry."},
+    {"id":"av04","kind":"answerable","query":"Jaký je rozdíl mezi One-Hot Encoding a kódováním kategorií celými čísly?","expected":"supported","coverage":"Binární sloupce versus číselné kódy a riziko falešného pořadí/vzdálenosti nominálních kategorií."},
+    {"id":"av05","kind":"answerable","query":"Why does TF-IDF give a lower weight to words that occur in almost every document?","expected":"supported","coverage":"IDF klesá s document frequency; častá slova málo rozlišují dokumenty."},
+    {"id":"av06","kind":"answerable","query":"Co zmienia lematyzacja, a co stemming podczas przygotowania tekstu?","expected":"supported","coverage":"Lemmatizace jazykově odvozuje lemma; stemming heuristicky odsekává koncovky a může vytvořit neexistující kořen."},
+    {"id":"av07","kind":"answerable","query":"Proč DBSCAN označuje některé body jako šum a nemusím mu předem zadávat počet shluků?","expected":"supported","coverage":"Hustota/eps/min_samples, body mimo husté oblasti jsou šum; počet skupin není vstupní K."},
+    {"id":"av08","kind":"answerable","query":"Why should I standardize features before PCA, and what can happen if I do not?","expected":"supported","coverage":"PCA maximalizuje rozptyl; velké jednotky/škály mohou dominovat komponentám, standardizace mění relativní vliv."},
+    {"id":"av09","kind":"absent","query":"Jaké bude zítra počasí v Brně?","expected":"no_support","coverage":"Aktuální předpověď počasí není ve statických studijních materiálech."},
+    {"id":"av10","kind":"absent","query":"What time does the next flight from Prague to London depart?","expected":"no_support","coverage":"Aktuální letový řád mimo korpus."},
+    {"id":"av11","kind":"absent","query":"Jak ugotować zupę pomidorową?","expected":"no_support","coverage":"Recept mimo kurz."},
+    {"id":"av12","kind":"ambiguous","query":"Co je lepší?","expected":"uncertain","coverage":"Chybí předmět srovnání; vyžaduje upřesnění."}
+  ]
+}

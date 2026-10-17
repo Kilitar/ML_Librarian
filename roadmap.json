@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Přidáno Otevřít zdroj u výsledků: extrahovaný text s výběrem části a stažení původního souboru z neměnného snapshotu po SHA-256 kontrole. Žádné spouštění kurzových stránek/notebooků. 74 testů + 3 reálná otevření přes AppTest, ověřen i původní PDF. Odkazy do kurzového Streamlitu nadále neověřené; BYOK odloženo.",
+  "status_note": "Přejímka v1 NEPROŠLA: 6/8 přímých prvních úryvků, 6/8 pokrytí v prvních třech (po závěrečné kontrole av02 opraveno z předběžných 7/8). Platné PCA/standardizace tvrdě odmítnuto; recept PL jen nejistý místo bez opory. 39 originálů hashově ověřeno, 0 duplicit/fallbacků. Bez ladění retrievalu. Další: oprava kandidátů PCA, rozhodování o opoře a kontext volby metrik; BYOK zatím ne. Přehled: http://localhost:8765/eval/acceptance_v1_review.local.html.",
   "tasks": [
     {
       "id": "scope",
@@ -62,7 +62,7 @@
       "title": "Volitelný BYOK LLM + retrieval-only fallback",
       "estimate_hours": 2,
       "status": "todo",
-      "detail": "Odloženo, dokud retrieval neposkytuje konzistentně užitečné důkazy. Zůstává zásada bez sdíleného owner key; případné generování bude volitelně BYOK s retrieval-only fallbackem."
+      "detail": "Odloženo: přejímka retrievalu v1 zatím nesplnila předem stanovená kritéria. Budoucí generování volitelně BYOK, citace a retrieval-only fallback; bez sdíleného owner key."
     },
     {
       "id": "ui",
@@ -79,7 +79,7 @@
       "title": "Held-out evaluace CZ/EN/PL",
       "estimate_hours": 2,
       "status": "in_progress",
-      "detail": "Párové měření 12 otázek: 6 vývojových, 3 nové formulace známých pojmů, 3 regrese. V šesti cílových srovnáních regrese/klasifikace první úryvek přímo vysvětluje typ výstupu. Prozatímní Codex hodnocení, nikoli nezávislá validace. 58 testů + 8 formulářů. Zbývá nezávislá kontrola, nová témata a užitečnost dalších pozic. docs/CONTEXTUAL_COMPARISON.md."
+      "detail": "Přejímací otázky a kritéria fixované před během. 12 otázek: 8 odborných, 3 mimo kurz, 1 nejasná. Neprošlo: top3 pokrytí 6/8 při min7, 1 tvrdé odmítnutí platné PCA otázky, 2/3 absent no_support. Top1 direct6/8 splněno; bez duplicit a fallbacků, 39 originálů ověřeno. Prozatímní Codex hodnocení, lidská kontrola čeká. docs/ACCEPTANCE_V1.md."
     },
     {
       "id": "demo",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-17T16:15:39.022205+00:00",
+  "updated_at": "2026-10-17T16:36:41.952411+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10
