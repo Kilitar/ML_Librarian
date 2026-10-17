@@ -1,0 +1,65 @@
+{
+  "scope": "Fixed before implementation/run. Development cases plus fresh formulations; no independent human validation.",
+  "questions": [
+    {
+      "id": "labels_pl",
+      "kind": "development",
+      "query": "Czym różni się uczenie z etykietami od szukania grup bez etykiet?"
+    },
+    {
+      "id": "house_cs",
+      "kind": "development",
+      "query": "Potřebuji předpovídat cenu domu. Je to regrese, nebo klasifikace?"
+    },
+    {
+      "id": "named_en",
+      "kind": "development",
+      "query": "What is the difference between supervised learning and unsupervised learning?"
+    },
+    {
+      "id": "fresh_cs",
+      "kind": "development_after_first_trial",
+      "query": "Jaký je rozdíl mezi klasifikací a regresí?"
+    },
+    {
+      "id": "fresh_en",
+      "kind": "development_after_first_trial",
+      "query": "How does overfitting differ from underfitting?"
+    },
+    {
+      "id": "fresh_pl",
+      "kind": "development_after_first_trial",
+      "query": "Jaka jest różnica między regresją a klasyfikacją?"
+    },
+    {
+      "id": "clock",
+      "kind": "regression",
+      "query": "kolik je hodin"
+    },
+    {
+      "id": "ml",
+      "kind": "regression",
+      "query": "Co znamená zkratka ML"
+    },
+    {
+      "id": "deep",
+      "kind": "regression",
+      "query": "Co je hluboké učení"
+    },
+    {
+      "id": "hold_cs",
+      "kind": "fresh_final",
+      "query": "Jaký je rozdíl mezi učením s učitelem a učením bez učitele?"
+    },
+    {
+      "id": "hold_en",
+      "kind": "fresh_final",
+      "query": "What is the difference between classification and regression?"
+    },
+    {
+      "id": "hold_pl",
+      "kind": "fresh_final",
+      "query": "Czym różni się klasyfikacja od regresji?"
+    }
+  ]
+}

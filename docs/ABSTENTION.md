@@ -86,3 +86,7 @@ The learner query `Co znamená zkratka ML` exposed a false negative for the corr
 ## evidence-v3: bounded multilingual concept definitions
 
 Simple CZ/EN/PL definitions of deep learning now use one canonical retrieval query. Related architecture passages from neural-network sources are prioritized by structural cues (networks, layers, explanatory prose) rather than treating neural networks as an exact synonym. This bounded route is always marked uncertain: the UI says the passages are related explanations, not a complete definition. Raw model scores remain unchanged, even if very low; the structural cue supplies related context only. Unknown-model/E5 validation still runs before this rule. Complex questions are left unchanged. The change is not general multilingual translation or a factual verifier. Eight AppTest submissions and 43 unit tests passed; historical 40-question metrics were not rerun. Full local review: `eval/concept_review.local.html`.
+
+## evidence-v4: partial comparison evidence
+
+Approved comparison retrieval may find strong passages for both sides despite weak whole-question relevance. Such results remain visible with an explicit uncertainty notice when each side has returned aspect evidence >= .20. This never supplies supported status by itself. Existing model/whole-score validation runs first; one missing side keeps ordinary low-support behavior. See `COMPARISON_TUNING.md`. Historical v1/v2/v3 metrics are not fresh v4 validation.

@@ -37,6 +37,12 @@ class SearchFallbackTests(unittest.TestCase):
         self.assertEqual(results[0]['chunk_id'], '0')
         self.assertIn('retrieval_warning', results[0])
 
+    def test_comparison_failure_preserves_original_e5_question(self):
+        with patch('search.PassageReranker', side_effect=OSError('missing cache')):
+            results = self.index.search('What is the difference between alpha and beta?', mode='rerank', comparison_tuning=True, comparison_experiment=True)
+        self.assertTrue(all(r['retrieval_mode']=='e5' and not r['comparison_aspects'] for r in results))
+        self.assertIn('difference between alpha and beta', self.index.model.encode.call_args[0][0][0])
+
 
 if __name__ == '__main__':
     unittest.main()

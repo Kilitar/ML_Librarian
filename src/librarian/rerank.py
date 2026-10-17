@@ -61,8 +61,10 @@ class PassageReranker:
             activation_fn=torch.nn.Sigmoid(),
         )
 
-    def score_details(self, query: str, documents: list[dict]) -> dict[str, np.ndarray]:
+    def score_details(self, query: str, documents: list[dict], *, aspects=None) -> dict[str, np.ndarray]:
         queries = [query] + parameter_queries(query)
+        aspect_offset = len(queries)
+        queries += aspects or []
         values = self.model.predict(
             [(subquery, passage_input(document)) for subquery in queries for document in documents],
             batch_size=8, show_progress_bar=False, convert_to_numpy=True,
@@ -71,7 +73,8 @@ class PassageReranker:
         if len(values) != len(documents) * len(queries) or not np.isfinite(values).all():
             raise ValueError("Invalid passage reranker output")
         matrix = values.reshape(len(queries), len(documents))
-        return {"relevance": matrix.max(axis=0), "whole_query": matrix[0]}
+        return {"relevance": matrix.max(axis=0), "whole_query": matrix[0],
+                "aspects": matrix[aspect_offset:].T}
 
     def scores(self, query: str, documents: list[dict]) -> np.ndarray:
         return self.score_details(query, documents)["relevance"]

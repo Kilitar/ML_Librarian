@@ -4,11 +4,19 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src/librarian"))
-from rerank import candidate_union, passage_input, expand_neighbors, parameter_queries
+from rerank import candidate_union, passage_input, expand_neighbors, parameter_queries, PassageReranker
+from unittest.mock import Mock
 from diversify import select_distinct
 
 
 class RerankTests(unittest.TestCase):
+    def test_aspects_never_replace_whole_query_score(self):
+        reranker = PassageReranker.__new__(PassageReranker)
+        reranker.model = Mock()
+        reranker.model.predict.return_value = np.array([.01,.02,.99,.05,.04,.98])
+        details = reranker.score_details('Compare topics', [{'source_path':'a','text':'a'}, {'source_path':'b','text':'b'}], aspects=['A','B'])
+        np.testing.assert_allclose(details['whole_query'], [.01,.02])
+        np.testing.assert_allclose(details['aspects'], [[.99,.04],[.05,.98]])
     def test_union_keeps_both_retrievers_without_duplicate_indices(self):
         result = candidate_union(np.array([.9, .8, .7, .6]), np.array([0, .8, 0, 1]), per_retriever=2)
         self.assertEqual(result, [0, 1, 3])

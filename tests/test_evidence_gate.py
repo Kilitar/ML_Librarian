@@ -14,11 +14,21 @@ class GateTests(unittest.TestCase):
     def test_bonus_and_subquestion_scores_cannot_supply_support(self):
         result = self.passage(.02)
         result['passage_score'] = .99
+        result['aspect_scores'] = [.99,.98]
         self.assertEqual(assess_evidence([result])['status'], 'no_support')
 
     def test_boundaries(self):
         for value, status in ((.099, 'no_support'), (.10, 'uncertain'), (.199, 'uncertain'), (.20, 'supported')):
             self.assertEqual(assess_evidence([self.passage(value)])['status'], status)
+
+    def test_two_partial_sides_are_visible_but_never_automatically_supported(self):
+        result = self.passage(.02)
+        result.update(comparison_aspects=['A','B'], aspect_scores=[.99,.98])
+        self.assertEqual(assess_evidence([result])['status'], 'uncertain')
+        result['aspect_scores'] = [.99,.01]
+        self.assertEqual(assess_evidence([result])['status'], 'no_support')
+        result['retrieval_mode'] = 'e5'
+        self.assertEqual(assess_evidence([result])['status'], 'unassessed')
 
     def test_related_concept_is_visible_but_not_claimed_as_definition(self):
         result = self.passage(.002)

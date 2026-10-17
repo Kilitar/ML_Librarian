@@ -17,6 +17,7 @@ from rerank import PassageReranker, candidate_union, expand_neighbors, REVISION 
 from acronyms import requested_acronym, definition_strength
 from concepts import concept_strength
 from semantic_layer import analyze
+from comparisons import comparison_aspects, coverage_order, approved_pair
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -161,7 +162,8 @@ class E5SearchIndex:
 
     def search(self, query: str, *, limit: int = 5,
                match_constraints: bool = True, mode: str = "e5", semantic_layer: bool = True,
-               semantic_experiment: bool = False) -> list[dict[str, Any]]:
+               semantic_experiment: bool = False, comparison_tuning: bool = True,
+               comparison_experiment: bool = False) -> list[dict[str, Any]]:
         query = " ".join(query.split())
         if not query:
             raise ValueError("Enter a non-empty query")
@@ -172,6 +174,9 @@ class E5SearchIndex:
         if mode not in {"e5", "hybrid", "rerank"}:
             raise ValueError("Unknown retrieval mode")
         original_query = query
+        aspects = comparison_aspects(query) if mode == 'rerank' and comparison_tuning and semantic_layer else []
+        if aspects and not comparison_experiment and not approved_pair(aspects):
+            aspects = []
         semantic_plan = analyze(query, production_only=not semantic_experiment) if mode == 'rerank' and semantic_layer else None
         canonical_definition = semantic_plan['canonical_query'] if semantic_plan else None
         related_only = bool(semantic_plan and semantic_plan['related_evidence_only'])
@@ -216,6 +221,12 @@ class E5SearchIndex:
         if mode == "rerank":
             candidates = candidate_union(np.asarray([ranking_scores[i] for i in range(len(scores))]), lexical_scores)
             candidates = expand_neighbors(self.documents, candidates)
+            if aspects:
+                vectors = self.model.encode(['query: ' + a for a in aspects], normalize_embeddings=True, convert_to_numpy=True)
+                extra = []
+                for aspect, vector in zip(aspects, vectors):
+                    extra.extend(candidate_union(self.embeddings @ vector, self.lexical_index.scores(aspect), per_retriever=12))
+                candidates = list(dict.fromkeys(extra + candidates))[:128]
             concept_strengths = {}
             if related_only:
                 concept_strengths = {i: concept_strength(d['text'], d['source_path']) for i, d in enumerate(self.documents)}
@@ -229,11 +240,13 @@ class E5SearchIndex:
             try:
                 if self.passage_reranker is None:
                     self.passage_reranker = PassageReranker()
-                details = self.passage_reranker.score_details(query, [self.documents[i] for i in candidates])
+                documents = [self.documents[i] for i in candidates]
+                details = self.passage_reranker.score_details(query, documents, aspects=aspects) if aspects else self.passage_reranker.score_details(query, documents)
                 pair_scores = details["relevance"]
             except (OSError, ValueError, RuntimeError):
                 fallback = self.search(original_query, limit=limit, match_constraints=match_constraints, mode="e5", semantic_layer=semantic_layer,
-                                       semantic_experiment=semantic_experiment)
+                                       semantic_experiment=semantic_experiment, comparison_tuning=comparison_tuning,
+                                       comparison_experiment=comparison_experiment)
                 for result in fallback:
                     result["retrieval_warning"] = "Přesnější výběr pasáží není dostupný; zobrazuji základní vyhledávání."
                 return fallback
@@ -246,6 +259,9 @@ class E5SearchIndex:
                 ranking_scores[index] = float(pair_score) + rank_adjustment(self.documents[index], intent) + adjustment
                 constraint_details[index] = {"adjustment": adjustment, "reasons": reasons}
             ranked = sorted(candidates, key=ranking_scores.__getitem__, reverse=True)
+            if aspects:
+                aspect_scores = {i: values for i,values in zip(candidates, details['aspects'])}
+                ranked = coverage_order(ranked, aspect_scores, ranking_scores)
             if related_only:
                 ranked.sort(key=lambda i: (concept_strengths[i], ranking_scores[i]), reverse=True)
         if acronym:
@@ -268,6 +284,8 @@ class E5SearchIndex:
                 "retrieval_mode": mode,
                 "canonical_query": canonical_definition,
                 "semantic_plan": semantic_plan,
+                "comparison_aspects": aspects,
+                "aspect_scores": [float(v) for v in aspect_scores[index]] if aspects else [],
                 "related_evidence_only": related_only,
                 "concept_evidence": concept_strengths.get(index) if related_only else None,
                 "requested_acronym": acronym,

@@ -1,0 +1,343 @@
+{
+  "reviewer": "Codex provisional, not independent human validation",
+  "scope": "Joint support in first two passages; direct does not verify factual accuracy or completeness. Full experiment is not production.",
+  "raw_sha256": "88e91143608088ded36c0b2bf541a9690bd16584fb420b78856cf6ce1780f958",
+  "judgments": [
+    {
+      "id": "labels_pl",
+      "first_two_before": "off_topic",
+      "first_two_experiment": "direct",
+      "reason": "Před: lemmatizace a random search. Po: první dvě pasáže dohromady vysvětlují oba způsoby učení.",
+      "passages": {
+        "before": [
+          {
+            "chunk_id": "e5b0089c7acdc20d7bd3",
+            "text_sha256": "3546fc9836f50bfe16fe277ae4423cd80bfda23fa4c840fa34a4ce5be5687174"
+          },
+          {
+            "chunk_id": "b8c80ced27c4d1c31242",
+            "text_sha256": "d48f5a61b046d7cfe82f4c21aded2ef5e9c66128357074dbbbb8cfa77b132134"
+          }
+        ],
+        "after": [
+          {
+            "chunk_id": "39ded026a239e789749a",
+            "text_sha256": "6a5b046effee76af5e9aa153919a01f144b5edffa5404b731101e018a6b67c12"
+          },
+          {
+            "chunk_id": "4baafd4c68080ecfc5a0",
+            "text_sha256": "221ae53b9c62704732094a02c6492cf4796f4fadeb995227c73928362cf04a3c"
+          }
+        ]
+      }
+    },
+    {
+      "id": "house_cs",
+      "first_two_before": "partial",
+      "first_two_experiment": "partial",
+      "reason": "Po: definice spojitého cíle a příklad ceny domu; explicitní srovnání s klasifikací v prvních dvou chybí. Nepovoleno.",
+      "passages": {
+        "before": [
+          {
+            "chunk_id": "73af79b77610feac2ddc",
+            "text_sha256": "8933612168289388d8588d704b7ce0a19f999436f0905992b49385b5133fed18"
+          },
+          {
+            "chunk_id": "4bf297a1347fe3cf62b0",
+            "text_sha256": "84747529d59d9e02fdaa6e9d1748610be5f32887708c610d8161d949f6fb5639"
+          }
+        ],
+        "after": [
+          {
+            "chunk_id": "36ac4316fee4cb0cc274",
+            "text_sha256": "e9b6fe2121c4e8ece73cf606b8662675c84915256cf8659498832bf8b7bb448c"
+          },
+          {
+            "chunk_id": "73af79b77610feac2ddc",
+            "text_sha256": "8933612168289388d8588d704b7ce0a19f999436f0905992b49385b5133fed18"
+          }
+        ]
+      }
+    },
+    {
+      "id": "named_en",
+      "first_two_before": "direct",
+      "first_two_experiment": "direct",
+      "reason": "Obě varianty v prvních dvou obsahují definici supervised i unsupervised learning; pořadí se mění.",
+      "passages": {
+        "before": [
+          {
+            "chunk_id": "4baafd4c68080ecfc5a0",
+            "text_sha256": "221ae53b9c62704732094a02c6492cf4796f4fadeb995227c73928362cf04a3c"
+          },
+          {
+            "chunk_id": "39ded026a239e789749a",
+            "text_sha256": "6a5b046effee76af5e9aa153919a01f144b5edffa5404b731101e018a6b67c12"
+          }
+        ],
+        "after": [
+          {
+            "chunk_id": "39ded026a239e789749a",
+            "text_sha256": "6a5b046effee76af5e9aa153919a01f144b5edffa5404b731101e018a6b67c12"
+          },
+          {
+            "chunk_id": "4baafd4c68080ecfc5a0",
+            "text_sha256": "221ae53b9c62704732094a02c6492cf4796f4fadeb995227c73928362cf04a3c"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fresh_cs",
+      "first_two_before": "direct",
+      "first_two_experiment": "partial",
+      "reason": "Před: druhý úryvek diagramem vysvětluje oba cíle. Po: entropie a MSE místo přímého srovnání. Nepovoleno.",
+      "passages": {
+        "before": [
+          {
+            "chunk_id": "5359f160c13e5d85f2c9",
+            "text_sha256": "ee3e66faee866482f741e64755e48e12f51dc57ced48c658012e7e3a8a83a54c"
+          },
+          {
+            "chunk_id": "983b42cb475aa8f09af4",
+            "text_sha256": "6d92d9f2dadd2b8d53f182583be2364e21ebc5055062b9a79b8b90985e3379da"
+          }
+        ],
+        "after": [
+          {
+            "chunk_id": "645f3687b9e785f974be",
+            "text_sha256": "ed5aa74a0f6345c397eb7c70ac1d69f0bb05e8d889afe269f18779ffea4c67d5"
+          },
+          {
+            "chunk_id": "56659b5f8974c0b01b1f",
+            "text_sha256": "3f90f5d866f5c28ab14d1e8dc61a4cca2409dcc3b0a7dce012922271158d0d86"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fresh_en",
+      "first_two_before": "direct",
+      "first_two_experiment": "direct",
+      "reason": "První úryvek přímo porovnává overfitting a underfitting. Mimo produkční allowlist, baseline zachován.",
+      "passages": {
+        "before": [
+          {
+            "chunk_id": "98aeb9ed2c7f72d534a0",
+            "text_sha256": "881be05fc10890ad819ee2ac06ed2e7504f812efb76b27d2c07e9ef1b37fd59d"
+          },
+          {
+            "chunk_id": "0aba8fcb81137ca9a089",
+            "text_sha256": "f7eb0b28ff2211c5241d479323c43474d595a116fbe12dde093c4cc94d375b5f"
+          }
+        ],
+        "after": [
+          {
+            "chunk_id": "98aeb9ed2c7f72d534a0",
+            "text_sha256": "881be05fc10890ad819ee2ac06ed2e7504f812efb76b27d2c07e9ef1b37fd59d"
+          },
+          {
+            "chunk_id": "0aba8fcb81137ca9a089",
+            "text_sha256": "f7eb0b28ff2211c5241d479323c43474d595a116fbe12dde093c4cc94d375b5f"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fresh_pl",
+      "first_two_before": "direct",
+      "first_two_experiment": "partial",
+      "reason": "Před: druhý úryvek přímo rozlišuje spojitý a diskrétní cíl. Po: MSE a shlukování. Nepovoleno.",
+      "passages": {
+        "before": [
+          {
+            "chunk_id": "5359f160c13e5d85f2c9",
+            "text_sha256": "ee3e66faee866482f741e64755e48e12f51dc57ced48c658012e7e3a8a83a54c"
+          },
+          {
+            "chunk_id": "e81cca8e5f99452f636b",
+            "text_sha256": "591caef6f407c9c431b0e879e6a417fc47f13360614c4eef41aa294bcbc2cb15"
+          }
+        ],
+        "after": [
+          {
+            "chunk_id": "56659b5f8974c0b01b1f",
+            "text_sha256": "3f90f5d866f5c28ab14d1e8dc61a4cca2409dcc3b0a7dce012922271158d0d86"
+          },
+          {
+            "chunk_id": "5359f160c13e5d85f2c9",
+            "text_sha256": "ee3e66faee866482f741e64755e48e12f51dc57ced48c658012e7e3a8a83a54c"
+          }
+        ]
+      }
+    },
+    {
+      "id": "clock",
+      "first_two_before": "off_topic",
+      "first_two_experiment": "off_topic",
+      "reason": "Slabé shody stejné, správně no_support.",
+      "passages": {
+        "before": [
+          {
+            "chunk_id": "33901114a82589620b90",
+            "text_sha256": "1044596bd0255cc9052c5fa8131e91d51b76079c8782e717785686093b15e23b"
+          },
+          {
+            "chunk_id": "c70f83712619f71d839e",
+            "text_sha256": "3c09a8c8f64a3ad69ed0c8e2643d93f9b78d9eb2090a05861d987d75743b2fdd"
+          }
+        ],
+        "after": [
+          {
+            "chunk_id": "33901114a82589620b90",
+            "text_sha256": "1044596bd0255cc9052c5fa8131e91d51b76079c8782e717785686093b15e23b"
+          },
+          {
+            "chunk_id": "c70f83712619f71d839e",
+            "text_sha256": "3c09a8c8f64a3ad69ed0c8e2643d93f9b78d9eb2090a05861d987d75743b2fdd"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ml",
+      "first_two_before": "direct",
+      "first_two_experiment": "direct",
+      "reason": "Rozpis ML zachován.",
+      "passages": {
+        "before": [
+          {
+            "chunk_id": "3bc4fc3a05aba14aca00",
+            "text_sha256": "06b137fcdfbe238563247b13a9b0b9f34fd4c04bb5ed8e20f6309cf724df44f6"
+          },
+          {
+            "chunk_id": "fc08f6567cd2212e1e9a",
+            "text_sha256": "5b2506f0ab02ca7f589f4aac4d3c7623f046be8655d3f9f223fc63f685dc99ab"
+          }
+        ],
+        "after": [
+          {
+            "chunk_id": "3bc4fc3a05aba14aca00",
+            "text_sha256": "06b137fcdfbe238563247b13a9b0b9f34fd4c04bb5ed8e20f6309cf724df44f6"
+          },
+          {
+            "chunk_id": "fc08f6567cd2212e1e9a",
+            "text_sha256": "5b2506f0ab02ca7f589f4aac4d3c7623f046be8655d3f9f223fc63f685dc99ab"
+          }
+        ]
+      }
+    },
+    {
+      "id": "deep",
+      "first_two_before": "partial",
+      "first_two_experiment": "partial",
+      "reason": "Související architektury sítí zachovány, stále nejde o úplnou definici hlubokého učení.",
+      "passages": {
+        "before": [
+          {
+            "chunk_id": "3b2a973d29d8bef28d2f",
+            "text_sha256": "9bbab1229a0b887fb742eefa1be6e814152ffb314b8df12dc0939683375f2fbc"
+          },
+          {
+            "chunk_id": "169adb055fc227c6fd57",
+            "text_sha256": "49440606846f7816b388d51c2d5dae81819ebfd6445d3ebd7e3fb57dd2d625c6"
+          }
+        ],
+        "after": [
+          {
+            "chunk_id": "3b2a973d29d8bef28d2f",
+            "text_sha256": "9bbab1229a0b887fb742eefa1be6e814152ffb314b8df12dc0939683375f2fbc"
+          },
+          {
+            "chunk_id": "169adb055fc227c6fd57",
+            "text_sha256": "49440606846f7816b388d51c2d5dae81819ebfd6445d3ebd7e3fb57dd2d625c6"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hold_cs",
+      "first_two_before": "direct",
+      "first_two_experiment": "direct",
+      "reason": "Oba principy jsou v prvních dvou před i po. Inflektované názvy neprojdou produkčním rozpoznáním, baseline zachován.",
+      "passages": {
+        "before": [
+          {
+            "chunk_id": "c9260307a9e9bd402ed7",
+            "text_sha256": "075cd0b86b0ce665404ce8d228b66e1f85f00c721f1d3a1b73e8c26a4f9c3bdf"
+          },
+          {
+            "chunk_id": "e81cca8e5f99452f636b",
+            "text_sha256": "591caef6f407c9c431b0e879e6a417fc47f13360614c4eef41aa294bcbc2cb15"
+          }
+        ],
+        "after": [
+          {
+            "chunk_id": "c9260307a9e9bd402ed7",
+            "text_sha256": "075cd0b86b0ce665404ce8d228b66e1f85f00c721f1d3a1b73e8c26a4f9c3bdf"
+          },
+          {
+            "chunk_id": "e81cca8e5f99452f636b",
+            "text_sha256": "591caef6f407c9c431b0e879e6a417fc47f13360614c4eef41aa294bcbc2cb15"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hold_en",
+      "first_two_before": "direct",
+      "first_two_experiment": "partial",
+      "reason": "Před: druhý úryvek rozlišuje cíle. Po: jen lineární regrese a shlukování. Nepovoleno.",
+      "passages": {
+        "before": [
+          {
+            "chunk_id": "5359f160c13e5d85f2c9",
+            "text_sha256": "ee3e66faee866482f741e64755e48e12f51dc57ced48c658012e7e3a8a83a54c"
+          },
+          {
+            "chunk_id": "e81cca8e5f99452f636b",
+            "text_sha256": "591caef6f407c9c431b0e879e6a417fc47f13360614c4eef41aa294bcbc2cb15"
+          }
+        ],
+        "after": [
+          {
+            "chunk_id": "36ac4316fee4cb0cc274",
+            "text_sha256": "e9b6fe2121c4e8ece73cf606b8662675c84915256cf8659498832bf8b7bb448c"
+          },
+          {
+            "chunk_id": "5359f160c13e5d85f2c9",
+            "text_sha256": "ee3e66faee866482f741e64755e48e12f51dc57ced48c658012e7e3a8a83a54c"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hold_pl",
+      "first_two_before": "direct",
+      "first_two_experiment": "partial",
+      "reason": "Před: druhý úryvek přímo rozlišuje regresi/klasifikaci. Po: MSE a shlukování. Nepovoleno.",
+      "passages": {
+        "before": [
+          {
+            "chunk_id": "5359f160c13e5d85f2c9",
+            "text_sha256": "ee3e66faee866482f741e64755e48e12f51dc57ced48c658012e7e3a8a83a54c"
+          },
+          {
+            "chunk_id": "d6793461c8e0e4e904a2",
+            "text_sha256": "287388c96816233ea7f118a572421e796cda5c8d820b13802a8a3df4011c4f6c"
+          }
+        ],
+        "after": [
+          {
+            "chunk_id": "56659b5f8974c0b01b1f",
+            "text_sha256": "3f90f5d866f5c28ab14d1e8dc61a4cca2409dcc3b0a7dce012922271158d0d86"
+          },
+          {
+            "chunk_id": "5359f160c13e5d85f2c9",
+            "text_sha256": "ee3e66faee866482f741e64755e48e12f51dc57ced48c658012e7e3a8a83a54c"
+          }
+        ]
+      }
+    }
+  ]
+}
