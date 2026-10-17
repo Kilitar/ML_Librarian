@@ -11,6 +11,7 @@ from typing import Any
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from constraints import constraint_adjustment, query_constraints
+from diversify import select_distinct
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -186,19 +187,7 @@ class E5SearchIndex:
             ranking_scores[index] += adjustment
             constraint_details[index] = {"adjustment": adjustment, "reasons": reasons}
         ranked = sorted(candidates, key=ranking_scores.__getitem__, reverse=True)
-        selected = []
-        seen_sources = set()
-        for index in ranked:
-            source_path = self.documents[int(index)]["source_path"]
-            if source_path in seen_sources:
-                continue
-            selected.append(index)
-            seen_sources.add(source_path)
-            if len(selected) == limit:
-                break
-        if len(selected) < limit:
-            selected_set = set(selected)
-            selected.extend(index for index in ranked if index not in selected_set and len(selected) < limit)
+        selected = select_distinct(self.documents, ranked, limit)
         results = []
         for index in selected:
             document = self.documents[int(index)]

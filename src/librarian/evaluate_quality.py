@@ -29,6 +29,8 @@ def main() -> None:
         "search_sha256": hashlib.sha256((ROOT / "src/librarian/search.py").read_bytes()).hexdigest(),
         "ranking_files_sha256": {
             "constraints.py": hashlib.sha256((ROOT / "src/librarian/constraints.py").read_bytes()).hexdigest(),
+            "diversify.py": hashlib.sha256((ROOT / "src/librarian/diversify.py").read_bytes()).hexdigest(),
+            "chunk_text.py": hashlib.sha256((ROOT / "src/librarian/chunk_text.py").read_bytes()).hexdigest(),
         },
         "index_manifest": json.loads(MANIFEST.read_text(encoding="utf-8")),
         "scope": "First-pass unseen topics; becomes a regression set after review. No tuning on this run.",

@@ -50,7 +50,7 @@ def main() -> None:
         "created_at": datetime.now(timezone.utc).isoformat(),
         "index_manifest": json.loads(MANIFEST.read_text(encoding="utf-8")),
         "source_hashes": {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
-                          for name in ("src/librarian/search.py", "src/librarian/constraints.py", "eval/quality_questions.json")},
+                          for name in ("src/librarian/search.py", "src/librarian/constraints.py", "src/librarian/diversify.py", "src/librarian/chunk_text.py", "eval/quality_questions.json")},
         "results": rows,
     }
     (ROOT / "eval/quality_comparison.local.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")

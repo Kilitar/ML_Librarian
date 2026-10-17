@@ -20,7 +20,7 @@ ALGORITHMS = {
     "ridge": r"ridge(?:cv)?",
     "lasso": r"lasso(?:cv)?",
     "knn": r"k\s*nn|k\s+nearest\s+neighbou?rs?",
-    "kmeans": r"k\s*means",
+    "kmeans": r"k\s*means|k\s+sredni\w*",
     "dbscan": r"dbscan",
     "pca": r"pca",
     "tfidf": r"tf\s*idf|tfidfvectorizer",

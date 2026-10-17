@@ -8,30 +8,8 @@ REPORT=ROOT/'data/normalized/curation_report.json'
 MAX_CHARS=1100; OVERLAP=140
 ALLOWED_KINDS={'md','txt','pdf','notebook_markdown'}
 ALLOWED_VIEW_CALLS={':st.markdown',':st.write',':st.caption',':st.info',':st.warning',':st.success',':st.error'}
-def split_text(text):
-    text=re.sub(r'(?<=\w)-\s*\n\s*(?=\w)','',text).replace('\r','')
-    text=re.sub(r'[ \t]+',' ',text)
-    text=re.sub(r'\n{3,}','\n\n',text).strip()
-    paras=[p.strip() for p in re.split(r'\n\s*\n',text) if p.strip()]
-    out=[]; cur=''
-    for p in paras:
-        if len(p)>MAX_CHARS:
-            if cur:out.append(cur);cur=''
-            start=0
-            while start<len(p):
-                end=min(len(p),start+MAX_CHARS)
-                if end<len(p):
-                    cut=p.rfind(' ',start,end)
-                    if cut>start+MAX_CHARS//2:end=cut
-                out.append(p[start:end].strip())
-                if end>=len(p):break
-                start=max(start+1,end-OVERLAP)
-        elif len(cur)+len(p)+2<=MAX_CHARS:cur=(cur+'\n\n'+p).strip()
-        else:
-            if cur:out.append(cur)
-            cur=p
-    if cur:out.append(cur)
-    return out
+from chunk_text import split_text
+
 records=[]; excluded={}; kept_docs=set()
 for line in SOURCE.open(encoding='utf-8'):
     d=json.loads(line); kind=d['source_kind']; keep=kind in ALLOWED_KINDS
