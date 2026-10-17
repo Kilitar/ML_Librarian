@@ -6,7 +6,7 @@ from sentence_transformers import SentenceTransformer
 ROOT=Path(__file__).resolve().parents[2]
 CHUNKS=ROOT/'data/normalized/chunks.jsonl'
 CACHE=ROOT/'.cache'/'hf'
-INDEX=ROOT/'data/index'/'multilingual_e5_small_sample.npy'
+INDEX=ROOT/'data/index'/('multilingual_e5_small_sample.npy' if '--sample' in sys.argv else 'multilingual_e5_small_full.npy')
 MODEL='intfloat/multilingual-e5-small'
 
 def main():
@@ -36,6 +36,7 @@ def main():
             d=docs[int(i)]
             print(f"{scores[i]:.3f} | {d['source_path']} | {d['locator']} | {d['text'][:210].replace(chr(10),' ')}")
 if __name__=='__main__':main()
+
 
 
 

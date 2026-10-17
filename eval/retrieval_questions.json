@@ -1,0 +1,14 @@
+[
+ {"id":"knn_cs","query":"Proč je škálování důležité pro algoritmus k-NN?","gold_source_paths":["views/02_knn_theory.py","views/02_knn_impl_guide.py"],"query_language":"cs","answerable":true},
+ {"id":"knn_en","query":"Why do k-nearest neighbors need standardized features?","gold_source_paths":["views/02_knn_theory.py","views/02_knn_impl_guide.py"],"query_language":"en","answerable":true},
+ {"id":"knn_pl","query":"Dlaczego skalowanie cech jest ważne w k-NN?","gold_source_paths":["views/02_knn_theory.py","views/02_knn_impl_guide.py"],"query_language":"pl","answerable":true},
+ {"id":"kmeans_cs","query":"Jak vybrat počet shluků k u K-Means?","gold_source_paths":["views/05_kmeans_theory.py","05_Unsupervised_Learning/theory/01_kmeans_clustering_theory.md"],"query_language":"cs","answerable":true},
+ {"id":"kmeans_en","query":"How can I choose the number of clusters for K-Means?","gold_source_paths":["views/05_kmeans_theory.py","05_Unsupervised_Learning/theory/01_kmeans_clustering_theory.md"],"query_language":"en","answerable":true},
+ {"id":"kmeans_pl","query":"Jak wybrać liczbę klastrów w K-Means?","gold_source_paths":["views/05_kmeans_theory.py","05_Unsupervised_Learning/theory/01_kmeans_clustering_theory.md"],"query_language":"pl","answerable":true},
+ {"id":"tfidf_cs","query":"Jaký je rozdíl mezi Bag of Words a TF-IDF?","gold_source_paths":["views/04_nlp_bow_tfidf_theory.py","04_NLP/theory/04_bag_of_words_and_tfidf.md"],"query_language":"cs","answerable":true},
+ {"id":"tfidf_en","query":"How does TF-IDF differ from a Bag of Words representation?","gold_source_paths":["views/04_nlp_bow_tfidf_theory.py","04_NLP/theory/04_bag_of_words_and_tfidf.md"],"query_language":"en","answerable":true},
+ {"id":"tfidf_pl","query":"Czym TF-IDF różni się od modelu Bag of Words?","gold_source_paths":["views/04_nlp_bow_tfidf_theory.py","04_NLP/theory/04_bag_of_words_and_tfidf.md"],"query_language":"pl","answerable":true},
+ {"id":"pca_cs","query":"Co oznacza explained variance ratio w PCA?","gold_source_paths":["views/05_pca_dimensionality_reduction_theory.py","05_Unsupervised_Learning/theory/02_pca_dimensionality_reduction_theory.md"],"query_language":"cs","answerable":true},
+ {"id":"pca_en","query":"What does explained variance ratio mean in PCA?","gold_source_paths":["views/05_pca_dimensionality_reduction_theory.py","05_Unsupervised_Learning/theory/02_pca_dimensionality_reduction_theory.md"],"query_language":"en","answerable":true},
+ {"id":"pca_pl","query":"Co oznacza współczynnik wyjaśnionej wariancji w PCA?","gold_source_paths":["views/05_pca_dimensionality_reduction_theory.py","05_Unsupervised_Learning/theory/02_pca_dimensionality_reduction_theory.md"],"query_language":"pl","answerable":true}
+]

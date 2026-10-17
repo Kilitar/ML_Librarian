@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Hotovo: oddělený workspace a guardrails, allowlist inventury, snapshot s hash manifestem, textová extrakce, 8 589 chunků, route map a lokální TF-IDF/E5 prototype. E5 ověřen na deterministickém vzorku 600 pasáží; plné indexování a vyhodnocení zatím čeká. Dosavadní pracovní čas nebyl zaznamenán, takže tempo vůči odhadu zatím nelze přesně klasifikovat.",
+  "status_note": "Kalibrováno pro agentní workflow: původních 16 h je lidský ekvivalent. Při uživatelem očekávaném zrychlení 5–10× odpovídá plán přibližně 1.6–3.2 h aktivní agentní práce. Uplynulý čas je kalendářní a zahrnuje čekání; aktivní agentní čas dosud spolehlivě neměříme. Přibližně 6 h lidského ekvivalentu je hotovo. Retrieval pilot: na 9/12 dotazů se zlatým zdrojem ve vzorku E5 Recall@5=1.00, MRR@5=0.69; TF-IDF 0.67/0.50. Předběžný výsledek, 600 kandidátů.",
   "tasks": [
     {
       "id": "scope",
@@ -106,5 +106,8 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-17T09:50:20Z"
+  "updated_at": "2026-10-17T09:55:32Z",
+  "human_equivalent_hours": 16,
+  "agent_speedup_min": 5,
+  "agent_speedup_max": 10
 }
