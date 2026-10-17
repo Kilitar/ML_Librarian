@@ -18,17 +18,21 @@ ROOT = Path(__file__).resolve().parents[2]
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--set", choices=("quality", "holdout_v1"), default="quality")
+    parser.add_argument("--mode", choices=("e5", "hybrid", "rerank"), default="rerank")
     args = parser.parse_args()
     questions_path = ROOT / f"eval/{args.set}_questions.json"
     questions = json.loads(questions_path.read_text(encoding="utf-8"))
     index = E5SearchIndex.load()
     rows = []
     for question in questions:
-        results = index.search(question["query"], limit=5)
+        results = index.search(question["query"], limit=5, mode=args.mode)
+        if any(result["retrieval_mode"] != args.mode for result in results):
+            raise RuntimeError("Evaluation cannot silently count fallback as requested retrieval mode")
         rows.append({**question, "top5": results})
         print(question["id"], "complete", flush=True)
     output = {
         "created_at": datetime.now(timezone.utc).isoformat(),
+        "retrieval_mode": args.mode,
         "questions_sha256": hashlib.sha256(questions_path.read_bytes()).hexdigest(),
         "search_sha256": hashlib.sha256((ROOT / "src/librarian/search.py").read_bytes()).hexdigest(),
         "ranking_files_sha256": {
@@ -36,6 +40,7 @@ def main() -> None:
             "diversify.py": hashlib.sha256((ROOT / "src/librarian/diversify.py").read_bytes()).hexdigest(),
             "chunk_text.py": hashlib.sha256((ROOT / "src/librarian/chunk_text.py").read_bytes()).hexdigest(),
             "hybrid.py": hashlib.sha256((ROOT / "src/librarian/hybrid.py").read_bytes()).hexdigest(),
+            "rerank.py": hashlib.sha256((ROOT / "src/librarian/rerank.py").read_bytes()).hexdigest(),
         },
         "index_manifest": json.loads(MANIFEST.read_text(encoding="utf-8")),
         "scope": "First-pass unseen topics; becomes a regression set after review. No tuning on this run.",

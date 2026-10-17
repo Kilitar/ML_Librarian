@@ -29,6 +29,9 @@ ALGORITHMS = {
     "svm": r"svm|support\s+vector\s+machines?|linearsvc",
 }
 DATASETS = {
+    "heart": r"heart\w*|cardiac\w*|srdecn\w*|kardiolog\w*|serc\w*",
+    "moons": r"make\s*moons|moons?|pulmesic\w*|polksiezyc\w*",
+    "circles": r"make\s*circles|circles?|kruz\w*|kruh\w*|okreg\w*",
     "diamonds": r"diamonds?|diamant\w*|diament\w*",
     "lumbar": r"lumbar\w*|bederni\w*\s+pater\w*|ledzwiow\w*",
     "concrete": r"concrete\w*|beton\w*",

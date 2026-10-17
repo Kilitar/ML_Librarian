@@ -66,7 +66,7 @@ if submitted:
         try:
             with st.spinner("Hledám relevantní pasáže v lokálním korpusu…"):
                 index = get_search_index()
-                st.session_state["evidence_results"] = index.search(query, limit=5)
+                st.session_state["evidence_results"] = index.search(query, limit=5, mode="rerank")
                 st.session_state["evidence_query"] = query
         except (FileNotFoundError, ValueError, OSError) as exc:
             st.error(str(exc))
@@ -76,10 +76,13 @@ if submitted:
 results = st.session_state.get("evidence_results")
 if results is not None:
     st.subheader("Nalezené zdroje")
+    if results and results[0].get("retrieval_warning"):
+        st.warning(results[0]["retrieval_warning"])
     st.caption(
         f"Dotaz: {st.session_state.get('evidence_query', '')} · pořadí podle relevance úryvku a záměru dotazu"
     )
     st.caption("📓 Cvičení / úkol · 🔎 Teorie / analýza · 🟨 ikona Coderslab označuje původní materiál z jeho PDF")
+    st.caption("Relevance je pořadové skóre, nikoli pravděpodobnost správnosti.")
     routes_config = read_routes_config()
     base_url = routes_config.get("streamlit_base_url")
 

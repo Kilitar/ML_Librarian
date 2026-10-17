@@ -13,6 +13,7 @@ from sentence_transformers import SentenceTransformer
 from constraints import constraint_adjustment, query_constraints
 from diversify import select_distinct
 from hybrid import LexicalIndex, fuse_scores
+from rerank import PassageReranker, candidate_union, expand_neighbors
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -124,6 +125,7 @@ class E5SearchIndex:
         self.embeddings = embeddings.astype(np.float32, copy=False)
         self.model = model
         self.lexical_index = None
+        self.passage_reranker = None
 
     @classmethod
     def load(cls) -> "E5SearchIndex":
@@ -163,7 +165,7 @@ class E5SearchIndex:
             raise ValueError("Query is longer than the 1,000-character limit")
         if not 1 <= limit <= 10:
             raise ValueError("Result limit must be between 1 and 10")
-        if mode not in {"e5", "hybrid"}:
+        if mode not in {"e5", "hybrid", "rerank"}:
             raise ValueError("Unknown retrieval mode")
         query_vector = self.model.encode(
             ["query: " + query], normalize_embeddings=True, convert_to_numpy=True,
@@ -171,11 +173,12 @@ class E5SearchIndex:
         scores = self.embeddings @ query_vector
         lexical_scores = np.zeros(len(scores))
         base_scores = scores
-        if mode == "hybrid":
+        if mode in {"hybrid", "rerank"}:
             if self.lexical_index is None:
                 self.lexical_index = LexicalIndex(self.documents)
             lexical_scores = self.lexical_index.scores(query)
-            base_scores = fuse_scores(scores, lexical_scores)
+            if mode == "hybrid":
+                base_scores = fuse_scores(scores, lexical_scores)
         intent = query_intent(query)
         ranking_scores = {
             index: float(base_scores[index]) + rank_adjustment(self.documents[index], intent)
@@ -198,7 +201,26 @@ class E5SearchIndex:
             ranking_scores[index] += adjustment
             constraint_details[index] = {"adjustment": adjustment, "reasons": reasons}
         ranked = sorted(candidates, key=ranking_scores.__getitem__, reverse=True)
-        selected = select_distinct(self.documents, ranked, limit)
+        if mode == "rerank":
+            candidates = candidate_union(np.asarray([ranking_scores[i] for i in range(len(scores))]), lexical_scores)
+            candidates = expand_neighbors(self.documents, candidates)
+            try:
+                if self.passage_reranker is None:
+                    self.passage_reranker = PassageReranker()
+                pair_scores = self.passage_reranker.scores(query, [self.documents[i] for i in candidates])
+            except (OSError, ValueError, RuntimeError):
+                fallback = self.search(query, limit=limit, match_constraints=match_constraints, mode="e5")
+                for result in fallback:
+                    result["retrieval_warning"] = "Přesnější výběr pasáží není dostupný; zobrazuji základní vyhledávání."
+                return fallback
+            for index, pair_score in zip(candidates, pair_scores):
+                adjustment, reasons = constraint_adjustment(
+                    self.documents[index], requested, exact_task=(intent == "practice"),
+                ) if match_constraints else (0.0, [])
+                ranking_scores[index] = float(pair_score) + rank_adjustment(self.documents[index], intent) + adjustment
+                constraint_details[index] = {"adjustment": adjustment, "reasons": reasons}
+            ranked = sorted(candidates, key=ranking_scores.__getitem__, reverse=True)
+        selected = select_distinct(self.documents, ranked, limit, max_per_source=2 if mode == "rerank" else 1)
         results = []
         for index in selected:
             document = self.documents[int(index)]

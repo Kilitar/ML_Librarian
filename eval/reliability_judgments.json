@@ -1,0 +1,106 @@
+{
+  "reviewer": "Codex provisional support review; not independent human validation",
+  "source_hashes": {
+    "search.py": "a1d38b94db45421297a3018f9fd3de28f0c087862aacf9d569467f9008889974",
+    "rerank.py": "80504b537582ab450038f4f85dfea9fd51bd5dadf0946187493e0f5ef7cd83ef",
+    "constraints.py": "67faea80ba0753f4556964099a6d2ac276747f1e714369d2dcb504b787cb7632",
+    "diversify.py": "38b45c357545bacf74bba8242ea930d2300243f1a405bf53b8362c571844c176",
+    "hybrid.py": "6b91ca33021706e58decb4b1c5fc2968d38cfcc36b4e25bacdba5bb0e48246f9",
+    "chunk_text.py": "cc775950c08608e97c63a73eba00a2746a6d4bbc49fa540b957b5d95d53b09be"
+  },
+  "reranker": {
+    "model": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+    "revision": "1427fd652930e4ba29e8149678df786c240d8825"
+  },
+  "corpus_fingerprint": "11423d013eb8bd91fc14f184f9bb2f662963a56de15ad3321b128db9ab76d4bc",
+  "fresh_questions_sha256": "971f12e141c3db0121e3ee52dd18b425beaf2d76ebfe2bce85bb01c5c93dc362",
+  "judgments": {
+    "svm_cs": {
+      "first_chunk_id": "ce1b0905640d664646de",
+      "text_sha256": "2f7b71d32d9e342c94d14cb6273a0172e5686e8aa2dfd72217598316d8e8c5e5",
+      "first_passage_useful": true,
+      "reason": "Gamma a přeučení přímo v prvním výsledku; explicitní vliv C i gamma doplňuje výsledek 5.",
+      "before_first_useful_rank": 4
+    },
+    "forest_practice_cs": {
+      "first_chunk_id": "d5b4708b10480f548938",
+      "text_sha256": "5e6ddd516ff8724df0287b6a6f128ee01b1c6bb19d4aa889c765a26f0db7369a",
+      "first_passage_useful": true,
+      "reason": "Přesné zadání heart Random Forest s tuningem precision.",
+      "before_first_useful_rank": 1
+    },
+    "recall_en": {
+      "first_chunk_id": "7d60030f4612f43cb24f",
+      "text_sha256": "6b17797502171bd6c5d733120b12ce0a8e2aabe26f0b88be2770863e3d98c857",
+      "first_passage_useful": true,
+      "reason": "První vysvětluje imbalance/accuracy; druhý přímo volí recall při drahých FN.",
+      "before_first_useful_rank": null
+    },
+    "pca_practice_en": {
+      "first_chunk_id": "980113df63da4fd1ba11",
+      "text_sha256": "20168983a25367c8cbc5dba717f7421faeb46ca71b1c4776b563f0edb61dbc67",
+      "first_passage_useful": true,
+      "reason": "Přesné PCA cvičení diamantů a variance; standardizaci doplňují další pasáže.",
+      "before_first_useful_rank": 1
+    },
+    "ensemble_pl": {
+      "first_chunk_id": "225d14862dc3a855d0f7",
+      "text_sha256": "4d1de11c0f787cff0bccb494d3eda4e3b620ac33438a771782fc6c30399090e4",
+      "first_passage_useful": true,
+      "reason": "Bagging a snížení variance v kontextu srovnání s boostingem; doplnění v dalších pasážích.",
+      "before_first_useful_rank": 1
+    },
+    "dbscan_practice_pl": {
+      "first_chunk_id": "2816bdae64ff4e1ead34",
+      "text_sha256": "b06918cdeb6697ebcf2a08da558996f9ef5d9d43b25125c0cb4b07d9e2901226",
+      "first_passage_useful": true,
+      "reason": "Trénování DBSCAN s parametry v přesném moons cvičení; kompletní kód v dalších výsledcích.",
+      "before_first_useful_rank": 3
+    },
+    "fresh_svm_cs": {
+      "first_chunk_id": "ce1b0905640d664646de",
+      "text_sha256": "2f7b71d32d9e342c94d14cb6273a0172e5686e8aa2dfd72217598316d8e8c5e5",
+      "first_passage_useful": true,
+      "reason": "První vysvětluje vysokou gamma; další pasáže doplňují regularizaci. Nejde o úplnou odpověď v jediném úryvku."
+    },
+    "fresh_ridge_en": {
+      "first_chunk_id": "9a2b269eda23c58d0f26",
+      "text_sha256": "77db2c3bb17b7be96abbf9693e5e1ba3a6e99728d4f593c494e505f144f50291",
+      "first_passage_useful": true,
+      "reason": "Přímo uvádí stabilizaci multikolinearity, shrinkage a nenulování koeficientů."
+    },
+    "fresh_penguins_pl": {
+      "first_chunk_id": "86c52c711195bf0dfa81",
+      "text_sha256": "77c95be15b735fb55ddcb2972f842cf19010478b7b5a7efb2cb54a5110d2f05d",
+      "first_passage_useful": true,
+      "reason": "Přesné zadání klasifikace tučňáků logistickou regresí."
+    },
+    "fresh_dbscan_cs": {
+      "first_chunk_id": "8b8e9f2b183985a1a588",
+      "text_sha256": "1279db7fc95690b51c3a8201cb7df1a2852ff8936d649fa678c98e27042f370d",
+      "first_passage_useful": true,
+      "reason": "Typy bodů, šum -1 a důvod vhodnosti DBSCAN pro nekonvexní tvary."
+    },
+    "fresh_precision_en": {
+      "first_chunk_id": "16833e82ee23c977debf",
+      "text_sha256": "a2628aede83355f2c239405078a98b1cc17647f6e55d89689246d61b45d0d814",
+      "first_passage_useful": true,
+      "reason": "Definice precision a recall, vzorce i spam filtr v jednom přehledu."
+    },
+    "fresh_scaling_pl": {
+      "first_chunk_id": "8cdccdfe8944114e0fdb",
+      "text_sha256": "fb9a35ca2e67a8988ff61e28dbf99fe13b92aa42eb4f67cb0f606873f4d88076",
+      "first_passage_useful": true,
+      "reason": "Výslovně vysvětluje izolaci train/test a škálování uvnitř CV kvůli leakage."
+    }
+  },
+  "acceptance": {
+    "svm_gamma_first_and_C_explanation_at_5": true,
+    "imbalance_evidence_top3": true,
+    "exact_exercise_first_results_preserved": true,
+    "dbscan_definition_first": true,
+    "duplicates_suppressed": true,
+    "fresh_questions_reviewed_without_retuning": true,
+    "scope_limit": "This establishes useful passages, not complete answer accuracy or abstention."
+  }
+}

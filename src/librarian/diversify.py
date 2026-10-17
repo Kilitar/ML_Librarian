@@ -16,19 +16,20 @@ def content_key(text: str) -> str:
     return "\n".join(parts)
 
 
-def select_distinct(documents: list[dict], ranked: list[int], limit: int) -> list[int]:
+def select_distinct(documents: list[dict], ranked: list[int], limit: int,
+                    max_per_source: int = 1) -> list[int]:
     selected = []
-    sources = set()
+    sources = {}
     contents = set()
-    for distinct_sources in (True, False):
+    for source_cap in (max_per_source, None):
         for index in ranked:
             document = documents[index]
             key = content_key(document["text"])
             source = document["source_path"]
-            if key in contents or (distinct_sources and source in sources):
+            if key in contents or (source_cap is not None and sources.get(source, 0) >= source_cap):
                 continue
             selected.append(index)
-            sources.add(source)
+            sources[source] = sources.get(source, 0) + 1
             contents.add(key)
             if len(selected) == limit:
                 return selected

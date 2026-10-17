@@ -1,0 +1,12 @@
+{
+  "scope": "Defined before first reranker run; provisional passage support, not answer correctness",
+  "requirements": [
+    "SVM C and gamma explanations must both be present in top five, with at least one in top three",
+    "Imbalance / false-negative question must have directly useful evidence in top three",
+    "Exact heart RF, diamond PCA, diamond tree and lumbar logistic exercises must retain useful first results",
+    "DBSCAN point definitions must not rank below the existing rank two",
+    "All returned evidence lists must contain distinct content keys",
+    "No external inference; only pinned locally cached weights, without remote code",
+    "Check fresh questions without tuning on their returned results before promotion"
+  ]
+}

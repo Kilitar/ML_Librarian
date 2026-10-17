@@ -54,4 +54,14 @@ See `docs/EVALUATION_HOLDOUT_V1.md` for provisional passage judgments and gaps.
 
 The optional hybrid experiment is reproduced with `compare_hybrid.py` and reviewed
 at `http://localhost:8765/eval/hybrid_comparison.local.html`. Production still uses
-E5 because the hybrid also introduces regressions. See `docs/HYBRID_EXPERIMENT.md`.
+the candidate-and-reranker pipeline described below; equal-weight hybrid remains
+experimental because it introduces regressions. See `docs/HYBRID_EXPERIMENT.md`.
+
+The current app/CLI reranks E5 + TF-IDF candidates locally with a pinned multilingual
+CrossEncoder. Download its public weights once with
+`.venv\Scripts\python.exe src\librarian\prepare_reranker.py`; runtime is offline.
+If unavailable, the app falls back to E5 with a visible warning. Explicit CLI modes
+are `--mode rerank` (default), `--mode e5`, and experimental `--mode hybrid`.
+Python API callers must pass `mode="rerank"`; its legacy default remains E5.
+See `docs/RELIABILITY_RERANKER.md` and the full 25-query local review at
+`http://localhost:8765/eval/reliability_comparison.local.html`.

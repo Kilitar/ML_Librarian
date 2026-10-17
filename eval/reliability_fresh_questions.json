@@ -1,0 +1,8 @@
+[
+  {"id":"fresh_svm_cs","query":"Proč může velká gamma vést u RBF SVM k memorování jednotlivých bodů a co se stane, když snížím C?","query_language":"cs","answerable":true},
+  {"id":"fresh_ridge_en","query":"How does Ridge stabilize a regression with strongly correlated predictors, and does it remove coefficients entirely?","query_language":"en","answerable":true},
+  {"id":"fresh_penguins_pl","query":"Wyszukaj zadanie, w którym klasyfikujemy gatunki pingwinów za pomocą regresji logistycznej.","query_language":"pl","answerable":true},
+  {"id":"fresh_dbscan_cs","query":"Proč se DBSCAN hodí pro dva půlměsíce lépe než K-Means a jak označuje odlehlé body?","query_language":"cs","answerable":true},
+  {"id":"fresh_precision_en","query":"What is the difference between precision and recall when evaluating a spam classifier?","query_language":"en","answerable":true},
+  {"id":"fresh_scaling_pl","query":"Dlaczego StandardScaler powinien być dopasowany tylko na zbiorze treningowym i wewnątrz walidacji krzyżowej?","query_language":"pl","answerable":true}
+]
