@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Nasazena společná porovnávací osa typu výstupu pro rozpoznanou regresi/klasifikaci (domain-v2). Šest formulací nyní má přímé vysvětlení v prvním úryvku; tři byly nové před finálním během, ale stále jde o známé téma. Předchozí supervised/unsupervised i hodiny/ML/DL zachovány. 58 testů + 8 Streamlit formulářů. Pozdější výsledky mohou být slabší. Porovnání: http://localhost:8765/eval/contextual_review.local.html.",
+  "status_note": "Zpřehledněno zobrazení rozpoznaných srovnání: hlavní výklad a další shody odděleně, vše dostupné s původními čísly. Na 6 známých srovnáních 13/30 pasáží přesunuto do doplňkového oddílu; nejde o zvýšení přesnosti vyhledávání. 63 testů + 4 AppTest formuláře, raw výsledky a evidence-v4 beze změny. Přehled: http://localhost:8765/eval/result_grouping_review.local.html.",
   "tasks": [
     {
       "id": "scope",
@@ -71,7 +71,7 @@
       "estimate_hours": 1.5,
       "status": "done",
       "completed_at": "2026-10-17T11:32:57Z",
-      "detail": "Retrieval-only Streamlit evidence browser běží na 127.0.0.1:8766. Výsledky mají štítek typu (knížka pro cvičení, lupa pro teorii/analýzu) a původu (lokální ikona Coderslab pro PDF); uživatel potvrdil, že ikony se zobrazují dobře. Číselná relevance a Markdown/matematika úryvků publikovány; uživatel potvrdil zlepšení čitelnosti. Nový výběr pasáží a viditelný E5 fallback funkčně ověřeny; relevance označena jako pořadové skóre. Bez opory: hláška a sbalené slabé shody; nejisté výsledky zůstávají viditelné. Funkčně ověřeno. HTML obaly úryvků převedeny na čitelný text/Markdown; kód a matematika zachovány. 35 testů prošlo."
+      "detail": "Retrieval-only Streamlit evidence browser běží na 127.0.0.1:8766. Výsledky mají štítek typu (knížka pro cvičení, lupa pro teorii/analýzu) a původu (lokální ikona Coderslab pro PDF); uživatel potvrdil, že ikony se zobrazují dobře. Číselná relevance a Markdown/matematika úryvků publikovány; uživatel potvrdil zlepšení čitelnosti. Nový výběr pasáží a viditelný E5 fallback funkčně ověřeny; relevance označena jako pořadové skóre. Bez opory: hláška a sbalené slabé shody; nejisté výsledky zůstávají viditelné. Funkčně ověřeno. HTML obaly úryvků převedeny na čitelný text/Markdown; kód a matematika zachovány. 35 testů prošlo. Srovnávací výsledky nyní seskupují doplňkové shody do sbaleného oddílu, původní pořadí a všech pět pasáží zachováno. 63 testů, 4 formuláře; viz docs/RESULT_PRESENTATION.md."
     },
     {
       "id": "eval",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-17T15:04:34.778819+00:00",
+  "updated_at": "2026-10-17T15:57:07.698423+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10

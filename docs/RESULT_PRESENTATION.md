@@ -1,0 +1,15 @@
+# Supplementary result presentation
+
+This checkpoint changes only Streamlit presentation. Search API, CLI, rankings, scores, corpus, index and evidence-v4 decisions remain unchanged. The five original results stay in session state; original rank numbers and every passage remain accessible. This is not evidence of improved retrieval accuracy.
+
+For supported prediction-target comparisons only, `partition_results` keeps the first card and other passages mentioning both recognized concepts with context score >= .25. Other cards move into a collapsed “Zobrazit další shody” section. The threshold is a display heuristic, not calibrated confidence or a factual validator. Both-concept mentions may still occur in irrelevant prose. One-sided examples can be useful context even though supplementary; they are not deleted or called false.
+
+Grouping requires the first passage itself to mention both concepts and have context score >= .25; otherwise complementary second-side evidence remains visible. Unknown/missing/mismatched context, model revision, invalid scores, E5 fallback, uncertain/no-support states and ordinary non-comparison queries keep their existing layout. For no_support, all weak matches remain in the existing collapsed diagnostics. Supplementary cards use inline excerpts to avoid nested Streamlit expanders.
+
+Audit replay: 12 known frozen questions from the contextual comparison experiment. Six recognized comparisons have 17 primary and 13 supplementary passages out of 30 original passages. The Polish feature-scaling critique moves to supplementary; direct regression/classification explanations remain primary. Voting examples mentioning both concepts can remain primary; this is still a heuristic. The house-price tree example moves to supplementary because it explains only one side, so contextual information may require expanding that section. Other six cases are unchanged. No new unseen-topic or usefulness percentage claim is made.
+
+63 unit tests pass, including preserving original objects/ranks, keeping complementary evidence visible, fallback/uncertainty fail-open behavior and invalid scores. Four real AppTest submissions cover Polish regression/classification, Polish labels comparison, clock and ML. The first checks unchanged five-result identities and that feature scaling is retained in the collapsed supplementary section. The others check the grouping does not apply. This is functional verification, not learner visual acceptance.
+
+Run `review_result_grouping.py` to replay the policy on frozen local results and generate `eval/result_grouping_review.local.html` plus tracked `eval/result_grouping_summary.json` with raw/policy hashes. Review: `http://localhost:8765/eval/result_grouping_review.local.html`.
+
+Next: learner review of clarity and usability, and independent relevance review across additional topics. Changes to actual retrieval/top-five usefulness need separate model/candidate evaluation; the UI grouping must not be counted as an accuracy gain. BYOK remains deferred.

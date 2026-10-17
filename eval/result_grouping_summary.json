@@ -1,0 +1,146 @@
+{
+  "scope": "Presentation-only replay over known frozen cases, not relevance accuracy.",
+  "raw_sha256": "874a4f60157b350626b1b4b9e299bf2d48204885122dce1fe2f271fbb289a385",
+  "policy_sha256": "0e7f19aef89ad94ce1a8c0cf6312b83be9fbbf748af61078da545e5052dbf4fa",
+  "cases": [
+    {
+      "id": "labels_pl",
+      "main_ranks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "additional_ranks": []
+    },
+    {
+      "id": "house_cs",
+      "main_ranks": [
+        1,
+        2
+      ],
+      "additional_ranks": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "named_en",
+      "main_ranks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "additional_ranks": []
+    },
+    {
+      "id": "fresh_cs",
+      "main_ranks": [
+        1,
+        2,
+        3
+      ],
+      "additional_ranks": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": "fresh_en",
+      "main_ranks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "additional_ranks": []
+    },
+    {
+      "id": "fresh_pl",
+      "main_ranks": [
+        1,
+        3,
+        4
+      ],
+      "additional_ranks": [
+        2,
+        5
+      ]
+    },
+    {
+      "id": "clock",
+      "main_ranks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "additional_ranks": []
+    },
+    {
+      "id": "ml",
+      "main_ranks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "additional_ranks": []
+    },
+    {
+      "id": "deep",
+      "main_ranks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "additional_ranks": []
+    },
+    {
+      "id": "axis_fresh_cs",
+      "main_ranks": [
+        1,
+        2,
+        3
+      ],
+      "additional_ranks": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": "axis_fresh_en",
+      "main_ranks": [
+        1,
+        2,
+        4
+      ],
+      "additional_ranks": [
+        3,
+        5
+      ]
+    },
+    {
+      "id": "axis_fresh_pl",
+      "main_ranks": [
+        1,
+        2,
+        4
+      ],
+      "additional_ranks": [
+        3,
+        5
+      ]
+    }
+  ],
+  "additional_count": 13
+}
