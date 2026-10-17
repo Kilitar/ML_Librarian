@@ -1,0 +1,15 @@
+# Local course snapshot and generated corpora
+/data/snapshot/**
+!/data/snapshot/.gitkeep
+/data/normalized/**
+!/data/normalized/.gitkeep
+/data/index/**
+!/data/index/.gitkeep
+/.cache/
+/logs/
+.venv/
+__pycache__/
+*.py[cod]
+.streamlit/secrets.toml
+.env
+.env.*

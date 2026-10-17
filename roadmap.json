@@ -1,0 +1,110 @@
+{
+  "project": "RAG ML Librarian",
+  "started_at": "2026-10-17T09:18:56Z",
+  "total_estimate_hours": 16,
+  "recorded_actual_hours": 0,
+  "actual_tracking_started_at": "2026-10-17T09:18:56Z",
+  "status_note": "Původní kurzové zdroje jsou CZ/EN. Polština je cílový jazyk dotazu a odpovědi pro ukázku přenositelnosti v rámci Coderslab; nejde o očekávaný jazyk zdrojů. Dosavadní pracovní čas před spuštěním měření není zpětně odhadnut.",
+  "tasks": [
+    {
+      "id": "scope",
+      "phase": "Příprava",
+      "title": "Workspace, scope a guardrails",
+      "estimate_hours": 1,
+      "status": "done",
+      "completed_at": "2026-10-17T09:18:56Z",
+      "detail": "Založen oddělený workspace, pravidla read-only kurzu, plán a handoff."
+    },
+    {
+      "id": "inventory",
+      "phase": "Příprava",
+      "title": "Read-only inventura a allowlist zdrojů",
+      "estimate_hours": 0.5,
+      "status": "in_progress",
+      "detail": "Inventura složek a počtů hotová; ještě vymezit přesný allowlist a ověřit odkazy."
+    },
+    {
+      "id": "snapshot",
+      "phase": "Příprava",
+      "title": "Neměnný snapshot + hash manifest",
+      "estimate_hours": 0.5,
+      "status": "todo",
+      "detail": "Zápisy pouze do ML-Librarian/data/snapshot."
+    },
+    {
+      "id": "extract",
+      "phase": "Příprava",
+      "title": "Extrakce a kontrola pokrytí korpusu",
+      "estimate_hours": 2.5,
+      "status": "todo",
+      "detail": "Markdown, PDF po stranách, ipynb po buňkách, statická extrakce Streamlit textů."
+    },
+    {
+      "id": "chunks",
+      "phase": "Příprava",
+      "title": "Chunking, původ, deduplikace a mapování URL",
+      "estimate_hours": 1.5,
+      "status": "todo",
+      "detail": "Připravit CZ/EN/PL metadata a stabilní citace."
+    },
+    {
+      "id": "retrieval",
+      "phase": "Příprava",
+      "title": "TF-IDF + vícejazyčný embedding retrieval",
+      "estimate_hours": 2,
+      "status": "todo",
+      "detail": "Základní měření retrieval napříč jazyky."
+    },
+    {
+      "id": "llm",
+      "phase": "Neděle",
+      "title": "Free-tier LLM + fallback bez API",
+      "estimate_hours": 2,
+      "status": "todo",
+      "detail": "Bez placeného fallbacku, limity a citace ověřené aplikací."
+    },
+    {
+      "id": "ui",
+      "phase": "Neděle",
+      "title": "Samostatné Streamlit UI",
+      "estimate_hours": 1.5,
+      "status": "todo",
+      "detail": "Odpověď, zdroje, prokliky a chybový stav."
+    },
+    {
+      "id": "eval",
+      "phase": "Neděle",
+      "title": "Held-out evaluace CZ/EN/PL",
+      "estimate_hours": 2,
+      "status": "todo",
+      "detail": "Retrieval odděleně od správnosti generovaných odpovědí."
+    },
+    {
+      "id": "demo",
+      "phase": "Neděle",
+      "title": "Opravy, dokumentace a demo",
+      "estimate_hours": 2.5,
+      "status": "todo",
+      "detail": "Příprava obhajoby a reprodukovatelný běh."
+    },
+    {
+      "id": "buffer",
+      "phase": "Rezerva",
+      "title": "Integrační rezerva",
+      "estimate_hours": 1,
+      "status": "todo",
+      "detail": "Použije se jen při reálné blokaci."
+    }
+  ],
+  "inventory": {
+    "pdf": 48,
+    "markdown": 50,
+    "notebooks": 79,
+    "streamlit_views": 220,
+    "json": 62,
+    "excluded_venv_files": 65048,
+    "excluded_scratch_python": 76,
+    "excluded_view_cache_png": 82
+  },
+  "updated_at": "2026-10-17T09:18:56Z"
+}

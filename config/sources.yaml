@@ -1,0 +1,16 @@
+source_root: 'D:\Antigravity Projects\Data-Science'
+read_only: true
+snapshot_root: 'data/snapshot'
+snapshot_policy: immutable
+update_mode: explicit_full_rebuild
+languages: [cs, en, pl]
+include_patterns: [] # Populate after read-only inventory.
+exclude_patterns:
+  - '**/.git/**'
+  - '**/.venv/**'
+  - '**/__pycache__/**'
+  - '**/.notebook_img_cache/**'
+  - '**/scratch/**'
+  - '**/.env*'
+  - '**/*secret*'
+streamlit_base_url: null # Set after verifying deployed URL.
