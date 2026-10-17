@@ -3,8 +3,9 @@ from __future__ import annotations
 
 import hashlib
 import json
-from pathlib import Path
 import re
+import unicodedata
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -16,6 +17,16 @@ INDEX_DIR = ROOT / "data/index"
 MANIFEST = ROOT / "data/index/multilingual_e5_curated.json"
 MODEL_ID = "intfloat/multilingual-e5-small"
 CACHE = ROOT / ".cache/hf"
+CONCEPT_CUES = (
+    "why", "what", "when", "difference", "differ", "explain", "meaning", "choose", "select",
+    "co", "proc", "kdy", "rozdil", "vysvetli", "jak vybrat", "co znamena", "co je", "po co",
+    "dlaczego", "czym", "rozni sie", "oznacza", "kiedy", "wybrac", "wyjasnij", "roznica",
+)
+PRACTICE_CUES = (
+    "exercise", "homework", "assignment", "lab", "example", "sample", "practice", "code",
+    "cviceni", "ukol", "priklad", "implement", "kod", "zadanie", "cwiczenie",
+    "przyklad", "implementation", "implementace", "implementacja", "praca domowa",
+)
 
 
 def classify_source(document: dict[str, Any]) -> dict[str, str]:
@@ -52,6 +63,37 @@ def classify_source(document: dict[str, Any]) -> dict[str, str]:
         "source_origin": origin,
         "source_origin_icon": origin_icon,
     }
+
+
+def query_intent(query: str) -> str | None:
+    """Infer whether a natural-language question asks for concepts or practice."""
+    normalized = unicodedata.normalize("NFKD", query.casefold())
+    normalized = "".join(char for char in normalized if not unicodedata.combining(char))
+    normalized = re.sub(r"[^a-z0-9]+", " ", normalized).strip()
+    padded = f" {normalized} "
+    if any(f" {cue} " in padded for cue in PRACTICE_CUES):
+        return "practice"
+    if any(f" {cue} " in padded for cue in CONCEPT_CUES):
+        return "conceptual"
+    return None
+
+
+def rank_adjustment(document: dict[str, Any], intent: str | None) -> float:
+    """Small transparent reranking prior for useful, intent-matched evidence."""
+    text = document.get("text", "").strip()
+    adjustment = -0.06 if len(text) < 120 else 0.0
+    if document.get("source_kind") == "pdf":
+        words = re.findall(r"\b\w+\b", text)
+        single_char_ratio = sum(len(word) == 1 for word in words) / max(1, len(words))
+        if single_char_ratio > 0.35:
+            adjustment -= 0.06
+
+    role = classify_source(document)["source_role"]
+    if intent == "conceptual" and role == "Teorie / analýza":
+        adjustment += 0.02
+    elif intent == "practice" and role in {"Cvičení / úkol", "Příklad / implementace"}:
+        adjustment += 0.02
+    return adjustment
 
 
 def load_chunks(path: Path = CHUNKS) -> list[dict[str, Any]]:
@@ -120,7 +162,29 @@ class E5SearchIndex:
             ["query: " + query], normalize_embeddings=True, convert_to_numpy=True,
         )[0]
         scores = self.embeddings @ query_vector
-        selected = np.argsort(scores)[-limit:][::-1]
+        intent = query_intent(query)
+        ranking_scores = {
+            index: float(scores[index]) + rank_adjustment(self.documents[index], intent)
+            for index in range(len(scores))
+        }
+        ranked = sorted(
+            range(len(scores)),
+            key=ranking_scores.__getitem__,
+            reverse=True,
+        )
+        selected = []
+        seen_sources = set()
+        for index in ranked:
+            source_path = self.documents[int(index)]["source_path"]
+            if source_path in seen_sources:
+                continue
+            selected.append(index)
+            seen_sources.add(source_path)
+            if len(selected) == limit:
+                break
+        if len(selected) < limit:
+            selected_set = set(selected)
+            selected.extend(index for index in ranked if index not in selected_set and len(selected) < limit)
         results = []
         for index in selected:
             document = self.documents[int(index)]
@@ -133,6 +197,7 @@ class E5SearchIndex:
                 "provenance": document.get("provenance"),
                 **source_labels,
                 "score": float(scores[int(index)]),
+                "ranking_score": ranking_scores[int(index)],
                 "text": document["text"],
                 "streamlit_route": document.get("streamlit_route"),
                 "streamlit_title": document.get("streamlit_title"),

@@ -75,7 +75,9 @@ if submitted:
 results = st.session_state.get("evidence_results")
 if results is not None:
     st.subheader("Nalezené zdroje")
-    st.caption(f"Dotaz: {st.session_state.get('evidence_query', '')} · pořadí podle sémantické podobnosti")
+    st.caption(
+        f"Dotaz: {st.session_state.get('evidence_query', '')} · pořadí podle relevance úryvku a záměru dotazu"
+    )
     st.caption("📓 Cvičení / úkol · 🔎 Teorie / analýza · 🟨 ikona Coderslab označuje původní materiál z jeho PDF")
     routes_config = read_routes_config()
     base_url = routes_config.get("streamlit_base_url")
@@ -97,7 +99,7 @@ if results is not None:
             with role_col:
                 st.badge(badge_label, color=badge_color)
             with rank_col:
-                st.caption(f"Výsledek {rank} · skóre {result['score']:.3f}")
+                st.caption(f"Výsledek {rank}")
             st.caption(f"Soubor: {result['source_path']}")
 
             with st.expander("Zobrazit nalezený úryvek", expanded=(rank == 1)):

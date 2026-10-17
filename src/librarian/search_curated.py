@@ -13,7 +13,10 @@ def main() -> None:
     args = parser.parse_args()
     results = E5SearchIndex.load().search(" ".join(args.query), limit=args.limit)
     for rank, result in enumerate(results, 1):
-        print(f"{rank}. {result['score']:.3f} | {result['source_path']} | {result['locator']}")
+        print(
+            f"{rank}. relevance={result['ranking_score']:.3f} "
+            f"(semantic={result['score']:.3f}) | {result['source_path']} | {result['locator']}"
+        )
         print(f"   chunk={result['chunk_id']} | language={result['language']} | {result['provenance']}")
         if result["streamlit_route"]:
             print(f"   route={result['streamlit_route']} ({result['route_status']})")

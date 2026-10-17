@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Agentní kalibrace: 8 h lidského ekvivalentu hotovo za přibližně 57 min kalendářního času (~8.4×); čistý aktivní čas neinstrumentujeme. Plný index 4 196 chunků: 1 min 55 s. E5 full-corpus diagnostika Recall@5=0,67 / MRR@5=0,51; zdrojové štítky čekají na review. Retrieval-only UI běží na localhost:8766. LLM plán: žádný sdílený klíč; volitelný BYOK.",
+  "status_note": "Agentní kalibrace: 8 h lidského ekvivalentu hotovo za přibližně 57 min kalendářního času (~8.4×); čistý aktivní čas neinstrumentujeme. Plný index 4 196 chunků: 1 min 55 s. Kvalita důkazů je nyní priorita: audit odhalil titulkové a OCR úryvky. Experimentální query-aware reranking zvýšil na stejné 12otázkové diagnostické sadě Recall@5 0,67→0,75 a MRR@5 0,51→0,67; štítky zdrojů jsou provizorní, metriky neznamenají validovanou kvalitu odpovědí. UI ikonky zkontroloval uživatel. BYOK generování odloženo do stabilizace retrieval.",
   "tasks": [
     {
       "id": "scope",
@@ -61,24 +61,25 @@
       "phase": "Neděle",
       "title": "Volitelný BYOK LLM + retrieval-only fallback",
       "estimate_hours": 2,
-      "status": "in_progress",
-      "detail": "Zásada: žádný sdílený owner key; default zůstává lokální retrieval. Ověřeny aktuální free-tier/quota/data policy Gemini, Groq a HF; provider volba čeká na review a kvalitativní smoke s vlastním klíčem."
+      "status": "todo",
+      "detail": "Odloženo, dokud retrieval neposkytuje konzistentně užitečné důkazy. Zůstává zásada bez sdíleného owner key; případné generování bude volitelně BYOK s retrieval-only fallbackem."
     },
     {
       "id": "ui",
       "phase": "Neděle",
       "title": "Samostatné Streamlit UI",
       "estimate_hours": 1.5,
-      "status": "in_progress",
-      "detail": "Retrieval-only Streamlit evidence browser běží na 127.0.0.1:8766. Výsledky mají štítek typu (knížka pro cvičení, lupa pro teorii/analýzu) a původu (lokální ikona Coderslab pro PDF); proces restartován. Uživatelská kontrola rozlišení/kontrastu a chování ovládání ještě čeká."
+      "status": "done",
+      "completed_at": "2026-10-17T11:32:57Z",
+      "detail": "Retrieval-only Streamlit evidence browser běží na 127.0.0.1:8766. Výsledky mají štítek typu (knížka pro cvičení, lupa pro teorii/analýzu) a původu (lokální ikona Coderslab pro PDF); uživatel potvrdil, že ikony se zobrazují dobře."
     },
     {
       "id": "eval",
       "phase": "Neděle",
       "title": "Held-out evaluace CZ/EN/PL",
       "estimate_hours": 2,
-      "status": "todo",
-      "detail": "Retrieval odděleně od správnosti generovaných odpovědí."
+      "status": "in_progress",
+      "detail": "Diagnostika relevance, krátkých/OCR pasáží a experimentální intent-aware reranking. Zlepšení na stávajících 12 dotazech je orientační; gold paths potřebují ruční korekci a samostatný held-out CZ/EN/PL test."
     },
     {
       "id": "demo",
@@ -107,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-17T11:14:35Z",
+  "updated_at": "2026-10-17T11:35:31Z",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10
