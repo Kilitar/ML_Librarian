@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Agentní kalibrace: 8 h lidského ekvivalentu hotovo za přibližně 49 min kalendářního času (~9.8×); nejde o měření čisté aktivní práce ani záruku stejného tempa. Plný index 4 196 chunků se sestavil za 1 min 55 s. E5 Recall@5=0,67, MRR@5=0,51; TF-IDF 0,50/0,27 na 12 otázkách. Přesná cesta PCA štítku chybí a část relevantních k-NN zdrojů neodpovídá původním cestám; výsledky jsou orientační do uživatelské kontroly.",
+  "status_note": "Agentní kalibrace: 8 h lidského ekvivalentu hotovo za přibližně 54 min kalendářního času (~8.9×); čistý aktivní čas neinstrumentujeme. Full index 4 196 chunků: 1 min 55 s. E5 full-corpus diagnostika Recall@5=0,67 / MRR@5=0,51; přesnost cest čeká na lidskou revizi. Retrieval-only UI běží na localhost:8766 a čeká na vizuální kontrolu.",
   "tasks": [
     {
       "id": "scope",
@@ -69,8 +69,8 @@
       "phase": "Neděle",
       "title": "Samostatné Streamlit UI",
       "estimate_hours": 1.5,
-      "status": "todo",
-      "detail": "Odpověď, zdroje, prokliky a chybový stav."
+      "status": "in_progress",
+      "detail": "Retrieval-only Streamlit evidence browser běží lokálně na 127.0.0.1:8766. Zobrazuje důkazy a kandidátní route; uživatelská kontrola čitelnosti a chování tlačítka čeká."
     },
     {
       "id": "eval",
@@ -107,7 +107,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-17T10:08:14Z",
+  "updated_at": "2026-10-17T10:12:22Z",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10

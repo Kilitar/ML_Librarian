@@ -31,4 +31,13 @@ Build the curated local search index and run a query:
 
 The embedding matrix and model cache stay local under ignored `data/index/` and `.cache/` directories. See `docs/RETRIEVAL_PROTOTYPE.md` for corpus integrity and search details.
 
+Run the retrieval-only Streamlit evidence browser:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-librarian.txt
+.\.venv\Scripts\python.exe -m streamlit run app.py --server.port 8766
+```
+
+Only routes explicitly marked `verified` and a configured `streamlit_base_url` are rendered as clickable course links. Inferred paths appear as candidates until checked against the live course app.
+
 See `docs/IMPLEMENTATION_PLAN.md`, `docs/GUARDRAILS.md`, `docs/LANGUAGE_SCOPE.md`, and `docs/RETRIEVAL_PROTOTYPE.md`.
