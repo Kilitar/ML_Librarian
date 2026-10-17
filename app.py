@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parent
 CL_LOGO = ROOT / "data" / "Icons" / "codesrlab_logo_square.png"
 sys.path.insert(0, str(ROOT / "src" / "librarian"))
 from search import E5SearchIndex  # noqa: E402
+from snippet_format import format_snippet  # noqa: E402
 
 
 st.set_page_config(page_title="ML Librarian · evidence search", page_icon="📚", layout="wide")
@@ -99,11 +100,12 @@ if results is not None:
             with role_col:
                 st.badge(badge_label, color=badge_color)
             with rank_col:
-                st.caption(f"Výsledek {rank}")
+                relevance = result.get("ranking_score", result["score"])
+                st.caption(f"Výsledek {rank} · relevance {relevance:.3f}")
             st.caption(f"Soubor: {result['source_path']}")
 
             with st.expander("Zobrazit nalezený úryvek", expanded=(rank == 1)):
-                st.text(result["text"])
+                st.markdown(format_snippet(result["text"]), unsafe_allow_html=False)
                 language = result.get("language") or "neuvedeno"
                 st.caption(
                     f"Umístění: {result.get('locator') or 'neuvedeno'} · "
