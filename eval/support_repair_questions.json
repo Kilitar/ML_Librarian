@@ -1,0 +1,11 @@
+{
+  "scope":"Fixed before repairs. Three new formulations of answerable topics and three new out-of-course requests. Becomes development data after review.",
+  "questions":[
+    {"id":"sr01","kind":"answerable","query":"Proč mohou proměnné s velkými jednotkami ovládnout PCA bez standardizace?","expected":"supported"},
+    {"id":"sr02","kind":"answerable","query":"Dlaczego przed PCA skaluje się cechy o różnych jednostkach?","expected":"supported"},
+    {"id":"sr03","kind":"answerable","query":"What can go wrong if a spam detector sends legitimate messages to the spam folder, and which metric should I watch?","expected":"supported"},
+    {"id":"sr04","kind":"absent","query":"How do I make tomato soup for dinner?","expected":"no_support"},
+    {"id":"sr05","kind":"absent","query":"Jak dlouho se peče domácí chleba?","expected":"no_support"},
+    {"id":"sr06","kind":"absent","query":"Jak dojechać autobusem z centrum Krakowa na lotnisko dzisiaj?","expected":"no_support"}
+  ]
+}

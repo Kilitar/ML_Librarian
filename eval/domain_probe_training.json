@@ -1,0 +1,190 @@
+{
+  "scope": "Historical availability labels reused as provisional course-domain labels; ambiguous queries excluded. Not an independently annotated domain dataset.",
+  "questions": [
+    {
+      "id": "svm_cs",
+      "query": "Jak u SVM s RBF jádrem ovlivňují parametry C a gamma přeučení modelu?",
+      "in_domain": true
+    },
+    {
+      "id": "forest_practice_cs",
+      "query": "Najdi cvičení, ve kterém trénujeme Random Forest na datech srdečních pacientů a ladíme precision.",
+      "in_domain": true
+    },
+    {
+      "id": "recall_en",
+      "query": "Why can accuracy be misleading for an imbalanced classifier, and which metric should I prioritize when false negatives are costly?",
+      "in_domain": true
+    },
+    {
+      "id": "pca_practice_en",
+      "query": "Find a practical PCA exercise on diamond measurements that standardizes features and examines explained variance.",
+      "in_domain": true
+    },
+    {
+      "id": "ensemble_pl",
+      "query": "Czym różni się bagging od boostingu pod względem sposobu trenowania modeli oraz redukcji bias i wariancji?",
+      "in_domain": true
+    },
+    {
+      "id": "dbscan_practice_pl",
+      "query": "Znajdź ćwiczenie DBSCAN na zbiorze make_moons, w którym dobieramy eps i min_samples oraz oznaczamy szum.",
+      "in_domain": true
+    },
+    {
+      "id": "absent_personal_cs",
+      "query": "Jaké je číslo mého osobního bankovního účtu?",
+      "in_domain": false
+    },
+    {
+      "id": "absent_weather_en",
+      "query": "Will it rain in Prague tomorrow morning?",
+      "in_domain": false
+    },
+    {
+      "id": "absent_booking_pl",
+      "query": "Jaki jest numer rezerwacji mojego ostatniego lotu?",
+      "in_domain": false
+    },
+    {
+      "id": "ridge_cs",
+      "query": "Proč Ridge regrese pomáhá při multikolinearitě a co dělá parametr alfa?",
+      "in_domain": true
+    },
+    {
+      "id": "tree_practice_cs",
+      "query": "Najdi cvičení, kde mám natrénovat rozhodovací strom pro ceny diamantů a vyhodnotit chybu predikce.",
+      "in_domain": true
+    },
+    {
+      "id": "leakage_en",
+      "query": "Why must preprocessing be fitted only on training data, and how does a pipeline prevent data leakage during cross-validation?",
+      "in_domain": true
+    },
+    {
+      "id": "logistic_practice_en",
+      "query": "Find a practical exercise training logistic regression to classify patients from lumbar spine measurements.",
+      "in_domain": true
+    },
+    {
+      "id": "dbscan_pl",
+      "query": "Jak DBSCAN rozpoznaje szum i czym różni się punkt rdzeniowy od punktu brzegowego?",
+      "in_domain": true
+    },
+    {
+      "id": "sentiment_practice_pl",
+      "query": "Znajdź ćwiczenie z klasyfikacji sentymentu recenzji filmowych z użyciem TF-IDF.",
+      "in_domain": true
+    },
+    {
+      "id": "absent_cs",
+      "query": "Jaké je heslo k administrátorskému účtu školní databáze?",
+      "in_domain": false
+    },
+    {
+      "id": "absent_en",
+      "query": "What was the exact closing price of Nvidia stock on 16 October 2026?",
+      "in_domain": false
+    },
+    {
+      "id": "absent_pl",
+      "query": "Jaki jest numer telefonu mojego lekarza rodzinnego?",
+      "in_domain": false
+    },
+    {
+      "id": "reported_kmeans_pl",
+      "query": "Kiedy należy zastosować metodę k-średnich",
+      "in_domain": true
+    },
+    {
+      "id": "fresh_svm_cs",
+      "query": "Proč může velká gamma vést u RBF SVM k memorování jednotlivých bodů a co se stane, když snížím C?",
+      "in_domain": true
+    },
+    {
+      "id": "fresh_ridge_en",
+      "query": "How does Ridge stabilize a regression with strongly correlated predictors, and does it remove coefficients entirely?",
+      "in_domain": true
+    },
+    {
+      "id": "fresh_penguins_pl",
+      "query": "Wyszukaj zadanie, w którym klasyfikujemy gatunki pingwinów za pomocą regresji logistycznej.",
+      "in_domain": true
+    },
+    {
+      "id": "fresh_dbscan_cs",
+      "query": "Proč se DBSCAN hodí pro dva půlměsíce lépe než K-Means a jak označuje odlehlé body?",
+      "in_domain": true
+    },
+    {
+      "id": "fresh_precision_en",
+      "query": "What is the difference between precision and recall when evaluating a spam classifier?",
+      "in_domain": true
+    },
+    {
+      "id": "fresh_scaling_pl",
+      "query": "Dlaczego StandardScaler powinien być dopasowany tylko na zbiorze treningowym i wewnątrz walidacji krzyżowej?",
+      "in_domain": true
+    },
+    {
+      "id": "clock_cs",
+      "query": "kolik je hodin",
+      "in_domain": false
+    },
+    {
+      "id": "clock_en",
+      "query": "What time is it right now?",
+      "in_domain": false
+    },
+    {
+      "id": "clock_pl",
+      "query": "Która jest teraz godzina?",
+      "in_domain": false
+    },
+    {
+      "id": "private_cs",
+      "query": "Jaký je můj PIN k platební kartě?",
+      "in_domain": false
+    },
+    {
+      "id": "weather_pl",
+      "query": "Jaka będzie jutro pogoda w Warszawie?",
+      "in_domain": false
+    },
+    {
+      "id": "plumbing_en",
+      "query": "How do I repair a leaking kitchen faucet?",
+      "in_domain": false
+    },
+    {
+      "id": "short_pca",
+      "query": "PCA",
+      "in_domain": true
+    },
+    {
+      "id": "short_regularization",
+      "query": "regularizace",
+      "in_domain": true
+    },
+    {
+      "id": "short_scaling_pl",
+      "query": "standaryzacja cech",
+      "in_domain": true
+    },
+    {
+      "id": "time_training_cs",
+      "query": "Jak měřit dobu trénování modelu a proč Random Forest může trénovat paralelně?",
+      "in_domain": true
+    },
+    {
+      "id": "precision_en",
+      "query": "How is precision computed from true positives and false positives?",
+      "in_domain": true
+    },
+    {
+      "id": "cluster_pl",
+      "query": "Kiedy użyć K-Means do grupowania klientów?",
+      "in_domain": true
+    }
+  ]
+}
