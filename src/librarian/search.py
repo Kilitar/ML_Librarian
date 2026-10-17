@@ -15,6 +15,7 @@ from diversify import select_distinct
 from hybrid import LexicalIndex, fuse_scores
 from rerank import PassageReranker, candidate_union, expand_neighbors, REVISION as RERANKER_REVISION
 from acronyms import requested_acronym, definition_strength
+from concepts import definition_query, concept_strength
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -168,6 +169,9 @@ class E5SearchIndex:
             raise ValueError("Result limit must be between 1 and 10")
         if mode not in {"e5", "hybrid", "rerank"}:
             raise ValueError("Unknown retrieval mode")
+        original_query = query
+        canonical_definition = definition_query(query) if mode == 'rerank' else None
+        query = canonical_definition or query
         query_vector = self.model.encode(
             ["query: " + query], normalize_embeddings=True, convert_to_numpy=True,
         )[0]
@@ -208,6 +212,12 @@ class E5SearchIndex:
         if mode == "rerank":
             candidates = candidate_union(np.asarray([ranking_scores[i] for i in range(len(scores))]), lexical_scores)
             candidates = expand_neighbors(self.documents, candidates)
+            concept_strengths = {}
+            if canonical_definition:
+                concept_strengths = {i: concept_strength(d['text'], d['source_path']) for i, d in enumerate(self.documents)}
+                related = sorted((i for i, strength in concept_strengths.items() if strength >= 2),
+                                 key=lambda i: (concept_strengths[i], float(scores[i])), reverse=True)[:24]
+                candidates = list(dict.fromkeys(related + candidates))[:120]
             if acronym:
                 definitions = sorted((i for i, strength in acronym_strengths.items() if strength > 0),
                                      key=lambda i: (acronym_strengths[i], float(scores[i])), reverse=True)[:24]
@@ -218,7 +228,7 @@ class E5SearchIndex:
                 details = self.passage_reranker.score_details(query, [self.documents[i] for i in candidates])
                 pair_scores = details["relevance"]
             except (OSError, ValueError, RuntimeError):
-                fallback = self.search(query, limit=limit, match_constraints=match_constraints, mode="e5")
+                fallback = self.search(original_query, limit=limit, match_constraints=match_constraints, mode="e5")
                 for result in fallback:
                     result["retrieval_warning"] = "Přesnější výběr pasáží není dostupný; zobrazuji základní vyhledávání."
                 return fallback
@@ -231,6 +241,8 @@ class E5SearchIndex:
                 ranking_scores[index] = float(pair_score) + rank_adjustment(self.documents[index], intent) + adjustment
                 constraint_details[index] = {"adjustment": adjustment, "reasons": reasons}
             ranked = sorted(candidates, key=ranking_scores.__getitem__, reverse=True)
+            if canonical_definition:
+                ranked.sort(key=lambda i: (concept_strengths[i], ranking_scores[i]), reverse=True)
         if acronym:
             ranked = [i for i in ranked if acronym_strengths[i] >= 0]
             ranked.sort(key=lambda i: (acronym_strengths[i], ranking_scores[i]), reverse=True)
@@ -249,6 +261,8 @@ class E5SearchIndex:
                 "score": float(scores[int(index)]),
                 "lexical_score": float(lexical_scores[int(index)]),
                 "retrieval_mode": mode,
+                "canonical_query": canonical_definition,
+                "concept_evidence": concept_strengths.get(index) if canonical_definition else None,
                 "requested_acronym": acronym,
                 "acronym_definition": bool(acronym and acronym_strengths[index] == 2),
                 **evidence_scores.get(index, {}),

@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Oprava dotazů na zkratky: ML se nezaměňuje za MLM/MLE; přednost má rozpis zkratky ve zdroji. 39 unit testů. Konkrétní dotazy a úryvky: http://localhost:8765/eval/acronym_review.local.html. evidence-v2 přidává strukturální oporu explicitních definic; nejde o záruku faktické správnosti. BYOK odloženo.",
+  "status_note": "Hluboké učení / deep learning: jednoduché definiční dotazy CZ/EN/PL mají shodné výsledky. Výklad neuronových sítí a vrstev je označen jako částečná opora (evidence-v3), nikoli úplná definice. 43 testů + 8 dotazů přes Streamlit AppTest. Přehled: http://localhost:8765/eval/concept_review.local.html. Rozšíření je zatím omezené na tento pojem; BYOK odloženo.",
   "tasks": [
     {
       "id": "scope",

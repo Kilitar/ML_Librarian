@@ -81,7 +81,10 @@ if results is not None:
     if evidence["status"] == "no_support":
         st.info("V materiálech jsem nenašel dostatečnou oporu pro tento dotaz. Zkus otázku ke kurzu Data Science / Machine Learning nebo upřesni téma.")
     elif evidence["status"] == "uncertain":
-        st.info("Opora v nalezených materiálech je nejistá. Níže jsou orientační pasáže; můžeš upřesnit téma, algoritmus nebo dataset.")
+        if evidence.get("reason") == "related_concept_evidence":
+            st.info("Našel jsem související výklad neuronových sítí a jejich vrstev. Tyto pasáže nejsou úplnou definicí hlubokého učení.")
+        else:
+            st.info("Opora v nalezených materiálech je nejistá. Níže jsou orientační pasáže; můžeš upřesnit téma, algoritmus nebo dataset.")
     elif evidence["status"] == "unassessed":
         st.info("Oporu dotazu se nepodařilo ověřit. Níže jsou základní podobné pasáže.")
     if results and results[0].get("retrieval_warning"):

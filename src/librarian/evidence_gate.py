@@ -3,7 +3,7 @@ import math
 from rerank import REVISION
 from constraints import normalize
 
-POLICY_VERSION = "evidence-v2"
+POLICY_VERSION = "evidence-v3"
 LOW_SUPPORT = 0.10
 SUFFICIENT_SUPPORT = 0.20
 
@@ -22,6 +22,9 @@ def assess_evidence(results: list[dict], query: str = "") -> dict:
             return {"status": "unassessed", "policy": POLICY_VERSION, "score": None}
         scores.append(value)
     best = max(scores)
+    if any(r.get('canonical_query') for r in results):
+        return {"status": "uncertain", "policy": POLICY_VERSION, "score": best,
+                "reason": "related_concept_evidence"}
     if any(result.get('requested_acronym') and result.get('acronym_definition') for result in results):
         return {"status": "supported", "policy": POLICY_VERSION, "score": best, "reason": "explicit_acronym_definition"}
     status = "supported" if best >= SUFFICIENT_SUPPORT else "uncertain" if best >= LOW_SUPPORT else "no_support"
