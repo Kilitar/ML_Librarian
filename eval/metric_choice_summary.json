@@ -1,0 +1,71 @@
+{
+  "scope": "36 full-search pairs plus40 fixed-passage replays; provisional Codex coverage review, not independent human acceptance.",
+  "raw_sha256": "a44c42df8fd4eaf85be5b629a64fe71b6e1f9cf4e3ecc133286244ac2b978b56",
+  "code_hashes": {
+    "eval/acceptance_v1_questions.json": "2cc40e0da3ff5d42b79c68c3970502870f2278ec97c37f0464a3b0a93d8f1148",
+    "eval/support_repair_questions.json": "113ce272485901a52b2ebbfa22696ed0b35e48cbef5db5c530abb71e458545bf",
+    "eval/ranking_fresh_questions.json": "d71c541d820217a77a2f02ec7bfd7d36a86dab2784a1e0c085f41cdf5152d6e8",
+    "eval/heading_fresh_questions.json": "75cc79b227fe49a013e69959fe7617f25c078af3613b3032160ff2c1f5aa61f4",
+    "eval/metric_choice_questions.json": "2262908e89dc5e3eff5687be70d5cd64613791c3f846716f4cb2efc6179e8331",
+    "src/librarian/search.py": "208e13ed73291dd8f1aab0387250ec717caa43f3c32eb1c87ef1159f8b260c7d",
+    "src/librarian/metric_choice.py": "e5e9e0a5b2d5931a7962c8419dc0ab224916fb232c1bc46b82c087ad9fb42c6f",
+    "src/librarian/heading_context.py": "803cc9012e360b785bc0a99ebc0f6d01127a846b2b7e699c60bbcdbe5eabbbb6",
+    "src/librarian/rerank.py": "5c5be05721c17af8d58aecdfb7d9e8c8f908ef36044ae5b745ff9f92fda400c7",
+    "src/librarian/compare_metric_choice.py": "c80cce5a3e8900c5d1065b1983d383ded2c46b9d17695040d632f6c25dee998c",
+    "src/librarian/evidence_gate.py": "5abdc6adb4b869831447e85fd9ed13eb801cdbb7f53d7372ad9a5d781b442dad",
+    "data/normalized/documents.jsonl": "8d2b81901ffc80c707a814c29fe8d4c74ef1ffb2816c0fc257e30141e67f4ba4",
+    "data/index/multilingual_e5_curated.json": "713bb8c4afaefdf5780c08c7e55558aa2bc47f93f2d2af952c8d358ce75dfa5e"
+  },
+  "full_search_count": 36,
+  "fixed_passage_replay_count": 40,
+  "status_changes": 0,
+  "enriched_query_ids": [
+    "av02",
+    "mc01",
+    "mc03",
+    "mc05"
+  ],
+  "original_winner_preserved_for_enriched": true,
+  "context_provenance": {
+    "source_path": "views/02_day_2_summary.py",
+    "original_sha256": "bfd94d7e1fe5d034da300c931e574e2ed0906e75065de5d1600c86c44c1162c4",
+    "heading": "line:199:st.markdown",
+    "formula": "line:200:st.latex",
+    "body": "line:201:st.markdown",
+    "ast_literals_verified": true
+  },
+  "provisional_judgments": [
+    {
+      "id": "av02",
+      "context_chunk": "6e25934c013a867dd6bd",
+      "context_text_sha256": "ef3e57b903a4a52772e64e0f2b0a4acbff00b13811b6341c5e28e00d1ed20042",
+      "top3_cost_context_improved": true
+    },
+    {
+      "id": "mc01",
+      "context_chunk": "6e25934c013a867dd6bd",
+      "context_text_sha256": "ef3e57b903a4a52772e64e0f2b0a4acbff00b13811b6341c5e28e00d1ed20042",
+      "top3_cost_context_improved": true
+    },
+    {
+      "id": "mc03",
+      "context_chunk": "b349b9d79bc3f18edccb",
+      "context_text_sha256": "2d74125c21de2ef407f2a419b67ddfddfe812be211131fa4860c10a639c6bcf3",
+      "top3_cost_context_improved": true
+    },
+    {
+      "id": "mc05",
+      "context_chunk": "6e25934c013a867dd6bd",
+      "context_text_sha256": "ef3e57b903a4a52772e64e0f2b0a4acbff00b13811b6341c5e28e00d1ed20042",
+      "top3_cost_context_improved": true
+    }
+  ],
+  "limits": [
+    "PL mc02 cost rationale still missing in top3",
+    "Original winner is partial, including recall screening mc03 which leads precision context",
+    "Polish soup av11 still uncertain",
+    "Some PCA formulations still weak",
+    "No global acceptance or factual-quality claim",
+    "Original acceptance-v1 preserved not_accepted"
+  ]
+}

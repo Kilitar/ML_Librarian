@@ -1,5 +1,10 @@
 # Source-adjacent heading context
 
+Current extension: `adjacent-heading-v2` also permits one standalone `st.latex`
+formula between heading and body, within the same three-line bound. See
+`METRIC_CHOICE.md`. The v1 experiment below remains frozen; use
+`AdjacentHeadings(allow_formula=False)` to reproduce its context associations.
+
 This repairs missing **source context**, without rewriting the query, adding
 answer text, changing model weights, updating the index or lowering thresholds.
 It does not certify the factual correctness of course material.

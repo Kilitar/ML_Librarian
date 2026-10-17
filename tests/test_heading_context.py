@@ -11,6 +11,19 @@ from rerank import PassageReranker
 
 
 class HeadingTests(unittest.TestCase):
+    def test_only_one_standalone_latex_part_may_bridge_heading_and_body(self):
+        def row(n,call,text):return {'source_path':'a.py','source_kind':'streamlit_literal','locator':f'line:{n}:st.{call}','text':text}
+        rows=[row(10,'markdown','#### Precision'),row(11,'latex','TP/(TP+FP)'),row(12,'markdown','Cost of false alarms'),
+              row(20,'markdown','#### Other heading'),row(21,'code','intervening code'),row(22,'markdown','Unrelated body')]
+        with tempfile.TemporaryDirectory() as folder:
+            p=Path(folder)/'parts.jsonl';p.write_text('\n'.join(json.dumps(r) for r in rows),encoding='utf-8')
+            old=AdjacentHeadings(p,allow_formula=False);new=AdjacentHeadings(p)
+        self.assertIsNone(old.for_document(rows[2]))
+        context=new.for_document(rows[2])
+        self.assertEqual(context['text'],'#### Precision')
+        self.assertEqual(context['intervening_formula_locator'],'line:11:st.latex')
+        self.assertIsNone(new.for_document(rows[5]))
+
     def test_source_order_adjacency_and_boundaries(self):
         def row(line,text,path='a.py',kind='streamlit_literal'):
             return {'source_path':path,'source_kind':kind,'locator':f'line:{line}:st.markdown','text':text}

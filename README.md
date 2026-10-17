@@ -82,8 +82,9 @@ the original snapshot file after manifest SHA-256 validation. No course page or
 notebook is executed. See `docs/SOURCE_VIEWER.md` for limits and verification.
 
 The first frozen cross-topic acceptance check remains **not accepted**. Its
-historical PCA rejection is now repaired; the out-of-domain recipe and incomplete
-spam metric-choice evidence remain unresolved. See `docs/ACCEPTANCE_V1.md` and the
+historical PCA rejection and known English spam rationale have been repaired;
+the out-of-domain recipe and some multilingual formulations remain unresolved.
+See `docs/ACCEPTANCE_V1.md` and the
 preserved original review at `http://localhost:8765/eval/acceptance_v1_review.local.html`.
 
 Weak no-support matches now combine raw E5/reranker ranks only when every candidate
@@ -99,3 +100,10 @@ Thirty full paired searches plus40 fixed-passage replays found no new supported
 absent query; this is not independent human acceptance. Some PCA formulations
 remain weak. See `docs/HEADING_CONTEXT.md` and all excerpts at
 `http://localhost:8765/eval/heading_context_review.local.html`.
+
+Explicit precision/recall priority questions now retain the original supported
+winner and may add one missing error-cost explanation from the same candidate
+pool. The known English spam query now shows the lost-work-email rationale second;
+the context opens automatically and never supplies the original question's support
+score. PL cost coverage still has gaps. See `docs/METRIC_CHOICE.md` and all paired
+excerpts at `http://localhost:8765/eval/metric_choice_review.local.html`.

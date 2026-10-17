@@ -1,0 +1,12 @@
+{
+  "scope":"Fixed before implementing error-cost coverage. New formulations of known metrics, not independent topics. The soup/metric combination is an adversarial absent case.",
+  "criteria":"Known av02 must include explicit cost of losing legitimate email and a precision recommendation within top3. Preserve first result and whole-query gate for enriched requests. No new supported absent query; inspect new scenarios and reverse priority before promotion.",
+  "questions":[
+    {"id":"mc01","query":"Kdy je precision důležitější než recall při filtrování spamu?","expected":"supported"},
+    {"id":"mc02","query":"Kiedy precision jest ważniejsza od recall w filtrze spamu?","expected":"supported"},
+    {"id":"mc03","query":"When is recall more important than precision for medical screening?","expected":"supported"},
+    {"id":"mc04","query":"When is precision more important than recall for cooking tomato soup?","expected":"no_support"},
+    {"id":"mc05","query":"Why should we prefer precision over recall for an automated spam filter?","expected":"supported"},
+    {"id":"mc06","query":"Kolik dnes stojí jízdenka z Prahy do Brna?","expected":"no_support"}
+  ]
+}

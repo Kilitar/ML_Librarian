@@ -104,7 +104,10 @@ def render_result(rank, result, base_url, *, inline=False):
             st.caption(f"Výsledek {rank} · relevance {relevance:.3f}")
         st.caption(f"Soubor: {result['source_path']}")
 
-        with (st.container() if inline else st.expander("Zobrazit nalezený úryvek", expanded=(rank == 1))):
+        with (st.container() if inline else st.expander("Zobrazit nalezený úryvek", expanded=(rank == 1 or result.get('metric_choice_context', False)))):
+            if result.get('metric_choice_context'):
+                label = 'falešné poplachy (FP)' if result['metric_choice_plan']['error_code']=='FP' else 'přehlédnuté pozitivní případy (FN)'
+                st.caption('Doplňující kontext k volbě metriky: '+label)
             if result.get('heading_context'):
                 heading = result['heading_context']
                 st.caption(f"Nadpis ve zdroji: {heading['text'].lstrip('# ').strip()} · {heading['locator']}")

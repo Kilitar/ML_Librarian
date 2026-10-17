@@ -20,6 +20,7 @@ from semantic_layer import analyze
 from comparisons import comparison_aspects, coverage_order, approved_pair, comparison_context, contextual_score
 from source_filters import SOURCE_ROLES, SOURCE_ORIGINS, exclusions, allowed_indices
 from ranking_fusion import weak_fusion, VERSION as FUSION_VERSION
+from metric_choice import plan as metric_plan, eligible as metric_eligible, coverage_order as metric_coverage_order
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -166,7 +167,7 @@ class E5SearchIndex:
                match_constraints: bool = True, mode: str = "e5", semantic_layer: bool = True,
                semantic_experiment: bool = False, comparison_tuning: bool = True,
                comparison_experiment: bool = False, comparison_strategy: str = 'contextual',
-               excluded_roles=None, excluded_origins=None, ranking_strategy='weak_fusion') -> list[dict[str, Any]]:
+               excluded_roles=None, excluded_origins=None, ranking_strategy='weak_fusion', metric_choice_tuning=True) -> list[dict[str, Any]]:
         query = " ".join(query.split())
         if not query:
             raise ValueError("Enter a non-empty query")
@@ -193,7 +194,8 @@ class E5SearchIndex:
             results = view.search(query, limit=limit, match_constraints=match_constraints, mode=mode,
                                   semantic_layer=semantic_layer, semantic_experiment=semantic_experiment,
                                   comparison_tuning=comparison_tuning, comparison_experiment=comparison_experiment,
-                                  comparison_strategy=comparison_strategy, ranking_strategy=ranking_strategy)
+                                  comparison_strategy=comparison_strategy, ranking_strategy=ranking_strategy,
+                                  metric_choice_tuning=metric_choice_tuning)
             self.passage_reranker = view.passage_reranker
             return results
         original_query = query
@@ -237,6 +239,9 @@ class E5SearchIndex:
         constraint_details = {}
         evidence_scores = {}
         fusion_applied = False
+        metric_request = metric_plan(original_query) if mode=='rerank' and semantic_layer and metric_choice_tuning else None
+        metric_scores = {}
+        metric_promoted = None
         for index in candidates:
             adjustment, reasons = constraint_adjustment(
                 self.documents[index], requested, exact_task=(intent == "practice"),
@@ -309,6 +314,21 @@ class E5SearchIndex:
                         ranking_scores[i] = float(value)
                     ranked = sorted(candidates, key=ranking_scores.__getitem__, reverse=True)
                     fusion_applied = True
+            # The original supported winner remains first. Facet scores may add
+            # context but can never supply the original query's evidence score.
+            if metric_request and not (aspects or semantic_plan or acronym):
+                leading=select_distinct(self.documents,ranked,limit,max_per_source=2)
+                if leading and evidence_scores[leading[0]]['whole_query_score']>=.20:
+                    eligible=[i for i in ranked if metric_eligible(self.documents[i],metric_request)][:12]
+                    if eligible:
+                        try:
+                            facet=self.passage_reranker.score_details(metric_request['facet_query'],[self.documents[i] for i in eligible])['whole_query']
+                            if len(facet)!=len(eligible) or not np.isfinite(facet).all() or np.any((facet<0)|(facet>1)):
+                                raise ValueError('Invalid metric facet output')
+                            metric_scores={i:float(s) for i,s in zip(eligible,facet)}
+                            ranked,metric_promoted=metric_coverage_order(ranked,leading,metric_scores)
+                        except (OSError,ValueError,RuntimeError):
+                            pass  # Optional coverage failure retains base reranking.
         if acronym:
             ranked = [i for i in ranked if acronym_strengths[i] >= 0]
             ranked.sort(key=lambda i: (acronym_strengths[i], ranking_scores[i]), reverse=True)
@@ -328,6 +348,9 @@ class E5SearchIndex:
                 "lexical_score": float(lexical_scores[int(index)]),
                 "retrieval_mode": mode,
                 "ranking_policy": FUSION_VERSION if fusion_applied else 'reranker' if mode == 'rerank' else mode,
+                "metric_choice_plan": metric_request,
+                "metric_choice_facet_score": metric_scores.get(index),
+                "metric_choice_context": index==metric_promoted,
                 "canonical_query": canonical_definition,
                 "semantic_plan": semantic_plan,
                 "comparison_aspects": aspects,
