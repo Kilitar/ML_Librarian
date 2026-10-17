@@ -46,3 +46,8 @@ For the algorithm/dataset reranking comparison, run
 `.venv\Scripts\python.exe src\librarian\compare_constraints.py` and open
 `http://localhost:8765/eval/quality_comparison.local.html` with the local workspace
 HTTP server running. See `docs/CONSTRAINT_RERANKING.md` for results and limits.
+
+Fresh-question evaluation on the repaired corpus: run `evaluate_quality.py`,
+`score_quality.py`, and `render_quality_review.py` with `--set holdout_v1`.
+The review is at `http://localhost:8765/eval/holdout_v1_review.local.html`.
+See `docs/EVALUATION_HOLDOUT_V1.md` for provisional passage judgments and gaps.

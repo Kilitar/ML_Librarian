@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import argparse
 import json
 from pathlib import Path
 from statistics import mean
@@ -54,6 +55,9 @@ def score(results: dict, judgments: dict) -> dict:
 
 
 if __name__ == "__main__":
-    results = json.loads((ROOT / "eval/quality_results.local.json").read_text(encoding="utf-8"))
-    judgments = json.loads((ROOT / "eval/quality_judgments.json").read_text(encoding="utf-8"))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--set", choices=("quality", "holdout_v1"), default="quality")
+    args = parser.parse_args()
+    results = json.loads((ROOT / f"eval/{args.set}_results.local.json").read_text(encoding="utf-8"))
+    judgments = json.loads((ROOT / f"eval/{args.set}_judgments.json").read_text(encoding="utf-8"))
     print(json.dumps(score(results, judgments), ensure_ascii=False, indent=2))

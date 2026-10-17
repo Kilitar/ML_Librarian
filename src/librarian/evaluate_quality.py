@@ -5,6 +5,7 @@ No embedding rebuild, API call, or ranking changes. Run before inspecting result
 from __future__ import annotations
 
 import hashlib
+import argparse
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -15,7 +16,10 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def main() -> None:
-    questions_path = ROOT / "eval/quality_questions.json"
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--set", choices=("quality", "holdout_v1"), default="quality")
+    args = parser.parse_args()
+    questions_path = ROOT / f"eval/{args.set}_questions.json"
     questions = json.loads(questions_path.read_text(encoding="utf-8"))
     index = E5SearchIndex.load()
     rows = []
@@ -36,7 +40,7 @@ def main() -> None:
         "scope": "First-pass unseen topics; becomes a regression set after review. No tuning on this run.",
         "results": rows,
     }
-    destination = ROOT / "eval/quality_results.local.json"
+    destination = ROOT / f"eval/{args.set}_results.local.json"
     destination.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote {destination}")
 
