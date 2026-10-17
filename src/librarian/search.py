@@ -17,7 +17,7 @@ from rerank import PassageReranker, candidate_union, expand_neighbors, REVISION 
 from acronyms import requested_acronym, definition_strength
 from concepts import concept_strength
 from semantic_layer import analyze
-from comparisons import comparison_aspects, coverage_order, approved_pair
+from comparisons import comparison_aspects, coverage_order, approved_pair, comparison_context, contextual_score
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -163,7 +163,7 @@ class E5SearchIndex:
     def search(self, query: str, *, limit: int = 5,
                match_constraints: bool = True, mode: str = "e5", semantic_layer: bool = True,
                semantic_experiment: bool = False, comparison_tuning: bool = True,
-               comparison_experiment: bool = False) -> list[dict[str, Any]]:
+               comparison_experiment: bool = False, comparison_strategy: str = 'contextual') -> list[dict[str, Any]]:
         query = " ".join(query.split())
         if not query:
             raise ValueError("Enter a non-empty query")
@@ -173,10 +173,14 @@ class E5SearchIndex:
             raise ValueError("Result limit must be between 1 and 10")
         if mode not in {"e5", "hybrid", "rerank"}:
             raise ValueError("Unknown retrieval mode")
+        if comparison_strategy not in {'coverage','contextual'}:
+            raise ValueError('Unknown comparison strategy')
         original_query = query
         aspects = comparison_aspects(query) if mode == 'rerank' and comparison_tuning and semantic_layer else []
-        if aspects and not comparison_experiment and not approved_pair(aspects):
+        context = comparison_context(aspects) if aspects and comparison_strategy == 'contextual' else None
+        if aspects and not comparison_experiment and not (approved_pair(aspects) or context):
             aspects = []
+            context = None
         semantic_plan = analyze(query, production_only=not semantic_experiment) if mode == 'rerank' and semantic_layer else None
         canonical_definition = semantic_plan['canonical_query'] if semantic_plan else None
         related_only = bool(semantic_plan and semantic_plan['related_evidence_only'])
@@ -241,12 +245,15 @@ class E5SearchIndex:
                 if self.passage_reranker is None:
                     self.passage_reranker = PassageReranker()
                 documents = [self.documents[i] for i in candidates]
-                details = self.passage_reranker.score_details(query, documents, aspects=aspects) if aspects else self.passage_reranker.score_details(query, documents)
+                if context:
+                    details = self.passage_reranker.score_details(query, documents, aspects=aspects, context=context['query'])
+                else:
+                    details = self.passage_reranker.score_details(query, documents, aspects=aspects) if aspects else self.passage_reranker.score_details(query, documents)
                 pair_scores = details["relevance"]
             except (OSError, ValueError, RuntimeError):
                 fallback = self.search(original_query, limit=limit, match_constraints=match_constraints, mode="e5", semantic_layer=semantic_layer,
                                        semantic_experiment=semantic_experiment, comparison_tuning=comparison_tuning,
-                                       comparison_experiment=comparison_experiment)
+                                       comparison_experiment=comparison_experiment, comparison_strategy=comparison_strategy)
                 for result in fallback:
                     result["retrieval_warning"] = "Přesnější výběr pasáží není dostupný; zobrazuji základní vyhledávání."
                 return fallback
@@ -261,7 +268,13 @@ class E5SearchIndex:
             ranked = sorted(candidates, key=ranking_scores.__getitem__, reverse=True)
             if aspects:
                 aspect_scores = {i: values for i,values in zip(candidates, details['aspects'])}
-                ranked = coverage_order(ranked, aspect_scores, ranking_scores)
+                if context:
+                    for i, full, axis_score in zip(candidates, details['whole_query'], details['context']):
+                        evidence_scores[i]['context_score'] = float(axis_score)
+                        ranking_scores[i] = contextual_score(full, axis_score, aspect_scores[i]) + rank_adjustment(self.documents[i], intent) + constraint_details[i]['adjustment']
+                    ranked = sorted(candidates, key=ranking_scores.__getitem__, reverse=True)
+                else:
+                    ranked = coverage_order(ranked, aspect_scores, ranking_scores)
             if related_only:
                 ranked.sort(key=lambda i: (concept_strengths[i], ranking_scores[i]), reverse=True)
         if acronym:
@@ -285,6 +298,7 @@ class E5SearchIndex:
                 "canonical_query": canonical_definition,
                 "semantic_plan": semantic_plan,
                 "comparison_aspects": aspects,
+                "comparison_context": context,
                 "aspect_scores": [float(v) for v in aspect_scores[index]] if aspects else [],
                 "related_evidence_only": related_only,
                 "concept_evidence": concept_strengths.get(index) if related_only else None,

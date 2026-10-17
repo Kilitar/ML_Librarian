@@ -1,0 +1,199 @@
+{
+  "reviewer": "Codex provisional, not independent human review",
+  "scope": "Top-one relevance only; direct is not source-factual verification or full answer validation. Six target cases are correlated variants of the same comparison; three newly written formulations are not unseen topics.",
+  "raw_sha256": "874a4f60157b350626b1b4b9e299bf2d48204885122dce1fe2f271fbb289a385",
+  "judgments": [
+    {
+      "id": "labels_pl",
+      "before_grade": "partial",
+      "after_grade": "partial",
+      "reason": "První úryvek vysvětluje zejména unsupervised learning; oba výklady dohromady jsou v prvních dvou. Beze změny.",
+      "first_passages": {
+        "before": {
+          "chunk_id": "39ded026a239e789749a",
+          "text_sha256": "6a5b046effee76af5e9aa153919a01f144b5edffa5404b731101e018a6b67c12"
+        },
+        "after": {
+          "chunk_id": "39ded026a239e789749a",
+          "text_sha256": "6a5b046effee76af5e9aa153919a01f144b5edffa5404b731101e018a6b67c12"
+        }
+      }
+    },
+    {
+      "id": "house_cs",
+      "before_grade": "partial",
+      "after_grade": "direct",
+      "reason": "Před: stromový příklad ceny domu. Po: explicitně rozlišuje spojitý a kategoriální cíl.",
+      "first_passages": {
+        "before": {
+          "chunk_id": "73af79b77610feac2ddc",
+          "text_sha256": "8933612168289388d8588d704b7ce0a19f999436f0905992b49385b5133fed18"
+        },
+        "after": {
+          "chunk_id": "e81cca8e5f99452f636b",
+          "text_sha256": "591caef6f407c9c431b0e879e6a417fc47f13360614c4eef41aa294bcbc2cb15"
+        }
+      }
+    },
+    {
+      "id": "named_en",
+      "before_grade": "partial",
+      "after_grade": "partial",
+      "reason": "První úryvek vysvětluje hlavně unsupervised; první dva společně pokrývají obě strany. Beze změny.",
+      "first_passages": {
+        "before": {
+          "chunk_id": "39ded026a239e789749a",
+          "text_sha256": "6a5b046effee76af5e9aa153919a01f144b5edffa5404b731101e018a6b67c12"
+        },
+        "after": {
+          "chunk_id": "39ded026a239e789749a",
+          "text_sha256": "6a5b046effee76af5e9aa153919a01f144b5edffa5404b731101e018a6b67c12"
+        }
+      }
+    },
+    {
+      "id": "fresh_cs",
+      "before_grade": "off_topic",
+      "after_grade": "direct",
+      "reason": "Před: shlukování, přímý rozdíl až ve druhém diagramu. Po: oba typy cíle přímo v prvním úryvku.",
+      "first_passages": {
+        "before": {
+          "chunk_id": "5359f160c13e5d85f2c9",
+          "text_sha256": "ee3e66faee866482f741e64755e48e12f51dc57ced48c658012e7e3a8a83a54c"
+        },
+        "after": {
+          "chunk_id": "e81cca8e5f99452f636b",
+          "text_sha256": "591caef6f407c9c431b0e879e6a417fc47f13360614c4eef41aa294bcbc2cb15"
+        }
+      }
+    },
+    {
+      "id": "fresh_en",
+      "before_grade": "direct",
+      "after_grade": "direct",
+      "reason": "Overfitting/underfitting vysvětleny přímo prvním úryvkem; produkce nerozšiřuje neověřenou osu.",
+      "first_passages": {
+        "before": {
+          "chunk_id": "98aeb9ed2c7f72d534a0",
+          "text_sha256": "881be05fc10890ad819ee2ac06ed2e7504f812efb76b27d2c07e9ef1b37fd59d"
+        },
+        "after": {
+          "chunk_id": "98aeb9ed2c7f72d534a0",
+          "text_sha256": "881be05fc10890ad819ee2ac06ed2e7504f812efb76b27d2c07e9ef1b37fd59d"
+        }
+      }
+    },
+    {
+      "id": "fresh_pl",
+      "before_grade": "off_topic",
+      "after_grade": "direct",
+      "reason": "Před: shlukování, potřebné srovnání druhé. Po: přímý výklad první; druhá pasáž o škálování je nadále slabina.",
+      "first_passages": {
+        "before": {
+          "chunk_id": "5359f160c13e5d85f2c9",
+          "text_sha256": "ee3e66faee866482f741e64755e48e12f51dc57ced48c658012e7e3a8a83a54c"
+        },
+        "after": {
+          "chunk_id": "e81cca8e5f99452f636b",
+          "text_sha256": "591caef6f407c9c431b0e879e6a417fc47f13360614c4eef41aa294bcbc2cb15"
+        }
+      }
+    },
+    {
+      "id": "clock",
+      "before_grade": "off_topic",
+      "after_grade": "off_topic",
+      "reason": "Slabé DBSCAN shody, správně no_support. Beze změny.",
+      "first_passages": {
+        "before": {
+          "chunk_id": "33901114a82589620b90",
+          "text_sha256": "1044596bd0255cc9052c5fa8131e91d51b76079c8782e717785686093b15e23b"
+        },
+        "after": {
+          "chunk_id": "33901114a82589620b90",
+          "text_sha256": "1044596bd0255cc9052c5fa8131e91d51b76079c8782e717785686093b15e23b"
+        }
+      }
+    },
+    {
+      "id": "ml",
+      "before_grade": "direct",
+      "after_grade": "direct",
+      "reason": "Rozpis ML v prvním výsledku zachován.",
+      "first_passages": {
+        "before": {
+          "chunk_id": "3bc4fc3a05aba14aca00",
+          "text_sha256": "06b137fcdfbe238563247b13a9b0b9f34fd4c04bb5ed8e20f6309cf724df44f6"
+        },
+        "after": {
+          "chunk_id": "3bc4fc3a05aba14aca00",
+          "text_sha256": "06b137fcdfbe238563247b13a9b0b9f34fd4c04bb5ed8e20f6309cf724df44f6"
+        }
+      }
+    },
+    {
+      "id": "deep",
+      "before_grade": "partial",
+      "after_grade": "partial",
+      "reason": "Související neuronové architektury zachovány; nejde o úplnou definici DL.",
+      "first_passages": {
+        "before": {
+          "chunk_id": "3b2a973d29d8bef28d2f",
+          "text_sha256": "9bbab1229a0b887fb742eefa1be6e814152ffb314b8df12dc0939683375f2fbc"
+        },
+        "after": {
+          "chunk_id": "3b2a973d29d8bef28d2f",
+          "text_sha256": "9bbab1229a0b887fb742eefa1be6e814152ffb314b8df12dc0939683375f2fbc"
+        }
+      }
+    },
+    {
+      "id": "axis_fresh_cs",
+      "before_grade": "off_topic",
+      "after_grade": "direct",
+      "reason": "Nové obrácené pořadí pojmů: shlukování nahrazeno explicitním srovnáním cílových proměnných.",
+      "first_passages": {
+        "before": {
+          "chunk_id": "5359f160c13e5d85f2c9",
+          "text_sha256": "ee3e66faee866482f741e64755e48e12f51dc57ced48c658012e7e3a8a83a54c"
+        },
+        "after": {
+          "chunk_id": "e81cca8e5f99452f636b",
+          "text_sha256": "591caef6f407c9c431b0e879e6a417fc47f13360614c4eef41aa294bcbc2cb15"
+        }
+      }
+    },
+    {
+      "id": "axis_fresh_en",
+      "before_grade": "off_topic",
+      "after_grade": "direct",
+      "reason": "Nová EN formulace: shlukování nahrazeno explicitním rozlišením obou typů cíle.",
+      "first_passages": {
+        "before": {
+          "chunk_id": "5359f160c13e5d85f2c9",
+          "text_sha256": "ee3e66faee866482f741e64755e48e12f51dc57ced48c658012e7e3a8a83a54c"
+        },
+        "after": {
+          "chunk_id": "e81cca8e5f99452f636b",
+          "text_sha256": "591caef6f407c9c431b0e879e6a417fc47f13360614c4eef41aa294bcbc2cb15"
+        }
+      }
+    },
+    {
+      "id": "axis_fresh_pl",
+      "before_grade": "partial",
+      "after_grade": "direct",
+      "reason": "Nová PL formulace: dílčí výklad logistické regrese nahrazen přímým srovnáním regrese/klasifikace.",
+      "first_passages": {
+        "before": {
+          "chunk_id": "a84bfd59d66fcf4ecdc5",
+          "text_sha256": "2d635bd55d169dee997fdc1ec173b318a8dcf4ad851a234f6394ccf19b16a9a5"
+        },
+        "after": {
+          "chunk_id": "e81cca8e5f99452f636b",
+          "text_sha256": "591caef6f407c9c431b0e879e6a417fc47f13360614c4eef41aa294bcbc2cb15"
+        }
+      }
+    }
+  ]
+}

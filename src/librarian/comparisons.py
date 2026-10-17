@@ -1,7 +1,8 @@
 """Bounded comparison decomposition; original query always retains its own score."""
 import re
 from constraints import normalize
-from semantic_layer import analyze
+from semantic_layer import analyze, CONCEPTS, REGISTRY, VERSION, FINGERPRINT
+import math
 
 
 def aspect_query(aspect):
@@ -40,6 +41,25 @@ def comparison_aspects(query):
 def approved_pair(aspects):
     return len(aspects) == 2 and set(aspects) == {
         'What is supervised learning?', 'What is unsupervised learning?'}
+
+
+def comparison_context(aspects):
+    plans = [analyze(a) for a in aspects]
+    if len(plans) != 2 or not all(plans):
+        return None
+    concepts = [CONCEPTS[p['concept_id']] for p in plans]
+    axes = set(concepts[0].get('comparison_axes', [])) & set(concepts[1].get('comparison_axes', []))
+    if not axes or concepts[0]['id'] == concepts[1]['id']:
+        return None
+    axis = sorted(axes)[0]
+    return {'axis':axis, 'version':VERSION, 'vocabulary_sha256':FINGERPRINT,
+            'query':f"How do {concepts[0]['label']} and {concepts[1]['label']} differ in {REGISTRY['comparison_axes'][axis]}?"}
+
+
+def contextual_score(whole, context, aspects):
+    """Fixed blend; a single strong side cannot dominate joint comparison."""
+    joint = math.sqrt(max(0, float(aspects[0])) * max(0, float(aspects[1])))
+    return .50 * float(context) + .25 * float(whole) + .25 * joint
 
 
 def coverage_order(ranked, aspect_scores, ranking_scores):

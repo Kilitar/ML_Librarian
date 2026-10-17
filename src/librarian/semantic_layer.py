@@ -13,6 +13,9 @@ FINGERPRINT = hashlib.sha256(_raw).hexdigest()
 CONCEPTS = {c['id']: c for c in REGISTRY['concepts']}
 ALIASES = {}
 for concept in CONCEPTS.values():
+    for axis in concept.get('comparison_axes', []):
+        if axis not in REGISTRY.get('comparison_axes', {}):
+            raise ValueError('Unknown comparison axis')
     for aliases in concept['aliases'].values():
         for alias in aliases:
             key = normalize(alias)

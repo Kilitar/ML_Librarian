@@ -10,6 +10,14 @@ from diversify import select_distinct
 
 
 class RerankTests(unittest.TestCase):
+    def test_context_score_is_separate_from_original_and_aspects(self):
+        reranker = PassageReranker.__new__(PassageReranker)
+        reranker.model = Mock()
+        reranker.model.predict.return_value = np.array([.01,.2,.3,.99])
+        details = reranker.score_details('Compare', [{'source_path':'a','text':'a'}], aspects=['A','B'],context='Axis')
+        np.testing.assert_allclose(details['whole_query'], [.01])
+        np.testing.assert_allclose(details['aspects'], [[.2,.3]])
+        np.testing.assert_allclose(details['context'], [.99])
     def test_aspects_never_replace_whole_query_score(self):
         reranker = PassageReranker.__new__(PassageReranker)
         reranker.model = Mock()

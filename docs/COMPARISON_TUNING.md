@@ -1,5 +1,7 @@
 # Comparison retrieval tuning
 
+Latest: the bounded prediction-target contextual strategy supersedes the rejected maximum-aspect experiment for recognized regression/classification comparisons. See `CONTEXTUAL_COMPARISON.md`. The rejected experiment and earlier supervised/unsupervised coverage route below are retained for reproduction; they are not the entire current production policy.
+
 This is evaluation-driven retrieval/reranking tuning, specifically query decomposition and coverage-aware reranking. Model weights are unchanged; this is not model fine-tuning.
 
 `comparisons.py` recognizes bounded CZ/EN/PL comparison grammar and extracts two aspects. Reviewed exact domain names can supply canonical aspect queries. Explicit label-presence cues in a learning/grouping context map to supervised/unsupervised learning; that mapping is a domain rule, not learned understanding. Raw normalized aspects remain unchanged otherwise. The original full question is always scored separately.

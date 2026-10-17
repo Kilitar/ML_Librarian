@@ -1,4 +1,6 @@
-# Domain semantic layer v1
+# Domain semantic layer
+
+Current: domain-v2 adds a shared prediction-target axis for recognized regression/classification comparisons. Those concepts still do not receive simple-definition rewrites. The contextual comparison route is now promoted; its learned relevance scoring and limits are described in `CONTEXTUAL_COMPARISON.md`. The v1 ablation and decisions below remain historical evidence.
 
 The domain vocabulary is explicit, reviewed data in `src/librarian/domain_concepts.json`, not learned model knowledge. Eight concepts have CZ/EN/PL aliases, separate abbreviations, and typed relations. `semantic_layer.py` validates alias uniqueness and relation targets, and supplies versioned plans with the vocabulary SHA-256. No answer text, source IDs, or document-specific boosts are stored in the vocabulary.
 

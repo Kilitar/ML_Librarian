@@ -14,6 +14,7 @@ class GateTests(unittest.TestCase):
     def test_bonus_and_subquestion_scores_cannot_supply_support(self):
         result = self.passage(.02)
         result['passage_score'] = .99
+        result['context_score'] = .99
         result['aspect_scores'] = [.99,.98]
         self.assertEqual(assess_evidence([result])['status'], 'no_support')
 

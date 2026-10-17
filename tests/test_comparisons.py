@@ -2,10 +2,21 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src/librarian'))
-from comparisons import comparison_aspects, coverage_order, aspect_query, approved_pair
+from comparisons import comparison_aspects, coverage_order, aspect_query, approved_pair, comparison_context, contextual_score
 
 
 class ComparisonTests(unittest.TestCase):
+    def test_comparison_axis_requires_shared_reviewed_relation(self):
+        context = comparison_context(comparison_aspects('Jaký je rozdíl mezi regresí a klasifikací?'))
+        self.assertEqual(context['axis'], 'prediction_target')
+        self.assertEqual(context['version'], 'domain-v2')
+        self.assertEqual(len(context['vocabulary_sha256']),64)
+        self.assertIn('the type of prediction target',context['query'])
+        self.assertIsNone(comparison_context(['What is machine learning?','What is overfitting?']))
+        self.assertIsNone(comparison_context(['What is regression?','What is regression?']))
+
+    def test_joint_score_limits_one_strong_side(self):
+        self.assertGreater(contextual_score(.3,.9,[.4,.4]), contextual_score(.3,.1,[.99,.001]))
     def test_multilingual_comparison_and_unchanged_noncomparison(self):
         for q in ('Jaký je rozdíl mezi regresí a klasifikací?', 'What is the difference between regression and classification?', 'Jaka jest różnica między regresją a klasyfikacją?'):
             self.assertEqual(len(comparison_aspects(q)), 2)

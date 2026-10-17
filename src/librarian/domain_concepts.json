@@ -1,13 +1,202 @@
 {
-  "version": "domain-v1",
+  "version": "domain-v2",
   "concepts": [
-    {"id":"machine_learning","label":"machine learning","aliases":{"cs":["strojové učení"],"en":["machine learning"],"pl":["uczenie maszynowe"]},"abbreviations":["ML"],"relations":[]},
-    {"id":"deep_learning","label":"deep learning","aliases":{"cs":["hluboké učení"],"en":["deep learning"],"pl":["głębokie uczenie"]},"abbreviations":["DL"],"relations":[{"type":"subfield_of","target":"machine_learning"},{"type":"uses","target":"neural_networks"}],"related_evidence_only":true},
-    {"id":"neural_networks","label":"neural networks","aliases":{"cs":["neuronové sítě","umělé neuronové sítě"],"en":["neural networks","artificial neural networks"],"pl":["sieci neuronowe"]},"abbreviations":["ANN"],"relations":[{"type":"method_family_in","target":"machine_learning"}]},
-    {"id":"overfitting","label":"overfitting","aliases":{"cs":["přeučení"],"en":["overfitting"],"pl":["przeuczenie","nadmierne dopasowanie"]},"abbreviations":[],"relations":[]},
-    {"id":"regression","label":"regression","aliases":{"cs":["regrese"],"en":["regression"],"pl":["regresja"]},"abbreviations":[],"relations":[{"type":"task_in","target":"supervised_learning"}]},
-    {"id":"classification","label":"classification","aliases":{"cs":["klasifikace"],"en":["classification"],"pl":["klasyfikacja"]},"abbreviations":[],"relations":[{"type":"task_in","target":"supervised_learning"}]},
-    {"id":"supervised_learning","label":"supervised learning","aliases":{"cs":["učení s učitelem","řízené učení"],"en":["supervised learning"],"pl":["uczenie nadzorowane"]},"abbreviations":[],"relations":[{"type":"paradigm_in","target":"machine_learning"}]},
-    {"id":"unsupervised_learning","label":"unsupervised learning","aliases":{"cs":["učení bez učitele","neřízené učení"],"en":["unsupervised learning"],"pl":["uczenie nienadzorowane"]},"abbreviations":[],"relations":[{"type":"paradigm_in","target":"machine_learning"}]}
-  ]
+    {
+      "id": "machine_learning",
+      "label": "machine learning",
+      "aliases": {
+        "cs": [
+          "strojové učení"
+        ],
+        "en": [
+          "machine learning"
+        ],
+        "pl": [
+          "uczenie maszynowe"
+        ]
+      },
+      "abbreviations": [
+        "ML"
+      ],
+      "relations": []
+    },
+    {
+      "id": "deep_learning",
+      "label": "deep learning",
+      "aliases": {
+        "cs": [
+          "hluboké učení"
+        ],
+        "en": [
+          "deep learning"
+        ],
+        "pl": [
+          "głębokie uczenie"
+        ]
+      },
+      "abbreviations": [
+        "DL"
+      ],
+      "relations": [
+        {
+          "type": "subfield_of",
+          "target": "machine_learning"
+        },
+        {
+          "type": "uses",
+          "target": "neural_networks"
+        }
+      ],
+      "related_evidence_only": true
+    },
+    {
+      "id": "neural_networks",
+      "label": "neural networks",
+      "aliases": {
+        "cs": [
+          "neuronové sítě",
+          "umělé neuronové sítě"
+        ],
+        "en": [
+          "neural networks",
+          "artificial neural networks"
+        ],
+        "pl": [
+          "sieci neuronowe"
+        ]
+      },
+      "abbreviations": [
+        "ANN"
+      ],
+      "relations": [
+        {
+          "type": "method_family_in",
+          "target": "machine_learning"
+        }
+      ]
+    },
+    {
+      "id": "overfitting",
+      "label": "overfitting",
+      "aliases": {
+        "cs": [
+          "přeučení"
+        ],
+        "en": [
+          "overfitting"
+        ],
+        "pl": [
+          "przeuczenie",
+          "nadmierne dopasowanie"
+        ]
+      },
+      "abbreviations": [],
+      "relations": []
+    },
+    {
+      "id": "regression",
+      "label": "regression",
+      "aliases": {
+        "cs": [
+          "regrese",
+          "regresí"
+        ],
+        "en": [
+          "regression"
+        ],
+        "pl": [
+          "regresja",
+          "regresją",
+          "regresji"
+        ]
+      },
+      "abbreviations": [],
+      "relations": [
+        {
+          "type": "task_in",
+          "target": "supervised_learning"
+        }
+      ],
+      "comparison_axes": [
+        "prediction_target"
+      ]
+    },
+    {
+      "id": "classification",
+      "label": "classification",
+      "aliases": {
+        "cs": [
+          "klasifikace",
+          "klasifikací"
+        ],
+        "en": [
+          "classification"
+        ],
+        "pl": [
+          "klasyfikacja",
+          "klasyfikacją",
+          "klasyfikacji"
+        ]
+      },
+      "abbreviations": [],
+      "relations": [
+        {
+          "type": "task_in",
+          "target": "supervised_learning"
+        }
+      ],
+      "comparison_axes": [
+        "prediction_target"
+      ]
+    },
+    {
+      "id": "supervised_learning",
+      "label": "supervised learning",
+      "aliases": {
+        "cs": [
+          "učení s učitelem",
+          "řízené učení"
+        ],
+        "en": [
+          "supervised learning"
+        ],
+        "pl": [
+          "uczenie nadzorowane"
+        ]
+      },
+      "abbreviations": [],
+      "relations": [
+        {
+          "type": "paradigm_in",
+          "target": "machine_learning"
+        }
+      ]
+    },
+    {
+      "id": "unsupervised_learning",
+      "label": "unsupervised learning",
+      "aliases": {
+        "cs": [
+          "učení bez učitele",
+          "neřízené učení"
+        ],
+        "en": [
+          "unsupervised learning"
+        ],
+        "pl": [
+          "uczenie nienadzorowane"
+        ]
+      },
+      "abbreviations": [],
+      "relations": [
+        {
+          "type": "paradigm_in",
+          "target": "machine_learning"
+        }
+      ]
+    }
+  ],
+  "comparison_axes": {
+    "prediction_target": "the type of prediction target"
+  }
 }
