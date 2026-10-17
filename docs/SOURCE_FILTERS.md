@@ -1,0 +1,13 @@
+# Source filters
+
+The Streamlit search form includes a collapsed “Filtry zdrojů” section with two multiselects: hide material roles and hide source origins. Defaults hide nothing. Changes apply with “Vyhledat zdroje”, together with the question. Active exclusions for the submitted results are shown below the question; changing unsubmitted form values does not relabel old results.
+
+Roles match existing tags: exercises/tasks, theory/analysis, summaries, implementation examples and general study material. Origins match existing tags: Coderslab PDF, course notes, Streamlit presentations and notebooks. Role/origin dimensions are independent; any selected exclusion removes the matching material. Classification remains the existing path-based heuristic, not a new manual source inventory.
+
+API `E5SearchIndex.search(..., excluded_roles=[...], excluded_origins=[...])` restricts the searchable corpus before candidate generation. A per-request view selects the existing documents/embeddings and shares loaded models. Its TF-IDF index is built over the allowed subset. Candidate neighbors, acronym/axis expansion and E5 fallback therefore cannot reintroduce hidden groups. This can retrieve replacement allowed passages beyond the old top five. Results can still be fewer if eligible distinct passages/evidence are insufficient.
+
+The original corpus/index are unchanged. Filters do not modify the shared document list or persist a filtered index across sessions; model instances are reused. Empty exclusions preserve default behavior. Unknown filter tags are rejected. An entirely excluded corpus returns an empty result without encoding the query. With active filters and insufficient support, the UI explicitly says it found no support in the selected groups and suggests allowing more groups; it does not claim the full corpus lacks evidence.
+
+68 unit tests pass, including full-corpus refill, combined role/origin exclusions, empty/all-hidden cases, no cross-query leakage and fallback containment. Actual Streamlit form checks cover six cases: defaults, PDF exclusion, theory exclusion, combined filters, all roles excluded and clear/restore. Exclusion cases return five allowed results in that fixed ML-definition test; clearing restores all baseline chunk IDs in order. Raw local test evidence is `eval/source_filters.local.json` (ignored). These are deterministic functional checks, not new relevance-accuracy claims.
+
+Filters apply equally to primary cards, supplementary matches and weak diagnostics, because excluded sources never enter the search view. They remain session-scoped form preferences. CLI flags are unchanged; API filters are optional.

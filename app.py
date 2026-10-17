@@ -14,6 +14,7 @@ from search import E5SearchIndex  # noqa: E402
 from snippet_format import format_snippet  # noqa: E402
 from evidence_gate import assess_evidence  # noqa: E402
 from result_presentation import partition_results  # noqa: E402
+from source_filters import SOURCE_ROLES, SOURCE_ORIGINS  # noqa: E402
 
 
 st.set_page_config(page_title="ML Librarian · evidence search", page_icon="📚", layout="wide")
@@ -94,6 +95,10 @@ with st.form("evidence_search", clear_on_submit=False):
         max_chars=1000,
         help="Zadej dotaz česky, anglicky nebo polsky.",
     )
+    with st.expander("Filtry zdrojů", expanded=False):
+        hidden_roles = st.multiselect("Skrýt typy materiálu", SOURCE_ROLES, key="hidden_roles")
+        hidden_origins = st.multiselect("Skrýt původ zdroje", SOURCE_ORIGINS, key="hidden_origins")
+        st.caption("Například skryj cvičení nebo Coderslab PDF. Filtry se použijí po kliknutí na Vyhledat zdroje.")
     submitted = st.form_submit_button("Vyhledat zdroje", type="primary")
 
 if submitted:
@@ -104,8 +109,10 @@ if submitted:
         try:
             with st.spinner("Hledám relevantní pasáže v lokálním korpusu…"):
                 index = get_search_index()
-                st.session_state["evidence_results"] = index.search(query, limit=5, mode="rerank")
+                st.session_state["evidence_results"] = index.search(query, limit=5, mode="rerank",
+                                                                  excluded_roles=hidden_roles, excluded_origins=hidden_origins)
                 st.session_state["evidence_query"] = query
+                st.session_state["evidence_filters"] = list(hidden_roles) + list(hidden_origins)
         except (FileNotFoundError, ValueError, OSError) as exc:
             st.error(str(exc))
         except Exception:
@@ -116,7 +123,10 @@ if results is not None:
     evidence = assess_evidence(results, st.session_state.get("evidence_query", ""))
     st.subheader("Výsledek vyhledávání" if evidence["status"] == "no_support" else "Nalezené zdroje")
     if evidence["status"] == "no_support":
-        st.info("V materiálech jsem nenašel dostatečnou oporu pro tento dotaz. Zkus otázku ke kurzu Data Science / Machine Learning nebo upřesni téma.")
+        if st.session_state.get("evidence_filters"):
+            st.info("Ve vybraných skupinách jsem nenašel dostatečnou oporu pro tento dotaz. Zkus povolit další skupiny nebo upřesnit otázku.")
+        else:
+            st.info("V materiálech jsem nenašel dostatečnou oporu pro tento dotaz. Zkus otázku ke kurzu Data Science / Machine Learning nebo upřesni téma.")
     elif evidence["status"] == "uncertain":
         if evidence.get("reason") == "comparison_partial_evidence":
             st.info("Našel jsem dílčí podklady k oběma částem otázky. Opora pro celé srovnání zůstává nejistá; ověř souvislost v úryvcích níže.")
@@ -133,6 +143,9 @@ if results is not None:
     )
     st.caption("📓 Cvičení / úkol · 🔎 Teorie / analýza · 🟨 ikona Coderslab označuje původní materiál z jeho PDF")
     st.caption("Relevance je pořadové skóre, nikoli pravděpodobnost správnosti.")
+    active_filters = st.session_state.get("evidence_filters", [])
+    if active_filters:
+        st.caption("Skryté skupiny: " + " · ".join(active_filters))
     routes_config = read_routes_config()
     base_url = routes_config.get("streamlit_base_url")
 

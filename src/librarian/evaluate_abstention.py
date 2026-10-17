@@ -8,7 +8,7 @@ from search import E5SearchIndex, MANIFEST
 from evidence_gate import assess_evidence, POLICY_VERSION, LOW_SUPPORT, SUFFICIENT_SUPPORT
 
 ROOT = Path(__file__).resolve().parents[2]
-FILES = ('search.py', 'rerank.py', 'evidence_gate.py', 'constraints.py', 'diversify.py', 'hybrid.py', 'chunk_text.py', 'acronyms.py', 'snippet_format.py', 'concepts.py', 'semantic_layer.py', 'domain_concepts.json', 'comparisons.py')
+FILES = ('search.py', 'rerank.py', 'evidence_gate.py', 'constraints.py', 'diversify.py', 'hybrid.py', 'chunk_text.py', 'acronyms.py', 'snippet_format.py', 'concepts.py', 'semantic_layer.py', 'domain_concepts.json', 'comparisons.py', 'source_filters.py')
 
 
 def main():

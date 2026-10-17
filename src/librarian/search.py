@@ -18,6 +18,7 @@ from acronyms import requested_acronym, definition_strength
 from concepts import concept_strength
 from semantic_layer import analyze
 from comparisons import comparison_aspects, coverage_order, approved_pair, comparison_context, contextual_score
+from source_filters import SOURCE_ROLES, SOURCE_ORIGINS, exclusions, allowed_indices
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -163,7 +164,8 @@ class E5SearchIndex:
     def search(self, query: str, *, limit: int = 5,
                match_constraints: bool = True, mode: str = "e5", semantic_layer: bool = True,
                semantic_experiment: bool = False, comparison_tuning: bool = True,
-               comparison_experiment: bool = False, comparison_strategy: str = 'contextual') -> list[dict[str, Any]]:
+               comparison_experiment: bool = False, comparison_strategy: str = 'contextual',
+               excluded_roles=None, excluded_origins=None) -> list[dict[str, Any]]:
         query = " ".join(query.split())
         if not query:
             raise ValueError("Enter a non-empty query")
@@ -175,6 +177,22 @@ class E5SearchIndex:
             raise ValueError("Unknown retrieval mode")
         if comparison_strategy not in {'coverage','contextual'}:
             raise ValueError('Unknown comparison strategy')
+        hidden_roles = exclusions(excluded_roles, SOURCE_ROLES)
+        hidden_origins = exclusions(excluded_origins, SOURCE_ORIGINS)
+        if hidden_roles or hidden_origins:
+            allowed = allowed_indices(self.documents, classify_source, hidden_roles, hidden_origins)
+            if not allowed:
+                return []
+            # A per-request view prevents candidates, neighbors and fallback from
+            # leaking excluded groups. Shared models stay loaded; corpus unchanged.
+            view = E5SearchIndex([self.documents[i] for i in allowed], self.embeddings[allowed], self.model)
+            view.passage_reranker = self.passage_reranker
+            results = view.search(query, limit=limit, match_constraints=match_constraints, mode=mode,
+                                  semantic_layer=semantic_layer, semantic_experiment=semantic_experiment,
+                                  comparison_tuning=comparison_tuning, comparison_experiment=comparison_experiment,
+                                  comparison_strategy=comparison_strategy)
+            self.passage_reranker = view.passage_reranker
+            return results
         original_query = query
         aspects = comparison_aspects(query) if mode == 'rerank' and comparison_tuning and semantic_layer else []
         context = comparison_context(aspects) if aspects and comparison_strategy == 'contextual' else None
