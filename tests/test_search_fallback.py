@@ -32,7 +32,7 @@ class SearchFallbackTests(unittest.TestCase):
 
     def test_prediction_error_does_not_break_search(self):
         self.index.passage_reranker = Mock()
-        self.index.passage_reranker.scores.side_effect = RuntimeError('inference unavailable')
+        self.index.passage_reranker.score_details.side_effect = RuntimeError('inference unavailable')
         results = self.index.search('What is alpha?', mode='rerank')
         self.assertEqual(results[0]['chunk_id'], '0')
         self.assertIn('retrieval_warning', results[0])

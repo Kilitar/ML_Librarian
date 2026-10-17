@@ -65,3 +65,9 @@ are `--mode rerank` (default), `--mode e5`, and experimental `--mode hybrid`.
 Python API callers must pass `mode="rerank"`; its legacy default remains E5.
 See `docs/RELIABILITY_RERANKER.md` and the full 25-query local review at
 `http://localhost:8765/eval/reliability_comparison.local.html`.
+
+Evidence availability now separates low-support matches from ordinary results.
+For example, `kolik je hodin` shows a no-support message and collapsed weak matches.
+Uncertain questions retain visible passages; E5 fallback is unassessed. The CLI
+supports `--show-weak`. See `docs/ABSTENTION.md` and the 40-query local review at
+`http://localhost:8765/eval/abstention_review.local.html` (`evaluate_abstention.py`).

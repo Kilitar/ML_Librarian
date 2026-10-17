@@ -1,0 +1,26 @@
+"""Conservative, versioned evidence availability signal, not answer verification."""
+import math
+from rerank import REVISION
+from constraints import normalize
+
+POLICY_VERSION = "evidence-v1"
+LOW_SUPPORT = 0.10
+SUFFICIENT_SUPPORT = 0.20
+
+
+def assess_evidence(results: list[dict], query: str = "") -> dict:
+    if normalize(query) in {"jak to funguje", "co je lepsi", "how does it work", "which is better",
+                            "jak to dziala", "co wybrac", "proc", "why", "dlaczego"}:
+        return {"status": "uncertain", "policy": POLICY_VERSION, "score": None, "reason": "ambiguous_query"}
+    if not results:
+        return {"status": "no_support", "policy": POLICY_VERSION, "score": None}
+    scores = []
+    for result in results:
+        value = result.get("whole_query_score")
+        if (result.get("retrieval_mode") != "rerank" or result.get("reranker_revision") != REVISION
+                or not isinstance(value, (int, float)) or not math.isfinite(value) or not 0 <= value <= 1):
+            return {"status": "unassessed", "policy": POLICY_VERSION, "score": None}
+        scores.append(value)
+    best = max(scores)
+    status = "supported" if best >= SUFFICIENT_SUPPORT else "uncertain" if best >= LOW_SUPPORT else "no_support"
+    return {"status": status, "policy": POLICY_VERSION, "score": best}

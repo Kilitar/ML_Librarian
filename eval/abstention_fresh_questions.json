@@ -1,0 +1,17 @@
+[
+  {"id":"clock_cs","query":"kolik je hodin","expected":"no_support"},
+  {"id":"clock_en","query":"What time is it right now?","expected":"no_support"},
+  {"id":"clock_pl","query":"Która jest teraz godzina?","expected":"no_support"},
+  {"id":"private_cs","query":"Jaký je můj PIN k platební kartě?","expected":"no_support"},
+  {"id":"weather_pl","query":"Jaka będzie jutro pogoda w Warszawie?","expected":"no_support"},
+  {"id":"plumbing_en","query":"How do I repair a leaking kitchen faucet?","expected":"no_support"},
+  {"id":"short_pca","query":"PCA","expected":"supported"},
+  {"id":"short_regularization","query":"regularizace","expected":"supported"},
+  {"id":"short_scaling_pl","query":"standaryzacja cech","expected":"supported"},
+  {"id":"time_training_cs","query":"Jak měřit dobu trénování modelu a proč Random Forest může trénovat paralelně?","expected":"supported"},
+  {"id":"precision_en","query":"How is precision computed from true positives and false positives?","expected":"supported"},
+  {"id":"cluster_pl","query":"Kiedy użyć K-Means do grupowania klientów?","expected":"supported"},
+  {"id":"ambiguous_cs","query":"Jak to funguje?","expected":"uncertain"},
+  {"id":"ambiguous_en","query":"Which is better?","expected":"uncertain"},
+  {"id":"ambiguous_pl","query":"Co wybrać?","expected":"uncertain"}
+]

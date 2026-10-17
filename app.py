@@ -12,6 +12,7 @@ CL_LOGO = ROOT / "data" / "Icons" / "codesrlab_logo_square.png"
 sys.path.insert(0, str(ROOT / "src" / "librarian"))
 from search import E5SearchIndex  # noqa: E402
 from snippet_format import format_snippet  # noqa: E402
+from evidence_gate import assess_evidence  # noqa: E402
 
 
 st.set_page_config(page_title="ML Librarian · evidence search", page_icon="📚", layout="wide")
@@ -75,7 +76,14 @@ if submitted:
 
 results = st.session_state.get("evidence_results")
 if results is not None:
-    st.subheader("Nalezené zdroje")
+    evidence = assess_evidence(results, st.session_state.get("evidence_query", ""))
+    st.subheader("Výsledek vyhledávání" if evidence["status"] == "no_support" else "Nalezené zdroje")
+    if evidence["status"] == "no_support":
+        st.info("V materiálech jsem nenašel dostatečnou oporu pro tento dotaz. Zkus otázku ke kurzu Data Science / Machine Learning nebo upřesni téma.")
+    elif evidence["status"] == "uncertain":
+        st.info("Opora v nalezených materiálech je nejistá. Níže jsou orientační pasáže; můžeš upřesnit téma, algoritmus nebo dataset.")
+    elif evidence["status"] == "unassessed":
+        st.info("Oporu dotazu se nepodařilo ověřit. Níže jsou základní podobné pasáže.")
     if results and results[0].get("retrieval_warning"):
         st.warning(results[0]["retrieval_warning"])
     st.caption(
@@ -86,40 +94,42 @@ if results is not None:
     routes_config = read_routes_config()
     base_url = routes_config.get("streamlit_base_url")
 
-    for rank, result in enumerate(results, 1):
-        source_role = result.get("source_role", "Studijní materiál")
-        source_origin = result.get("source_origin")
-        source_origin_icon = result.get("source_origin_icon", "📚")
-        badge_label, badge_color = source_role_badge(source_role)
-        with st.container(border=True):
-            origin_col, role_col, rank_col = st.columns([0.29, 0.45, 0.26], vertical_alignment="center")
-            with origin_col:
-                if source_origin == "Coderslab PDF" and CL_LOGO.is_file():
-                    logo_col, label_col = st.columns([0.25, 0.75], vertical_alignment="center")
-                    logo_col.image(str(CL_LOGO), width=30)
-                    label_col.markdown("**Coderslab PDF**")
-                else:
-                    st.markdown(f"{source_origin_icon} **{source_origin or 'Původ neuveden'}**")
-            with role_col:
-                st.badge(badge_label, color=badge_color)
-            with rank_col:
-                relevance = result.get("ranking_score", result["score"])
-                st.caption(f"Výsledek {rank} · relevance {relevance:.3f}")
-            st.caption(f"Soubor: {result['source_path']}")
+    evidence_container = st.expander("Zobrazit slabé shody (nemusejí odpovídat na dotaz)", expanded=False) if evidence["status"] == "no_support" else st.container()
+    with evidence_container:
+        for rank, result in enumerate(results, 1):
+            source_role = result.get("source_role", "Studijní materiál")
+            source_origin = result.get("source_origin")
+            source_origin_icon = result.get("source_origin_icon", "📚")
+            badge_label, badge_color = source_role_badge(source_role)
+            with st.container(border=True):
+                origin_col, role_col, rank_col = st.columns([0.29, 0.45, 0.26], vertical_alignment="center")
+                with origin_col:
+                    if source_origin == "Coderslab PDF" and CL_LOGO.is_file():
+                        logo_col, label_col = st.columns([0.25, 0.75], vertical_alignment="center")
+                        logo_col.image(str(CL_LOGO), width=30)
+                        label_col.markdown("**Coderslab PDF**")
+                    else:
+                        st.markdown(f"{source_origin_icon} **{source_origin or 'Původ neuveden'}**")
+                with role_col:
+                    st.badge(badge_label, color=badge_color)
+                with rank_col:
+                    relevance = result.get("ranking_score", result["score"])
+                    st.caption(f"Výsledek {rank} · relevance {relevance:.3f}")
+                st.caption(f"Soubor: {result['source_path']}")
 
-            with st.expander("Zobrazit nalezený úryvek", expanded=(rank == 1)):
-                st.markdown(format_snippet(result["text"]), unsafe_allow_html=False)
-                language = result.get("language") or "neuvedeno"
-                st.caption(
-                    f"Umístění: {result.get('locator') or 'neuvedeno'} · "
-                    f"Jazyk zdroje: {language} · typ: {source_role} · zdroj: {source_origin or 'neuveden'}"
-                )
-                st.caption(f"Chunk ID: {result['chunk_id']}")
-                route = result.get("streamlit_route")
-                if route and result.get("route_status") == "verified" and base_url:
-                    st.link_button("Otevřít stránku kurzu", urljoin(base_url.rstrip("/") + "/", route))
-                elif route:
-                    st.caption(f"Kandidátní cesta ve Streamlitu: /{route} · čeká na ověření odkazu")
+                with (st.container() if evidence["status"] == "no_support" else st.expander("Zobrazit nalezený úryvek", expanded=(rank == 1))):
+                    st.markdown(format_snippet(result["text"]), unsafe_allow_html=False)
+                    language = result.get("language") or "neuvedeno"
+                    st.caption(
+                        f"Umístění: {result.get('locator') or 'neuvedeno'} · "
+                        f"Jazyk zdroje: {language} · typ: {source_role} · zdroj: {source_origin or 'neuveden'}"
+                    )
+                    st.caption(f"Chunk ID: {result['chunk_id']}")
+                    route = result.get("streamlit_route")
+                    if route and result.get("route_status") == "verified" and base_url:
+                        st.link_button("Otevřít stránku kurzu", urljoin(base_url.rstrip("/") + "/", route))
+                    elif route:
+                        st.caption(f"Kandidátní cesta ve Streamlitu: /{route} · čeká na ověření odkazu")
 
 st.divider()
 st.caption("Index i embedding model běží lokálně. Vyhledávání neposílá obsah kurzu do externího API.")

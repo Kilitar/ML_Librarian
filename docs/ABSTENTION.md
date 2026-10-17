@@ -1,0 +1,80 @@
+# Evidence availability / abstention — 2026-10-17
+
+## User-visible behavior
+
+For `kolik je hodin`, the app now says it did not find sufficient support in the
+materials. It puts the five weak matches in a collapsed diagnostic expander rather
+than presenting them as normal evidence. This is a search failure-to-support
+message, not proof that information is absent from the entire corpus.
+
+Uncertain questions keep visible result cards with an explicit notice and a
+suggestion to clarify the topic/algorithm/dataset. Unassessed fallback results
+also remain visible with a notice; unavailable reranking must not masquerade as
+a negative evidence decision. Normal supported questions retain the existing UI.
+The CLI follows the same decisions; `--show-weak` reveals low-support matches.
+Raw `E5SearchIndex.search` remains diagnostic retrieval and still returns candidates.
+
+## Policy evidence-v1
+
+The gate uses the **original whole-query pair score**, before ordering priors or
+the maximum across parameter-specific subquestions. Returned metadata distinguishes
+`whole_query_score`, `passage_score` and `ranking_score`. A large source/intent bonus
+or strong evidence for only one parameter cannot supply whole-query support.
+
+- The pinned reranker revision must match and all required scores must be finite
+  numbers in [0, 1]. Otherwise status is `unassessed`.
+- Best whole-query score below 0.10: `no_support`.
+- From 0.10 to below 0.20: `uncertain` (soft notice, visible results).
+- At least 0.20: `supported` (passages may still be incomplete or factually wrong).
+- A small explicit CZ/EN/PL list of context-free phrases such as “Jak to funguje?”
+  and “Which is better?” requests clarification even if a generic passage scores
+  highly. It is not a general language-understanding classifier.
+
+These are version-specific heuristic operating points, not calibrated confidence
+probabilities or a complete domain classifier. They were chosen using earlier
+development cases (six unrelated queries below about 0.08 versus much stronger
+course evidence), then frozen before new-query retrieval. The new set did not
+trigger threshold changes. Scores from E5 or another reranker are never compared
+to these thresholds. Fresh evaluations remain necessary if the scorer changes.
+
+## Validation
+
+Ran the 25 previous queries and 15 prewritten new queries, checking source/policy
+hashes stayed unchanged during the run. New queries include clocks in CZ/EN/PL,
+private information, weather, plumbing, short ML topics, a legitimate question about
+training time, and three ambiguous phrases. Scope labels are Codex-authored; this
+is a small local check, not independent human validation or universal performance.
+
+| Group | Result |
+|---|---|
+| 25 regression queries | 25/25 expected statuses |
+| 15 new queries | 14/15 expected statuses |
+| All 12 absent/out-of-scope queries | 12 `no_support` |
+| All 25 valid course queries | 24 `supported`, 1 `uncertain`, 0 `no_support` |
+| Three ambiguous phrases | 3 `uncertain` |
+
+The known mismatch is Polish `standaryzacja cech`, score about 0.120: a valid query
+marked uncertain. Its results stay visible, so it is not a hard rejection. That
+case is retained explicitly; no special topic whitelist or threshold retuning was
+added after inspecting it. Training-time questions remain supported, so the clock
+behavior is not a blanket ban on time-related words. `kolik je hodin` scored 0.0395.
+
+Report with all 40 exact queries, decisions and expandable passages:
+`http://localhost:8765/eval/abstention_review.local.html`.
+Tracked summary: `eval/abstention_summary.json`. Full source excerpts remain local
+and ignored. Reproduce with `evaluate_abstention.py`; it requires the local
+`eval/reliability_comparison.local.json` to retain the 25 regression questions.
+
+Thirty-one unit/integration tests passed. Real Streamlit AppTest submissions checked
+the clock message and collapsed weak matches, ordinary PCA results, and visible
+uncertain Polish results. The fallback/unknown-model and invalid-score gate paths
+are tested. These checks do not substitute for learner visual acceptance.
+
+## Next
+
+Learner can re-submit the clock question after refreshing. Inspect the linked report
+and the uncertain Polish case. A larger independent set should cover more in-domain
+hard questions, mixed-intent queries and subtle near-domain unsupported questions.
+Source factual quality and complete answer support remain separate targets; no LLM
+answer generation or API calls were added. All inspected new cases now become
+development/regression data.

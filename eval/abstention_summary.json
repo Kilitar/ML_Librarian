@@ -1,0 +1,485 @@
+{
+  "source_hashes": {
+    "search.py": "cbb565f5f1728beb04adb7e6926eaa929173bc2273cebec7eb45085e7bd48228",
+    "rerank.py": "c21e949446fc4e9f498d990502cbb37a7309c79f2d7171bbbfa536c7c355c306",
+    "evidence_gate.py": "908aa73552230e1cc36e4ff5486c08c18640753d54c5dd90d1730df1985e4cd4",
+    "constraints.py": "67faea80ba0753f4556964099a6d2ac276747f1e714369d2dcb504b787cb7632",
+    "diversify.py": "38b45c357545bacf74bba8242ea930d2300243f1a405bf53b8362c571844c176",
+    "hybrid.py": "6b91ca33021706e58decb4b1c5fc2968d38cfcc36b4e25bacdba5bb0e48246f9",
+    "chunk_text.py": "cc775950c08608e97c63a73eba00a2746a6d4bbc49fa540b957b5d95d53b09be"
+  },
+  "fresh_questions_sha256": "f0e473d5c2ee73071702a9b80c0c7eeb90ac9dc56770dc0e5eddaef78a5a92f0",
+  "policy": "evidence-v1",
+  "low": 0.1,
+  "sufficient": 0.2,
+  "summary": {
+    "regression": {
+      "queries": 25,
+      "exact_expected_status": 25,
+      "mismatches": []
+    },
+    "fresh": {
+      "queries": 15,
+      "exact_expected_status": 14,
+      "mismatches": [
+        {
+          "id": "short_scaling_pl",
+          "expected": "supported",
+          "actual": "uncertain",
+          "score": 0.11995907872915268
+        }
+      ]
+    },
+    "supported_queries": 25,
+    "supported_hard_rejected": 0,
+    "supported_uncertain": 1,
+    "absent_queries": 12,
+    "absent_no_support": 12
+  },
+  "reviewer": "Codex-authored scope labels; small local validation, not independent evidence verification",
+  "cases": [
+    {
+      "id": "svm_cs",
+      "split": "regression",
+      "query": "Jak u SVM s RBF jádrem ovlivňují parametry C a gamma přeučení modelu?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9996967315673828
+      }
+    },
+    {
+      "id": "forest_practice_cs",
+      "split": "regression",
+      "query": "Najdi cvičení, ve kterém trénujeme Random Forest na datech srdečních pacientů a ladíme precision.",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9845257997512817
+      }
+    },
+    {
+      "id": "recall_en",
+      "split": "regression",
+      "query": "Why can accuracy be misleading for an imbalanced classifier, and which metric should I prioritize when false negatives are costly?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.8380264043807983
+      }
+    },
+    {
+      "id": "pca_practice_en",
+      "split": "regression",
+      "query": "Find a practical PCA exercise on diamond measurements that standardizes features and examines explained variance.",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9882116913795471
+      }
+    },
+    {
+      "id": "ensemble_pl",
+      "split": "regression",
+      "query": "Czym różni się bagging od boostingu pod względem sposobu trenowania modeli oraz redukcji bias i wariancji?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9957305788993835
+      }
+    },
+    {
+      "id": "dbscan_practice_pl",
+      "split": "regression",
+      "query": "Znajdź ćwiczenie DBSCAN na zbiorze make_moons, w którym dobieramy eps i min_samples oraz oznaczamy szum.",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.988867461681366
+      }
+    },
+    {
+      "id": "absent_personal_cs",
+      "split": "regression",
+      "query": "Jaké je číslo mého osobního bankovního účtu?",
+      "expected": "no_support",
+      "decision": {
+        "status": "no_support",
+        "policy": "evidence-v1",
+        "score": 0.00722190085798502
+      }
+    },
+    {
+      "id": "absent_weather_en",
+      "split": "regression",
+      "query": "Will it rain in Prague tomorrow morning?",
+      "expected": "no_support",
+      "decision": {
+        "status": "no_support",
+        "policy": "evidence-v1",
+        "score": 0.0017119160620495677
+      }
+    },
+    {
+      "id": "absent_booking_pl",
+      "split": "regression",
+      "query": "Jaki jest numer rezerwacji mojego ostatniego lotu?",
+      "expected": "no_support",
+      "decision": {
+        "status": "no_support",
+        "policy": "evidence-v1",
+        "score": 0.03702190890908241
+      }
+    },
+    {
+      "id": "ridge_cs",
+      "split": "regression",
+      "query": "Proč Ridge regrese pomáhá při multikolinearitě a co dělá parametr alfa?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.950396716594696
+      }
+    },
+    {
+      "id": "tree_practice_cs",
+      "split": "regression",
+      "query": "Najdi cvičení, kde mám natrénovat rozhodovací strom pro ceny diamantů a vyhodnotit chybu predikce.",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9902409315109253
+      }
+    },
+    {
+      "id": "leakage_en",
+      "split": "regression",
+      "query": "Why must preprocessing be fitted only on training data, and how does a pipeline prevent data leakage during cross-validation?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9196798801422119
+      }
+    },
+    {
+      "id": "logistic_practice_en",
+      "split": "regression",
+      "query": "Find a practical exercise training logistic regression to classify patients from lumbar spine measurements.",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9996809959411621
+      }
+    },
+    {
+      "id": "dbscan_pl",
+      "split": "regression",
+      "query": "Jak DBSCAN rozpoznaje szum i czym różni się punkt rdzeniowy od punktu brzegowego?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9939581155776978
+      }
+    },
+    {
+      "id": "sentiment_practice_pl",
+      "split": "regression",
+      "query": "Znajdź ćwiczenie z klasyfikacji sentymentu recenzji filmowych z użyciem TF-IDF.",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.991465151309967
+      }
+    },
+    {
+      "id": "absent_cs",
+      "split": "regression",
+      "query": "Jaké je heslo k administrátorskému účtu školní databáze?",
+      "expected": "no_support",
+      "decision": {
+        "status": "no_support",
+        "policy": "evidence-v1",
+        "score": 0.00875813327729702
+      }
+    },
+    {
+      "id": "absent_en",
+      "split": "regression",
+      "query": "What was the exact closing price of Nvidia stock on 16 October 2026?",
+      "expected": "no_support",
+      "decision": {
+        "status": "no_support",
+        "policy": "evidence-v1",
+        "score": 0.07147733122110367
+      }
+    },
+    {
+      "id": "absent_pl",
+      "split": "regression",
+      "query": "Jaki jest numer telefonu mojego lekarza rodzinnego?",
+      "expected": "no_support",
+      "decision": {
+        "status": "no_support",
+        "policy": "evidence-v1",
+        "score": 0.031094985082745552
+      }
+    },
+    {
+      "id": "reported_kmeans_pl",
+      "split": "regression",
+      "query": "Kiedy należy zastosować metodę k-średnich",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.45427393913269043
+      }
+    },
+    {
+      "id": "fresh_svm_cs",
+      "split": "regression",
+      "query": "Proč může velká gamma vést u RBF SVM k memorování jednotlivých bodů a co se stane, když snížím C?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.5256406664848328
+      }
+    },
+    {
+      "id": "fresh_ridge_en",
+      "split": "regression",
+      "query": "How does Ridge stabilize a regression with strongly correlated predictors, and does it remove coefficients entirely?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9472289085388184
+      }
+    },
+    {
+      "id": "fresh_penguins_pl",
+      "split": "regression",
+      "query": "Wyszukaj zadanie, w którym klasyfikujemy gatunki pingwinów za pomocą regresji logistycznej.",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9991025924682617
+      }
+    },
+    {
+      "id": "fresh_dbscan_cs",
+      "split": "regression",
+      "query": "Proč se DBSCAN hodí pro dva půlměsíce lépe než K-Means a jak označuje odlehlé body?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9989940524101257
+      }
+    },
+    {
+      "id": "fresh_precision_en",
+      "split": "regression",
+      "query": "What is the difference between precision and recall when evaluating a spam classifier?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9059664607048035
+      }
+    },
+    {
+      "id": "fresh_scaling_pl",
+      "split": "regression",
+      "query": "Dlaczego StandardScaler powinien być dopasowany tylko na zbiorze treningowym i wewnątrz walidacji krzyżowej?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.7232286930084229
+      }
+    },
+    {
+      "id": "clock_cs",
+      "split": "fresh",
+      "query": "kolik je hodin",
+      "expected": "no_support",
+      "decision": {
+        "status": "no_support",
+        "policy": "evidence-v1",
+        "score": 0.039497874677181244
+      }
+    },
+    {
+      "id": "clock_en",
+      "split": "fresh",
+      "query": "What time is it right now?",
+      "expected": "no_support",
+      "decision": {
+        "status": "no_support",
+        "policy": "evidence-v1",
+        "score": 0.03364250436425209
+      }
+    },
+    {
+      "id": "clock_pl",
+      "split": "fresh",
+      "query": "Która jest teraz godzina?",
+      "expected": "no_support",
+      "decision": {
+        "status": "no_support",
+        "policy": "evidence-v1",
+        "score": 0.04888297989964485
+      }
+    },
+    {
+      "id": "private_cs",
+      "split": "fresh",
+      "query": "Jaký je můj PIN k platební kartě?",
+      "expected": "no_support",
+      "decision": {
+        "status": "no_support",
+        "policy": "evidence-v1",
+        "score": 0.046218276023864746
+      }
+    },
+    {
+      "id": "weather_pl",
+      "split": "fresh",
+      "query": "Jaka będzie jutro pogoda w Warszawie?",
+      "expected": "no_support",
+      "decision": {
+        "status": "no_support",
+        "policy": "evidence-v1",
+        "score": 0.027571797370910645
+      }
+    },
+    {
+      "id": "plumbing_en",
+      "split": "fresh",
+      "query": "How do I repair a leaking kitchen faucet?",
+      "expected": "no_support",
+      "decision": {
+        "status": "no_support",
+        "policy": "evidence-v1",
+        "score": 0.05161197483539581
+      }
+    },
+    {
+      "id": "short_pca",
+      "split": "fresh",
+      "query": "PCA",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9971796274185181
+      }
+    },
+    {
+      "id": "short_regularization",
+      "split": "fresh",
+      "query": "regularizace",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9478970170021057
+      }
+    },
+    {
+      "id": "short_scaling_pl",
+      "split": "fresh",
+      "query": "standaryzacja cech",
+      "expected": "supported",
+      "decision": {
+        "status": "uncertain",
+        "policy": "evidence-v1",
+        "score": 0.11995907872915268
+      }
+    },
+    {
+      "id": "time_training_cs",
+      "split": "fresh",
+      "query": "Jak měřit dobu trénování modelu a proč Random Forest může trénovat paralelně?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.893130362033844
+      }
+    },
+    {
+      "id": "precision_en",
+      "split": "fresh",
+      "query": "How is precision computed from true positives and false positives?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.9333950281143188
+      }
+    },
+    {
+      "id": "cluster_pl",
+      "split": "fresh",
+      "query": "Kiedy użyć K-Means do grupowania klientów?",
+      "expected": "supported",
+      "decision": {
+        "status": "supported",
+        "policy": "evidence-v1",
+        "score": 0.5567978024482727
+      }
+    },
+    {
+      "id": "ambiguous_cs",
+      "split": "fresh",
+      "query": "Jak to funguje?",
+      "expected": "uncertain",
+      "decision": {
+        "status": "uncertain",
+        "policy": "evidence-v1",
+        "score": null,
+        "reason": "ambiguous_query"
+      }
+    },
+    {
+      "id": "ambiguous_en",
+      "split": "fresh",
+      "query": "Which is better?",
+      "expected": "uncertain",
+      "decision": {
+        "status": "uncertain",
+        "policy": "evidence-v1",
+        "score": null,
+        "reason": "ambiguous_query"
+      }
+    },
+    {
+      "id": "ambiguous_pl",
+      "split": "fresh",
+      "query": "Co wybrać?",
+      "expected": "uncertain",
+      "decision": {
+        "status": "uncertain",
+        "policy": "evidence-v1",
+        "score": null,
+        "reason": "ambiguous_query"
+      }
+    }
+  ]
+}

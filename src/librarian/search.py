@@ -13,7 +13,7 @@ from sentence_transformers import SentenceTransformer
 from constraints import constraint_adjustment, query_constraints
 from diversify import select_distinct
 from hybrid import LexicalIndex, fuse_scores
-from rerank import PassageReranker, candidate_union, expand_neighbors
+from rerank import PassageReranker, candidate_union, expand_neighbors, REVISION as RERANKER_REVISION
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -194,6 +194,7 @@ class E5SearchIndex:
         requested = query_constraints(query)
         candidates = ranked[:80] if match_constraints else ranked
         constraint_details = {}
+        evidence_scores = {}
         for index in candidates:
             adjustment, reasons = constraint_adjustment(
                 self.documents[index], requested, exact_task=(intent == "practice"),
@@ -207,13 +208,16 @@ class E5SearchIndex:
             try:
                 if self.passage_reranker is None:
                     self.passage_reranker = PassageReranker()
-                pair_scores = self.passage_reranker.scores(query, [self.documents[i] for i in candidates])
+                details = self.passage_reranker.score_details(query, [self.documents[i] for i in candidates])
+                pair_scores = details["relevance"]
             except (OSError, ValueError, RuntimeError):
                 fallback = self.search(query, limit=limit, match_constraints=match_constraints, mode="e5")
                 for result in fallback:
                     result["retrieval_warning"] = "Přesnější výběr pasáží není dostupný; zobrazuji základní vyhledávání."
                 return fallback
-            for index, pair_score in zip(candidates, pair_scores):
+            for index, pair_score, full_score in zip(candidates, pair_scores, details["whole_query"]):
+                evidence_scores[index] = {"passage_score": float(pair_score), "whole_query_score": float(full_score),
+                                          "reranker_revision": RERANKER_REVISION}
                 adjustment, reasons = constraint_adjustment(
                     self.documents[index], requested, exact_task=(intent == "practice"),
                 ) if match_constraints else (0.0, [])
@@ -235,6 +239,7 @@ class E5SearchIndex:
                 "score": float(scores[int(index)]),
                 "lexical_score": float(lexical_scores[int(index)]),
                 "retrieval_mode": mode,
+                **evidence_scores.get(index, {}),
                 "ranking_score": ranking_scores[int(index)],
                 "constraint_match": constraint_details[index],
                 "text": document["text"],
