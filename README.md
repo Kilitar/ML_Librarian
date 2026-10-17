@@ -76,3 +76,7 @@ The domain semantic layer separates multilingual aliases, abbreviations and type
 concept relations. Simple definition questions use versioned retrieval plans;
 complex questions remain intact. See `docs/SEMANTIC_LAYER.md` and run
 `src/librarian/compare_semantic.py` for the paired on/off excerpt review.
+
+Every result now has “Otevřít zdroj”: browse static extracted context and download
+the original snapshot file after manifest SHA-256 validation. No course page or
+notebook is executed. See `docs/SOURCE_VIEWER.md` for limits and verification.

@@ -15,6 +15,7 @@ from snippet_format import format_snippet  # noqa: E402
 from evidence_gate import assess_evidence  # noqa: E402
 from result_presentation import partition_results  # noqa: E402
 from source_filters import SOURCE_ROLES, SOURCE_ORIGINS  # noqa: E402
+from source_viewer import SourceCatalog, DOCUMENTS, initial_part  # noqa: E402
 
 
 st.set_page_config(page_title="ML Librarian · evidence search", page_icon="📚", layout="wide")
@@ -31,6 +32,41 @@ def read_routes_config() -> dict:
         return json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return {"streamlit_base_url": None}
+
+
+@st.cache_resource(show_spinner=False)
+def get_source_catalog(modified_ns):
+    return SourceCatalog()
+
+
+@st.dialog("Zdrojový materiál", width="large")
+def show_source(result):
+    st.caption(result['source_path'])
+    try:
+        catalog=get_source_catalog(DOCUMENTS.stat().st_mtime_ns)
+        parts=catalog.parts(result['source_path'])
+    except (OSError,ValueError):
+        st.warning("Extrahovaný text zdroje není dostupný.")
+        return
+    try:
+        original=catalog.original(result['source_path'])
+        st.download_button("Stáhnout původní soubor", data=original,
+                           file_name=Path(result['source_path']).name,
+                           key='download_'+result['chunk_id'])
+        st.caption("Původní soubor z lokálního snapshotu · SHA-256 ověřeno podle manifestu.")
+    except (OSError,ValueError):
+        st.warning("Původní soubor se nepodařilo ověřit pro stažení. Extrahovaný text je dostupný níže.")
+    selected=initial_part(parts,result.get('locator'))
+    if len(parts)>1:
+        selected=st.selectbox("Část zdroje",range(len(parts)),index=selected,
+                              format_func=lambda i: f"{i+1}. {parts[i].get('locator','document')}",
+                              key='part_'+result['chunk_id'])
+    st.caption("Extrahovaný text · "+str(parts[selected].get('locator','document'))+
+               " · notebooky a prezentace obsahují staticky vytažený text, nikoli spuštěný výstup.")
+    text=parts[selected]['text']
+    if len(text)>150000:
+        st.info("Náhled je zkrácený; celý obsah najdeš v původním souboru.")
+    st.markdown(format_snippet(text[:150000]),unsafe_allow_html=False)
 
 
 def source_role_badge(role: str) -> tuple[str, str]:
@@ -73,6 +109,8 @@ def render_result(rank, result, base_url, *, inline=False):
                 f"Jazyk zdroje: {language} · typ: {source_role} · zdroj: {source_origin or 'neuveden'}"
             )
             st.caption(f"Chunk ID: {result['chunk_id']}")
+            if st.button("Otevřít zdroj",key='source_'+result['chunk_id']):
+                show_source(result)
             route = result.get("streamlit_route")
             if route and result.get("route_status") == "verified" and base_url:
                 st.link_button("Otevřít stránku kurzu", urljoin(base_url.rstrip("/") + "/", route))
