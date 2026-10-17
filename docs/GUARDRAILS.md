@@ -12,4 +12,5 @@
 - Distinguish original course, course summary, learner extension, and uncertain provenance.
 - Keep secrets out of source control, logs, and browser code. Do not configure an owner-funded shared LLM key for public/classroom use. If generation is added, make it optional BYOK: disclose that the visitor's query and retrieved excerpts go to their chosen provider, hold the key only in request memory, never log or persist it, bound prompt/output/retries, and keep retrieval-only available on decline, limit, or API error. See `LLM_PROVIDER_EVALUATION.md`.
 - Do not persist visitor prompts by default; isolate sessions.
+- The user may be multitasking. When a task is complete and their response or review is needed, accompany the concise request with a brief, prominent local system sound when the active environment supports it. Do not make a sound for ordinary progress updates or completions that need no user action. If audio playback is unavailable or cannot be confirmed, say so and rely on the visible notification; never claim a sound was played when it was not.
 - Publish a rebuilt index only after integrity checks; retain last known-good version.
