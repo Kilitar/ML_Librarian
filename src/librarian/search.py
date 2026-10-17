@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import re
 from typing import Any
 
 import numpy as np
@@ -15,6 +16,42 @@ INDEX_DIR = ROOT / "data/index"
 MANIFEST = ROOT / "data/index/multilingual_e5_curated.json"
 MODEL_ID = "intfloat/multilingual-e5-small"
 CACHE = ROOT / ".cache/hf"
+
+
+def classify_source(document: dict[str, Any]) -> dict[str, str]:
+    """Return transparent, path-based learning-role and source-origin labels."""
+    path = str(document.get("source_path", "")).replace("\\", "/").lower()
+    filename = path.rsplit("/", 1)[-1]
+    kind = str(document.get("source_kind", ""))
+
+    if re.search(r"(?:^|[_/ .-])(exercise|homework|lab|assignment)(?:[_./ .-]|$)", path):
+        role, role_icon = "Cvičení / úkol", "🧪"
+    elif re.search(r"(?:^|[_ .-])(summary|recap|syllabus)(?:[_./ .-]|$)", filename):
+        role, role_icon = "Shrnutí / přehled", "📋"
+    elif re.search(r"(?:^|[_ .-])(sample|implementation|guide)(?:[_./ .-]|$)", filename):
+        role, role_icon = "Příklad / implementace", "🛠️"
+    elif "/theory/" in path or re.search(
+        r"(?:^|[_ .-])(theory|theoretical|critique|analysis|introduction|principles|works?)(?:[_./ .-]|$)",
+        filename,
+    ):
+        role, role_icon = "Teorie / analýza", "🔎"
+    else:
+        role, role_icon = "Studijní materiál", "📚"
+
+    if path.startswith("resources/") and (kind == "pdf" or "pdf" in path):
+        origin, origin_icon = "Coderslab PDF", "📄"
+    elif path.startswith("views/"):
+        origin, origin_icon = "Streamlit prezentace", "🖥️"
+    elif kind == "notebook_markdown":
+        origin, origin_icon = "Notebook", "📓"
+    else:
+        origin, origin_icon = "Kurzové poznámky", "📚"
+    return {
+        "source_role": role,
+        "source_role_icon": role_icon,
+        "source_origin": origin,
+        "source_origin_icon": origin_icon,
+    }
 
 
 def load_chunks(path: Path = CHUNKS) -> list[dict[str, Any]]:
@@ -87,12 +124,14 @@ class E5SearchIndex:
         results = []
         for index in selected:
             document = self.documents[int(index)]
+            source_labels = classify_source(document)
             results.append({
                 "chunk_id": document["chunk_id"],
                 "source_path": document["source_path"],
                 "locator": document.get("locator"),
                 "language": document.get("language"),
                 "provenance": document.get("provenance"),
+                **source_labels,
                 "score": float(scores[int(index)]),
                 "text": document["text"],
                 "streamlit_route": document.get("streamlit_route"),

@@ -68,13 +68,21 @@ if results is not None:
     base_url = routes_config.get("streamlit_base_url")
 
     for rank, result in enumerate(results, 1):
-        title = f"{rank}. {result['source_path']} · skóre {result['score']:.3f}"
+        source_role = result.get("source_role", "Studijní materiál")
+        source_role_icon = result.get("source_role_icon", "📚")
+        source_origin = result.get("source_origin")
+        source_origin_icon = result.get("source_origin_icon", "📚")
+        labels = f"{source_role_icon} {source_role}"
+        if source_origin:
+            labels += f" · {source_origin_icon} {source_origin}"
+        title = f"{rank}. {labels} · skóre {result['score']:.3f}"
         with st.expander(title, expanded=(rank == 1)):
             st.text(result["text"])
             language = result.get("language") or "neuvedeno"
             st.caption(
+                f"Soubor: {result['source_path']} · "
                 f"Umístění: {result.get('locator') or 'neuvedeno'} · "
-                f"Jazyk zdroje: {language} · původ: {result.get('provenance') or 'neuveden'}"
+                f"Jazyk zdroje: {language} · typ: {source_role} · zdroj: {source_origin or 'neuveden'}"
             )
             st.caption(f"Chunk ID: {result['chunk_id']}")
             route = result.get("streamlit_route")
