@@ -12,6 +12,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from constraints import constraint_adjustment, query_constraints
 from diversify import select_distinct
+from hybrid import LexicalIndex, fuse_scores
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -122,6 +123,7 @@ class E5SearchIndex:
         self.documents = documents
         self.embeddings = embeddings.astype(np.float32, copy=False)
         self.model = model
+        self.lexical_index = None
 
     @classmethod
     def load(cls) -> "E5SearchIndex":
@@ -153,7 +155,7 @@ class E5SearchIndex:
         return cls(documents, embeddings, model)
 
     def search(self, query: str, *, limit: int = 5,
-               match_constraints: bool = True) -> list[dict[str, Any]]:
+               match_constraints: bool = True, mode: str = "e5") -> list[dict[str, Any]]:
         query = " ".join(query.split())
         if not query:
             raise ValueError("Enter a non-empty query")
@@ -161,13 +163,22 @@ class E5SearchIndex:
             raise ValueError("Query is longer than the 1,000-character limit")
         if not 1 <= limit <= 10:
             raise ValueError("Result limit must be between 1 and 10")
+        if mode not in {"e5", "hybrid"}:
+            raise ValueError("Unknown retrieval mode")
         query_vector = self.model.encode(
             ["query: " + query], normalize_embeddings=True, convert_to_numpy=True,
         )[0]
         scores = self.embeddings @ query_vector
+        lexical_scores = np.zeros(len(scores))
+        base_scores = scores
+        if mode == "hybrid":
+            if self.lexical_index is None:
+                self.lexical_index = LexicalIndex(self.documents)
+            lexical_scores = self.lexical_index.scores(query)
+            base_scores = fuse_scores(scores, lexical_scores)
         intent = query_intent(query)
         ranking_scores = {
-            index: float(scores[index]) + rank_adjustment(self.documents[index], intent)
+            index: float(base_scores[index]) + rank_adjustment(self.documents[index], intent)
             for index in range(len(scores))
         }
         ranked = sorted(
@@ -200,6 +211,8 @@ class E5SearchIndex:
                 "provenance": document.get("provenance"),
                 **source_labels,
                 "score": float(scores[int(index)]),
+                "lexical_score": float(lexical_scores[int(index)]),
+                "retrieval_mode": mode,
                 "ranking_score": ranking_scores[int(index)],
                 "constraint_match": constraint_details[index],
                 "text": document["text"],

@@ -10,8 +10,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Search the local curated course corpus with multilingual E5")
     parser.add_argument("query", nargs="+", help="Question or search phrase in Czech, English, or Polish")
     parser.add_argument("--limit", type=int, default=5)
+    parser.add_argument("--mode", choices=("e5", "hybrid"), default="e5",
+                        help="hybrid is an experimental development mode; production uses e5")
     args = parser.parse_args()
-    results = E5SearchIndex.load().search(" ".join(args.query), limit=args.limit)
+    results = E5SearchIndex.load().search(" ".join(args.query), limit=args.limit, mode=args.mode)
     for rank, result in enumerate(results, 1):
         print(
             f"{rank}. relevance={result['ranking_score']:.3f} "

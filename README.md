@@ -51,3 +51,7 @@ Fresh-question evaluation on the repaired corpus: run `evaluate_quality.py`,
 `score_quality.py`, and `render_quality_review.py` with `--set holdout_v1`.
 The review is at `http://localhost:8765/eval/holdout_v1_review.local.html`.
 See `docs/EVALUATION_HOLDOUT_V1.md` for provisional passage judgments and gaps.
+
+The optional hybrid experiment is reproduced with `compare_hybrid.py` and reviewed
+at `http://localhost:8765/eval/hybrid_comparison.local.html`. Production still uses
+E5 because the hybrid also introduces regressions. See `docs/HYBRID_EXPERIMENT.md`.

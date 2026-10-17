@@ -1,0 +1,696 @@
+{
+  "reviewer": "Codex provisional development comparison, not independent validation",
+  "source_hashes": {
+    "src/librarian/search.py": "958fc8e3996bf0a1e34bb00ed038860c219bd222a62943910eb53170d5d62287",
+    "src/librarian/hybrid.py": "6b91ca33021706e58decb4b1c5fc2968d38cfcc36b4e25bacdba5bb0e48246f9",
+    "src/librarian/constraints.py": "255deca9b58ba9aab8b71cee6177148b105e9b671a0027a10a54a284b3a30cdd",
+    "src/librarian/diversify.py": "47e2b84a2c30b13d4a3366d74bf43feefeed473c6233426b3135eb49b86fbad4"
+  },
+  "corpus_fingerprint": "11423d013eb8bd91fc14f184f9bb2f662963a56de15ad3321b128db9ab76d4bc",
+  "queries": {
+    "svm_cs": {
+      "before": [
+        {
+          "chunk_id": "b6a89e847b0b7c7da006",
+          "source_path": "views/02_svm_lumbar_exercise_1.py",
+          "text_sha256": "cd89aca15641076c2b911fe1ce0989224bf3e4bf6532bcf077eb42e1dc72d8c7",
+          "grade": 1,
+          "reason": "Lists C/gamma tuning levers but does not explain directions or overfitting."
+        },
+        {
+          "chunk_id": "976922131a27ad059f73",
+          "source_path": "02_Classification/13_svm_classification_sample.ipynb",
+          "text_sha256": "fef13f9036b5cfda020b94c70cf7c5ef6ac7dde1c16eba0fafd2a202319c5c61",
+          "grade": 1,
+          "reason": "Default SVC values only; no explanation of C/gamma effects."
+        },
+        {
+          "chunk_id": "3084a61f046c59477885",
+          "source_path": "02_Classification/14_svm_lumbar_exercise_1.ipynb",
+          "text_sha256": "1721d6519ddca209fcca01001029bd888c3faf5d1fe96861c6e04de4ea6810ed",
+          "grade": 1,
+          "reason": "Default model training only; no overfitting explanation."
+        },
+        {
+          "chunk_id": "ce1b0905640d664646de",
+          "source_path": "02_Classification/theory/06_svm_theory.md",
+          "text_sha256": "2f7b71d32d9e342c94d14cb6273a0172e5686e8aa2dfd72217598316d8e8c5e5",
+          "grade": 2,
+          "reason": "Direct explanation of gamma, locality and overfitting. C effect is missing from top five."
+        },
+        {
+          "chunk_id": "674e43cfb7e5e8b5666c",
+          "source_path": "03_Advanced_ML_Neural_Networks/01_hyperparameter_optimization_sample.ipynb",
+          "text_sha256": "e0516925e285331762ce1ac42188f244e85abbfb6a57cb84f667a1f8ca8a008d",
+          "grade": 1,
+          "reason": "Search ranges and precision objective; no interpretation of overfitting."
+        }
+      ],
+      "after": [
+        {
+          "chunk_id": "c30de856ad9638d36112",
+          "source_path": "views/02_svm_lumbar_exercise_1.py",
+          "text_sha256": "0f4b87fcb4746b75ae47aa2829abca2767ff72249611e7778210e50e13695fc9",
+          "grade": 1,
+          "reason": "Výchozí RBF model a výsledky, nikoli vliv C/gamma na přeučení."
+        },
+        {
+          "chunk_id": "976922131a27ad059f73",
+          "source_path": "02_Classification/13_svm_classification_sample.ipynb",
+          "text_sha256": "fef13f9036b5cfda020b94c70cf7c5ef6ac7dde1c16eba0fafd2a202319c5c61",
+          "grade": 1,
+          "reason": "Pouze výchozí hodnoty parametrů."
+        },
+        {
+          "chunk_id": "3084a61f046c59477885",
+          "source_path": "02_Classification/14_svm_lumbar_exercise_1.ipynb",
+          "text_sha256": "1721d6519ddca209fcca01001029bd888c3faf5d1fe96861c6e04de4ea6810ed",
+          "grade": 1,
+          "reason": "Trénování výchozího modelu bez vysvětlení vlivu parametrů."
+        },
+        {
+          "chunk_id": "674e43cfb7e5e8b5666c",
+          "source_path": "03_Advanced_ML_Neural_Networks/01_hyperparameter_optimization_sample.ipynb",
+          "text_sha256": "e0516925e285331762ce1ac42188f244e85abbfb6a57cb84f667a1f8ca8a008d",
+          "grade": 1,
+          "reason": "Rozsahy hledání parametrů, bez vysvětlení přeučení."
+        },
+        {
+          "chunk_id": "ce1b0905640d664646de",
+          "source_path": "02_Classification/theory/06_svm_theory.md",
+          "text_sha256": "2f7b71d32d9e342c94d14cb6273a0172e5686e8aa2dfd72217598316d8e8c5e5",
+          "grade": 2,
+          "reason": "Přímé vysvětlení gamma a přeučení; vliv C stále chybí."
+        }
+      ]
+    },
+    "forest_practice_cs": {
+      "before": [
+        {
+          "chunk_id": "d5b4708b10480f548938",
+          "source_path": "03_Advanced_ML_Neural_Networks/04_random_forest_heart_exercise_1.ipynb",
+          "text_sha256": "5e6ddd516ff8724df0287b6a6f128ee01b1c6bb19d4aa889c765a26f0db7369a",
+          "grade": 2,
+          "reason": "Exact heart RandomForestClassifier assignment with GridSearchCV scoring=precision."
+        },
+        {
+          "chunk_id": "44643eb1cda7c0e836d8",
+          "source_path": "03_Advanced_ML_Neural_Networks/05_random_forest_diamonds_exercise_2.ipynb",
+          "text_sha256": "ed1b4875758578fc08ac9ea8323cadfaeff6f548b4e6a0eac485f0890b15cc70",
+          "grade": 1,
+          "reason": "Random Forest exercise on diamonds, wrong dataset and regression objective."
+        },
+        {
+          "chunk_id": "b757d3b34d12f812c16b",
+          "source_path": "views/03_random_forest_theory_and_implementation.py",
+          "text_sha256": "2dc52a6de6dfd87ffa2cae8df8db160b8e0a2aeeeb0962ef08f6c503cc61855c",
+          "grade": 0,
+          "reason": "Missing-value discussion, not requested exercise or precision tuning."
+        },
+        {
+          "chunk_id": "f07231dd8480ea886168",
+          "source_path": "03_Advanced_ML_Neural_Networks/theory/05_random_forest_theory_and_implementation.md",
+          "text_sha256": "f2e38d549100c7787de9a01aefa81ef679a7ac16fc88a6126f2fa20352210e52",
+          "grade": 0,
+          "reason": "ExtraTrees/GPU variants, not heart classification exercise."
+        },
+        {
+          "chunk_id": "d547932fe7c285776214",
+          "source_path": "04_Homework/01_titanic_random_forest.ipynb",
+          "text_sha256": "dcb55f735c800f6627b686091630a9c54ab1c2051d4f2f2b1d3d8783be979f54",
+          "grade": 1,
+          "reason": "Random Forest precision tuning but Titanic dataset, not heart."
+        }
+      ],
+      "after": [
+        {
+          "chunk_id": "d5b4708b10480f548938",
+          "source_path": "03_Advanced_ML_Neural_Networks/04_random_forest_heart_exercise_1.ipynb",
+          "text_sha256": "5e6ddd516ff8724df0287b6a6f128ee01b1c6bb19d4aa889c765a26f0db7369a",
+          "grade": 2,
+          "reason": "Přesné zadání Heart Random Forest s optimalizací precision."
+        },
+        {
+          "chunk_id": "fc629e0bfd709da58c46",
+          "source_path": "03_Advanced_ML_Neural_Networks/06_xgboost_heart_exercise_1.ipynb",
+          "text_sha256": "5640e67e64ce596a326d0a2e7767e32c6233be1754934dcf53f6837e78f4b189",
+          "grade": 1,
+          "reason": "Srovnání s RF, ale úloha trénuje XGBoost."
+        },
+        {
+          "chunk_id": "3ee4d948f8baedb42560",
+          "source_path": "views/03_xgboost_heart_exercise_1_critique.py",
+          "text_sha256": "26609c7e81b45225add1baef99ebe00c75ed6331d3bba6fac5097df87185c199",
+          "grade": 1,
+          "reason": "Porovnání výsledků XGBoost/RF; ne vlastní zadání RF."
+        },
+        {
+          "chunk_id": "7b60946a269e48ef73ff",
+          "source_path": "views/03_xgboost_heart_exercise_1.py",
+          "text_sha256": "e908041e4b439dbd237d25308495d4c6a4e17601fdb3cb91c71954b368eea085",
+          "grade": 1,
+          "reason": "Porovnání výsledků; ne trénovací zadání RF."
+        },
+        {
+          "chunk_id": "44643eb1cda7c0e836d8",
+          "source_path": "03_Advanced_ML_Neural_Networks/05_random_forest_diamonds_exercise_2.ipynb",
+          "text_sha256": "ed1b4875758578fc08ac9ea8323cadfaeff6f548b4e6a0eac485f0890b15cc70",
+          "grade": 1,
+          "reason": "Random Forest pro diamanty, nikoli srdeční pacienty."
+        }
+      ]
+    },
+    "recall_en": {
+      "before": [
+        {
+          "chunk_id": "ef9be1f2da7fc748f46f",
+          "source_path": "05_Unsupervised_Learning/theory/01_clustering_theory.md",
+          "text_sha256": "d4f10741a5df742d867f078cebd64b360ff7c9fec5114a1c204adf2010b9896f",
+          "grade": 0,
+          "reason": "Clustering standardization and dimensionality, unrelated to class imbalance/FN costs."
+        },
+        {
+          "chunk_id": "51b2e9da0f283e5606ab",
+          "source_path": "views/02_metrics_penguins_critique.py",
+          "text_sha256": "85c77e371933660ae4244a3fa435ccbbd77e37469f82002e2b1fd1548afa1589",
+          "grade": 0,
+          "reason": "Log-loss calibration versus discrete metrics, no imbalance or recall priority."
+        },
+        {
+          "chunk_id": "92a75ffc7e7bcd225b4e",
+          "source_path": "02_Classification/theory/03_classification_metrics_theory.md",
+          "text_sha256": "40885695cde9921de0afc4241b51936af4283dc28e07586c4bec3dbf98eb94da",
+          "grade": 1,
+          "reason": "Different costs of classification errors, but no accuracy pitfall or recall guidance."
+        },
+        {
+          "chunk_id": "f545c3a6e9f1658ad8fe",
+          "source_path": "views/05_kmeans_theory.py",
+          "text_sha256": "94dcfa07d6729ac1ccfc75e549d03b989208d2b8fffad71893f91921f2adf4c3",
+          "grade": 0,
+          "reason": "Clustering standardization and dimensionality, unrelated."
+        },
+        {
+          "chunk_id": "389b6172cf404b35ffa0",
+          "source_path": "views/03_extras_hyperparam_cheatsheet.py",
+          "text_sha256": "1f55a0b3d21cbc5589f4412a25977e1b9392f03cdb255603e19a53c926c1d6c4",
+          "grade": 1,
+          "reason": "Imbalance remedies, metrics list and threshold reduction; does not explain costly false negatives or prioritize recall."
+        }
+      ],
+      "after": [
+        {
+          "chunk_id": "d4fbfd7e8e7b1ed4a7f6",
+          "source_path": "views/03_hyperparameter_optimization_sample.py",
+          "text_sha256": "1028b43533de8da41daf0799c003bd75758d0c585dedd4e0fbf16e3abc9ff5a2",
+          "grade": 2,
+          "reason": "Explicitně spojuje minimalizaci False Negatives s optimalizací recall."
+        },
+        {
+          "chunk_id": "7d60030f4612f43cb24f",
+          "source_path": "02_Classification/theory/07_day_2_summary.md",
+          "text_sha256": "6b17797502171bd6c5d733120b12ce0a8e2aabe26f0b88be2770863e3d98c857",
+          "grade": 2,
+          "reason": "Explicitně uvádí zavádějící accuracy u nevyvážených tříd a matici záměn."
+        },
+        {
+          "chunk_id": "45b55b776fb4d8d1042a",
+          "source_path": "02_Classification/05_classification_metrics_penguins_exercise_2.ipynb",
+          "text_sha256": "9b6052084c1dbb1e47ba0d334562ce39bf226a91342d2586ff3d278736a95f72",
+          "grade": 1,
+          "reason": "Výpočet multiclass metrik; nevysvětluje požadovaný problém."
+        },
+        {
+          "chunk_id": "c2b6136c41ee4ea06768",
+          "source_path": "03_Advanced_ML_Neural_Networks/theory/08_day_3_summary_and_synthesis.md",
+          "text_sha256": "8ea71341703bf1887493a041091f13141033e5a3cbd88c8720e0b683eea6dfde",
+          "grade": 1,
+          "reason": "FN a posun prahu jako příklad, bez úplného vysvětlení volby recall."
+        },
+        {
+          "chunk_id": "389b6172cf404b35ffa0",
+          "source_path": "views/03_extras_hyperparam_cheatsheet.py",
+          "text_sha256": "1f55a0b3d21cbc5589f4412a25977e1b9392f03cdb255603e19a53c926c1d6c4",
+          "grade": 1,
+          "reason": "Seznam metrik a řešení imbalance, bez požadované prioritizace."
+        }
+      ]
+    },
+    "pca_practice_en": {
+      "before": [
+        {
+          "chunk_id": "980113df63da4fd1ba11",
+          "source_path": "views/05_pca_diamonds_exercise.py",
+          "text_sha256": "20168983a25367c8cbc5dba717f7421faeb46ca71b1c4776b563f0edb61dbc67",
+          "grade": 2,
+          "reason": "Exact diamond PCA exercise and explained variance; scaling requires another excerpt."
+        },
+        {
+          "chunk_id": "db43f8f50a19f2f6dc43",
+          "source_path": "05_Unsupervised_Learning/01_pca_diamonds_exercise.ipynb",
+          "text_sha256": "7c3d32248b582a696b374c6fe78c36ed22b6a6cec9755ca44de1ba1de32e1b89",
+          "grade": 2,
+          "reason": "Exact diamond exercise step transforming standardized features; complements variance excerpt."
+        },
+        {
+          "chunk_id": "0be0aedf485e0d99b937",
+          "source_path": "views/05_pca_diamonds_critique.py",
+          "text_sha256": "c5c06a50580181bd957b1c2629bb9cc8799794eb5936ba00f16ab386763b6f42",
+          "grade": 1,
+          "reason": "Diamond component interpretation/variance but not training/scaling instructions."
+        },
+        {
+          "chunk_id": "cc79658e0fe64b6d9c72",
+          "source_path": "05_Unsupervised_Learning/08_isolation_forest_student_scores_exercise.ipynb",
+          "text_sha256": "9fab72606e6c535d287ecd8113e9e2d0ca7bd0f2839acd8fa9b8e73854f20c31",
+          "grade": 0,
+          "reason": "PCA visualizing student scores, wrong dataset."
+        },
+        {
+          "chunk_id": "ca3db2826ba321a33664",
+          "source_path": "01_Regression/02_linear_regression_exercise_2.ipynb",
+          "text_sha256": "7b32426ca0980a3f7f736a09db17eff2a3cef3544cde08f353cc1ab9ca33c06a",
+          "grade": 0,
+          "reason": "Diamond pairplot, not PCA exercise."
+        }
+      ],
+      "after": [
+        {
+          "chunk_id": "cc79658e0fe64b6d9c72",
+          "source_path": "05_Unsupervised_Learning/08_isolation_forest_student_scores_exercise.ipynb",
+          "text_sha256": "9fab72606e6c535d287ecd8113e9e2d0ca7bd0f2839acd8fa9b8e73854f20c31",
+          "grade": 0,
+          "reason": "PCA student scores místo diamantů; pouze vizualizační krok."
+        },
+        {
+          "chunk_id": "980113df63da4fd1ba11",
+          "source_path": "views/05_pca_diamonds_exercise.py",
+          "text_sha256": "20168983a25367c8cbc5dba717f7421faeb46ca71b1c4776b563f0edb61dbc67",
+          "grade": 2,
+          "reason": "Přesné cvičení PCA diamantů a vysvětlená variance."
+        },
+        {
+          "chunk_id": "db43f8f50a19f2f6dc43",
+          "source_path": "05_Unsupervised_Learning/01_pca_diamonds_exercise.ipynb",
+          "text_sha256": "7c3d32248b582a696b374c6fe78c36ed22b6a6cec9755ca44de1ba1de32e1b89",
+          "grade": 2,
+          "reason": "Standardizovaná data a PCA v přesném diamantovém cvičení."
+        },
+        {
+          "chunk_id": "09b075131897cd729a3f",
+          "source_path": "views/05_pca_dimensionality_reduction_theory.py",
+          "text_sha256": "09b6c588694635464e3ce8f99cc2e98ae297547ef2fde5b349d8a71f6bc4f5f0",
+          "grade": 1,
+          "reason": "Obecná teorie PCA, nikoli požadované cvičení."
+        },
+        {
+          "chunk_id": "e4e0097cd704eb13aa3b",
+          "source_path": "views/05_pca_breast_cancer_implementation.py",
+          "text_sha256": "dfdda16ab452c3d06a80d23d5922cdc5116dab33f865ce8f9e63bc80497aa86c",
+          "grade": 1,
+          "reason": "Volba počtu komponent podle variance; jiný dataset a chybí požadované cvičení."
+        }
+      ]
+    },
+    "ensemble_pl": {
+      "before": [
+        {
+          "chunk_id": "e77105c51025b31e2efa",
+          "source_path": "views/03_ensemble_bagging_theory.py",
+          "text_sha256": "cc2229a24ab6c74c6c641c8a203551dc3d423b27a68e8c001d8280c7acdf1b31",
+          "grade": 2,
+          "reason": "Sequential error-correcting boosting and bias reduction; bagging needs complementary evidence."
+        },
+        {
+          "chunk_id": "0881db041dddbf785f36",
+          "source_path": "03_Advanced_ML_Neural_Networks/theory/04_ensemble_methods_and_bagging_theory.md",
+          "text_sha256": "d15a1088d851e1225a5fb1ace3791791e93865df372ddc2ddbd0e07c80f209f5",
+          "grade": 2,
+          "reason": "Sequential boosting and parallel bootstrap bagging diagram; bias/variance requires complement."
+        },
+        {
+          "chunk_id": "053b4422b86f3bb54476",
+          "source_path": "03_Advanced_ML_Neural_Networks/theory/06_boosting_and_xgboost_theory.md",
+          "text_sha256": "9ed1d86668c685b887f0b48eb7c8994ba09abe1bc28beee2532abe489ab40e28",
+          "grade": 2,
+          "reason": "Boosting sequential learners and bias reduction."
+        },
+        {
+          "chunk_id": "ccc6c155927d1011b761",
+          "source_path": "views/03_boosting_xgboost_theory.py",
+          "text_sha256": "9dd4f96e04241c11c3f061ff10167bc78f5947da6a552fef1c6ad2fa8c95ba38",
+          "grade": 2,
+          "reason": "Independent parallel bootstrap bagging and variance reduction."
+        },
+        {
+          "chunk_id": "067815e655374ed471b5",
+          "source_path": "01_Regression/theory/07_ensemble_methods_theory.md",
+          "text_sha256": "142d05ca15266c2945b0523c2ffcd9d75e16b0e3231989c92bc94d304ae83b5f",
+          "grade": 2,
+          "reason": "Both training structures and bias/variance roles, with bagging explanation."
+        }
+      ],
+      "after": [
+        {
+          "chunk_id": "0b03fc512cd2a94a9184",
+          "source_path": "views/03_day_3_summary.py",
+          "text_sha256": "5321262c61695d3926e6f1e00c35466e1f94f2e708c096d80d71b53394d05aef",
+          "grade": 2,
+          "reason": "Přímé stručné srovnání obou způsobů trénování a bias/variance."
+        },
+        {
+          "chunk_id": "0881db041dddbf785f36",
+          "source_path": "03_Advanced_ML_Neural_Networks/theory/04_ensemble_methods_and_bagging_theory.md",
+          "text_sha256": "d15a1088d851e1225a5fb1ace3791791e93865df372ddc2ddbd0e07c80f209f5",
+          "grade": 2,
+          "reason": "Sekvenční boosting a bootstrapové větvení baggingu."
+        },
+        {
+          "chunk_id": "ccc6c155927d1011b761",
+          "source_path": "views/03_boosting_xgboost_theory.py",
+          "text_sha256": "9dd4f96e04241c11c3f061ff10167bc78f5947da6a552fef1c6ad2fa8c95ba38",
+          "grade": 2,
+          "reason": "Nezávislý bagging a redukce variance."
+        },
+        {
+          "chunk_id": "053b4422b86f3bb54476",
+          "source_path": "03_Advanced_ML_Neural_Networks/theory/06_boosting_and_xgboost_theory.md",
+          "text_sha256": "9ed1d86668c685b887f0b48eb7c8994ba09abe1bc28beee2532abe489ab40e28",
+          "grade": 2,
+          "reason": "Sekvenční boosting a redukce bias."
+        },
+        {
+          "chunk_id": "067815e655374ed471b5",
+          "source_path": "01_Regression/theory/07_ensemble_methods_theory.md",
+          "text_sha256": "142d05ca15266c2945b0523c2ffcd9d75e16b0e3231989c92bc94d304ae83b5f",
+          "grade": 2,
+          "reason": "Obě struktury i jejich bias/variance role."
+        }
+      ]
+    },
+    "dbscan_practice_pl": {
+      "before": [
+        {
+          "chunk_id": "c8e41487bdb9cae4f867",
+          "source_path": "05_Unsupervised_Learning/03_dbscan_circles_exercise.ipynb",
+          "text_sha256": "d0a9fcb2aa580254c7064173594bbeb7d075416ccbfd3ac2dbce9cda38b47d24",
+          "grade": 1,
+          "reason": "DBSCAN eps/min_samples experiment and noise, but circles instead of moons."
+        },
+        {
+          "chunk_id": "f02a48f14a1591d80b6a",
+          "source_path": "05_Unsupervised_Learning/theory/03_dbscan_sample_implementation_guide.md",
+          "text_sha256": "1c8baf1265cdb71db782ab2282bdb527cb049bb9d95b55173953d4654a73a73f",
+          "grade": 1,
+          "reason": "Parameter definitions in circles implementation guide, not requested moons exercise."
+        },
+        {
+          "chunk_id": "c080deaeec46ca329cc6",
+          "source_path": "05_Unsupervised_Learning/theory/04_dbscan_moons_exercise_guide.md",
+          "text_sha256": "bea2391162da1abe8d14f7d4597891957d2291ce4b13a6340338d75fe399bd34",
+          "grade": 2,
+          "reason": "Moons exercise guide with scaled data and eps/min_samples selection."
+        },
+        {
+          "chunk_id": "5f7fba072b90350eaeaa",
+          "source_path": "05_Unsupervised_Learning/04_dbscan_moons_exercise.ipynb",
+          "text_sha256": "481e6fa8cc148ee103a734836128e26c659ad417e43efad532872068c9013f1d",
+          "grade": 2,
+          "reason": "Exact make_moons DBSCAN assignment, standardization and cluster labels."
+        },
+        {
+          "chunk_id": "e4ef9bf71afa7406e269",
+          "source_path": "views/05_dbscan_moons_exercise.py",
+          "text_sha256": "fb68936929efc3c4ddc437301b038a41784954840030cbfc6f0c90a4174f5b11",
+          "grade": 2,
+          "reason": "Interactive eps/min_samples experiment on the moons exercise page; excerpt omits explicit noise labels."
+        }
+      ],
+      "after": [
+        {
+          "chunk_id": "c8e41487bdb9cae4f867",
+          "source_path": "05_Unsupervised_Learning/03_dbscan_circles_exercise.ipynb",
+          "text_sha256": "d0a9fcb2aa580254c7064173594bbeb7d075416ccbfd3ac2dbce9cda38b47d24",
+          "grade": 1,
+          "reason": "Správný algoritmus a parametry, ale kruhy místo moons."
+        },
+        {
+          "chunk_id": "123204f7d10df0acc0e3",
+          "source_path": "05_Unsupervised_Learning/theory/04_dbscan_moons_exercise_guide.md",
+          "text_sha256": "c5f2139ba2307bc0da09120350e0c4ec34cdf5c26186f9a3113f13d745899c18",
+          "grade": 2,
+          "reason": "Úplná implementace DBSCAN na make_moons včetně parametrů a šumu -1."
+        },
+        {
+          "chunk_id": "2816bdae64ff4e1ead34",
+          "source_path": "05_Unsupervised_Learning/04_dbscan_moons_exercise.ipynb",
+          "text_sha256": "b06918cdeb6697ebcf2a08da558996f9ef5d9d43b25125c0cb4b07d9e2901226",
+          "grade": 2,
+          "reason": "Trénování a parametry v notebooku moons."
+        },
+        {
+          "chunk_id": "751bfae6f306ab176707",
+          "source_path": "05_Unsupervised_Learning/theory/03_dbscan_sample_implementation_guide.md",
+          "text_sha256": "512cadd78198a17997d624f1c928d44d9a11b13f87c821d651ff3f3e86edca4c",
+          "grade": 1,
+          "reason": "Implementace na kruzích místo moons."
+        },
+        {
+          "chunk_id": "e4ef9bf71afa7406e269",
+          "source_path": "views/05_dbscan_moons_exercise.py",
+          "text_sha256": "fb68936929efc3c4ddc437301b038a41784954840030cbfc6f0c90a4174f5b11",
+          "grade": 2,
+          "reason": "Interaktivní eps/min_samples na stránce moons."
+        }
+      ]
+    },
+    "absent_personal_cs": {
+      "before": [
+        {
+          "chunk_id": "0348d094b254afdc95bb",
+          "source_path": "views/04_prework_nlp_intro.py",
+          "text_sha256": "baf80956dc993b83fe0b5eab620b6d324d546c5ce9635e07b82b56c8deaa8482",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        },
+        {
+          "chunk_id": "527f8e98246d3b05497e",
+          "source_path": "Resources/PDF/data-scientist.pdf",
+          "text_sha256": "70ff47993150d636e089ad123d5c0b8d182b4607ae3fbf1efde4795fd9cd5971",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        },
+        {
+          "chunk_id": "68059152c7fcd7569a6e",
+          "source_path": "views/04_nlp_exercise_1_critique.py",
+          "text_sha256": "88e8385cea6544f7c923608268d5e50ba058534316a95ed9c8b0f1d1301f571d",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        },
+        {
+          "chunk_id": "102e2c4dc8ceba19f7da",
+          "source_path": "views/04_homework_kaggle_guide.py",
+          "text_sha256": "def023e18f286af2b0a63ac1efbe4fac4412e5c3b6308471436311e91d312c4d",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        },
+        {
+          "chunk_id": "e4ccdb38e77d91c21741",
+          "source_path": "04_NLP/theory/07_how_transformers_work.md",
+          "text_sha256": "5026bc1bc0917068f9c5df07c325705dd16775c11fe42d731e25461bf41554e8",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        }
+      ],
+      "after": [
+        {
+          "chunk_id": "527f8e98246d3b05497e",
+          "source_path": "Resources/PDF/data-scientist.pdf",
+          "text_sha256": "70ff47993150d636e089ad123d5c0b8d182b4607ae3fbf1efde4795fd9cd5971",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        },
+        {
+          "chunk_id": "1c60fae5a1dee26b78d7",
+          "source_path": "views/04_nlp_word2vec_theory.py",
+          "text_sha256": "2406d0c7b2de4375b346ec4181b10e03e198d4539ba50e4129687598fde70ada",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        },
+        {
+          "chunk_id": "72fe75c55b916cd8f98f",
+          "source_path": "views/01_decision_tree_theory.py",
+          "text_sha256": "83f61d164ec7e97a3e024551caa80521956876f65860055496ba309580a99e6f",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        },
+        {
+          "chunk_id": "ef4f12d34131cbc6421f",
+          "source_path": "00_Prework/02_python_test_exercise.ipynb",
+          "text_sha256": "923988b1343acdcf03ac6c328556c0ec2aa142ddc596366728fe0b9da6e9eecd",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        },
+        {
+          "chunk_id": "42a97cd28c78ffe37d29",
+          "source_path": "views/02_day_2_summary.py",
+          "text_sha256": "18da794c8539fb217143ed9d404d9c33b3ed898efc3d59141c4e853aec3667e0",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        }
+      ]
+    },
+    "absent_weather_en": {
+      "before": [
+        {
+          "chunk_id": "9322dfb4000617e10a06",
+          "source_path": "views/02_homework_session1_modern_synthesis.py",
+          "text_sha256": "b5790a6cd7320d34ff999d08c546303010270c090c69861d71cbc541e77b4c9b",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        },
+        {
+          "chunk_id": "783d475ebb10765fcd83",
+          "source_path": "MACHINE_LEARNING_SYLLABUS.md",
+          "text_sha256": "b0e6ceeede58661184a57d1a09b5d2bebd572f78115bbf3e097cc172dbc375d9",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        },
+        {
+          "chunk_id": "8fa47acbd0fc8ecb3550",
+          "source_path": "views/06_mlops_productionizing.py",
+          "text_sha256": "8e8e88d7ee9162384b404041d1af86c10e419dbc1a894b35355b28627514c204",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        },
+        {
+          "chunk_id": "6050954990d2e77743bd",
+          "source_path": "04_NLP/theory/08_bert_architecture_and_applications.md",
+          "text_sha256": "5b704cf1d838171fc66202dc5920c2fd5ac9ab401f1c20ffbe34fa269daac20f",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        },
+        {
+          "chunk_id": "491500180dd5822ffef2",
+          "source_path": "views/01_extras_geo_residuals.py",
+          "text_sha256": "4d5fc6a70683cf53afb725fd302b3dd8b47e90b1712e30e5bb53a54774f1def9",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        }
+      ],
+      "after": [
+        {
+          "chunk_id": "9322dfb4000617e10a06",
+          "source_path": "views/02_homework_session1_modern_synthesis.py",
+          "text_sha256": "b5790a6cd7320d34ff999d08c546303010270c090c69861d71cbc541e77b4c9b",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        },
+        {
+          "chunk_id": "783d475ebb10765fcd83",
+          "source_path": "MACHINE_LEARNING_SYLLABUS.md",
+          "text_sha256": "b0e6ceeede58661184a57d1a09b5d2bebd572f78115bbf3e097cc172dbc375d9",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        },
+        {
+          "chunk_id": "8fa47acbd0fc8ecb3550",
+          "source_path": "views/06_mlops_productionizing.py",
+          "text_sha256": "8e8e88d7ee9162384b404041d1af86c10e419dbc1a894b35355b28627514c204",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        },
+        {
+          "chunk_id": "6050954990d2e77743bd",
+          "source_path": "04_NLP/theory/08_bert_architecture_and_applications.md",
+          "text_sha256": "5b704cf1d838171fc66202dc5920c2fd5ac9ab401f1c20ffbe34fa269daac20f",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        },
+        {
+          "chunk_id": "491500180dd5822ffef2",
+          "source_path": "views/01_extras_geo_residuals.py",
+          "text_sha256": "4d5fc6a70683cf53afb725fd302b3dd8b47e90b1712e30e5bb53a54774f1def9",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        }
+      ]
+    },
+    "absent_booking_pl": {
+      "before": [
+        {
+          "chunk_id": "75ee64b22fdb94e00579",
+          "source_path": "views/04_homework_titanic_rf_critique.py",
+          "text_sha256": "9b56b1c018c679187be0481618853fba46625e8f043ea81ce94b576f87c0fb9f",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        },
+        {
+          "chunk_id": "0ebc5842e3173ee31dcc",
+          "source_path": "06_Final_Project/theory/03_further_development_and_ai_trends.md",
+          "text_sha256": "4bb332e670917b3241aad6cea7a3e91df642f6d6ca87c377f003a05e94305a16",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        },
+        {
+          "chunk_id": "7c8583383aa90036e6fe",
+          "source_path": "03_Advanced_ML_Neural_Networks/theory/05_random_forest_theory_and_implementation.md",
+          "text_sha256": "13794d8fab5408083053718bf324363d0f811e658948dda1fd37a25227e889f5",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        },
+        {
+          "chunk_id": "cc69ed5a09337ec9e2a4",
+          "source_path": "06_Final_Project/theory/02_productionizing_machine_learning_models.md",
+          "text_sha256": "d34161483af5889e50cfc6ba8ac432a4fae73bef19c32fb65073bc03b6368585",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        },
+        {
+          "chunk_id": "c68c0fe50f5f8e402c68",
+          "source_path": "02_Classification/03_knn_penguins_exercise_2.ipynb",
+          "text_sha256": "4a3af0e8524aa976ea06fa93e5bf35f9b9b02dc73947245d3eaca2b1a39e5abc",
+          "grade": 0,
+          "reason": "No evidence for requested private or live fact; returned material is unrelated."
+        }
+      ],
+      "after": [
+        {
+          "chunk_id": "75ee64b22fdb94e00579",
+          "source_path": "views/04_homework_titanic_rf_critique.py",
+          "text_sha256": "9b56b1c018c679187be0481618853fba46625e8f043ea81ce94b576f87c0fb9f",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        },
+        {
+          "chunk_id": "0ebc5842e3173ee31dcc",
+          "source_path": "06_Final_Project/theory/03_further_development_and_ai_trends.md",
+          "text_sha256": "4bb332e670917b3241aad6cea7a3e91df642f6d6ca87c377f003a05e94305a16",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        },
+        {
+          "chunk_id": "7c8583383aa90036e6fe",
+          "source_path": "03_Advanced_ML_Neural_Networks/theory/05_random_forest_theory_and_implementation.md",
+          "text_sha256": "13794d8fab5408083053718bf324363d0f811e658948dda1fd37a25227e889f5",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        },
+        {
+          "chunk_id": "cc69ed5a09337ec9e2a4",
+          "source_path": "06_Final_Project/theory/02_productionizing_machine_learning_models.md",
+          "text_sha256": "d34161483af5889e50cfc6ba8ac432a4fae73bef19c32fb65073bc03b6368585",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        },
+        {
+          "chunk_id": "c68c0fe50f5f8e402c68",
+          "source_path": "02_Classification/03_knn_penguins_exercise_2.ipynb",
+          "text_sha256": "4a3af0e8524aa976ea06fa93e5bf35f9b9b02dc73947245d3eaca2b1a39e5abc",
+          "grade": 0,
+          "reason": "Žádný důkaz požadovaného soukromého nebo aktuálního údaje."
+        }
+      ]
+    }
+  }
+}

@@ -35,6 +35,7 @@ def main() -> None:
             "constraints.py": hashlib.sha256((ROOT / "src/librarian/constraints.py").read_bytes()).hexdigest(),
             "diversify.py": hashlib.sha256((ROOT / "src/librarian/diversify.py").read_bytes()).hexdigest(),
             "chunk_text.py": hashlib.sha256((ROOT / "src/librarian/chunk_text.py").read_bytes()).hexdigest(),
+            "hybrid.py": hashlib.sha256((ROOT / "src/librarian/hybrid.py").read_bytes()).hexdigest(),
         },
         "index_manifest": json.loads(MANIFEST.read_text(encoding="utf-8")),
         "scope": "First-pass unseen topics; becomes a regression set after review. No tuning on this run.",
