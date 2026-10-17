@@ -1,0 +1,1541 @@
+{
+  "source_app": "app.py",
+  "streamlit_base_url": null,
+  "route_count": 219,
+  "duplicate_paths": [],
+  "routes": [
+    {
+      "source_path": "views/00_home.py",
+      "title": "Přehled kurzu a sylabus",
+      "url_path": "",
+      "route_origin": "default_root",
+      "line": 21
+    },
+    {
+      "source_path": "views/00_prework_foundations.py",
+      "title": "01. Co je Data Science & ML",
+      "url_path": "prework_foundations",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 24
+    },
+    {
+      "source_path": "views/00_prework_statistics.py",
+      "title": "02. Statistika & Python stack",
+      "url_path": "prework_statistics",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 25
+    },
+    {
+      "source_path": "views/00_prework_workflow.py",
+      "title": "03. Příprava dat & Scikit-learn",
+      "url_path": "prework_workflow",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 26
+    },
+    {
+      "source_path": "views/01_day_1_summary.py",
+      "title": "Závěrečné shrnutí Dne 1: Velká syntéza regrese & Glosář",
+      "url_path": "day_1_summary",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 73
+    },
+    {
+      "source_path": "views/01_decision_tree_diam.py",
+      "title": "Cvičení 9: Diamanty – Výsledky zadání",
+      "url_path": "decision_tree_diam",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 67
+    },
+    {
+      "source_path": "views/01_decision_tree_diam_critique.py",
+      "title": "Cvičení 9: Diamanty – Expertní analýza",
+      "url_path": "decision_tree_diam_critique",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 68
+    },
+    {
+      "source_path": "views/01_decision_tree_diam_nb.py",
+      "title": "Cvičení 9: Diamanty – Notebook",
+      "url_path": "decision_tree_diam_nb",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 69
+    },
+    {
+      "source_path": "views/01_decision_tree_kc.py",
+      "title": "Cvičení 8: Reality – Výsledky zadání",
+      "url_path": "decision_tree_kc",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 64
+    },
+    {
+      "source_path": "views/01_decision_tree_kc_critique.py",
+      "title": "Cvičení 8: Reality – Expertní analýza",
+      "url_path": "decision_tree_kc_critique",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 65
+    },
+    {
+      "source_path": "views/01_decision_tree_kc_nb.py",
+      "title": "Cvičení 8: Reality – Notebook",
+      "url_path": "decision_tree_kc_nb",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 66
+    },
+    {
+      "source_path": "views/01_decision_tree_theory.py",
+      "title": "Teorie: Rozhodovací strom v regresi",
+      "url_path": "decision_tree_theory",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 63
+    },
+    {
+      "source_path": "views/01_diamonds.py",
+      "title": "Cvičení 2: Diamanty – Výsledky zadání",
+      "url_path": "diamonds",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 33
+    },
+    {
+      "source_path": "views/01_diamonds_gemology_analysis.py",
+      "title": "Cvičení 2: Diamanty – Expertní analýza",
+      "url_path": "diamonds_gemology_analysis",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 34
+    },
+    {
+      "source_path": "views/01_diamonds_metrics.py",
+      "title": "Cvičení 4: Metriky diamantů – Výsledky zadání",
+      "url_path": "diamonds_metrics",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 42
+    },
+    {
+      "source_path": "views/01_diamonds_metrics_critique.py",
+      "title": "Cvičení 4: Metriky diamantů – Expertní analýza",
+      "url_path": "diamonds_metrics_critique",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 43
+    },
+    {
+      "source_path": "views/01_diamonds_metrics_nb.py",
+      "title": "Cvičení 4: Metriky diamantů – Notebook",
+      "url_path": "diamonds_metrics_nb",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 44
+    },
+    {
+      "source_path": "views/01_diamonds_notebook.py",
+      "title": "Cvičení 2: Diamanty – Notebook",
+      "url_path": "diamonds_notebook",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 35
+    },
+    {
+      "source_path": "views/01_diamonds_polynomial.py",
+      "title": "Cvičení 7: Polynom diamantů – Výsledky zadání",
+      "url_path": "diamonds_polynomial",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 58
+    },
+    {
+      "source_path": "views/01_diamonds_polynomial_critique.py",
+      "title": "Cvičení 7: Polynom diamantů – Expertní analýza",
+      "url_path": "diamonds_polynomial_critique",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 59
+    },
+    {
+      "source_path": "views/01_diamonds_polynomial_nb.py",
+      "title": "Cvičení 7: Polynom diamantů – Notebook",
+      "url_path": "diamonds_polynomial_nb",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 60
+    },
+    {
+      "source_path": "views/01_diamonds_regularization.py",
+      "title": "Cvičení 6: Regularizace diamantů – Výsledky zadání",
+      "url_path": "diamonds_regularization",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 52
+    },
+    {
+      "source_path": "views/01_diamonds_regularization_critique.py",
+      "title": "Cvičení 6: Regularizace diamantů – Expertní analýza",
+      "url_path": "diamonds_regularization_critique",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 53
+    },
+    {
+      "source_path": "views/01_diamonds_regularization_nb.py",
+      "title": "Cvičení 6: Regularizace diamantů – Notebook",
+      "url_path": "diamonds_regularization_nb",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 54
+    },
+    {
+      "source_path": "views/01_elastic_net_theory.py",
+      "title": "Teorie: Elastic Net regrese",
+      "url_path": "elastic_net_theory",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 48
+    },
+    {
+      "source_path": "views/01_ensemble_theory.py",
+      "title": "Teorie: Ansámblové metody (RF & Boosting)",
+      "url_path": "ensemble_theory",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 70
+    },
+    {
+      "source_path": "views/01_extras_ccp_pruning.py",
+      "title": "Prořezávání stromů: Cost-Complexity Pruning (alpha)",
+      "url_path": "extras_ccp_pruning",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 79
+    },
+    {
+      "source_path": "views/01_extras_cheatsheet.py",
+      "title": "Tahák do kapsy: Scikit-learn Cheatsheet ke stažení",
+      "url_path": "extras_cheatsheet",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 81
+    },
+    {
+      "source_path": "views/01_extras_gauss_markov.py",
+      "title": "Diagnostika OLS: Gauss-Markov & VIF multikolinearita",
+      "url_path": "extras_gauss_markov",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 78
+    },
+    {
+      "source_path": "views/01_extras_geo_residuals.py",
+      "title": "Mapa nemovitostí: Kde OLS a stromy chybují v Seattlu",
+      "url_path": "extras_geo_residuals",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 77
+    },
+    {
+      "source_path": "views/01_extras_model_chooser.py",
+      "title": "Průvodce výběrem: Jak volit model v praxi",
+      "url_path": "extras_model_chooser",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 80
+    },
+    {
+      "source_path": "views/01_extras_whatif.py",
+      "title": "Kalkulátor cen: What-If simulátor inference",
+      "url_path": "extras_whatif",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 76
+    },
+    {
+      "source_path": "views/01_homework_concrete_decision_tree.py",
+      "title": "Regrese: Rozhodovací strom (Beton)",
+      "url_path": "hw_concrete_tree",
+      "route_origin": "explicit",
+      "line": 152
+    },
+    {
+      "source_path": "views/01_homework_concrete_decision_tree_nb.py",
+      "title": "Regrese: Strom (Beton) – Notebook",
+      "url_path": "hw_concrete_tree_nb",
+      "route_origin": "explicit",
+      "line": 153
+    },
+    {
+      "source_path": "views/01_homework_concrete_decision_tree_random.py",
+      "title": "Regrese: Strom (Randomized)",
+      "url_path": "hw_concrete_tree_rnd",
+      "route_origin": "explicit",
+      "line": 154
+    },
+    {
+      "source_path": "views/01_homework_concrete_decision_tree_random_nb.py",
+      "title": "Regrese: Random Strom – Notebook",
+      "url_path": "hw_concrete_tree_rnd_nb",
+      "route_origin": "explicit",
+      "line": 155
+    },
+    {
+      "source_path": "views/01_homework_concrete_linear_regression.py",
+      "title": "Regrese: Lineární model (Beton)",
+      "url_path": "hw_concrete_lr",
+      "route_origin": "explicit",
+      "line": 148
+    },
+    {
+      "source_path": "views/01_homework_concrete_linear_regression_nb.py",
+      "title": "Regrese: Lineární model – Notebook",
+      "url_path": "hw_concrete_lr_nb",
+      "route_origin": "explicit",
+      "line": 149
+    },
+    {
+      "source_path": "views/01_homework_concrete_preprocessing.py",
+      "title": "Regrese: Příprava dat (Beton)",
+      "url_path": "hw_concrete_prep",
+      "route_origin": "explicit",
+      "line": 146
+    },
+    {
+      "source_path": "views/01_homework_concrete_preprocessing_nb.py",
+      "title": "Regrese: Příprava dat – Notebook",
+      "url_path": "hw_concrete_nb",
+      "route_origin": "explicit",
+      "line": 147
+    },
+    {
+      "source_path": "views/01_homework_concrete_regularization.py",
+      "title": "Regrese: Regularizace (Beton)",
+      "url_path": "hw_concrete_reg",
+      "route_origin": "explicit",
+      "line": 150
+    },
+    {
+      "source_path": "views/01_homework_concrete_regularization_nb.py",
+      "title": "Regrese: Regularizace – Notebook",
+      "url_path": "hw_concrete_reg_nb",
+      "route_origin": "explicit",
+      "line": 151
+    },
+    {
+      "source_path": "views/01_kc_housing.py",
+      "title": "Cvičení 1: Reality – Výsledky zadání",
+      "url_path": "kc_housing",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 30
+    },
+    {
+      "source_path": "views/01_kc_notebook.py",
+      "title": "Cvičení 1: Reality – Notebook",
+      "url_path": "kc_notebook",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 32
+    },
+    {
+      "source_path": "views/01_kc_time_analysis.py",
+      "title": "Cvičení 1: Reality – Expertní analýza",
+      "url_path": "kc_time_analysis",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 31
+    },
+    {
+      "source_path": "views/01_metrics_critique_analysis.py",
+      "title": "Cvičení 3: Metriky reality – Expertní analýza",
+      "url_path": "metrics_critique_analysis",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 40
+    },
+    {
+      "source_path": "views/01_metrics_exercise_1.py",
+      "title": "Cvičení 3: Metriky reality – Výsledky zadání",
+      "url_path": "metrics_exercise_1",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 39
+    },
+    {
+      "source_path": "views/01_metrics_notebook.py",
+      "title": "Cvičení 3: Metriky reality – Notebook",
+      "url_path": "metrics_notebook",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 41
+    },
+    {
+      "source_path": "views/01_metrics_theory.py",
+      "title": "Teorie: Metriky regrese",
+      "url_path": "regression_metrics_theory",
+      "route_origin": "explicit",
+      "line": 38
+    },
+    {
+      "source_path": "views/01_polynomial_theory.py",
+      "title": "Teorie: Polynomiální regrese",
+      "url_path": "polynomial_theory",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 57
+    },
+    {
+      "source_path": "views/01_regularization_critique.py",
+      "title": "Cvičení 5: Regularizace reality – Expertní analýza",
+      "url_path": "regularization_critique",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 50
+    },
+    {
+      "source_path": "views/01_regularization_exercise_1.py",
+      "title": "Cvičení 5: Regularizace reality – Výsledky zadání",
+      "url_path": "regularization_exercise_1",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 49
+    },
+    {
+      "source_path": "views/01_regularization_nb.py",
+      "title": "Cvičení 5: Regularizace reality – Notebook",
+      "url_path": "regularization_nb",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 51
+    },
+    {
+      "source_path": "views/01_regularization_theory.py",
+      "title": "Teorie: Regularizace (Lasso & Ridge)",
+      "url_path": "regularization_theory",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 47
+    },
+    {
+      "source_path": "views/01_theory.py",
+      "title": "Teorie: Lineární regrese & OLS",
+      "url_path": "theory",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 29
+    },
+    {
+      "source_path": "views/02_classification_metrics_theory.py",
+      "title": "Teorie: Metriky klasifikace",
+      "url_path": "classification_metrics_theory",
+      "route_origin": "explicit",
+      "line": 97
+    },
+    {
+      "source_path": "views/02_day_2_summary.py",
+      "title": "Shrnutí 2. dne & Kvíz",
+      "url_path": "day_2_summary",
+      "route_origin": "explicit",
+      "line": 131
+    },
+    {
+      "source_path": "views/02_decision_tree_lumbar_exercise_1.py",
+      "title": "Cvičení 1: Páteř – Výsledky zadání",
+      "url_path": "decision_tree_lumbar_ex1",
+      "route_origin": "explicit",
+      "line": 116
+    },
+    {
+      "source_path": "views/02_decision_tree_lumbar_nb.py",
+      "title": "Cvičení 1: Páteř – Notebook",
+      "url_path": "decision_tree_lumbar_nb",
+      "route_origin": "explicit",
+      "line": 117
+    },
+    {
+      "source_path": "views/02_decision_tree_nb.py",
+      "title": "Ukázka: Syntetika – Notebook",
+      "url_path": "decision_tree_classification_nb",
+      "route_origin": "explicit",
+      "line": 121
+    },
+    {
+      "source_path": "views/02_decision_tree_penguins_exercise_2.py",
+      "title": "Cvičení 2: Tučňáci – Výsledky",
+      "url_path": "decision_tree_penguins_ex2",
+      "route_origin": "explicit",
+      "line": 118
+    },
+    {
+      "source_path": "views/02_decision_tree_penguins_nb.py",
+      "title": "Cvičení 2: Tučňáci – Notebook",
+      "url_path": "decision_tree_penguins_nb",
+      "route_origin": "explicit",
+      "line": 119
+    },
+    {
+      "source_path": "views/02_decision_tree_sample.py",
+      "title": "Ukázka: Strom & Laboratoř",
+      "url_path": "decision_tree_classification_sample",
+      "route_origin": "explicit",
+      "line": 120
+    },
+    {
+      "source_path": "views/02_decision_tree_theory.py",
+      "title": "Teorie: Rozhodovací stromy",
+      "url_path": "decision_tree_classification_theory",
+      "route_origin": "explicit",
+      "line": 115
+    },
+    {
+      "source_path": "views/02_homework_diabetes_knn.py",
+      "title": "Klasifikace: k-NN (Diabetes)",
+      "url_path": "hw_diabetes_knn",
+      "route_origin": "explicit",
+      "line": 160
+    },
+    {
+      "source_path": "views/02_homework_diabetes_knn_nb.py",
+      "title": "Klasifikace: k-NN – Notebook",
+      "url_path": "hw_diabetes_knn_nb",
+      "route_origin": "explicit",
+      "line": 161
+    },
+    {
+      "source_path": "views/02_homework_diabetes_logistic_regression.py",
+      "title": "Klasifikace: LogReg (Diabetes)",
+      "url_path": "hw_diabetes_lr",
+      "route_origin": "explicit",
+      "line": 162
+    },
+    {
+      "source_path": "views/02_homework_diabetes_logistic_regression_nb.py",
+      "title": "Klasifikace: LogReg – Notebook",
+      "url_path": "hw_diabetes_lr_nb",
+      "route_origin": "explicit",
+      "line": 163
+    },
+    {
+      "source_path": "views/02_homework_diabetes_preprocessing.py",
+      "title": "Klasifikace: Příprava (Diabetes)",
+      "url_path": "hw_diabetes_prep",
+      "route_origin": "explicit",
+      "line": 158
+    },
+    {
+      "source_path": "views/02_homework_diabetes_preprocessing_nb.py",
+      "title": "Klasifikace: Příprava – Notebook",
+      "url_path": "hw_diabetes_nb",
+      "route_origin": "explicit",
+      "line": 159
+    },
+    {
+      "source_path": "views/02_homework_diabetes_svm.py",
+      "title": "Klasifikace: SVM (Diabetes)",
+      "url_path": "hw_diabetes_svm",
+      "route_origin": "explicit",
+      "line": 164
+    },
+    {
+      "source_path": "views/02_homework_diabetes_svm_nb.py",
+      "title": "Klasifikace: SVM – Notebook",
+      "url_path": "hw_diabetes_svm_nb",
+      "route_origin": "explicit",
+      "line": 165
+    },
+    {
+      "source_path": "views/02_homework_session1_modern_synthesis.py",
+      "title": "Syntéza Session 1: SOTA 2026",
+      "url_path": "hw_session1_synthesis",
+      "route_origin": "explicit",
+      "line": 166
+    },
+    {
+      "source_path": "views/02_knn_impl_guide.py",
+      "title": "Teorie: k-NN v Scikit-learn & Škálování",
+      "url_path": "knn_impl_guide",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 88
+    },
+    {
+      "source_path": "views/02_knn_lumbar.py",
+      "title": "Cvičení 1: Bederní páteř (k-NN) – Výsledky & Diagnostika",
+      "url_path": "knn_lumbar",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 89
+    },
+    {
+      "source_path": "views/02_knn_lumbar_critique.py",
+      "title": "Cvičení 1: Bederní páteř – Expertní analýza",
+      "url_path": "knn_lumbar_critique",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 91
+    },
+    {
+      "source_path": "views/02_knn_lumbar_nb.py",
+      "title": "Cvičení 1: Bederní páteř – Notebook",
+      "url_path": "knn_lumbar_nb",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 90
+    },
+    {
+      "source_path": "views/02_knn_penguins.py",
+      "title": "Cvičení 2: Tučňáci (k-NN) – Výsledky & Simulátor",
+      "url_path": "knn_penguins",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 92
+    },
+    {
+      "source_path": "views/02_knn_penguins_critique.py",
+      "title": "Cvičení 2: Tučňáci – Expertní analýza",
+      "url_path": "knn_penguins_critique",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 93
+    },
+    {
+      "source_path": "views/02_knn_penguins_nb.py",
+      "title": "Cvičení 2: Tučňáci – Notebook",
+      "url_path": "knn_penguins_nb",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 94
+    },
+    {
+      "source_path": "views/02_knn_theory.py",
+      "title": "Teorie: K-Nearest Neighbors (k-NN)",
+      "url_path": "knn_theory",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 87
+    },
+    {
+      "source_path": "views/02_logistic_regression_lumbar_exercise_1.py",
+      "title": "Cvičení 1: Páteř – Výsledky zadání",
+      "url_path": "logistic_regression_lumbar_ex1",
+      "route_origin": "explicit",
+      "line": 107
+    },
+    {
+      "source_path": "views/02_logistic_regression_lumbar_nb.py",
+      "title": "Cvičení 1: Páteř – Notebook",
+      "url_path": "logistic_regression_lumbar_nb",
+      "route_origin": "explicit",
+      "line": 108
+    },
+    {
+      "source_path": "views/02_logistic_regression_nb.py",
+      "title": "Ukázka: Syntetika – Notebook",
+      "url_path": "logistic_regression_notebook",
+      "route_origin": "explicit",
+      "line": 112
+    },
+    {
+      "source_path": "views/02_logistic_regression_penguins_exercise_2.py",
+      "title": "Cvičení 2: Tučňáci – Výsledky",
+      "url_path": "logistic_regression_penguins_ex2",
+      "route_origin": "explicit",
+      "line": 109
+    },
+    {
+      "source_path": "views/02_logistic_regression_penguins_nb.py",
+      "title": "Cvičení 2: Tučňáci – Notebook",
+      "url_path": "logistic_regression_penguins_nb",
+      "route_origin": "explicit",
+      "line": 110
+    },
+    {
+      "source_path": "views/02_logistic_regression_sample.py",
+      "title": "Ukázka: Simulátor & Laboratoř",
+      "url_path": "logistic_regression_sample",
+      "route_origin": "explicit",
+      "line": 111
+    },
+    {
+      "source_path": "views/02_logistic_regression_theory.py",
+      "title": "Teorie: Logistická regrese",
+      "url_path": "logistic_regression_theory",
+      "route_origin": "explicit",
+      "line": 106
+    },
+    {
+      "source_path": "views/02_metrics_lumbar.py",
+      "title": "Cvičení 1: Bederní páteř – Metriky & Optimalizace k",
+      "url_path": "metrics_lumbar",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 98
+    },
+    {
+      "source_path": "views/02_metrics_lumbar_critique.py",
+      "title": "Cvičení 1: Bederní páteř – Expertní analýza & Náklady",
+      "url_path": "metrics_lumbar_critique",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 99
+    },
+    {
+      "source_path": "views/02_metrics_lumbar_nb.py",
+      "title": "Cvičení 1: Bederní páteř – Notebook",
+      "url_path": "metrics_lumbar_nb",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 100
+    },
+    {
+      "source_path": "views/02_metrics_penguins.py",
+      "title": "Cvičení 2: Tučňáci – Multiclass metriky & k-sweep",
+      "url_path": "metrics_penguins",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 101
+    },
+    {
+      "source_path": "views/02_metrics_penguins_critique.py",
+      "title": "Cvičení 2: Tučňáci – Expertní analýza & OvR ROC",
+      "url_path": "metrics_penguins_critique",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 102
+    },
+    {
+      "source_path": "views/02_metrics_penguins_nb.py",
+      "title": "Cvičení 2: Tučňáci – Notebook",
+      "url_path": "metrics_penguins_nb",
+      "route_origin": "filename_inferred_per_streamlit_docs",
+      "line": 103
+    },
+    {
+      "source_path": "views/02_svm_lumbar_exercise_1.py",
+      "title": "Cvičení 1: Páteř – Výsledky zadání",
+      "url_path": "svm_lumbar_ex1",
+      "route_origin": "explicit",
+      "line": 125
+    },
+    {
+      "source_path": "views/02_svm_lumbar_nb.py",
+      "title": "Cvičení 1: Páteř – Notebook",
+      "url_path": "svm_lumbar_nb",
+      "route_origin": "explicit",
+      "line": 126
+    },
+    {
+      "source_path": "views/02_svm_nb.py",
+      "title": "Ukázka: SVM – Notebook",
+      "url_path": "svm_classification_nb",
+      "route_origin": "explicit",
+      "line": 128
+    },
+    {
+      "source_path": "views/02_svm_sample.py",
+      "title": "Ukázka: Klasifikační SVM",
+      "url_path": "svm_classification_sample",
+      "route_origin": "explicit",
+      "line": 127
+    },
+    {
+      "source_path": "views/02_svm_theory.py",
+      "title": "Teorie: Support Vector Machines",
+      "url_path": "svm_theory",
+      "route_origin": "explicit",
+      "line": 124
+    },
+    {
+      "source_path": "views/03_boosting_xgboost_theory.py",
+      "title": "Teorie: Boosting & XGBoost",
+      "url_path": "boosting_xgboost_theory",
+      "route_origin": "explicit",
+      "line": 187
+    },
+    {
+      "source_path": "views/03_day_3_summary.py",
+      "title": "Závěr Dne 3: Shrnutí & Kvíz",
+      "url_path": "day_3_summary",
+      "route_origin": "explicit",
+      "line": 201
+    },
+    {
+      "source_path": "views/03_ensemble_bagging_theory.py",
+      "title": "Teorie: Ansámbly & Bagging",
+      "url_path": "ensemble_bagging_theory",
+      "route_origin": "explicit",
+      "line": 179
+    },
+    {
+      "source_path": "views/03_extras_backprop_calc.py",
+      "title": "Backpropagation: Krok za krokem & Errata slidů",
+      "url_path": "day3_extras_backprop_calc",
+      "route_origin": "explicit",
+      "line": 206
+    },
+    {
+      "source_path": "views/03_extras_bagging_variance.py",
+      "title": "Bagging & RF: Variance & Korelace Lab",
+      "url_path": "day3_extras_bagging_variance",
+      "route_origin": "explicit",
+      "line": 207
+    },
+    {
+      "source_path": "views/03_extras_boosting_animator.py",
+      "title": "Boosting: Sekvenční simulátor reziduí",
+      "url_path": "day3_extras_boosting_animator",
+      "route_origin": "explicit",
+      "line": 208
+    },
+    {
+      "source_path": "views/03_extras_condorcet_jury.py",
+      "title": "Ansámbly: Condorcetova porota (Jury Theorem)",
+      "url_path": "day3_extras_condorcet_jury",
+      "route_origin": "explicit",
+      "line": 209
+    },
+    {
+      "source_path": "views/03_extras_cost_threshold_calc.py",
+      "title": "Kalkulátor prahu: Cost-Sensitive analýza (Srdce)",
+      "url_path": "day3_extras_cost_threshold_calc",
+      "route_origin": "explicit",
+      "line": 211
+    },
+    {
+      "source_path": "views/03_extras_hyperparam_cheatsheet.py",
+      "title": "Tahák & Diagnostika: Symptom-to-Fix matice",
+      "url_path": "day3_extras_hyperparam_cheatsheet",
+      "route_origin": "explicit",
+      "line": 213
+    },
+    {
+      "source_path": "views/03_extras_mnist_draw.py",
+      "title": "MNIST: Živé kreslení & Rozpoznávání číslic",
+      "url_path": "day3_extras_mnist_draw",
+      "route_origin": "explicit",
+      "line": 204
+    },
+    {
+      "source_path": "views/03_extras_model_chooser.py",
+      "title": "Průvodce výběrem: Jak volit model v praxi",
+      "url_path": "day3_extras_model_chooser",
+      "route_origin": "explicit",
+      "line": 212
+    },
+    {
+      "source_path": "views/03_extras_nn_architecture_calc.py",
+      "title": "NN Architekt: Počítadlo tvarů & parametrů",
+      "url_path": "day3_extras_nn_architecture_calc",
+      "route_origin": "explicit",
+      "line": 210
+    },
+    {
+      "source_path": "views/03_extras_nn_playground.py",
+      "title": "Neuronové sítě: 2D Interaktivní hřiště",
+      "url_path": "day3_extras_nn_playground",
+      "route_origin": "explicit",
+      "line": 205
+    },
+    {
+      "source_path": "views/03_hyperparameter_optimization_nb.py",
+      "title": "Tuning: Ukázka – Notebook",
+      "url_path": "hyperparameter_optimization_nb",
+      "route_origin": "explicit",
+      "line": 143
+    },
+    {
+      "source_path": "views/03_hyperparameter_optimization_sample.py",
+      "title": "Tuning: Ukázka implementace",
+      "url_path": "hyperparameter_optimization_sample",
+      "route_origin": "explicit",
+      "line": 142
+    },
+    {
+      "source_path": "views/03_hyperparameter_tuning_theory.py",
+      "title": "Teorie: Hyperparametry & CV",
+      "url_path": "hyperparameter_tuning_theory",
+      "route_origin": "explicit",
+      "line": 137
+    },
+    {
+      "source_path": "views/03_hyperparameters_diamonds_exercise_1.py",
+      "title": "Tuning 1: Diamanty – Výsledky",
+      "url_path": "hyperparameters_diamonds_ex1",
+      "route_origin": "explicit",
+      "line": 138
+    },
+    {
+      "source_path": "views/03_hyperparameters_diamonds_nb.py",
+      "title": "Tuning 1: Diamanty – Notebook",
+      "url_path": "hyperparameters_diamonds_nb",
+      "route_origin": "explicit",
+      "line": 139
+    },
+    {
+      "source_path": "views/03_hyperparameters_penguins_exercise_2.py",
+      "title": "Tuning 2: Tučňáci – Výsledky",
+      "url_path": "hyperparameters_penguins_ex2",
+      "route_origin": "explicit",
+      "line": 140
+    },
+    {
+      "source_path": "views/03_hyperparameters_penguins_nb.py",
+      "title": "Tuning 2: Tučňáci – Notebook",
+      "url_path": "hyperparameters_penguins_nb",
+      "route_origin": "explicit",
+      "line": 141
+    },
+    {
+      "source_path": "views/03_neural_network_kc_housing_exercise_2.py",
+      "title": "Cvičení 2: KC Housing – Výsledky zadání",
+      "url_path": "nn_kc_exercise_2",
+      "route_origin": "explicit",
+      "line": 198
+    },
+    {
+      "source_path": "views/03_neural_network_kc_housing_exercise_2_critique.py",
+      "title": "Cvičení 2: KC Housing – Expertní analýza",
+      "url_path": "nn_kc_critique",
+      "route_origin": "explicit",
+      "line": 199
+    },
+    {
+      "source_path": "views/03_neural_network_kc_housing_nb.py",
+      "title": "Cvičení 2: KC Housing – Notebook",
+      "url_path": "nn_kc_notebook",
+      "route_origin": "explicit",
+      "line": 200
+    },
+    {
+      "source_path": "views/03_neural_network_mnist_exercise_1.py",
+      "title": "Cvičení 1: MNIST Číslice – Výsledky zadání",
+      "url_path": "nn_mnist_exercise_1",
+      "route_origin": "explicit",
+      "line": 195
+    },
+    {
+      "source_path": "views/03_neural_network_mnist_exercise_1_critique.py",
+      "title": "Cvičení 1: MNIST Číslice – Expertní analýza",
+      "url_path": "nn_mnist_critique",
+      "route_origin": "explicit",
+      "line": 196
+    },
+    {
+      "source_path": "views/03_neural_network_mnist_nb.py",
+      "title": "Cvičení 1: MNIST Číslice – Notebook",
+      "url_path": "nn_mnist_notebook",
+      "route_origin": "explicit",
+      "line": 197
+    },
+    {
+      "source_path": "views/03_neural_networks_theory.py",
+      "title": "Teorie: Neuronové sítě & Keras",
+      "url_path": "neural_networks_theory",
+      "route_origin": "explicit",
+      "line": 194
+    },
+    {
+      "source_path": "views/03_prework_neural_networks_intro.py",
+      "title": "Prework: Neuronové sítě",
+      "url_path": "prework_nn_intro",
+      "route_origin": "explicit",
+      "line": 171
+    },
+    {
+      "source_path": "views/03_random_forest_diamonds_exercise_2.py",
+      "title": "Cvičení 2: Diamanty – Výsledky zadání",
+      "url_path": "rf_diamonds_exercise_2",
+      "route_origin": "explicit",
+      "line": 184
+    },
+    {
+      "source_path": "views/03_random_forest_diamonds_exercise_2_critique.py",
+      "title": "Cvičení 2: Diamanty – Expertní analýza",
+      "url_path": "rf_diamonds_critique",
+      "route_origin": "explicit",
+      "line": 185
+    },
+    {
+      "source_path": "views/03_random_forest_diamonds_nb.py",
+      "title": "Cvičení 2: Diamanty – Notebook",
+      "url_path": "rf_diamonds_notebook",
+      "route_origin": "explicit",
+      "line": 186
+    },
+    {
+      "source_path": "views/03_random_forest_heart_exercise_1.py",
+      "title": "Cvičení 1: Nemoc srdce – Výsledky zadání",
+      "url_path": "rf_heart_exercise_1",
+      "route_origin": "explicit",
+      "line": 181
+    },
+    {
+      "source_path": "views/03_random_forest_heart_exercise_1_critique.py",
+      "title": "Cvičení 1: Nemoc srdce – Expertní analýza",
+      "url_path": "rf_heart_critique",
+      "route_origin": "explicit",
+      "line": 182
+    },
+    {
+      "source_path": "views/03_random_forest_heart_nb.py",
+      "title": "Cvičení 1: Nemoc srdce – Notebook",
+      "url_path": "rf_heart_notebook",
+      "route_origin": "explicit",
+      "line": 183
+    },
+    {
+      "source_path": "views/03_random_forest_theory_and_implementation.py",
+      "title": "Teorie: Náhodný les (RF)",
+      "url_path": "random_forest_theory",
+      "route_origin": "explicit",
+      "line": 180
+    },
+    {
+      "source_path": "views/03_xgboost_diamonds_exercise_2.py",
+      "title": "Cvičení 2: Diamanty – Výsledky zadání",
+      "url_path": "xgb_diamonds_exercise_2",
+      "route_origin": "explicit",
+      "line": 191
+    },
+    {
+      "source_path": "views/03_xgboost_diamonds_exercise_2_critique.py",
+      "title": "Cvičení 2: Diamanty – Expertní analýza",
+      "url_path": "xgb_diamonds_critique",
+      "route_origin": "explicit",
+      "line": 192
+    },
+    {
+      "source_path": "views/03_xgboost_diamonds_nb.py",
+      "title": "Cvičení 2: Diamanty – Notebook",
+      "url_path": "xgb_diamonds_notebook",
+      "route_origin": "explicit",
+      "line": 193
+    },
+    {
+      "source_path": "views/03_xgboost_heart_exercise_1.py",
+      "title": "Cvičení 1: Nemoc srdce – Výsledky zadání",
+      "url_path": "xgb_heart_exercise_1",
+      "route_origin": "explicit",
+      "line": 188
+    },
+    {
+      "source_path": "views/03_xgboost_heart_exercise_1_critique.py",
+      "title": "Cvičení 1: Nemoc srdce – Expertní analýza",
+      "url_path": "xgb_heart_critique",
+      "route_origin": "explicit",
+      "line": 189
+    },
+    {
+      "source_path": "views/03_xgboost_heart_nb.py",
+      "title": "Cvičení 1: Nemoc srdce – Notebook",
+      "url_path": "xgb_heart_notebook",
+      "route_origin": "explicit",
+      "line": 190
+    },
+    {
+      "source_path": "views/04_homework_auto_mpg_nn.py",
+      "title": "DÚ 6: Auto MPG (Neuronové sítě) – Výsledky zadání",
+      "url_path": "hw_auto_mpg_nn_results",
+      "route_origin": "explicit",
+      "line": 260
+    },
+    {
+      "source_path": "views/04_homework_auto_mpg_nn_critique.py",
+      "title": "DÚ 6: Auto MPG (Neuronové sítě) – Expertní analýza",
+      "url_path": "hw_auto_mpg_nn_critique",
+      "route_origin": "explicit",
+      "line": 261
+    },
+    {
+      "source_path": "views/04_homework_auto_mpg_nn_nb.py",
+      "title": "DÚ 6: Auto MPG (Neuronové sítě) – Notebook",
+      "url_path": "hw_auto_mpg_nn_nb",
+      "route_origin": "explicit",
+      "line": 262
+    },
+    {
+      "source_path": "views/04_homework_calories_xgb.py",
+      "title": "DÚ 4: Kalorie při cvičení (XGBoost) – Výsledky zadání",
+      "url_path": "hw_calories_xgb_results",
+      "route_origin": "explicit",
+      "line": 252
+    },
+    {
+      "source_path": "views/04_homework_calories_xgb_critique.py",
+      "title": "DÚ 4: Kalorie při cvičení (XGBoost) – Expertní analýza",
+      "url_path": "hw_calories_xgb_critique",
+      "route_origin": "explicit",
+      "line": 253
+    },
+    {
+      "source_path": "views/04_homework_calories_xgb_nb.py",
+      "title": "DÚ 4: Kalorie při cvičení (XGBoost) – Notebook",
+      "url_path": "hw_calories_xgb_nb",
+      "route_origin": "explicit",
+      "line": 254
+    },
+    {
+      "source_path": "views/04_homework_car_price_rf.py",
+      "title": "DÚ 2: Ceny aut (Regrese) – Výsledky zadání",
+      "url_path": "hw_car_price_rf_results",
+      "route_origin": "explicit",
+      "line": 244
+    },
+    {
+      "source_path": "views/04_homework_car_price_rf_critique.py",
+      "title": "DÚ 2: Ceny aut (Regrese) – Expertní analýza",
+      "url_path": "hw_car_price_rf_critique",
+      "route_origin": "explicit",
+      "line": 245
+    },
+    {
+      "source_path": "views/04_homework_car_price_rf_nb.py",
+      "title": "DÚ 2: Ceny aut (Regrese) – Notebook",
+      "url_path": "hw_car_price_rf_nb",
+      "route_origin": "explicit",
+      "line": 246
+    },
+    {
+      "source_path": "views/04_homework_diabetes_xgb.py",
+      "title": "DÚ 3: Diabetes (XGBoost) – Výsledky zadání",
+      "url_path": "hw_diabetes_xgb_results",
+      "route_origin": "explicit",
+      "line": 248
+    },
+    {
+      "source_path": "views/04_homework_diabetes_xgb_critique.py",
+      "title": "DÚ 3: Diabetes (XGBoost) – Expertní analýza",
+      "url_path": "hw_diabetes_xgb_critique",
+      "route_origin": "explicit",
+      "line": 249
+    },
+    {
+      "source_path": "views/04_homework_diabetes_xgb_nb.py",
+      "title": "DÚ 3: Diabetes (XGBoost) – Notebook",
+      "url_path": "hw_diabetes_xgb_nb",
+      "route_origin": "explicit",
+      "line": 250
+    },
+    {
+      "source_path": "views/04_homework_kaggle_guide.py",
+      "title": "Průvodce: Jak nahrát notebook na Kaggle",
+      "url_path": "hw_kaggle_guide",
+      "route_origin": "explicit",
+      "line": 268
+    },
+    {
+      "source_path": "views/04_homework_mcdonalds_w2v.py",
+      "title": "DÚ 7: McDonald's (Word2Vec + SVM) – Výsledky zadání",
+      "url_path": "hw_mcdonalds_w2v_results",
+      "route_origin": "explicit",
+      "line": 264
+    },
+    {
+      "source_path": "views/04_homework_mcdonalds_w2v_critique.py",
+      "title": "DÚ 7: McDonald's (Word2Vec + SVM) – Expertní analýza",
+      "url_path": "hw_mcdonalds_w2v_critique",
+      "route_origin": "explicit",
+      "line": 265
+    },
+    {
+      "source_path": "views/04_homework_mcdonalds_w2v_nb.py",
+      "title": "DÚ 7: McDonald's (Word2Vec + SVM) – Notebook",
+      "url_path": "hw_mcdonalds_w2v_nb",
+      "route_origin": "explicit",
+      "line": 266
+    },
+    {
+      "source_path": "views/04_homework_sonar_nn.py",
+      "title": "DÚ 5: Sonar (Neuronové sítě) – Výsledky zadání",
+      "url_path": "hw_sonar_nn_results",
+      "route_origin": "explicit",
+      "line": 256
+    },
+    {
+      "source_path": "views/04_homework_sonar_nn_critique.py",
+      "title": "DÚ 5: Sonar (Neuronové sítě) – Expertní analýza",
+      "url_path": "hw_sonar_nn_critique",
+      "route_origin": "explicit",
+      "line": 257
+    },
+    {
+      "source_path": "views/04_homework_sonar_nn_nb.py",
+      "title": "DÚ 5: Sonar (Neuronové sítě) – Notebook",
+      "url_path": "hw_sonar_nn_nb",
+      "route_origin": "explicit",
+      "line": 258
+    },
+    {
+      "source_path": "views/04_homework_titanic_rf.py",
+      "title": "DÚ 1: Titanic (Klasifikace) – Výsledky zadání",
+      "url_path": "hw_titanic_rf_results",
+      "route_origin": "explicit",
+      "line": 240
+    },
+    {
+      "source_path": "views/04_homework_titanic_rf_critique.py",
+      "title": "DÚ 1: Titanic (Klasifikace) – Expertní analýza",
+      "url_path": "hw_titanic_rf_critique",
+      "route_origin": "explicit",
+      "line": 241
+    },
+    {
+      "source_path": "views/04_homework_titanic_rf_nb.py",
+      "title": "DÚ 1: Titanic (Klasifikace) – Notebook",
+      "url_path": "hw_titanic_rf_nb",
+      "route_origin": "explicit",
+      "line": 242
+    },
+    {
+      "source_path": "views/04_nlp_bert_theory.py",
+      "title": "Teorie & Demo: BERT & Hugging Face Pipeline",
+      "url_path": "day4_nlp_bert_theory",
+      "route_origin": "explicit",
+      "line": 236
+    },
+    {
+      "source_path": "views/04_nlp_bow_tfidf_theory.py",
+      "title": "Teorie: Bag of Words & TF-IDF (Vektorizace)",
+      "url_path": "day4_nlp_bow_tfidf_theory",
+      "route_origin": "explicit",
+      "line": 217
+    },
+    {
+      "source_path": "views/04_nlp_day_4_summary.py",
+      "title": "Závěr Dne 4: Shrnutí & Kvíz",
+      "url_path": "day_4_summary",
+      "route_origin": "explicit",
+      "line": 237
+    },
+    {
+      "source_path": "views/04_nlp_exercise_1.py",
+      "title": "Cvičení 1: Předzpracování textu (IMDb) – Výsledky zadání",
+      "url_path": "day4_nlp_exercise_1",
+      "route_origin": "explicit",
+      "line": 218
+    },
+    {
+      "source_path": "views/04_nlp_exercise_1_critique.py",
+      "title": "Cvičení 1: Předzpracování textu – Expertní analýza",
+      "url_path": "day4_nlp_exercise_1_critique",
+      "route_origin": "explicit",
+      "line": 219
+    },
+    {
+      "source_path": "views/04_nlp_exercise_1_nb.py",
+      "title": "Cvičení 1: Předzpracování textu – Notebook",
+      "url_path": "day4_nlp_exercise_1_nb",
+      "route_origin": "explicit",
+      "line": 220
+    },
+    {
+      "source_path": "views/04_nlp_exercise_2.py",
+      "title": "Cvičení 2: Lemmatizace textu (IMDb) – Výsledky zadání",
+      "url_path": "day4_nlp_exercise_2",
+      "route_origin": "explicit",
+      "line": 221
+    },
+    {
+      "source_path": "views/04_nlp_exercise_2_critique.py",
+      "title": "Cvičení 2: Lemmatizace & Subwords – Expertní analýza",
+      "url_path": "day4_nlp_exercise_2_critique",
+      "route_origin": "explicit",
+      "line": 222
+    },
+    {
+      "source_path": "views/04_nlp_exercise_2_nb.py",
+      "title": "Cvičení 2: Lemmatizace textu – Notebook",
+      "url_path": "day4_nlp_exercise_2_nb",
+      "route_origin": "explicit",
+      "line": 223
+    },
+    {
+      "source_path": "views/04_nlp_exercise_bow.py",
+      "title": "Cvičení 3: Bag of Words & Klasifikace (IMDb)",
+      "url_path": "day4_nlp_exercise_bow",
+      "route_origin": "explicit",
+      "line": 224
+    },
+    {
+      "source_path": "views/04_nlp_exercise_bow_critique.py",
+      "title": "Cvičení 3: Bag of Words – Expertní analýza",
+      "url_path": "day4_nlp_exercise_bow_critique",
+      "route_origin": "explicit",
+      "line": 225
+    },
+    {
+      "source_path": "views/04_nlp_exercise_bow_nb.py",
+      "title": "Cvičení 3: Bag of Words – Notebook",
+      "url_path": "day4_nlp_exercise_bow_nb",
+      "route_origin": "explicit",
+      "line": 226
+    },
+    {
+      "source_path": "views/04_nlp_exercise_tfidf.py",
+      "title": "Cvičení 4: TF-IDF & Srovnání modelů (IMDb)",
+      "url_path": "day4_nlp_exercise_tfidf",
+      "route_origin": "explicit",
+      "line": 227
+    },
+    {
+      "source_path": "views/04_nlp_exercise_tfidf_critique.py",
+      "title": "Cvičení 4: TF-IDF – Expertní analýza",
+      "url_path": "day4_nlp_exercise_tfidf_critique",
+      "route_origin": "explicit",
+      "line": 228
+    },
+    {
+      "source_path": "views/04_nlp_exercise_tfidf_nb.py",
+      "title": "Cvičení 4: TF-IDF – Notebook",
+      "url_path": "day4_nlp_exercise_tfidf_nb",
+      "route_origin": "explicit",
+      "line": 229
+    },
+    {
+      "source_path": "views/04_nlp_exercise_word2vec.py",
+      "title": "Cvičení 5: Word2Vec – Trénování & Klasifikace",
+      "url_path": "day4_nlp_exercise_word2vec",
+      "route_origin": "explicit",
+      "line": 232
+    },
+    {
+      "source_path": "views/04_nlp_exercise_word2vec_critique.py",
+      "title": "Cvičení 5: Word2Vec – Expertní analýza",
+      "url_path": "day4_nlp_exercise_word2vec_critique",
+      "route_origin": "explicit",
+      "line": 233
+    },
+    {
+      "source_path": "views/04_nlp_exercise_word2vec_nb.py",
+      "title": "Cvičení 5: Word2Vec – Notebook",
+      "url_path": "day4_nlp_exercise_word2vec_nb",
+      "route_origin": "explicit",
+      "line": 234
+    },
+    {
+      "source_path": "views/04_nlp_text_preprocessing_theory.py",
+      "title": "Teorie: Klíčové principy práce s textem",
+      "url_path": "day4_nlp_principles_theory",
+      "route_origin": "explicit",
+      "line": 216
+    },
+    {
+      "source_path": "views/04_nlp_transformer_theory.py",
+      "title": "Teorie: Architektura Transformer & Self-Attention",
+      "url_path": "day4_nlp_transformer_theory",
+      "route_origin": "explicit",
+      "line": 235
+    },
+    {
+      "source_path": "views/04_nlp_word2vec_implementation.py",
+      "title": "Implementace: Word2Vec v knihovně Gensim",
+      "url_path": "day4_nlp_word2vec_implementation",
+      "route_origin": "explicit",
+      "line": 231
+    },
+    {
+      "source_path": "views/04_nlp_word2vec_theory.py",
+      "title": "Teorie: Word2Vec & Slovní vnoření",
+      "url_path": "day4_nlp_word2vec_theory",
+      "route_origin": "explicit",
+      "line": 230
+    },
+    {
+      "source_path": "views/04_prework_nlp_intro.py",
+      "title": "Prework: Úvod do NLP",
+      "url_path": "prework_nlp_intro",
+      "route_origin": "explicit",
+      "line": 172
+    },
+    {
+      "source_path": "views/04_prework_nltk_spacy.py",
+      "title": "Prework: NLTK a spaCy",
+      "url_path": "prework_nltk_spacy",
+      "route_origin": "explicit",
+      "line": 173
+    },
+    {
+      "source_path": "views/05_anomaly_detection_lof.py",
+      "title": "Implementace: LOF v Scikit-learn",
+      "url_path": "day5_anomaly_detection_lof_implementation",
+      "route_origin": "explicit",
+      "line": 296
+    },
+    {
+      "source_path": "views/05_anomaly_detection_lof_nb.py",
+      "title": "Detekce anomálií: LOF – Notebook",
+      "url_path": "day5_anomaly_detection_lof_nb",
+      "route_origin": "explicit",
+      "line": 297
+    },
+    {
+      "source_path": "views/05_anomaly_detection_lof_theory.py",
+      "title": "Teorie: Detekce anomálií & LOF",
+      "url_path": "day5_anomaly_detection_lof_theory",
+      "route_origin": "explicit",
+      "line": 295
+    },
+    {
+      "source_path": "views/05_day_5_summary.py",
+      "title": "Závěr Dne 5: Velká syntéza",
+      "url_path": "day5_summary",
+      "route_origin": "explicit",
+      "line": 311
+    },
+    {
+      "source_path": "views/05_dbscan_moons_critique.py",
+      "title": "Cvičení: Moons – Expertní rozbor",
+      "url_path": "day5_dbscan_moons_critique",
+      "route_origin": "explicit",
+      "line": 291
+    },
+    {
+      "source_path": "views/05_dbscan_moons_exercise.py",
+      "title": "Cvičení: Moons – Výsledky zadání",
+      "url_path": "day5_dbscan_moons_results",
+      "route_origin": "explicit",
+      "line": 290
+    },
+    {
+      "source_path": "views/05_dbscan_moons_nb.py",
+      "title": "Cvičení: Moons – Notebook",
+      "url_path": "day5_dbscan_moons_nb",
+      "route_origin": "explicit",
+      "line": 292
+    },
+    {
+      "source_path": "views/05_dbscan_sample_implementation.py",
+      "title": "Implementace: DBSCAN v Scikit-learn",
+      "url_path": "day5_dbscan_sample_implementation",
+      "route_origin": "explicit",
+      "line": 288
+    },
+    {
+      "source_path": "views/05_dbscan_sample_implementation_nb.py",
+      "title": "Implementace: DBSCAN – Notebook",
+      "url_path": "day5_dbscan_sample_implementation_nb",
+      "route_origin": "explicit",
+      "line": 289
+    },
+    {
+      "source_path": "views/05_isolation_forest_implementation.py",
+      "title": "Implementace: Isolation Forest",
+      "url_path": "day5_isolation_forest_implementation",
+      "route_origin": "explicit",
+      "line": 304
+    },
+    {
+      "source_path": "views/05_isolation_forest_nb.py",
+      "title": "Implementace: iForest – Notebook",
+      "url_path": "day5_isolation_forest_nb",
+      "route_origin": "explicit",
+      "line": 305
+    },
+    {
+      "source_path": "views/05_isolation_forest_student_scores_critique.py",
+      "title": "Cvičení: Skóre studentů – Rozbor",
+      "url_path": "day5_iforest_student_scores_critique",
+      "route_origin": "explicit",
+      "line": 307
+    },
+    {
+      "source_path": "views/05_isolation_forest_student_scores_exercise.py",
+      "title": "Cvičení: Skóre studentů – Výsledky",
+      "url_path": "day5_iforest_student_scores_results",
+      "route_origin": "explicit",
+      "line": 306
+    },
+    {
+      "source_path": "views/05_isolation_forest_student_scores_nb.py",
+      "title": "Cvičení: Skóre studentů – Notebook",
+      "url_path": "day5_iforest_student_scores_nb",
+      "route_origin": "explicit",
+      "line": 308
+    },
+    {
+      "source_path": "views/05_isolation_forest_theory.py",
+      "title": "Teorie: Isolation Forest (iForest)",
+      "url_path": "day5_isolation_forest_theory",
+      "route_origin": "explicit",
+      "line": 303
+    },
+    {
+      "source_path": "views/05_kmeans_mall_customers_critique.py",
+      "title": "Cvičení: Zákazníci OC – Rozbor",
+      "url_path": "day5_kmeans_mall_customers_critique",
+      "route_origin": "explicit",
+      "line": 284
+    },
+    {
+      "source_path": "views/05_kmeans_mall_customers_exercise.py",
+      "title": "Cvičení: Zákazníci OC – Výsledky",
+      "url_path": "day5_kmeans_mall_customers_results",
+      "route_origin": "explicit",
+      "line": 283
+    },
+    {
+      "source_path": "views/05_kmeans_mall_customers_nb.py",
+      "title": "Cvičení: Zákazníci OC – Notebook",
+      "url_path": "day5_kmeans_mall_customers_nb",
+      "route_origin": "explicit",
+      "line": 285
+    },
+    {
+      "source_path": "views/05_kmeans_sample_implementation.py",
+      "title": "Implementace: K-Means v Scikit-learn",
+      "url_path": "day5_kmeans_sample_implementation",
+      "route_origin": "explicit",
+      "line": 282
+    },
+    {
+      "source_path": "views/05_kmeans_theory.py",
+      "title": "Teorie: Shlukování & K-Means",
+      "url_path": "day5_kmeans_theory",
+      "route_origin": "explicit",
+      "line": 281
+    },
+    {
+      "source_path": "views/05_lof_blobs_critique.py",
+      "title": "Cvičení: Blobs – Expertní rozbor",
+      "url_path": "day5_lof_blobs_critique",
+      "route_origin": "explicit",
+      "line": 299
+    },
+    {
+      "source_path": "views/05_lof_blobs_exercise.py",
+      "title": "Cvičení: Blobs – Výsledky zadání",
+      "url_path": "day5_lof_blobs_results",
+      "route_origin": "explicit",
+      "line": 298
+    },
+    {
+      "source_path": "views/05_lof_blobs_nb.py",
+      "title": "Cvičení: Blobs – Notebook",
+      "url_path": "day5_lof_blobs_nb",
+      "route_origin": "explicit",
+      "line": 300
+    },
+    {
+      "source_path": "views/05_pca_breast_cancer_implementation.py",
+      "title": "Implementace: PCA v Scikit-learn (Breast Cancer)",
+      "url_path": "day5_pca_breast_cancer_implementation",
+      "route_origin": "explicit",
+      "line": 275
+    },
+    {
+      "source_path": "views/05_pca_diamonds_critique.py",
+      "title": "Cvičení: Diamanty – Expertní rozbor",
+      "url_path": "day5_pca_diamonds_critique",
+      "route_origin": "explicit",
+      "line": 277
+    },
+    {
+      "source_path": "views/05_pca_diamonds_exercise.py",
+      "title": "Cvičení: Diamanty – Výsledky zadání",
+      "url_path": "day5_pca_diamonds_results",
+      "route_origin": "explicit",
+      "line": 276
+    },
+    {
+      "source_path": "views/05_pca_diamonds_nb.py",
+      "title": "Cvičení: Diamanty – Notebook",
+      "url_path": "day5_pca_diamonds_nb",
+      "route_origin": "explicit",
+      "line": 278
+    },
+    {
+      "source_path": "views/05_pca_dimensionality_reduction_theory.py",
+      "title": "Teorie: Redukce dimenzionality & Matematika PCA",
+      "url_path": "day5_pca_theory",
+      "route_origin": "explicit",
+      "line": 274
+    },
+    {
+      "source_path": "views/05_prework_unsupervised_learning_intro.py",
+      "title": "Úvod do neřízeného učení (Unsupervised Learning)",
+      "url_path": "prework_unsupervised_intro",
+      "route_origin": "explicit",
+      "line": 271
+    },
+    {
+      "source_path": "views/06_career_and_ai_trends.py",
+      "title": "Trendy AI & Kam dál",
+      "url_path": "ai_trends_future",
+      "route_origin": "explicit",
+      "line": 316
+    },
+    {
+      "source_path": "views/06_course_summary_recap.py",
+      "title": "Celkové shrnutí ML kurzu",
+      "url_path": "course_summary",
+      "route_origin": "explicit",
+      "line": 314
+    },
+    {
+      "source_path": "views/06_mlops_productionizing.py",
+      "title": "Produkční nasazení & MLOps",
+      "url_path": "mlops_productionizing",
+      "route_origin": "explicit",
+      "line": 315
+    },
+    {
+      "source_path": "views/06_modern_ml_rag_agents.py",
+      "title": "Moderní ML 2026: RAG & Agenti",
+      "url_path": "modern_ml_2026_rag",
+      "route_origin": "explicit",
+      "line": 317
+    }
+  ]
+}
