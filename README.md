@@ -85,3 +85,10 @@ The first fixed cross-topic acceptance check is **not accepted**: PCA/scaling is
 hard rejected, one out-of-domain recipe remains uncertain, and spam metric-choice
 evidence is incomplete. See `docs/ACCEPTANCE_V1.md` and the full local review at
 `http://localhost:8765/eval/acceptance_v1_review.local.html`. Retrieval is unchanged.
+
+Weak no-support matches now combine raw E5/reranker ranks only when every candidate
+whole-query score is below .10. Original support scores/gate are unchanged; the
+known PCA explanation reaches rank3 but remains hard rejected. Existing uncertain
+and supported candidate pools keep old ranking. API `ranking_strategy="reranker"`
+replays previous ordering. See `docs/RANKING_FUSION.md` and
+`http://localhost:8765/eval/ranking_fusion_v2_review.local.html`.

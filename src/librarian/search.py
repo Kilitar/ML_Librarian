@@ -19,6 +19,7 @@ from concepts import concept_strength
 from semantic_layer import analyze
 from comparisons import comparison_aspects, coverage_order, approved_pair, comparison_context, contextual_score
 from source_filters import SOURCE_ROLES, SOURCE_ORIGINS, exclusions, allowed_indices
+from ranking_fusion import weak_fusion, VERSION as FUSION_VERSION
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -165,7 +166,7 @@ class E5SearchIndex:
                match_constraints: bool = True, mode: str = "e5", semantic_layer: bool = True,
                semantic_experiment: bool = False, comparison_tuning: bool = True,
                comparison_experiment: bool = False, comparison_strategy: str = 'contextual',
-               excluded_roles=None, excluded_origins=None) -> list[dict[str, Any]]:
+               excluded_roles=None, excluded_origins=None, ranking_strategy='weak_fusion') -> list[dict[str, Any]]:
         query = " ".join(query.split())
         if not query:
             raise ValueError("Enter a non-empty query")
@@ -175,6 +176,8 @@ class E5SearchIndex:
             raise ValueError("Result limit must be between 1 and 10")
         if mode not in {"e5", "hybrid", "rerank"}:
             raise ValueError("Unknown retrieval mode")
+        if ranking_strategy not in {'reranker', 'weak_fusion'}:
+            raise ValueError('Unknown ranking strategy')
         if comparison_strategy not in {'coverage','contextual'}:
             raise ValueError('Unknown comparison strategy')
         hidden_roles = exclusions(excluded_roles, SOURCE_ROLES)
@@ -190,7 +193,7 @@ class E5SearchIndex:
             results = view.search(query, limit=limit, match_constraints=match_constraints, mode=mode,
                                   semantic_layer=semantic_layer, semantic_experiment=semantic_experiment,
                                   comparison_tuning=comparison_tuning, comparison_experiment=comparison_experiment,
-                                  comparison_strategy=comparison_strategy)
+                                  comparison_strategy=comparison_strategy, ranking_strategy=ranking_strategy)
             self.passage_reranker = view.passage_reranker
             return results
         original_query = query
@@ -233,6 +236,7 @@ class E5SearchIndex:
         candidates = ranked[:80] if match_constraints else ranked
         constraint_details = {}
         evidence_scores = {}
+        fusion_applied = False
         for index in candidates:
             adjustment, reasons = constraint_adjustment(
                 self.documents[index], requested, exact_task=(intent == "practice"),
@@ -295,6 +299,13 @@ class E5SearchIndex:
                     ranked = coverage_order(ranked, aspect_scores, ranking_scores)
             if related_only:
                 ranked.sort(key=lambda i: (concept_strengths[i], ranking_scores[i]), reverse=True)
+            if ranking_strategy == 'weak_fusion' and not (aspects or semantic_plan or acronym):
+                fused = weak_fusion(scores[candidates], details['relevance'], details['whole_query'])
+                if fused is not None:
+                    for i, value in zip(candidates, fused):
+                        ranking_scores[i] = float(value)
+                    ranked = sorted(candidates, key=ranking_scores.__getitem__, reverse=True)
+                    fusion_applied = True
         if acronym:
             ranked = [i for i in ranked if acronym_strengths[i] >= 0]
             ranked.sort(key=lambda i: (acronym_strengths[i], ranking_scores[i]), reverse=True)
@@ -313,6 +324,7 @@ class E5SearchIndex:
                 "score": float(scores[int(index)]),
                 "lexical_score": float(lexical_scores[int(index)]),
                 "retrieval_mode": mode,
+                "ranking_policy": FUSION_VERSION if fusion_applied else 'reranker' if mode == 'rerank' else mode,
                 "canonical_query": canonical_definition,
                 "semantic_plan": semantic_plan,
                 "comparison_aspects": aspects,

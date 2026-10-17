@@ -1,0 +1,12 @@
+{
+  "scope": "Fixed before full weak-fusion evaluation. New formulations of known topics, not independent topics. No tuning on these outputs.",
+  "criteria": "Known English PCA direct variance passage must reach top3. Previously supported requests must preserve all five IDs/order. No new supported absent query. Fresh queries reviewed for regressions before promotion. Whole-query scores and gate policy unchanged.",
+  "questions": [
+    {"id":"rf01","query":"What happens to principal components if one input feature is measured in thousands and another in tiny fractions?","expected":"supported"},
+    {"id":"rf02","query":"Jaký vliv má rozdílný rozptyl vstupních sloupců na PCA?","expected":"supported"},
+    {"id":"rf03","query":"Czy PCA bez skalowania może preferować cechę o większej wariancji?","expected":"supported"},
+    {"id":"rf04","query":"Why should the scaler learn its mean and variance from the training split only?","expected":"supported"},
+    {"id":"rf05","query":"Jak TF-IDF ogranicza wpływ wyrazów występujących w niemal każdym dokumencie?","expected":"supported"},
+    {"id":"rf06","query":"Where can I buy a train ticket to Berlin for tonight?","expected":"no_support"}
+  ]
+}

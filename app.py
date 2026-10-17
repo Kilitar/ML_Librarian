@@ -97,7 +97,10 @@ def render_result(rank, result, base_url, *, inline=False):
         with role_col:
             st.badge(badge_label, color=badge_color)
         with rank_col:
-            relevance = result.get("ranking_score", result["score"])
+            # RRF rank votes are near one even for irrelevant matches. Keep
+            # displayed relevance low when all original model scores are low.
+            relevance = (result['whole_query_score'] if result.get('ranking_policy') == 'weak-fusion-v2'
+                         else result.get("ranking_score", result["score"]))
             st.caption(f"Výsledek {rank} · relevance {relevance:.3f}")
         st.caption(f"Soubor: {result['source_path']}")
 

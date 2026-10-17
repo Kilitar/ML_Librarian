@@ -1,0 +1,30 @@
+{
+  "scope": "Development ranking repair only; rejected trial1 inspected before v2, no fresh acceptance claim. Original v1 acceptance remains not_accepted.",
+  "raw_sha256": "5c25a645052adf72f8ee64cb13dca40b9814140184ba7f4eb4108efde4e8fa6e",
+  "summary": {
+    "supported_queries": 13,
+    "supported_order_changed": 0,
+    "new_supported_absent": 0,
+    "gate_status_changed": 0,
+    "fusion_queries": 9
+  },
+  "known_pca_direct_passage_before_top5": false,
+  "known_pca_direct_passage_after_rank": 3,
+  "known_pca_gate": "no_support unchanged",
+  "unresolved": [
+    "PCA false rejection",
+    "Polish soup uncertain",
+    "spam error-cost coverage",
+    "English feature-scale paraphrase remains weak"
+  ],
+  "code_hashes_pre_default_promotion": {
+    "eval/acceptance_v1_questions.json": "2cc40e0da3ff5d42b79c68c3970502870f2278ec97c37f0464a3b0a93d8f1148",
+    "eval/support_repair_questions.json": "113ce272485901a52b2ebbfa22696ed0b35e48cbef5db5c530abb71e458545bf",
+    "eval/ranking_fresh_questions.json": "d71c541d820217a77a2f02ec7bfd7d36a86dab2784a1e0c085f41cdf5152d6e8",
+    "src/librarian/search.py": "6b9e1bfeddb3a5b866d67a3fa91bd4c2e078aa7efad6ca65527e1df61f4a3b9c",
+    "src/librarian/ranking_fusion.py": "26f1814254a56f33bff7a7e04c6128c21d12e2c71e7f9bc5fcaae432ddbd63ca",
+    "src/librarian/rerank.py": "aeef5eb8faf3a539df12959a31b86de84cf235a354e01b201d9d97151ac0812d",
+    "src/librarian/evidence_gate.py": "5abdc6adb4b869831447e85fd9ed13eb801cdbb7f53d7372ad9a5d781b442dad",
+    "src/librarian/compare_ranking_fusion.py": "1b8312755ba8f8abc76b77bfe48393c53e5b6e578cbc56dcdb874d46515f154d"
+  }
+}
