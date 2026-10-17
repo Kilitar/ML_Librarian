@@ -50,7 +50,7 @@ def expand_neighbors(documents: list[dict], candidates: list[int], maximum: int 
 
 
 class PassageReranker:
-    def __init__(self):
+    def __init__(self, *, use_headings=True):
         import torch
         from sentence_transformers import CrossEncoder
         torch.set_num_threads(min(8, torch.get_num_threads()))
@@ -60,6 +60,7 @@ class PassageReranker:
             max_length=512, model_kwargs={"use_safetensors": True},
             activation_fn=torch.nn.Sigmoid(),
         )
+        self.use_headings = use_headings
 
     def score_details(self, query: str, documents: list[dict], *, aspects=None, context=None) -> dict[str, np.ndarray]:
         queries = [query] + parameter_queries(query)
@@ -75,9 +76,44 @@ class PassageReranker:
         if len(values) != len(documents) * len(queries) or not np.isfinite(values).all():
             raise ValueError("Invalid passage reranker output")
         matrix = values.reshape(len(queries), len(documents))
-        return {"relevance": matrix.max(axis=0), "whole_query": matrix[0],
+        details = {"relevance": matrix.max(axis=0), "whole_query": matrix[0],
                 "aspects": matrix[aspect_offset:aspect_offset + len(aspects or [])].T,
                 "context": matrix[-1] if context else None}
+        if getattr(self, 'use_headings', False) and not (aspects or context or parameter_queries(query)):
+            details = self.add_heading_context(query, documents, details)
+        return details
+
+    def add_heading_context(self, query, documents, details):
+        from heading_context import AdjacentHeadings
+        for name in ('whole_query','relevance'):
+            values=np.asarray(details[name])
+            if not np.isfinite(values).all() or np.any((values<0)|(values>1)):
+                raise ValueError('Invalid original model output')
+        if not hasattr(self, 'heading_catalog'):
+            try:
+                self.heading_catalog = AdjacentHeadings()
+            except OSError:
+                # Context is optional; preserve base reranking if unavailable.
+                return details
+        eligible = [(i,self.heading_catalog.for_document(d)) for i,d in enumerate(documents)
+                    if details['whole_query'][i] < .20]
+        eligible = [(i,h) for i,h in eligible if h]
+        if not eligible:
+            return details
+        values = np.asarray(self.model.predict(
+            [(query,passage_input({**documents[i], 'text':h['text']+'\n\n'+documents[i]['text']})) for i,h in eligible],
+            batch_size=8, show_progress_bar=False, convert_to_numpy=True)).reshape(-1)
+        if len(values)!=len(eligible) or not np.isfinite(values).all() or np.any((values<0)|(values>1)):
+            raise ValueError('Invalid heading-context model output')
+        output={**details,'whole_query':details['whole_query'].copy(),'relevance':details['relevance'].copy(),
+                'base_whole_query':details['whole_query'].copy(),'heading_contexts':[None]*len(documents),
+                'heading_scores':[None]*len(documents)}
+        for (i,heading),value in zip(eligible,values):
+            output['heading_contexts'][i]=heading
+            output['heading_scores'][i]=float(value)
+            output['whole_query'][i]=max(output['whole_query'][i],value)
+            output['relevance'][i]=max(output['relevance'][i],value)
+        return output
 
     def scores(self, query: str, documents: list[dict]) -> np.ndarray:
         return self.score_details(query, documents)["relevance"]

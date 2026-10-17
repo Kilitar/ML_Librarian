@@ -81,14 +81,21 @@ Every result now has “Otevřít zdroj”: browse static extracted context and 
 the original snapshot file after manifest SHA-256 validation. No course page or
 notebook is executed. See `docs/SOURCE_VIEWER.md` for limits and verification.
 
-The first fixed cross-topic acceptance check is **not accepted**: PCA/scaling is
-hard rejected, one out-of-domain recipe remains uncertain, and spam metric-choice
-evidence is incomplete. See `docs/ACCEPTANCE_V1.md` and the full local review at
-`http://localhost:8765/eval/acceptance_v1_review.local.html`. Retrieval is unchanged.
+The first frozen cross-topic acceptance check remains **not accepted**. Its
+historical PCA rejection is now repaired; the out-of-domain recipe and incomplete
+spam metric-choice evidence remain unresolved. See `docs/ACCEPTANCE_V1.md` and the
+preserved original review at `http://localhost:8765/eval/acceptance_v1_review.local.html`.
 
 Weak no-support matches now combine raw E5/reranker ranks only when every candidate
-whole-query score is below .10. Original support scores/gate are unchanged; the
-known PCA explanation reaches rank3 but remains hard rejected. Existing uncertain
-and supported candidate pools keep old ranking. API `ranking_strategy="reranker"`
-replays previous ordering. See `docs/RANKING_FUSION.md` and
+whole-query score is below .10. The support gate is unchanged. API
+`ranking_strategy="reranker"` disables this fallback. See `docs/RANKING_FUSION.md` and
 `http://localhost:8765/eval/ranking_fusion_v2_review.local.html`.
+
+Source-adjacent headings now supply missing context for weak ordinary Streamlit
+passages. Only an actual immediately preceding heading from static extraction is
+used; original scores are retained, model weights/thresholds unchanged. The known
+English PCA variance explanation is now first and supported (.021→.277).
+Thirty full paired searches plus40 fixed-passage replays found no new supported
+absent query; this is not independent human acceptance. Some PCA formulations
+remain weak. See `docs/HEADING_CONTEXT.md` and all excerpts at
+`http://localhost:8765/eval/heading_context_review.local.html`.

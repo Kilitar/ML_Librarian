@@ -1,0 +1,44 @@
+{
+  "scope": "30 paired full-search questions plus40 fixed-passage replays. Five new formulations plus known ambiguity control; not independent human acceptance.",
+  "raw_sha256": "23c79e9f2c6bee47b60a9b3ce9fc27e85d851e8b196c37dbe491211a289430d8",
+  "code_hashes_pre_promotion": {
+    "src/librarian/search.py": "8992cd992065bd162f37821aa1b4eac4b47be134407bb92fbc7ef4a672052894",
+    "src/librarian/rerank.py": "5da5a600feb344b2aa06e3d764c3067c37ae000c614834c33699b0abf01d3c9d",
+    "src/librarian/heading_context.py": "261853a82b1da38eef35309ce317fdaf8f45d626b25fbb0d342ac2e352b68c72",
+    "src/librarian/evidence_gate.py": "5abdc6adb4b869831447e85fd9ed13eb801cdbb7f53d7372ad9a5d781b442dad",
+    "src/librarian/compare_heading_context.py": "6df22154a1a46a40a1dcf7e9d3da6e4129f2ee3847dd71fd32f3c65c19d61088",
+    "eval/acceptance_v1_questions.json": "2cc40e0da3ff5d42b79c68c3970502870f2278ec97c37f0464a3b0a93d8f1148",
+    "eval/support_repair_questions.json": "113ce272485901a52b2ebbfa22696ed0b35e48cbef5db5c530abb71e458545bf",
+    "eval/ranking_fresh_questions.json": "d71c541d820217a77a2f02ec7bfd7d36a86dab2784a1e0c085f41cdf5152d6e8",
+    "eval/heading_fresh_questions.json": "75cc79b227fe49a013e69959fe7617f25c078af3613b3032160ff2c1f5aa61f4",
+    "data/normalized/documents.jsonl": "8d2b81901ffc80c707a814c29fe8d4c74ef1ffb2816c0fc257e30141e67f4ba4",
+    "data/index/multilingual_e5_curated.json": "713bb8c4afaefdf5780c08c7e55558aa2bc47f93f2d2af952c8d358ce75dfa5e"
+  },
+  "full_search_count": 30,
+  "fixed_passage_replay_count": 40,
+  "full_search_status_changes": [
+    {
+      "id": "av08",
+      "before": "no_support",
+      "after": "supported"
+    }
+  ],
+  "new_absent_supported": [],
+  "supported_valid_to_no_support": [],
+  "pca": {
+    "top1_chunk_id": "d82d1087d9b406592ceb",
+    "base_score": 0.021132690832018852,
+    "heading_score": 0.27693867683410645,
+    "heading_original_verified": true,
+    "original_sha256": "a18d3eacc3ac11bdc9bdef8c68e9b4ed3015b4ba52e553771fe1647a9cd124cd",
+    "heading_locator": "line:113:st.markdown"
+  },
+  "limits": [
+    "Historical replay is not full retrieval",
+    "Some PCA formulations remain weak",
+    "Polish soup uncertain unchanged",
+    "Spam metric error-cost coverage unresolved",
+    "Original acceptance-v1 not_accepted preserved",
+    "Source facts not independently audited"
+  ]
+}

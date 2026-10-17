@@ -1,0 +1,12 @@
+{
+  "scope":"Fixed before adjacent-heading implementation/evaluation. New formulations of previously studied topics, not independent new topics.",
+  "criteria":"Known English PCA must become supported with the direct variance explanation in top3. No supported valid question may become no_support. No absent question may newly become supported. Inspect top3 changes, preserve original acceptance and baseline scores.",
+  "questions":[
+    {"id":"hf01","query":"Why is it important to put numeric columns on comparable scales before applying PCA?","expected":"supported"},
+    {"id":"hf02","query":"Co se stane s první komponentou PCA, když ponechám různá měřítka příznaků?","expected":"supported"},
+    {"id":"hf03","query":"Dlaczego zmienne o różnych skalach mogą zniekształcić wynik PCA?","expected":"supported"},
+    {"id":"hf04","query":"Jaká je dnes otevírací doba lékárny?","expected":"no_support"},
+    {"id":"hf05","query":"How long should I cook pasta for dinner?","expected":"no_support"},
+    {"id":"hf06","query":"Which is better?","expected":"uncertain"}
+  ]
+}

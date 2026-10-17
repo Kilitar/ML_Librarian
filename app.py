@@ -105,6 +105,9 @@ def render_result(rank, result, base_url, *, inline=False):
         st.caption(f"Soubor: {result['source_path']}")
 
         with (st.container() if inline else st.expander("Zobrazit nalezený úryvek", expanded=(rank == 1))):
+            if result.get('heading_context'):
+                heading = result['heading_context']
+                st.caption(f"Nadpis ve zdroji: {heading['text'].lstrip('# ').strip()} · {heading['locator']}")
             st.markdown(format_snippet(result["text"]), unsafe_allow_html=False)
             language = result.get("language") or "neuvedeno"
             st.caption(

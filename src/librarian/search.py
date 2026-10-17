@@ -279,9 +279,12 @@ class E5SearchIndex:
                 for result in fallback:
                     result["retrieval_warning"] = "Přesnější výběr pasáží není dostupný; zobrazuji základní vyhledávání."
                 return fallback
-            for index, pair_score, full_score in zip(candidates, pair_scores, details["whole_query"]):
+            for position, (index, pair_score, full_score) in enumerate(zip(candidates, pair_scores, details["whole_query"])):
                 evidence_scores[index] = {"passage_score": float(pair_score), "whole_query_score": float(full_score),
                                           "reranker_revision": RERANKER_REVISION}
+                if 'base_whole_query' in details:
+                    evidence_scores[index].update(base_whole_query_score=float(details['base_whole_query'][position]),
+                        heading_context=details['heading_contexts'][position], heading_query_score=details['heading_scores'][position])
                 adjustment, reasons = constraint_adjustment(
                     self.documents[index], requested, exact_task=(intent == "practice"),
                 ) if match_constraints else (0.0, [])

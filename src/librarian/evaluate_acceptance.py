@@ -8,7 +8,7 @@ from evidence_gate import assess_evidence
 
 ROOT = Path(__file__).resolve().parents[2]
 FILES = ('search.py','semantic_layer.py','domain_concepts.json','concepts.py','acronyms.py',
-         'rerank.py','constraints.py','diversify.py','evidence_gate.py','hybrid.py','chunk_text.py','snippet_format.py','comparisons.py','source_filters.py')
+         'rerank.py','heading_context.py','ranking_fusion.py','constraints.py','diversify.py','evidence_gate.py','hybrid.py','chunk_text.py','snippet_format.py','comparisons.py','source_filters.py')
 
 
 def fingerprints():

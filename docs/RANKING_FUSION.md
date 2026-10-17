@@ -1,5 +1,10 @@
 # Weak-result ordering
 
+Historical checkpoint: source-adjacent headings subsequently repaired the original
+English PCA support error. See `HEADING_CONTEXT.md` for current behavior. To replay
+this checkpoint, disable heading context with `PassageReranker(use_headings=False)`
+as well as choosing the desired ranking strategy; the frozen report stays intact.
+
 This is a ranking repair, **not** a passed retrieval acceptance. Original PCA
 abstention and spam-filter error-cost coverage remain unresolved. The Polish soup
 question still receives uncertainty. No corpus, embedding index or model weights
