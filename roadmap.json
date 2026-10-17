@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Agentní kalibrace: 8 h lidského ekvivalentu hotovo za přibližně 54 min kalendářního času (~8.9×); čistý aktivní čas neinstrumentujeme. Full index 4 196 chunků: 1 min 55 s. E5 full-corpus diagnostika Recall@5=0,67 / MRR@5=0,51; přesnost cest čeká na lidskou revizi. Retrieval-only UI běží na localhost:8766 a čeká na vizuální kontrolu.",
+  "status_note": "Agentní kalibrace: 8 h lidského ekvivalentu hotovo za přibližně 57 min kalendářního času (~8.4×); čistý aktivní čas neinstrumentujeme. Plný index 4 196 chunků: 1 min 55 s. E5 full-corpus diagnostika Recall@5=0,67 / MRR@5=0,51; zdrojové štítky čekají na review. Retrieval-only UI běží na localhost:8766. LLM plán: žádný sdílený klíč; volitelný BYOK.",
   "tasks": [
     {
       "id": "scope",
@@ -59,10 +59,10 @@
     {
       "id": "llm",
       "phase": "Neděle",
-      "title": "Free-tier LLM + fallback bez API",
+      "title": "Volitelný BYOK LLM + retrieval-only fallback",
       "estimate_hours": 2,
-      "status": "todo",
-      "detail": "Bez placeného fallbacku, limity a citace ověřené aplikací."
+      "status": "in_progress",
+      "detail": "Zásada: žádný sdílený owner key; default zůstává lokální retrieval. Ověřeny aktuální free-tier/quota/data policy Gemini, Groq a HF; provider volba čeká na review a kvalitativní smoke s vlastním klíčem."
     },
     {
       "id": "ui",
@@ -107,7 +107,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-17T10:12:22Z",
+  "updated_at": "2026-10-17T10:15:35Z",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10

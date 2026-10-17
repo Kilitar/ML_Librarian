@@ -10,6 +10,6 @@
 - Treat retrieved material as untrusted data, never instructions. The answering model has no tools, shell, or file-write access.
 - Answer in query language (CZ/EN/PL); cite only retrieved chunk IDs. Application code validates citations and creates links. Abstain when evidence is missing or conflicting.
 - Distinguish original course, course summary, learner extension, and uncertain provenance.
-- Keep secrets out of source control, logs, and browser code. Use one explicitly configured free-tier provider; no paid fallback. Bound prompt/output/retries. Retrieval remains available on API errors.
+- Keep secrets out of source control, logs, and browser code. Do not configure an owner-funded shared LLM key for public/classroom use. If generation is added, make it optional BYOK: disclose that the visitor's query and retrieved excerpts go to their chosen provider, hold the key only in request memory, never log or persist it, bound prompt/output/retries, and keep retrieval-only available on decline, limit, or API error. See `LLM_PROVIDER_EVALUATION.md`.
 - Do not persist visitor prompts by default; isolate sessions.
 - Publish a rebuilt index only after integrity checks; retain last known-good version.

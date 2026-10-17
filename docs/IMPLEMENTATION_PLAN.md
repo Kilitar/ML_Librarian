@@ -10,10 +10,10 @@ A separate Streamlit RAG application over a versioned snapshot of the completed 
 Read Markdown directly; extract PDF text page by page; notebook Markdown/code by cell; extract visible text from Python views statically without importing/executing. Preserve headings, formulas, code, page/cell locations, language, and provenance. Do not OCR unless inventory reveals a material text gap. Chunk at structural boundaries, assign stable IDs, and deduplicate while retaining source provenance. Produce normalized JSONL and exception report.
 
 ## Retrieval and generation
-Implement TF-IDF then a multilingual embedding retriever using one interface. Evaluate cross-language retrieval. Add one free-tier LLM provider adapter. Send only query and top evidence; request answer in query language and citations by chunk ID; abstain when unsupported. Validate citation IDs and build URLs in app code. No paid fallback. On missing key, rate limit, or timeout, show retrieved evidence and explain generation is unavailable.
+Implement TF-IDF then a multilingual embedding retriever using one interface. Evaluate cross-language retrieval. Add one optional provider adapter in visitor-owned-key (BYOK) mode; do not put a project owner's key behind a shared UI. Before a call, disclose that the visitor's query and top evidence are sent to their chosen provider and billed against their account/quota. Hold the key only in request memory, never log or persist it. Request an answer in query language with citations by chunk ID; validate IDs and build URLs in app code; abstain when unsupported. Retrieval-only remains the default and the fallback on decline, missing key, rate limit, or timeout.
 
 ## UI and evaluation
-Standalone Streamlit page with query, optional language choice, answer, evidence, source links, retrieval mode, and clear error state. Prepare development questions and a held-out set in CZ/EN/PL, including cross-language and unanswerable items. Learner confirms expected sources. Measure retrieval (recall@5, reciprocal rank) separately from answer correctness, citation support, and abstention. User manually checks readability/contrast, submit behavior, links, and error state; no routine screenshot loop.
+Standalone Streamlit page with query, optional language choice, answer, evidence, source links, retrieval/generation mode, and clear error state. The first UI is retrieval-only; its visual check is pending. Prepare development questions and a held-out set in CZ/EN/PL, including cross-language and unanswerable items. Learner confirms expected sources. Measure retrieval (recall@5, reciprocal rank) separately from answer correctness, citation support, and abstention. User manually checks readability/contrast, submit behavior, links, and error state; no routine screenshot loop.
 
 ## On-demand update
 Explicit command compares hashes and creates a new snapshot/index version plus change report. Initial update may rebuild the whole index. Preserve previous versions. Never replace last known-good index before integrity checks pass.
@@ -30,4 +30,4 @@ Luna low: bounded inventory, manifest, mechanical extraction, URL mapping, conci
 3. Review representative and unanswerable answers for evidence support. User visual check is acceptance; automated checks do not substitute for it.
 
 ## Decisions to verify during inventory
-Eligible file allowlist; deployed course URL base and route map; multilingual embedding candidate fitting available runtime; available provider free tier and data policy.
+Eligible file allowlist; deployed course URL base and route map; multilingual embedding candidate fitting available runtime; provider/account quota ownership and applicable data terms.
