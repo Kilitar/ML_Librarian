@@ -8,6 +8,7 @@ from urllib.parse import urljoin
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parent
+CL_LOGO = ROOT / "data" / "Icons" / "codesrlab_logo_square.png"
 sys.path.insert(0, str(ROOT / "src" / "librarian"))
 from search import E5SearchIndex  # noqa: E402
 
@@ -26,6 +27,17 @@ def read_routes_config() -> dict:
         return json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return {"streamlit_base_url": None}
+
+
+def source_role_badge(role: str) -> tuple[str, str]:
+    badges = {
+        "Teorie / analýza": ("🔎 Teorie / analýza", "violet"),
+        "Cvičení / úkol": ("📓 Cvičení / úkol", "green"),
+        "Příklad / implementace": ("🛠️ Příklad / implementace", "blue"),
+        "Shrnutí / přehled": ("📋 Shrnutí / přehled", "yellow"),
+        "Studijní materiál": ("📚 Studijní materiál", "gray"),
+    }
+    return badges.get(role, (f"📚 {role}", "gray"))
 
 
 st.title("📚 ML Librarian")
@@ -64,32 +76,43 @@ results = st.session_state.get("evidence_results")
 if results is not None:
     st.subheader("Nalezené zdroje")
     st.caption(f"Dotaz: {st.session_state.get('evidence_query', '')} · pořadí podle sémantické podobnosti")
+    st.caption("📓 Cvičení / úkol · 🔎 Teorie / analýza · 🟨 ikona Coderslab označuje původní materiál z jeho PDF")
     routes_config = read_routes_config()
     base_url = routes_config.get("streamlit_base_url")
 
     for rank, result in enumerate(results, 1):
         source_role = result.get("source_role", "Studijní materiál")
-        source_role_icon = result.get("source_role_icon", "📚")
         source_origin = result.get("source_origin")
         source_origin_icon = result.get("source_origin_icon", "📚")
-        labels = f"{source_role_icon} {source_role}"
-        if source_origin:
-            labels += f" · {source_origin_icon} {source_origin}"
-        title = f"{rank}. {labels} · skóre {result['score']:.3f}"
-        with st.expander(title, expanded=(rank == 1)):
-            st.text(result["text"])
-            language = result.get("language") or "neuvedeno"
-            st.caption(
-                f"Soubor: {result['source_path']} · "
-                f"Umístění: {result.get('locator') or 'neuvedeno'} · "
-                f"Jazyk zdroje: {language} · typ: {source_role} · zdroj: {source_origin or 'neuveden'}"
-            )
-            st.caption(f"Chunk ID: {result['chunk_id']}")
-            route = result.get("streamlit_route")
-            if route and result.get("route_status") == "verified" and base_url:
-                st.link_button("Otevřít stránku kurzu", urljoin(base_url.rstrip("/") + "/", route))
-            elif route:
-                st.caption(f"Kandidátní cesta ve Streamlitu: /{route} · čeká na ověření odkazu")
+        badge_label, badge_color = source_role_badge(source_role)
+        with st.container(border=True):
+            origin_col, role_col, rank_col = st.columns([0.29, 0.45, 0.26], vertical_alignment="center")
+            with origin_col:
+                if source_origin == "Coderslab PDF" and CL_LOGO.is_file():
+                    logo_col, label_col = st.columns([0.25, 0.75], vertical_alignment="center")
+                    logo_col.image(str(CL_LOGO), width=30)
+                    label_col.markdown("**Coderslab PDF**")
+                else:
+                    st.markdown(f"{source_origin_icon} **{source_origin or 'Původ neuveden'}**")
+            with role_col:
+                st.badge(badge_label, color=badge_color)
+            with rank_col:
+                st.caption(f"Výsledek {rank} · skóre {result['score']:.3f}")
+            st.caption(f"Soubor: {result['source_path']}")
+
+            with st.expander("Zobrazit nalezený úryvek", expanded=(rank == 1)):
+                st.text(result["text"])
+                language = result.get("language") or "neuvedeno"
+                st.caption(
+                    f"Umístění: {result.get('locator') or 'neuvedeno'} · "
+                    f"Jazyk zdroje: {language} · typ: {source_role} · zdroj: {source_origin or 'neuveden'}"
+                )
+                st.caption(f"Chunk ID: {result['chunk_id']}")
+                route = result.get("streamlit_route")
+                if route and result.get("route_status") == "verified" and base_url:
+                    st.link_button("Otevřít stránku kurzu", urljoin(base_url.rstrip("/") + "/", route))
+                elif route:
+                    st.caption(f"Kandidátní cesta ve Streamlitu: /{route} · čeká na ověření odkazu")
 
 st.divider()
 st.caption("Index i embedding model běží lokálně. Vyhledávání neposílá obsah kurzu do externího API.")
