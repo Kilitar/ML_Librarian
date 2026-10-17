@@ -1,7 +1,9 @@
 # Handoff
 
-Status: workspace is authorized RW/CRUD. Directory scaffold and README created. Course checkout has not been changed or executed. Course source inventory/snapshot/indexing is not yet done.
+Updated: 2026-10-17. The course checkout is read-only; the immutable snapshot, extracted corpus, indexes, and all generated data live in this separate ML-Librarian workspace. No LLM API or user credentials are needed for the current retrieval work.
 
-Next: read-only inventory of course; inspect applicable local instructions; propose and confirm an allowlist; create snapshot/manifest only inside ML-Librarian; then implement extraction.
+Completed: inventory/allowlist, source snapshot with hash manifest, extraction and route map, TF-IDF/E5 sample comparison, instructional-text curation (4,196 chunks across 347 sources), and full curated-corpus retrieval comparison. Reproduction: `.venv\Scripts\python.exe src\librarian\build_curated_corpus.py` then `.venv\Scripts\python.exe src\librarian\evaluate_curated.py`. Model cache and generated corpus/results are ignored by Git. Full evaluation details and caveats: `docs/EVALUATION_FULL.md`.
 
-Scope decisions: entire completed course; source corpus CZ/EN; queries and same-language answers CZ/EN/PL. Polish demonstrates cross-lingual portability for Coderslab Poland, not an expected source language; citations link to course Streamlit pages; immutable versioned corpus with explicit on-demand update; free-tier LLM with retrieval-only fallback; serial delegation and low-cost models for bounded tasks.
+Next: learner review of the provisional expected source paths and a small sample of top-five excerpts, especially k-NN and PCA; then use that feedback to make the benchmark labels useful. Keep the 12 current questions diagnostic; add held-out questions for final evaluation. Continue with the local retrieval interface and citations, then test the chosen free-tier LLM provider/fallback without exposing credentials.
+
+Scope decisions: entire completed course; source corpus CZ/EN; user queries and same-language answers CZ/EN/PL. Polish demonstrates cross-lingual portability for Coderslab Poland, not an expected source language; citations should link to course Streamlit pages where routes are known; immutable versioned corpus with explicit on-demand update; free-tier LLM with retrieval-only fallback.
