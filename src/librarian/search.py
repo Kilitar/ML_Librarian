@@ -14,6 +14,7 @@ from constraints import constraint_adjustment, query_constraints
 from diversify import select_distinct
 from hybrid import LexicalIndex, fuse_scores
 from rerank import PassageReranker, candidate_union, expand_neighbors, REVISION as RERANKER_REVISION
+from acronyms import requested_acronym, definition_strength
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -192,6 +193,8 @@ class E5SearchIndex:
         # Rerank a bounded pool from existing semantic/quality retrieval.
         # The corpus and its embeddings remain unchanged.
         requested = query_constraints(query)
+        acronym = requested_acronym(query)
+        acronym_strengths = {i: definition_strength(d['text'], acronym) for i, d in enumerate(self.documents)} if acronym else {}
         candidates = ranked[:80] if match_constraints else ranked
         constraint_details = {}
         evidence_scores = {}
@@ -205,6 +208,10 @@ class E5SearchIndex:
         if mode == "rerank":
             candidates = candidate_union(np.asarray([ranking_scores[i] for i in range(len(scores))]), lexical_scores)
             candidates = expand_neighbors(self.documents, candidates)
+            if acronym:
+                definitions = sorted((i for i, strength in acronym_strengths.items() if strength > 0),
+                                     key=lambda i: (acronym_strengths[i], float(scores[i])), reverse=True)[:24]
+                candidates = list(dict.fromkeys(definitions + candidates))[:120]
             try:
                 if self.passage_reranker is None:
                     self.passage_reranker = PassageReranker()
@@ -224,6 +231,9 @@ class E5SearchIndex:
                 ranking_scores[index] = float(pair_score) + rank_adjustment(self.documents[index], intent) + adjustment
                 constraint_details[index] = {"adjustment": adjustment, "reasons": reasons}
             ranked = sorted(candidates, key=ranking_scores.__getitem__, reverse=True)
+        if acronym:
+            ranked = [i for i in ranked if acronym_strengths[i] >= 0]
+            ranked.sort(key=lambda i: (acronym_strengths[i], ranking_scores[i]), reverse=True)
         selected = select_distinct(self.documents, ranked, limit, max_per_source=2 if mode == "rerank" else 1)
         results = []
         for index in selected:
@@ -239,6 +249,8 @@ class E5SearchIndex:
                 "score": float(scores[int(index)]),
                 "lexical_score": float(lexical_scores[int(index)]),
                 "retrieval_mode": mode,
+                "requested_acronym": acronym,
+                "acronym_definition": bool(acronym and acronym_strengths[index] == 2),
                 **evidence_scores.get(index, {}),
                 "ranking_score": ranking_scores[int(index)],
                 "constraint_match": constraint_details[index],

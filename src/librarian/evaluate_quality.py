@@ -36,6 +36,8 @@ def main() -> None:
         "questions_sha256": hashlib.sha256(questions_path.read_bytes()).hexdigest(),
         "search_sha256": hashlib.sha256((ROOT / "src/librarian/search.py").read_bytes()).hexdigest(),
         "ranking_files_sha256": {
+            "acronyms.py": hashlib.sha256((ROOT / "src/librarian/acronyms.py").read_bytes()).hexdigest(),
+            "snippet_format.py": hashlib.sha256((ROOT / "src/librarian/snippet_format.py").read_bytes()).hexdigest(),
             "constraints.py": hashlib.sha256((ROOT / "src/librarian/constraints.py").read_bytes()).hexdigest(),
             "diversify.py": hashlib.sha256((ROOT / "src/librarian/diversify.py").read_bytes()).hexdigest(),
             "chunk_text.py": hashlib.sha256((ROOT / "src/librarian/chunk_text.py").read_bytes()).hexdigest(),

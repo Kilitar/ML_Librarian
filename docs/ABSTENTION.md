@@ -78,3 +78,7 @@ hard questions, mixed-intent queries and subtle near-domain unsupported question
 Source factual quality and complete answer support remain separate targets; no LLM
 answer generation or API calls were added. All inspected new cases now become
 development/regression data.
+
+## evidence-v2: explicit acronym questions
+
+The learner query `Co znamená zkratka ML` exposed a false negative for the correct Machine Learning definition and false positives for MLM/MLE. Explicit acronym questions now match whole tokens and prioritize source-local expansions whose word initials match the requested acronym. Prose expansions supply structural support even when the model score is low, after the existing pinned-model/score checks. Fenced diagrams alone do not supply that override. This heuristic can still misread coincidental initials and does not validate source facts. The evidence-v1 40-query metrics are historical and have not been rerun for v2; the focused acronym check includes CZ/EN/PL ML, PCA, MLM, an unknown acronym, clock and the known uncertain Polish case. Full local excerpts: `eval/acronym_review.local.json` / `.html`.
