@@ -1,23 +1,35 @@
 # Retrieval prototype notes
 
 ## Candidate
+
 `intfloat/multilingual-e5-small` (MIT; model card lists 94 languages). Encoded locally using `passage:` and `query:` prefixes, normalized vectors, and CPU inference. No course text or query is sent to an embedding API.
 
-## Quick experiment
-A deterministic 600-passage sample excluding Python comments and notebook code was encoded to a local `.npy` file (ignored by Git). This is a prototype, not a complete index or formal benchmark.
+## Current local search
 
-Queries included Czech and English k-NN scaling questions and a Polish question about choosing K-Means cluster count. On the Polish K-Means question, E5 ranked a relevant English exercise notebook first and K-Means theory in the top three. TF-IDF's top three were less relevant. This is an encouraging cross-language signal, not statistically reliable evidence of overall model superiority.
+The curated corpus has 4,196 chunks from 347 sources. Full indexing runs locally on CPU in roughly 2 minutes on this development machine. Nothing is sent to an embedding API. The versioned matrix and manifest are stored under ignored `data/index/` paths. Each manifest identifies the model, exact ordered corpus fingerprint, dimensions, and index filename; the search service refuses stale or unsafe index references. Rebuilds create a new fingerprinted matrix and only switch the manifest after the new matrix is complete, leaving the previous matrix available. Runtime model loading is restricted to the local cache, so query-time search does not contact Hugging Face.
 
-Embedding all 8,589 passages with the current CPU stack is estimated to take several minutes. Keep full indexing as an explicit offline step; profile batching or ONNX before deployment.
+Build the search index and try a query:
 
-## Reproduce
+```powershell
+.\.venv\Scripts\python.exe src\librarian\build_curated_corpus.py
+.\.venv\Scripts\python.exe src\librarian\build_curated_index.py
+.\.venv\Scripts\python.exe src\librarian\search_curated.py "Why should features be scaled before k-NN?"
+```
+
+`src/librarian/search.py` is the local retrieval interface intended for the standalone Streamlit UI. Results preserve chunk ID, source path, locator, provenance, and candidate Streamlit route; route metadata is explicitly marked as needing live verification. The search layer has no API credentials or write access to course files. It validates query length and result limit, and returns evidence only; it does not generate answers.
+
+## Reproduce the initial 600-passage comparison
+
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -r requirements-librarian.txt
 .\.venv\Scripts\python.exe src\librarian\retrieval_e5.py --sample
 ```
 
+The 600-passage result is only a pilot. The full curated-corpus comparison and its limitations are in `EVALUATION_FULL.md`.
+
 ## Limits / next work
-- Curate expected relevant passage IDs for CZ/EN/PL and compare Recall@5 and reciprocal rank on the same full corpus.
-- Filter low-value UI labels/comments and fix PDF extraction artifacts.
-- Profile full-index CPU time and memory.
-- Evaluate answer language separately; E5 only retrieves.
+
+- The current 12 expected source labels need human review; see `EVALUATION_FULL.md`.
+- The local route map contains inferred Streamlit paths that need live verification.
+- Search is retrieval-only; evaluate answer language and grounding separately when adding a free-tier LLM.
+- PDF extraction artifacts remain in some original source text and can affect ranking.

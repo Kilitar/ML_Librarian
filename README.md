@@ -21,4 +21,14 @@ python -m venv .venv
 ```
 The first E5 run downloads weights from Hugging Face and caches them under `.cache/hf`. Current prototype is retrieval-only; it does not call an LLM API.
 
+Build the curated local search index and run a query:
+
+```powershell
+.\.venv\Scripts\python.exe src\librarian\build_curated_corpus.py
+.\.venv\Scripts\python.exe src\librarian\build_curated_index.py
+.\.venv\Scripts\python.exe src\librarian\search_curated.py "Jak vybrat počet shluků v K-Means?"
+```
+
+The embedding matrix and model cache stay local under ignored `data/index/` and `.cache/` directories. See `docs/RETRIEVAL_PROTOTYPE.md` for corpus integrity and search details.
+
 See `docs/IMPLEMENTATION_PLAN.md`, `docs/GUARDRAILS.md`, `docs/LANGUAGE_SCOPE.md`, and `docs/RETRIEVAL_PROTOTYPE.md`.
