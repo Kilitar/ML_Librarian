@@ -22,7 +22,7 @@ def assess_evidence(results: list[dict], query: str = "") -> dict:
             return {"status": "unassessed", "policy": POLICY_VERSION, "score": None}
         scores.append(value)
     best = max(scores)
-    if any(r.get('canonical_query') for r in results):
+    if any(r.get('related_evidence_only') for r in results):
         return {"status": "uncertain", "policy": POLICY_VERSION, "score": best,
                 "reason": "related_concept_evidence"}
     if any(result.get('requested_acronym') and result.get('acronym_definition') for result in results):

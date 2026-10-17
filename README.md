@@ -71,3 +71,8 @@ For example, `kolik je hodin` shows a no-support message and collapsed weak matc
 Uncertain questions retain visible passages; E5 fallback is unassessed. The CLI
 supports `--show-weak`. See `docs/ABSTENTION.md` and the 40-query local review at
 `http://localhost:8765/eval/abstention_review.local.html` (`evaluate_abstention.py`).
+
+The domain semantic layer separates multilingual aliases, abbreviations and typed
+concept relations. Simple definition questions use versioned retrieval plans;
+complex questions remain intact. See `docs/SEMANTIC_LAYER.md` and run
+`src/librarian/compare_semantic.py` for the paired on/off excerpt review.

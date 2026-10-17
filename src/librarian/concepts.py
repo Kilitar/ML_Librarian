@@ -3,16 +3,15 @@ import re
 from constraints import normalize
 from snippet_format import format_snippet
 from chunk_text import FENCE
+from semantic_layer import analyze
 
 DEEP = r'(?:deep learning\w*|hlubok\w* ucen\w*|glebok\w* uczen\w*)'
 
 
 def definition_query(query):
     """Canonicalize only a simple definition request, preserving complex intent."""
-    text = normalize(query)
-    if re.fullmatch(r'(?:co je|co znamena|what is|czym jest|co to jest) ' + DEEP, text):
-        return 'What is deep learning?'
-    return None
+    plan = analyze(query)
+    return plan['canonical_query'] if plan else None
 
 
 def concept_strength(text, context=''):

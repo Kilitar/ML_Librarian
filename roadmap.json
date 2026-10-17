@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Hluboké učení / deep learning: jednoduché definiční dotazy CZ/EN/PL mají shodné výsledky. Výklad neuronových sítí a vrstev je označen jako částečná opora (evidence-v3), nikoli úplná definice. 43 testů + 8 dotazů přes Streamlit AppTest. Přehled: http://localhost:8765/eval/concept_review.local.html. Rozšíření je zatím omezené na tento pojem; BYOK odloženo.",
+  "status_note": "Doménová sémantická vrstva v1: 8 pojmů CZ/EN/PL, oddělené zkratky a vztahy. Párový experiment 18 dotazů: sjednocení pořadí 6/6 skupin, nikoli důkaz správnosti. Regrese a klasifikace vykázaly zhoršení, proto jejich přepis není v produkci povolen. Povoleny ML, neuronové sítě, přeučení a částečné DL. Přehled úryvků: http://localhost:8765/eval/semantic_comparison.local.html. Další krok: nezávislé hodnocení užitečnosti.",
   "tasks": [
     {
       "id": "scope",

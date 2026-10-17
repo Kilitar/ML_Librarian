@@ -11,7 +11,7 @@ class ConceptTests(unittest.TestCase):
             self.assertEqual(definition_query(q), 'What is deep learning?')
 
     def test_complex_intent_and_distinct_topics_unchanged(self):
-        for q in ('Co je hluboké učení a kdy ho nepoužívat?', 'Co jsou neuronové sítě', 'Co je neřízené učení', 'kolik je hodin'):
+        for q in ('Co je hluboké učení a kdy ho nepoužívat?', 'Co není hluboké učení', 'kolik je hodin'):
             self.assertIsNone(definition_query(q))
 
     def test_explanation_above_mentions(self):

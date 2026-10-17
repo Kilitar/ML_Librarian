@@ -15,7 +15,8 @@ from diversify import select_distinct
 from hybrid import LexicalIndex, fuse_scores
 from rerank import PassageReranker, candidate_union, expand_neighbors, REVISION as RERANKER_REVISION
 from acronyms import requested_acronym, definition_strength
-from concepts import definition_query, concept_strength
+from concepts import concept_strength
+from semantic_layer import analyze
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -159,7 +160,8 @@ class E5SearchIndex:
         return cls(documents, embeddings, model)
 
     def search(self, query: str, *, limit: int = 5,
-               match_constraints: bool = True, mode: str = "e5") -> list[dict[str, Any]]:
+               match_constraints: bool = True, mode: str = "e5", semantic_layer: bool = True,
+               semantic_experiment: bool = False) -> list[dict[str, Any]]:
         query = " ".join(query.split())
         if not query:
             raise ValueError("Enter a non-empty query")
@@ -170,7 +172,9 @@ class E5SearchIndex:
         if mode not in {"e5", "hybrid", "rerank"}:
             raise ValueError("Unknown retrieval mode")
         original_query = query
-        canonical_definition = definition_query(query) if mode == 'rerank' else None
+        semantic_plan = analyze(query, production_only=not semantic_experiment) if mode == 'rerank' and semantic_layer else None
+        canonical_definition = semantic_plan['canonical_query'] if semantic_plan else None
+        related_only = bool(semantic_plan and semantic_plan['related_evidence_only'])
         query = canonical_definition or query
         query_vector = self.model.encode(
             ["query: " + query], normalize_embeddings=True, convert_to_numpy=True,
@@ -197,7 +201,7 @@ class E5SearchIndex:
         # Rerank a bounded pool from existing semantic/quality retrieval.
         # The corpus and its embeddings remain unchanged.
         requested = query_constraints(query)
-        acronym = requested_acronym(query)
+        acronym = requested_acronym(query) if semantic_layer else None
         acronym_strengths = {i: definition_strength(d['text'], acronym) for i, d in enumerate(self.documents)} if acronym else {}
         candidates = ranked[:80] if match_constraints else ranked
         constraint_details = {}
@@ -213,7 +217,7 @@ class E5SearchIndex:
             candidates = candidate_union(np.asarray([ranking_scores[i] for i in range(len(scores))]), lexical_scores)
             candidates = expand_neighbors(self.documents, candidates)
             concept_strengths = {}
-            if canonical_definition:
+            if related_only:
                 concept_strengths = {i: concept_strength(d['text'], d['source_path']) for i, d in enumerate(self.documents)}
                 related = sorted((i for i, strength in concept_strengths.items() if strength >= 2),
                                  key=lambda i: (concept_strengths[i], float(scores[i])), reverse=True)[:24]
@@ -228,7 +232,8 @@ class E5SearchIndex:
                 details = self.passage_reranker.score_details(query, [self.documents[i] for i in candidates])
                 pair_scores = details["relevance"]
             except (OSError, ValueError, RuntimeError):
-                fallback = self.search(original_query, limit=limit, match_constraints=match_constraints, mode="e5")
+                fallback = self.search(original_query, limit=limit, match_constraints=match_constraints, mode="e5", semantic_layer=semantic_layer,
+                                       semantic_experiment=semantic_experiment)
                 for result in fallback:
                     result["retrieval_warning"] = "Přesnější výběr pasáží není dostupný; zobrazuji základní vyhledávání."
                 return fallback
@@ -241,7 +246,7 @@ class E5SearchIndex:
                 ranking_scores[index] = float(pair_score) + rank_adjustment(self.documents[index], intent) + adjustment
                 constraint_details[index] = {"adjustment": adjustment, "reasons": reasons}
             ranked = sorted(candidates, key=ranking_scores.__getitem__, reverse=True)
-            if canonical_definition:
+            if related_only:
                 ranked.sort(key=lambda i: (concept_strengths[i], ranking_scores[i]), reverse=True)
         if acronym:
             ranked = [i for i in ranked if acronym_strengths[i] >= 0]
@@ -262,7 +267,9 @@ class E5SearchIndex:
                 "lexical_score": float(lexical_scores[int(index)]),
                 "retrieval_mode": mode,
                 "canonical_query": canonical_definition,
-                "concept_evidence": concept_strengths.get(index) if canonical_definition else None,
+                "semantic_plan": semantic_plan,
+                "related_evidence_only": related_only,
+                "concept_evidence": concept_strengths.get(index) if related_only else None,
                 "requested_acronym": acronym,
                 "acronym_definition": bool(acronym and acronym_strengths[index] == 2),
                 **evidence_scores.get(index, {}),

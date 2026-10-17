@@ -22,7 +22,7 @@ class GateTests(unittest.TestCase):
 
     def test_related_concept_is_visible_but_not_claimed_as_definition(self):
         result = self.passage(.002)
-        result.update(canonical_query='What is deep learning?', concept_evidence=2)
+        result.update(canonical_query='What is deep learning?', concept_evidence=2, related_evidence_only=True)
         self.assertEqual(assess_evidence([result])['status'], 'uncertain')
         result['retrieval_mode'] = 'e5'
         self.assertEqual(assess_evidence([result])['status'], 'unassessed')

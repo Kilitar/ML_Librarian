@@ -36,6 +36,8 @@ def main() -> None:
         "questions_sha256": hashlib.sha256(questions_path.read_bytes()).hexdigest(),
         "search_sha256": hashlib.sha256((ROOT / "src/librarian/search.py").read_bytes()).hexdigest(),
         "ranking_files_sha256": {
+            "semantic_layer.py": hashlib.sha256((ROOT / "src/librarian/semantic_layer.py").read_bytes()).hexdigest(),
+            "domain_concepts.json": hashlib.sha256((ROOT / "src/librarian/domain_concepts.json").read_bytes()).hexdigest(),
             "concepts.py": hashlib.sha256((ROOT / "src/librarian/concepts.py").read_bytes()).hexdigest(),
             "acronyms.py": hashlib.sha256((ROOT / "src/librarian/acronyms.py").read_bytes()).hexdigest(),
             "snippet_format.py": hashlib.sha256((ROOT / "src/librarian/snippet_format.py").read_bytes()).hexdigest(),
