@@ -1,0 +1,419 @@
+{
+  "reviewer": "Codex provisional, not independent human review",
+  "rubric": {
+    "direct": "První úryvek explicitně podporuje jádro otázky; neznamená úplnou ani fakticky ověřenou odpověď.",
+    "partial": "Související výklad/příklad bez přímého vysvětlení jádra otázky.",
+    "off_topic": "První úryvek neodpovídá na zadaný význam."
+  },
+  "scope": "Top-one only; no Precision@5/Recall/complete-answer metric. Experimental paired layer is not identical to the production allowlist.",
+  "paired_raw_sha256": "220c103666d456858260fc95f57285884c6dae5bf4891ad1b01b9f3c61145cd7",
+  "fresh_raw_sha256": "7c8ca4aff91007280c98c19e04a3e2792c822749e0ccc378716ea370a3c5ccf0",
+  "fresh_questions_sha256": "c302a60dfdc8a2d046381532fcafca24b5ff473eb11850a0966b60c37d7614e8",
+  "judgments": [
+    {
+      "id": "paired_0_baseline",
+      "query": "Co je hluboké učení",
+      "variant": "baseline",
+      "chunk_id": "26443c03f11d8a16cd47",
+      "text_sha256": "88467c83717d789385e7f528331f3d749e532945a7508cfd94364df7bec70098",
+      "grade": "off_topic",
+      "reason": "Shlukování místo hlubokého učení."
+    },
+    {
+      "id": "paired_0_layer",
+      "query": "Co je hluboké učení",
+      "variant": "layer",
+      "chunk_id": "3b2a973d29d8bef28d2f",
+      "text_sha256": "9bbab1229a0b887fb742eefa1be6e814152ffb314b8df12dc0939683375f2fbc",
+      "grade": "partial",
+      "reason": "Vysvětluje architektury a vrstvy neuronových sítí; není to definice hlubokého učení."
+    },
+    {
+      "id": "paired_1_baseline",
+      "query": "What is deep learning?",
+      "variant": "baseline",
+      "chunk_id": "e9a60dc5aac69e2fa7d0",
+      "text_sha256": "c58294d73fb8574961e747f9012eebee37f8b5cfaa71149b1e17a9f305a68307",
+      "grade": "partial",
+      "reason": "Pouhý úvod do tématu; nevysvětluje definici."
+    },
+    {
+      "id": "paired_1_layer",
+      "query": "What is deep learning?",
+      "variant": "layer",
+      "chunk_id": "3b2a973d29d8bef28d2f",
+      "text_sha256": "9bbab1229a0b887fb742eefa1be6e814152ffb314b8df12dc0939683375f2fbc",
+      "grade": "partial",
+      "reason": "Vysvětluje architektury a vrstvy neuronových sítí; není to definice hlubokého učení."
+    },
+    {
+      "id": "paired_2_baseline",
+      "query": "Czym jest głębokie uczenie?",
+      "variant": "baseline",
+      "chunk_id": "7bdeee9ead7cf0fc051a",
+      "text_sha256": "424755313134b77d8953c50734d269799e579c9eca43bd9979a839539b77deb5",
+      "grade": "off_topic",
+      "reason": "Zpětnovazební učení místo hlubokého učení."
+    },
+    {
+      "id": "paired_2_layer",
+      "query": "Czym jest głębokie uczenie?",
+      "variant": "layer",
+      "chunk_id": "3b2a973d29d8bef28d2f",
+      "text_sha256": "9bbab1229a0b887fb742eefa1be6e814152ffb314b8df12dc0939683375f2fbc",
+      "grade": "partial",
+      "reason": "Vysvětluje architektury a vrstvy neuronových sítí; není to definice hlubokého učení."
+    },
+    {
+      "id": "paired_3_baseline",
+      "query": "Co je strojové učení",
+      "variant": "baseline",
+      "chunk_id": "3bc4fc3a05aba14aca00",
+      "text_sha256": "06b137fcdfbe238563247b13a9b0b9f34fd4c04bb5ed8e20f6309cf724df44f6",
+      "grade": "direct",
+      "reason": "Definuje učení algoritmů ze zkušeností/dat."
+    },
+    {
+      "id": "paired_3_layer",
+      "query": "Co je strojové učení",
+      "variant": "layer",
+      "chunk_id": "1ec4becaab48a20fe8c1",
+      "text_sha256": "783c41702f257f8d55a9d22a4f00ed50f9a46e6a458899bc6f41d4b72cb9c739",
+      "grade": "direct",
+      "reason": "Definuje ML a hledání vzorů v datech."
+    },
+    {
+      "id": "paired_4_baseline",
+      "query": "What is machine learning?",
+      "variant": "baseline",
+      "chunk_id": "1ec4becaab48a20fe8c1",
+      "text_sha256": "783c41702f257f8d55a9d22a4f00ed50f9a46e6a458899bc6f41d4b72cb9c739",
+      "grade": "direct",
+      "reason": "Definuje ML a hledání vzorů v datech."
+    },
+    {
+      "id": "paired_4_layer",
+      "query": "What is machine learning?",
+      "variant": "layer",
+      "chunk_id": "1ec4becaab48a20fe8c1",
+      "text_sha256": "783c41702f257f8d55a9d22a4f00ed50f9a46e6a458899bc6f41d4b72cb9c739",
+      "grade": "direct",
+      "reason": "Definuje ML a hledání vzorů v datech."
+    },
+    {
+      "id": "paired_5_baseline",
+      "query": "Co to jest uczenie maszynowe?",
+      "variant": "baseline",
+      "chunk_id": "1ec4becaab48a20fe8c1",
+      "text_sha256": "783c41702f257f8d55a9d22a4f00ed50f9a46e6a458899bc6f41d4b72cb9c739",
+      "grade": "direct",
+      "reason": "Definuje ML a hledání vzorů v datech."
+    },
+    {
+      "id": "paired_5_layer",
+      "query": "Co to jest uczenie maszynowe?",
+      "variant": "layer",
+      "chunk_id": "1ec4becaab48a20fe8c1",
+      "text_sha256": "783c41702f257f8d55a9d22a4f00ed50f9a46e6a458899bc6f41d4b72cb9c739",
+      "grade": "direct",
+      "reason": "Definuje ML a hledání vzorů v datech."
+    },
+    {
+      "id": "paired_6_baseline",
+      "query": "Co jsou neuronové sítě",
+      "variant": "baseline",
+      "chunk_id": "76f003fd5079f43d8816",
+      "text_sha256": "0a94bccf983a56a4796884b8627763c83325fc07db60a6370c799ff9c27b34c1",
+      "grade": "direct",
+      "reason": "Definuje neuronové sítě a model neuronu."
+    },
+    {
+      "id": "paired_6_layer",
+      "query": "Co jsou neuronové sítě",
+      "variant": "layer",
+      "chunk_id": "76f003fd5079f43d8816",
+      "text_sha256": "0a94bccf983a56a4796884b8627763c83325fc07db60a6370c799ff9c27b34c1",
+      "grade": "direct",
+      "reason": "Definuje neuronové sítě a model neuronu."
+    },
+    {
+      "id": "paired_7_baseline",
+      "query": "What are neural networks?",
+      "variant": "baseline",
+      "chunk_id": "76f003fd5079f43d8816",
+      "text_sha256": "0a94bccf983a56a4796884b8627763c83325fc07db60a6370c799ff9c27b34c1",
+      "grade": "direct",
+      "reason": "Definuje neuronové sítě a model neuronu."
+    },
+    {
+      "id": "paired_7_layer",
+      "query": "What are neural networks?",
+      "variant": "layer",
+      "chunk_id": "76f003fd5079f43d8816",
+      "text_sha256": "0a94bccf983a56a4796884b8627763c83325fc07db60a6370c799ff9c27b34c1",
+      "grade": "direct",
+      "reason": "Definuje neuronové sítě a model neuronu."
+    },
+    {
+      "id": "paired_8_baseline",
+      "query": "Czym są sieci neuronowe?",
+      "variant": "baseline",
+      "chunk_id": "76f003fd5079f43d8816",
+      "text_sha256": "0a94bccf983a56a4796884b8627763c83325fc07db60a6370c799ff9c27b34c1",
+      "grade": "direct",
+      "reason": "Definuje neuronové sítě a model neuronu."
+    },
+    {
+      "id": "paired_8_layer",
+      "query": "Czym są sieci neuronowe?",
+      "variant": "layer",
+      "chunk_id": "76f003fd5079f43d8816",
+      "text_sha256": "0a94bccf983a56a4796884b8627763c83325fc07db60a6370c799ff9c27b34c1",
+      "grade": "direct",
+      "reason": "Definuje neuronové sítě a model neuronu."
+    },
+    {
+      "id": "paired_9_baseline",
+      "query": "Co je přeučení",
+      "variant": "baseline",
+      "chunk_id": "f9892dcba14594768e4a",
+      "text_sha256": "c205dc0a9c731ca064ee5e9efafa6deb3b609f03a752121b3ad45ed59dd97948",
+      "grade": "partial",
+      "reason": "Příklad variance/přeučení stromů, nikoli obecná definice."
+    },
+    {
+      "id": "paired_9_layer",
+      "query": "Co je přeučení",
+      "variant": "layer",
+      "chunk_id": "98aeb9ed2c7f72d534a0",
+      "text_sha256": "881be05fc10890ad819ee2ac06ed2e7504f812efb76b27d2c07e9ef1b37fd59d",
+      "grade": "direct",
+      "reason": "Přímo popisuje přeučení a rozdíl train/test."
+    },
+    {
+      "id": "paired_10_baseline",
+      "query": "What is overfitting?",
+      "variant": "baseline",
+      "chunk_id": "98aeb9ed2c7f72d534a0",
+      "text_sha256": "881be05fc10890ad819ee2ac06ed2e7504f812efb76b27d2c07e9ef1b37fd59d",
+      "grade": "direct",
+      "reason": "Přímo popisuje přeučení a rozdíl train/test."
+    },
+    {
+      "id": "paired_10_layer",
+      "query": "What is overfitting?",
+      "variant": "layer",
+      "chunk_id": "98aeb9ed2c7f72d534a0",
+      "text_sha256": "881be05fc10890ad819ee2ac06ed2e7504f812efb76b27d2c07e9ef1b37fd59d",
+      "grade": "direct",
+      "reason": "Přímo popisuje přeučení a rozdíl train/test."
+    },
+    {
+      "id": "paired_11_baseline",
+      "query": "Co to jest przeuczenie?",
+      "variant": "baseline",
+      "chunk_id": "f9892dcba14594768e4a",
+      "text_sha256": "c205dc0a9c731ca064ee5e9efafa6deb3b609f03a752121b3ad45ed59dd97948",
+      "grade": "partial",
+      "reason": "Příklad variance/přeučení stromů, nikoli obecná definice."
+    },
+    {
+      "id": "paired_11_layer",
+      "query": "Co to jest przeuczenie?",
+      "variant": "layer",
+      "chunk_id": "98aeb9ed2c7f72d534a0",
+      "text_sha256": "881be05fc10890ad819ee2ac06ed2e7504f812efb76b27d2c07e9ef1b37fd59d",
+      "grade": "direct",
+      "reason": "Přímo popisuje přeučení a rozdíl train/test."
+    },
+    {
+      "id": "paired_12_baseline",
+      "query": "Co je regrese",
+      "variant": "baseline",
+      "chunk_id": "36ac4316fee4cb0cc274",
+      "text_sha256": "e9b6fe2121c4e8ece73cf606b8662675c84915256cf8659498832bf8b7bb448c",
+      "grade": "partial",
+      "reason": "Definice lineární regrese; vysvětluje spojitý cíl, ale jen jeden typ regrese."
+    },
+    {
+      "id": "paired_12_layer",
+      "query": "Co je regrese",
+      "variant": "layer",
+      "chunk_id": "56659b5f8974c0b01b1f",
+      "text_sha256": "3f90f5d866f5c28ab14d1e8dc61a4cca2409dcc3b0a7dce012922271158d0d86",
+      "grade": "partial",
+      "reason": "MSE/OLS bez základní definice regrese; přepis není v produkci povolen."
+    },
+    {
+      "id": "paired_13_baseline",
+      "query": "What is regression?",
+      "variant": "baseline",
+      "chunk_id": "56659b5f8974c0b01b1f",
+      "text_sha256": "3f90f5d866f5c28ab14d1e8dc61a4cca2409dcc3b0a7dce012922271158d0d86",
+      "grade": "partial",
+      "reason": "MSE/OLS bez základní definice regrese."
+    },
+    {
+      "id": "paired_13_layer",
+      "query": "What is regression?",
+      "variant": "layer",
+      "chunk_id": "56659b5f8974c0b01b1f",
+      "text_sha256": "3f90f5d866f5c28ab14d1e8dc61a4cca2409dcc3b0a7dce012922271158d0d86",
+      "grade": "partial",
+      "reason": "MSE/OLS bez základní definice regrese; přepis není v produkci povolen."
+    },
+    {
+      "id": "paired_14_baseline",
+      "query": "Co to jest regresja?",
+      "variant": "baseline",
+      "chunk_id": "108131c538f7cd545ea5",
+      "text_sha256": "f56427251b6671395439207c29e50418465b8fad77eb9ad0fbd82e1bd46d0c30",
+      "grade": "off_topic",
+      "reason": "Regularizace místo vysvětlení regrese."
+    },
+    {
+      "id": "paired_14_layer",
+      "query": "Co to jest regresja?",
+      "variant": "layer",
+      "chunk_id": "56659b5f8974c0b01b1f",
+      "text_sha256": "3f90f5d866f5c28ab14d1e8dc61a4cca2409dcc3b0a7dce012922271158d0d86",
+      "grade": "partial",
+      "reason": "MSE/OLS bez základní definice regrese; přepis není v produkci povolen."
+    },
+    {
+      "id": "paired_15_baseline",
+      "query": "Co je klasifikace",
+      "variant": "baseline",
+      "chunk_id": "58cd8dbc41484c5c6c94",
+      "text_sha256": "9a6bff3abfb6b02812e6c32a2dacc703e7a7265212025ea32821aef98488f882",
+      "grade": "direct",
+      "reason": "Explicitně rozlišuje spojitý a kategoriální cíl."
+    },
+    {
+      "id": "paired_15_layer",
+      "query": "Co je klasifikace",
+      "variant": "layer",
+      "chunk_id": "fdf37ec79be42704a614",
+      "text_sha256": "bee66a3e92b84675aa092c21d45d562bc8966b97d00d17db90d8ade017eb376f",
+      "grade": "direct",
+      "reason": "Stručná definice diskrétních tříd v závorce, ale horší podrobnost než české vysvětlení; experiment není povolen v produkci."
+    },
+    {
+      "id": "paired_16_baseline",
+      "query": "What is classification?",
+      "variant": "baseline",
+      "chunk_id": "fdf37ec79be42704a614",
+      "text_sha256": "bee66a3e92b84675aa092c21d45d562bc8966b97d00d17db90d8ade017eb376f",
+      "grade": "direct",
+      "reason": "Stručná definice diskrétních tříd v závorce; zbytek je katalog algoritmů."
+    },
+    {
+      "id": "paired_16_layer",
+      "query": "What is classification?",
+      "variant": "layer",
+      "chunk_id": "fdf37ec79be42704a614",
+      "text_sha256": "bee66a3e92b84675aa092c21d45d562bc8966b97d00d17db90d8ade017eb376f",
+      "grade": "direct",
+      "reason": "Stručná definice diskrétních tříd v závorce, ale horší podrobnost než české vysvětlení; experiment není povolen v produkci."
+    },
+    {
+      "id": "paired_17_baseline",
+      "query": "Co to jest klasyfikacja?",
+      "variant": "baseline",
+      "chunk_id": "58cd8dbc41484c5c6c94",
+      "text_sha256": "9a6bff3abfb6b02812e6c32a2dacc703e7a7265212025ea32821aef98488f882",
+      "grade": "direct",
+      "reason": "Explicitně rozlišuje spojitý a kategoriální cíl."
+    },
+    {
+      "id": "paired_17_layer",
+      "query": "Co to jest klasyfikacja?",
+      "variant": "layer",
+      "chunk_id": "fdf37ec79be42704a614",
+      "text_sha256": "bee66a3e92b84675aa092c21d45d562bc8966b97d00d17db90d8ade017eb376f",
+      "grade": "direct",
+      "reason": "Stručná definice diskrétních tříd v závorce, ale horší podrobnost než české vysvětlení; experiment není povolen v produkci."
+    },
+    {
+      "id": "sf01",
+      "query": "Vysvětli rozdíl mezi strojovým učením a běžným programováním pomocí pravidel.",
+      "variant": "production",
+      "chunk_id": "dce129d3cf723181a418",
+      "text_sha256": "6333d05627da929da26ee59b06705542b36c88803cccd97f7815099f5ba067b2",
+      "grade": "direct",
+      "reason": "Přímo srovnává pravidla v programu a učení z příkladů; popis ML je zde zaměřen na učení s učitelem."
+    },
+    {
+      "id": "sf02",
+      "query": "How can I tell that my model memorizes training examples instead of generalizing?",
+      "variant": "production",
+      "chunk_id": "98aeb9ed2c7f72d534a0",
+      "text_sha256": "881be05fc10890ad819ee2ac06ed2e7504f812efb76b27d2c07e9ef1b37fd59d",
+      "grade": "direct",
+      "reason": "Train/test rozdíl přímo pomáhá rozpoznat přeučení; gate přesto hlásí nejistotu."
+    },
+    {
+      "id": "sf03",
+      "query": "Jaką rolę pełnią wagi i funkcja aktywacji w sztucznym neuronie?",
+      "variant": "production",
+      "chunk_id": "3df90b77ae979807eebc",
+      "text_sha256": "132a5ad42cefc2c47361176b43f1984fcd8a73d660c379331e63d7c6e0101d60",
+      "grade": "direct",
+      "reason": "Vážený součet a účel nelineární aktivace jsou v prvním úryvku; široká tvrzení zdroje nejsou fakticky ověřena."
+    },
+    {
+      "id": "sf04",
+      "query": "Potřebuji předpovídat cenu domu. Je to regrese, nebo klasifikace?",
+      "variant": "production",
+      "chunk_id": "73af79b77610feac2ddc",
+      "text_sha256": "8933612168289388d8588d704b7ce0a19f999436f0905992b49385b5133fed18",
+      "grade": "partial",
+      "reason": "Příklad ceny domu, ale bez explicitního rozlišení úloh; přímé rozlišení až rank 3."
+    },
+    {
+      "id": "sf05",
+      "query": "Is predicting whether an email is spam a classification task?",
+      "variant": "production",
+      "chunk_id": "58cd8dbc41484c5c6c94",
+      "text_sha256": "9a6bff3abfb6b02812e6c32a2dacc703e7a7265212025ea32821aef98488f882",
+      "grade": "direct",
+      "reason": "Přímo uvádí SPAM/HAM jako kategoriální cíl klasifikace."
+    },
+    {
+      "id": "sf06",
+      "query": "Czym różni się uczenie z etykietami od szukania grup bez etykiet?",
+      "variant": "production",
+      "chunk_id": "e5b0089c7acdc20d7bd3",
+      "text_sha256": "3546fc9836f50bfe16fe277ae4423cd80bfda23fa4c840fa34a4ce5be5687174",
+      "grade": "off_topic",
+      "reason": "Stemming/lemmatizace neodpovídají; související definice bez labelů je rank 3 a s labely rank 5."
+    },
+    {
+      "id": "sf07",
+      "query": "Jaký je dnes kurz české koruny vůči euru?",
+      "variant": "production",
+      "chunk_id": "8a291e889cfd9a4ea30f",
+      "text_sha256": "e653962ad75d3954ae52040f04ead1b410be52f9f05649f195f04cdc738fce08",
+      "grade": "off_topic",
+      "reason": "Výpočet entropie neodpovídá kurzu měn; správně skryto jako slabá shoda."
+    },
+    {
+      "id": "sf08",
+      "query": "How do I bake a sourdough loaf?",
+      "variant": "production",
+      "chunk_id": "e07d79db514c737093d9",
+      "text_sha256": "4bfcb5894d9eae7ba257a39793209f4be1ceaa6be4a9d7e3807b25ef72d76d49",
+      "grade": "off_topic",
+      "reason": "Výpočet LOF neodpovídá pečení chleba; správně skryto jako slabá shoda."
+    },
+    {
+      "id": "sf09",
+      "query": "O której odjeżdża najbliższy pociąg z Warszawy do Krakowa?",
+      "variant": "production",
+      "chunk_id": "b1a9aa6cb8a9ebf703b6",
+      "text_sha256": "57d792c99aa09b346beb00fd54916121b546b5d6109c7a9ba996c3b8272116f2",
+      "grade": "off_topic",
+      "reason": "ASCII workflow neodpovídá jízdnímu řádu; správně skryto jako slabá shoda."
+    }
+  ]
+}

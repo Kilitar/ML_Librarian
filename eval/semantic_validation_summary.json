@@ -1,0 +1,23 @@
+{
+  "first_passage_grades": {
+    "baseline": {
+      "off_topic": 3,
+      "partial": 5,
+      "direct": 10
+    },
+    "layer": {
+      "partial": 6,
+      "direct": 12
+    },
+    "fresh_answerable": {
+      "direct": 4,
+      "partial": 1,
+      "off_topic": 1
+    }
+  },
+  "fresh_exact_status_matches": 7,
+  "fresh_total": 9,
+  "scope": "Top-one only; no Precision@5/Recall/complete-answer metric. Experimental paired layer is not identical to the production allowlist.",
+  "reviewer": "Codex provisional, not independent human review",
+  "fresh_questions_sha256": "c302a60dfdc8a2d046381532fcafca24b5ff473eb11850a0966b60c37d7614e8"
+}

@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Doménová sémantická vrstva v1: 8 pojmů CZ/EN/PL, oddělené zkratky a vztahy. Párový experiment 18 dotazů: sjednocení pořadí 6/6 skupin, nikoli důkaz správnosti. Regrese a klasifikace vykázaly zhoršení, proto jejich přepis není v produkci povolen. Povoleny ML, neuronové sítě, přeučení a částečné DL. Přehled úryvků: http://localhost:8765/eval/semantic_comparison.local.html. Další krok: nezávislé hodnocení užitečnosti.",
+  "status_note": "Dokončena obsahová kontrola 36 prvních pasáží párového experimentu a 9 nových produkčních dotazů bez ladění. Ze 6 odborných: 4 přímé první úryvky, 1 částečný, 1 mimo téma. Všechny 3 dotazy mimo kurz bez opory; žádný odborný tvrdě odmítnut. Prozatímní Codex hodnocení, nikoli nezávislá validace. Další krok: řazení srovnávacích dotazů a spojení doplňujících důkazů. Přehled: http://localhost:8765/eval/semantic_validation.local.html.",
   "tasks": [
     {
       "id": "scope",
@@ -79,7 +79,7 @@
       "title": "Held-out evaluace CZ/EN/PL",
       "estimate_hours": 2,
       "status": "in_progress",
-      "detail": "Ověřena evidence-v1 opora na 25 regresních + 15 nových otázkách: stavy 39/40, 0 tvrdých odmítnutí platných otázek, známý nejistý PL případ. 31 testů. Viz docs/ABSTENTION.md. Zbývá širší nezávislé ověření nejasných/near-domain dotazů a faktická kvalita zdrojů."
+      "detail": "Obsahově označeno 36 prvních úryvků experimentu on/off; 9 předem fixovaných nových formulací na nezměněné produkci. Ze 6 odborných top1: 4 přímé, 1 částečný, 1 mimo téma. Tři mimo kurz no_support; 2 odborné nejisté. docs/SEMANTIC_VALIDATION.md. Nezávislé lidské hodnocení čeká; další technický krok jsou srovnávací dotazy a doplňující pasáže."
     },
     {
       "id": "demo",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-17T13:54:44.929419+00:00",
+  "updated_at": "2026-10-17T14:33:25.969597+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10

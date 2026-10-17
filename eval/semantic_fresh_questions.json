@@ -1,0 +1,14 @@
+{
+  "scope": "Fixed before retrieval; development data after inspection. Expected evidence availability only, not an answer-correctness label.",
+  "questions": [
+    {"id":"sf01","query":"Vysvětli rozdíl mezi strojovým učením a běžným programováním pomocí pravidel.","expected":"supported"},
+    {"id":"sf02","query":"How can I tell that my model memorizes training examples instead of generalizing?","expected":"supported"},
+    {"id":"sf03","query":"Jaką rolę pełnią wagi i funkcja aktywacji w sztucznym neuronie?","expected":"supported"},
+    {"id":"sf04","query":"Potřebuji předpovídat cenu domu. Je to regrese, nebo klasifikace?","expected":"supported"},
+    {"id":"sf05","query":"Is predicting whether an email is spam a classification task?","expected":"supported"},
+    {"id":"sf06","query":"Czym różni się uczenie z etykietami od szukania grup bez etykiet?","expected":"supported"},
+    {"id":"sf07","query":"Jaký je dnes kurz české koruny vůči euru?","expected":"no_support"},
+    {"id":"sf08","query":"How do I bake a sourdough loaf?","expected":"no_support"},
+    {"id":"sf09","query":"O której odjeżdża najbliższy pociąg z Warszawy do Krakowa?","expected":"no_support"}
+  ]
+}
