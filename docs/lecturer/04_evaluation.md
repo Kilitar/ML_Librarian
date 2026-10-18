@@ -6,8 +6,8 @@ Oddělujeme pořadí relevantního dokumentu, pokrytí konkrétní otázky skute
 
 Sdílený normalizovaný dotaz NEBO cesta zdroje NEBO totožný normalizovaný text propojuje páry tranzitivně. Parafráze a různé soubory ze stejného PDF mohou stále sdílet význam; počet komponent není počet nezávislých témat.
 
-Po anotaci120 výsledků z24 dotazů:42direct,36partial,42negative. Všech120 se tranzitivně připojilo ke starším fitovaným datům. Dalších9 oddělených zdrojů dalo27 source-informed kontrastních párů, nikoli nové výsledky retrievalu. Celkem276 známých párů; base86direct/125negative. Přísný source-transfer pool v1/v2:11direct/22negative, pod minimy30/59.
+Po anotaci 120 výsledků z 24 dotazů: 42 direct, 36 partial, 42 negative. Všech 120 se tranzitivně připojilo ke starším fitovaným datům. Dalších 9 oddělených zdrojů dalo 27 source-informed kontrastních párů, nikoli nové výsledky retrievalu. Celkem 276 známých párů; base: 86 direct / 125 negative. Přísný source-transfer pool v1/v2: 11 direct / 22 negative, pod minimy 30 / 59.
 
-Původní base na dřívějších100 známých binárních párech nedosáhl80% recall při0 empirických FP; maximum bylo60%. Nejde o odhad produkční bezpečnosti. Kvůli známému PCA příkladu jsme práh neposunuli.
+Původní base na dřívějších 100 známých binárních párech nedosáhl 80 % recall při 0 empirických FP; maximum bylo 60 %. Nejde o odhad produkční bezpečnosti. Kvůli známému PCA příkladu jsme práh neposunuli.
 
-12 rezervovaných otázek zůstává nespouštěných. Přejímka not_accepted. Další kalibraci uživatel odložil. Notebook03 znovu seskupí skutečné development páry a porovná uložené souhrny; nevytváří nový held-out výsledek.
+12 rezervovaných otázek zůstává nespouštěných. Přejímka not_accepted. Další kalibraci uživatel odložil. Notebook 03 znovu seskupí skutečné development páry a porovná uložené souhrny; nevytváří nový held-out výsledek.

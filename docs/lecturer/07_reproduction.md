@@ -1,6 +1,6 @@
 # Reprodukce
 
-Notebooky01–04 obsahují skutečný použitý kód nebo přímo volají jeho projektové moduly. Pro analýzu, retrieval a prohlédnutí výsledků nepotřebují API klíč. Původní kurz není v Git repozitáři; skutečná data dodá provozovatel jako runtime/development balíček.
+Notebooky 01–04 obsahují skutečný použitý kód nebo přímo volají jeho projektové moduly. Pro analýzu, retrieval a prohlédnutí výsledků nepotřebují API klíč. Původní kurz není v Git repozitáři; skutečná data dodá provozovatel jako runtime/development balíček.
 
 Runtime: kurátorované pasáže, extrahované dokumenty a E5 index. Development: skutečné anotace a uložené experimentální výstupy. Bez klíčů/cache/checkpointů. Balíčky nejsou automaticky veřejné. Kontroluj SHA a záznam git commitu.
 

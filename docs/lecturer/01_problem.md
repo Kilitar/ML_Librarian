@@ -6,7 +6,7 @@ Cíl: lektor otevře připravenou Streamlit prezentaci, položí CZ/EN/PL otázk
 
 Zdrojový kurz je read-only. Notebooky ani Python stránky kurzu při ingestu nespouštíme. Zpracováváme Markdown, PDF po stranách, notebookový Markdown a statické literály Streamlit stránek; zachováváme cestu, locator, jazyk a chunk ID.
 
-Aktuální index:4189pasáží ×384rozměrů. Počet zdrojů a skutečné rozdělení ověřuje notebook přímo z korpusu. Starší zprávy se4196pasážemi popisují dřívější index.
+Aktuální index: 4 189 pasáží × 384 rozměrů. Počet zdrojů a skutečné rozdělení ověřuje notebook přímo z korpusu. Starší zprávy se 4 196 pasážemi popisují dřívější index.
 
 **Data analyst:** inventura, datová kvalita, duplicity a explorace. **Data scientist:** reprezentace, návrh experimentů, anotace a evaluace. **Engineering:** fingerprinty, izolace, UI, testy a nasazení. Role se překrývají.
 
