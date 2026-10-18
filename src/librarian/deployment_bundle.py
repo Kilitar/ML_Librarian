@@ -72,6 +72,21 @@ def fetch(url,expected_sha,root=ROOT):
         raise ValueError('Runtime bundle unavailable or failed integrity validation') from None
 
 
+def provision_runtime(root=ROOT,secrets=None):
+    """Prefer the release artifact shipped with the course; external URL is optional."""
+    archive=root/'deployment/runtime.zip'
+    if archive.is_file():
+        record=json.loads((root/'deployment/artifacts.json').read_text(encoding='utf-8'))['runtime.local.zip']
+        return install(archive.read_bytes(),record['sha256'],root)
+    try:
+        url=secrets.get('RUNTIME_BUNDLE_URL','') if secrets is not None else ''
+        digest=secrets.get('RUNTIME_BUNDLE_SHA256','') if secrets is not None else ''
+    except FileNotFoundError:
+        url=digest=''
+    if not url or not digest:raise ValueError('Release runtime artifact is missing')
+    return fetch(url,digest,root)
+
+
 DEVELOPMENT_FILES = [
     'eval/source_group_extension.local.json','eval/supervised_pair_training.local.json',
     'eval/supervised_pair.local.json','eval/supervised_pair_v2.local.json',

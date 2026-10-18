@@ -1,4 +1,4 @@
-"""Explicit, versioned source-only export into the user-authorized course checkout."""
+"""Versioned source export with an optional verified course runtime release."""
 import argparse
 import hashlib
 import json
@@ -7,7 +7,7 @@ import subprocess
 ROOT=Path(__file__).resolve().parents[2]
 
 
-def export(course):
+def export(course, *, include_runtime=False):
     course=course.resolve(strict=True)
     if not (course/'app.py').is_file() or not (course/'views').is_dir():raise ValueError('Expected course checkout')
     dest=course/'components/ml_librarian'
@@ -22,20 +22,27 @@ def export(course):
         files.append(ROOT/'deployment'/name)
     logo=ROOT/'data/Icons/codesrlab_logo_square.png'
     if logo.exists():files.append(logo)
+    if include_runtime:
+        files.append(ROOT/'deployment/runtime.local.zip')
     old=dest/'export_manifest.json'
     if old.exists():
         for name,digest in json.loads(old.read_text())['files'].items():
             target=dest/name
-            if not target.is_file() or hashlib.sha256(target.read_bytes().replace(b'\r\n',b'\n') if json.loads(old.read_text()).get('normalization')=='text-lf' and target.suffix!='.png' else target.read_bytes()).hexdigest()!=digest:
+            if not target.is_file() or hashlib.sha256(target.read_bytes().replace(b'\r\n',b'\n') if json.loads(old.read_text()).get('normalization')=='text-lf' and target.suffix not in ('.png','.zip') else target.read_bytes()).hexdigest()!=digest:
                 raise ValueError('Course module modified locally: '+name)
     manifest={}
     for path in files:
         if not path.is_file() or not path.resolve().is_relative_to(ROOT):raise ValueError('Invalid export source')
-        name=path.relative_to(ROOT).as_posix();target=dest/name
+        name=path.relative_to(ROOT).as_posix()
+        if name=='deployment/runtime.local.zip':
+            expected=json.loads((ROOT/'deployment/artifacts.json').read_text())['runtime.local.zip']['sha256']
+            if hashlib.sha256(path.read_bytes()).hexdigest()!=expected:raise ValueError('Runtime release SHA mismatch')
+            name='deployment/runtime.zip'
+        target=dest/name
         if not target.resolve().is_relative_to(dest.resolve()):raise ValueError('Unsafe export target')
         target.parent.mkdir(parents=True,exist_ok=True)
         data=path.read_bytes()
-        if path.suffix!='.png':data=data.replace(b'\r\n',b'\n')
+        if path.suffix not in ('.png','.zip'):data=data.replace(b'\r\n',b'\n')
         target.write_bytes(data);manifest[name]=hashlib.sha256(data).hexdigest()
     revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     old.write_text(json.dumps({'source_repository':'https://github.com/Kilitar/ML_Librarian',
@@ -46,4 +53,5 @@ def export(course):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--course-root',type=Path,required=True)
-    export(p.parse_args().course_root)
+    p.add_argument('--include-runtime',action='store_true')
+    args=p.parse_args();export(args.course_root,include_runtime=args.include_runtime)

@@ -23,20 +23,11 @@ def prepare_search():
     sys.path.insert(0,str(ROOT/"src/librarian"))
     if not (ROOT/'data/index/multilingual_e5_curated.json').exists():
         try:
-            url=st.secrets.get('RUNTIME_BUNDLE_URL','')
-            checksum=st.secrets.get('RUNTIME_BUNDLE_SHA256','')
-        except FileNotFoundError:
-            url=checksum=''
-        if not url or not checksum:
-            st.title('ML Librarian')
-            st.info('Vyhledávání čeká na jednorázové nastavení dat provozovatelem kurzu. Dokumentace je dostupná v navigaci Pro lektora.')
-            return False
-        try:
             with st.spinner('Připravuji data Librarianu…'):
-                from deployment_bundle import fetch
-                fetch(url,checksum,ROOT)
+                from deployment_bundle import provision_runtime
+                provision_runtime(ROOT,st.secrets)
         except Exception:
-            st.error('Datový balíček Librarianu není dostupný nebo neprošel kontrolou integrity.')
+            st.error('Data Librarianu se nepodařilo připravit. Zkus obnovit stránku; provozovatel může zkontrolovat integritu nasazení.')
             return False
     try:
         ensure_models()

@@ -6,7 +6,7 @@ import unittest
 import zipfile
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src/librarian'))
-from deployment_bundle import build,install,sha
+from deployment_bundle import build,install,sha,provision_runtime
 
 
 class DeploymentBundleTests(unittest.TestCase):
@@ -52,3 +52,17 @@ class DeploymentBundleTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as target:
             with self.assertRaises(ValueError):install(data,sha(data),Path(target))
             self.assertFalse(list(Path(target).iterdir()))
+
+
+class BundledRuntimeTests(unittest.TestCase):
+    def test_bundled_bootstrap_needs_no_secrets(self):
+        fixture,data=DeploymentBundleTests().bundle()
+        with fixture,tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);(root/'deployment').mkdir()
+            (root/'deployment/runtime.zip').write_bytes(data)
+            (root/'deployment/artifacts.json').write_text(json.dumps({'runtime.local.zip':{'sha256':sha(data)}}))
+            class NoSecrets:
+                def get(self,*args):raise AssertionError('Bundled runtime must not read secrets')
+            result=provision_runtime(root,NoSecrets())
+            self.assertEqual(len(result),4)
+            self.assertTrue((root/'data/normalized/chunks_curated.jsonl').exists())

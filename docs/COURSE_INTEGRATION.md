@@ -1,3 +1,5 @@
+> Current deployment includes `deployment/runtime.zip` with the course module. Search auto-installs it after SHA validation; no external artifact URL/secret is required. Update exports with `--include-runtime`. Model weights still download on first use; Groq credentials affect only generated answers.
+
 # Integrated course deployment — current target
 
 User explicitly authorized minimal integration changes in Data-Science on

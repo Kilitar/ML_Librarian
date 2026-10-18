@@ -1,3 +1,5 @@
+> Runtime delivery fix: course module ships its verified7.8MB `deployment/runtime.zip` directly. The external URL procedure below is optional legacy fallback. No manual data hosting or runtime URL secrets are needed for course search.
+
 > Current target: integrate into the existing Streamlit course, not a new standalone deployment. See [COURSE_INTEGRATION.md](COURSE_INTEGRATION.md). The standalone procedure below remains a development alternative.
 
 # Streamlit Community Cloud deployment

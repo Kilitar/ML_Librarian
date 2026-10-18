@@ -249,3 +249,6 @@ Dockadditionalverification:mockHTTP(validsourcequote)answerdisplay/persistenceaf
 DOCKPUBLICATIONVERIFIED:sourceed7f0ce onML_Librarian/master,course5dde82e onCoderslab-DataScience/main;remoteSHAequalboth. SharedindexfactoryAppTest verifiedsingleloadacrossdock/fullpage. Courseapp8767restartafterverifiedexactprocesscommand; desktop/mobilevisualreviewpending. No liveGroq/publichostCSSclaim; nolecturerredesign.
 
 2026-10-18 user screenshot confirms Cloud controls overlap docklauncher atbottom1rem. Movedlauncher tobottomcalc(5rem+safe-area), panelbottom8.8rem/8.5rem mobile; no controlhiding or backendchange. Syntax/diffchecks; visualfinalreviewafterCloudrebuild.
+
+
+2026-10-18 user rightly requested completing data deployment rather than operatorhomework. Course release nowincludesverified7.8MB deployment/runtime.zip (explicitexport --include-runtime); embedded.prepare_search→provision_runtime prefers bundledZIP withpinnedartifactsSHA, no secretsread/externalhostingneeded. ExternalURLlegacyfallbackonly. Nooriginals/keys/cache/training/visitorhistoryinthe4fileZIP. Modelsfirstusepublicdownload; Groqstillrequiresoperatoraccountkeyonlyforgeneration. Newtestbundledbootstrapwithsecretgetterthatraises provesnoURL/keydependency. Needfinalexport/coursepush/livebootstrapcheck. Unknowndata/Icons/docs.zipuntouched.
