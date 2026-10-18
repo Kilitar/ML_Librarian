@@ -1,7 +1,8 @@
 import sys,tempfile,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src/librarian'))
-from course_links import source_pages
+from course_links import source_pages, course_link_info, RELATED_PAGES
+from unittest.mock import patch
 
 class CourseLinkTests(unittest.TestCase):
     def test_only_registered_pages_and_existing_literal_sources_are_linked(self):
@@ -15,5 +16,25 @@ class CourseLinkTests(unittest.TestCase):
             links=source_pages(str(root))
             self.assertEqual(links,{'views/a.py':'views/a.py','theory/topic.md':'views/a.py','lesson.ipynb':'views/a.py'})
             self.assertNotIn('../outside.md',links)
+
+    def test_related_link_requires_registered_target(self):
+        source=next(iter(RELATED_PAGES));target=RELATED_PAGES[source]
+        with patch('course_links.source_pages',return_value={target:target}):
+            info=course_link_info({'source_path':source},'unused')
+            self.assertEqual(info['page'],target)
+            self.assertEqual(info['label'],'Související stránka kurzu')
+        with patch('course_links.source_pages',return_value={}):
+            self.assertIsNone(course_link_info({'source_path':source},'unused')['page'])
+
+    def test_pdf_and_its_text_extract_explain_missing_original(self):
+        for source in [{'source_path':'Resources/PDF/course.pdf'},
+                       {'source_path':'Resources/Day 0 Prework PDF/10-Data_preparation.txt'},
+                       {'source_path':'notes.txt','source_origin':'Coderslab PDF'}]:
+            with self.subTest(source=source),patch('course_links.source_pages') as mapping:
+                info=course_link_info(source,'unused')
+                self.assertIsNone(info['page'])
+                self.assertIn('Coders Lab',info['notice'])
+                self.assertIn('nejsou veřejně dostupné',info['notice'])
+                mapping.assert_not_called()
 
 if __name__=='__main__':unittest.main()

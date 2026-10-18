@@ -48,13 +48,39 @@ def source_pages(course_root):
     return mapping
 
 
+# Reviewed editorial associations, not claims that page text equals source text.
+RELATED_PAGES = {
+    '06_Final_Project/theory/04_modern_ml_2026_rag_agents_lora.md':
+        'views/06_modern_ml_rag_agents.py',
+}
+PDF_NOTICE = ('Zdrojová PDF nejsou součástí veřejné webové aplikace; obsahuje pouze jejich '
+              'zpracované textové úryvky (chunks). Materiály jsou autorským majetkem Coders Lab '
+              'a jsou určeny studentům a absolventům kurzu, nejsou veřejně dostupné. '
+              'Proto zde není odkaz na originální PDF.')
+
+
+def course_link_info(source, course_root):
+    path=str(source.get('source_path','')).replace('\\','/')
+    lower=path.lower()
+    pdf=(source.get('source_origin')=='Coderslab PDF' or lower.endswith('.pdf') or
+         (lower.startswith('resources/') and ('pdf' in lower or source.get('source_kind')=='pdf')))
+    if pdf:return {'page':None,'label':None,'notice':PDF_NOTICE}
+    mapping=source_pages(str(course_root))
+    page=mapping.get(path)
+    if page:return {'page':page,'label':'Otevřít v kurzu','notice':None}
+    related=RELATED_PAGES.get(path)
+    if related and mapping.get(related)==related:
+        return {'page':related,'label':'Související stránka kurzu',
+                'notice':'Stránka vysvětluje stejné téma; její obsah se může lišit od nalezeného úryvku.'}
+    return {'page':None,'label':None,
+            'notice':'Materiál nemá samostatnou stránku v kurzu; nalezený úryvek je níže.'}
+
+
 def render_course_link(source):
     # Only embedded in the host that owns st.navigation; standalone keeps its viewer.
     module_root=Path(__file__).resolve().parents[2]
     if module_root.parent.name!='components':return
     import streamlit as st
-    page=source_pages(str(module_root.parent.parent)).get(source['source_path'])
-    if page:
-        st.page_link(page,label='Otevřít v kurzu',icon='↗️')
-    else:
-        st.caption('Materiál nemá samostatnou stránku v kurzu; nalezený úryvek je níže.')
+    info=course_link_info(source,module_root.parent.parent)
+    if info['page']:st.page_link(info['page'],label=info['label'],icon='↗️')
+    if info['notice']:st.caption(info['notice'])
