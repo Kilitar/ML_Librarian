@@ -14,6 +14,13 @@ def render(section='search'):
         from lecturer_view import render_lecturer
         render_lecturer()
         return
+    if not prepare_search():return
+    runpy.run_path(str(ROOT/'app.py'),run_name='__main__',init_globals={
+        'LIBRARIAN_EMBEDDED':True,'LIBRARIAN_SECTION':section,'LIBRARIAN_INDEX_FACTORY':get_search_index})
+
+
+def prepare_search():
+    sys.path.insert(0,str(ROOT/"src/librarian"))
     if not (ROOT/'data/index/multilingual_e5_curated.json').exists():
         try:
             url=st.secrets.get('RUNTIME_BUNDLE_URL','')
@@ -23,21 +30,20 @@ def render(section='search'):
         if not url or not checksum:
             st.title('ML Librarian')
             st.info('Vyhledávání čeká na jednorázové nastavení dat provozovatelem kurzu. Dokumentace je dostupná v navigaci Pro lektora.')
-            return
+            return False
         try:
             with st.spinner('Připravuji data Librarianu…'):
                 from deployment_bundle import fetch
                 fetch(url,checksum,ROOT)
         except Exception:
             st.error('Datový balíček Librarianu není dostupný nebo neprošel kontrolou integrity.')
-            return
+            return False
     try:
         ensure_models()
     except Exception:
         st.error('Modely Librarianu se nepodařilo připravit. Ostatní části kurzu zůstávají dostupné.')
-        return
-    runpy.run_path(str(ROOT/'app.py'),run_name='__main__',init_globals={
-        'LIBRARIAN_EMBEDDED':True,'LIBRARIAN_SECTION':section})
+        return False
+    return True
 
 
 @st.cache_resource(show_spinner=False)
@@ -50,3 +56,10 @@ def ensure_models():
             from prepare_runtime_models import prepare
             prepare()
     return True
+
+
+@st.cache_resource(show_spinner=False)
+def get_search_index():
+    sys.path.insert(0,str(ROOT/'src/librarian'))
+    from search import E5SearchIndex
+    return E5SearchIndex.load()

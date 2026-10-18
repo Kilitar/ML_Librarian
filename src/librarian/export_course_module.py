@@ -12,7 +12,7 @@ def export(course):
     if not (course/'app.py').is_file() or not (course/'views').is_dir():raise ValueError('Expected course checkout')
     dest=course/'components/ml_librarian'
     if not dest.resolve().is_relative_to(course):raise ValueError('Export escapes course')
-    files=[ROOT/'app.py',ROOT/'embedded.py',ROOT/'requirements-librarian.txt']
+    files=[ROOT/'app.py',ROOT/'embedded.py',ROOT/'dock.py',ROOT/'requirements-librarian.txt']
     files += list((ROOT/'src/librarian').glob('*.py'))+list((ROOT/'src/librarian').glob('*.json'))
     files += list((ROOT/'config').glob('*.json'))+list((ROOT/'docs').glob('*.md'))
     files += list((ROOT/'docs/lecturer').glob('*'))+list((ROOT/'notebooks').glob('*.ipynb'))

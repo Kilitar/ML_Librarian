@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Librarian integrován do navigace stávajícího Streamlit kurzu: /ml_librarian a /ml_librarian_lecturer. Lokální kurzový náhled http://localhost:8767/. Skutečné vyhledávání má shodných5výsledků se standalone. Veřejný rebuild kurzu/secrets/Groq kvalita zatím neověřeny. Lektorský redesign odložen.",
+  "status_note": "Librarian v pravém vysouvacím docku dostupný napříč kurzem. Funkčně ověřeno zachování dotazu/výsledků/odpovědi při změně lekce a zavření. Vizuální desktop/mobile kontrola čeká na uživatele. Veřejný provoz stále závisí na serverových datech a Groq konfiguraci.",
   "tasks": [
     {
       "id": "scope",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-18T08:28:02.993371+00:00",
+  "updated_at": "2026-10-18T08:38:54.472252+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10

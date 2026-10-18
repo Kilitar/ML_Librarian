@@ -26,7 +26,8 @@ if not globals().get("LIBRARIAN_EMBEDDED", False):
 
 @st.cache_resource(show_spinner=False)
 def get_search_index() -> E5SearchIndex:
-    return E5SearchIndex.load()
+    factory = globals().get("LIBRARIAN_INDEX_FACTORY")
+    return factory() if factory else E5SearchIndex.load()
 
 
 def read_routes_config() -> dict:
