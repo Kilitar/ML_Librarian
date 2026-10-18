@@ -36,8 +36,3 @@ def main():
             d=docs[int(i)]
             print(f"{scores[i]:.3f} | {d['source_path']} | {d['locator']} | {d['text'][:210].replace(chr(10),' ')}")
 if __name__=='__main__':main()
-
-
-
-
-
