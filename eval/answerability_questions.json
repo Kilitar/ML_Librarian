@@ -1,0 +1,15 @@
+{
+  "version": "answerability-check-v1",
+  "scope": "Nine new authored formulations fixed before any Qwen scores. Correlated minimal triples, not independent human acceptance. Known mixed-intent twelve replay their stored five passages separately. No prompt or threshold tuning after outputs.",
+  "questions": [
+    {"id":"aq01","kind":"nonsense","query":"Kolik cukru nasypat do random forest, aby mělo nižší chybu?"},
+    {"id":"aq02","kind":"meaningful_technical","query":"Jak snížit chybu random forest laděním hyperparametrů?"},
+    {"id":"aq03","kind":"meaningful_application","query":"Jak trénovat random forest pro předpověď ceny ovoce z číselných příznaků?"},
+    {"id":"aq04","kind":"nonsense","query":"Which cheese should I melt onto logistic regression to prevent overfitting?"},
+    {"id":"aq05","kind":"meaningful_technical","query":"How does regularization reduce overfitting in logistic regression?"},
+    {"id":"aq06","kind":"meaningful_application","query":"How can logistic regression classify fruit as ripe or unripe from measured features?"},
+    {"id":"aq07","kind":"nonsense","query":"Jaką herbatą podlać DBSCAN, żeby znalazł więcej klastrów?"},
+    {"id":"aq08","kind":"meaningful_technical","query":"Jak eps i min_samples wpływają na liczbę klastrów DBSCAN?"},
+    {"id":"aq09","kind":"meaningful_application","query":"Jak grupować produkty spożywcze metodą DBSCAN na podstawie ich cech liczbowych?"}
+  ]
+}

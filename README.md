@@ -129,3 +129,10 @@ query is not fixed. Twelve contrastive searches show that removing source
 metadata alone does not solve answerability. The UI now states this limit of
 relevance scores explicitly. See `docs/MIXED_INTENT.md` and all paired scores and
 excerpts at `http://localhost:8765/eval/mixed_intent_review.local.html`.
+
+An independent local Qwen3-Reranker0.6B trial catches the known schnitzel query,
+but misses all three new nonsense queries and downgrades one known valid query.
+It is not integrated into production. See `docs/ANSWERABILITY_EXPERIMENT.md`,
+all scores at `http://localhost:8765/eval/answerability_review.local.html`, and
+the optional manual pair-label sheet at
+`http://localhost:8765/eval/answerability_labels.local.html`.

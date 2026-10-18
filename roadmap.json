@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Smíšené dotazy:12 plných vyhledání(známý řízek+11 fixovaných formulací),4 trojice nesmysl/odborná otázka/ML na potravinách.3/4 nesmyslů chybně supported; samotný text pasáže problém neřeší(řízek .807). Nový gate NENASAZEN. UI zpřesňuje omezení skóre;106 testů+2 renderovací AppTest nad zmrazenými výsledky. http://localhost:8765/eval/mixed_intent_review.local.html. Přejímka neprošla, BYOK odloženo.",
+  "status_note": "Samostatný Qwen3-Reranker0.6B ověřen:9 nových plných vyhledání+16 známých replayů. Známý řízek supported→uncertain, ale všechny3 nové nesmysly stále supported a známá validní škála db08 nově uncertain. Kritéria nesplněna: produkce BEZE ZMĚNY. Skórování4–9.21s/dotaz.106 testů prošlo. http://localhost:8765/eval/answerability_review.local.html. Připraveno125 neoznačených párů pro ruční hodnocení; přejímka neprošla, BYOK odloženo.",
   "tasks": [
     {
       "id": "scope",
@@ -79,7 +79,7 @@
       "title": "Held-out evaluace CZ/EN/PL",
       "estimate_hours": 2,
       "status": "in_progress",
-      "detail": "Smíšené dotazy:12 plných vyhledání(známý řízek+11 fixovaných formulací),4 trojice nesmysl/odborná otázka/ML na potravinách.3/4 nesmyslů chybně supported; samotný text pasáže problém neřeší(řízek .807). Nový gate NENASAZEN. UI zpřesňuje omezení skóre;106 testů+2 renderovací AppTest nad zmrazenými výsledky. http://localhost:8765/eval/mixed_intent_review.local.html. Přejímka neprošla, BYOK odloženo. Další: oddělený query-passage verifier nebo supervised hard negatives pro chybný vztah při správném tématu; nové minimální páry před dalším tréninkem. docs/MIXED_INTENT.md."
+      "detail": "Samostatný Qwen3-Reranker0.6B ověřen:9 nových plných vyhledání+16 známých replayů. Známý řízek supported→uncertain, ale všechny3 nové nesmysly stále supported a známá validní škála db08 nově uncertain. Kritéria nesplněna: produkce BEZE ZMĚNY. Skórování4–9.21s/dotaz.106 testů prošlo. http://localhost:8765/eval/answerability_review.local.html. Připraveno125 neoznačených párů pro ruční hodnocení; přejímka neprošla, BYOK odloženo. Další: anotace skutečného pokrytí otázky a supervised hard negatives se správným tématem/chybným vztahem, nové testovací vztahy před tréninkem. docs/ANSWERABILITY_EXPERIMENT.md."
     },
     {
       "id": "demo",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-18T03:43:21.539134+00:00",
+  "updated_at": "2026-10-18T04:02:38.704186+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10
