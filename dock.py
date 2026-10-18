@@ -36,19 +36,25 @@ def render_dock():
         from .embedded import prepare_search
         if not prepare_search():return
         from evidence_gate import assess_evidence
-        from source_filters import SOURCE_ROLES,SOURCE_ORIGINS
+        from source_filters import render_source_selection,selected_exclusions
         from snippet_format import format_snippet
         from demo_generation import demo_config,generate_demo_answer
         from answer_generation import GenerationError
         from course_links import render_course_link
         with st.form('ml_dock_search'):
             query=st.text_input('Dotaz ke kurzu',value=state['query'],max_chars=1000,key='ml_dock_query')
-            with st.expander('Filtry zdrojů'):
-                roles=st.multiselect('Skrýt typy',SOURCE_ROLES,default=state['roles'],key='ml_dock_roles')
-                origins=st.multiselect('Skrýt původ',SOURCE_ORIGINS,default=state['origins'],key='ml_dock_origins')
+            with st.expander('V čem hledat'):
+                selected_roles,selected_origins=render_source_selection('ml_dock_include',hidden_roles=state['roles'],hidden_origins=state['origins'])
             submitted=st.form_submit_button('Vyhledat zdroje',type='primary')
         if submitted:
-            state.update(query=query,roles=list(roles),origins=list(origins),results=None,answer=None,error=None)
+            state.update(query=query,results=None,answer=None,error=None)
+            try:
+                roles,origins=selected_exclusions(selected_roles,selected_origins)
+                state.update(roles=roles,origins=origins)
+            except ValueError as exc:
+                state['error']=str(exc)
+                st.warning(state['error'])
+                return
             if not query.strip():state['error']='Nejdřív napiš dotaz.'
             else:
                 try:

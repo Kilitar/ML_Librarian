@@ -167,10 +167,9 @@ with st.form("evidence_search", clear_on_submit=False):
         max_chars=1000,
         help="Zadej dotaz česky, anglicky nebo polsky.",
     )
-    with st.expander("Filtry zdrojů", expanded=False):
-        hidden_roles = st.multiselect("Skrýt typy materiálu", SOURCE_ROLES, key="hidden_roles")
-        hidden_origins = st.multiselect("Skrýt původ zdroje", SOURCE_ORIGINS, key="hidden_origins")
-        st.caption("Například skryj cvičení nebo Coderslab PDF. Filtry se použijí po kliknutí na Vyhledat zdroje.")
+    with st.expander("V čem hledat", expanded=False):
+        from source_filters import render_source_selection, selected_exclusions
+        selected_roles,selected_origins=render_source_selection("evidence_include")
     submitted = st.form_submit_button("Vyhledat zdroje", type="primary")
 
 if submitted:
@@ -182,6 +181,7 @@ if submitted:
         st.session_state.pop("evidence_results", None)
     else:
         try:
+            hidden_roles,hidden_origins=selected_exclusions(selected_roles,selected_origins)
             with st.spinner("Hledám relevantní pasáže v lokálním korpusu…"):
                 index = get_search_index()
                 st.session_state["evidence_results"] = index.search(query, limit=5, mode="rerank",
