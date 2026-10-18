@@ -8,6 +8,7 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
+import os
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from constraints import constraint_adjustment, query_constraints
@@ -28,7 +29,7 @@ CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
 INDEX_DIR = ROOT / "data/index"
 MANIFEST = ROOT / "data/index/multilingual_e5_curated.json"
 MODEL_ID = "intfloat/multilingual-e5-small"
-CACHE = ROOT / ".cache/hf"
+CACHE = Path(os.environ.get("ML_LIBRARIAN_CACHE", str(ROOT / ".cache/hf")))
 CONCEPT_CUES = (
     "why", "what", "when", "difference", "differ", "explain", "meaning", "choose", "select",
     "co", "proc", "kdy", "rozdil", "vysvetli", "jak vybrat", "co znamena", "co je", "po co",

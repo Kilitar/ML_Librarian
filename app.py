@@ -20,7 +20,8 @@ from answer_generation import prepare_context, GenerationError  # noqa: E402
 from demo_generation import demo_config, generate_demo_answer  # noqa: E402
 
 
-st.set_page_config(page_title="ML Librarian · evidence search", page_icon="📚", layout="wide")
+if not globals().get("LIBRARIAN_EMBEDDED", False):
+    st.set_page_config(page_title="ML Librarian · evidence search", page_icon="📚", layout="wide")
 
 
 @st.cache_resource(show_spinner=False)
@@ -129,7 +130,7 @@ def render_result(rank, result, base_url, *, inline=False):
                 st.caption(f"Kandidátní cesta ve Streamlitu: /{route} · čeká na ověření odkazu")
 
 
-view = st.sidebar.radio("Sekce", ["Vyhledávání a odpovědi", "Pro lektora"], key="app_section")
+view = ("Pro lektora" if globals().get("LIBRARIAN_SECTION")=="lecturer" else "Vyhledávání a odpovědi") if globals().get("LIBRARIAN_EMBEDDED", False) else st.sidebar.radio("Sekce", ["Vyhledávání a odpovědi", "Pro lektora"], key="app_section")
 if view == "Pro lektora":
     from lecturer_view import render_lecturer
     render_lecturer()

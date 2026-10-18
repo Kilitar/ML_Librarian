@@ -1,3 +1,5 @@
+> Current hosting target is the existing Streamlit course. Configure its server Secrets, not a second Librarian app. See [COURSE_INTEGRATION.md](COURSE_INTEGRATION.md).
+
 # Streamlit presentation: no lecturer API key
 
 ## Goal and current state

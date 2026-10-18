@@ -1,0 +1,52 @@
+"""Course-page entrypoint: host owns page configuration/navigation and secrets."""
+import os
+import runpy
+import sys
+from pathlib import Path
+import streamlit as st
+ROOT=Path(__file__).resolve().parent
+
+
+def render(section='search'):
+    if section not in ('search','lecturer'):raise ValueError('Unknown Librarian section')
+    sys.path.insert(0,str(ROOT/'src/librarian'))
+    if section=='lecturer':
+        from lecturer_view import render_lecturer
+        render_lecturer()
+        return
+    if not (ROOT/'data/index/multilingual_e5_curated.json').exists():
+        try:
+            url=st.secrets.get('RUNTIME_BUNDLE_URL','')
+            checksum=st.secrets.get('RUNTIME_BUNDLE_SHA256','')
+        except FileNotFoundError:
+            url=checksum=''
+        if not url or not checksum:
+            st.title('ML Librarian')
+            st.info('Vyhledávání čeká na jednorázové nastavení dat provozovatelem kurzu. Dokumentace je dostupná v navigaci Pro lektora.')
+            return
+        try:
+            with st.spinner('Připravuji data Librarianu…'):
+                from deployment_bundle import fetch
+                fetch(url,checksum,ROOT)
+        except Exception:
+            st.error('Datový balíček Librarianu není dostupný nebo neprošel kontrolou integrity.')
+            return
+    try:
+        ensure_models()
+    except Exception:
+        st.error('Modely Librarianu se nepodařilo připravit. Ostatní části kurzu zůstávají dostupné.')
+        return
+    runpy.run_path(str(ROOT/'app.py'),run_name='__main__',init_globals={
+        'LIBRARIAN_EMBEDDED':True,'LIBRARIAN_SECTION':section})
+
+
+@st.cache_resource(show_spinner=False)
+def ensure_models():
+    cache=Path(os.environ.get('ML_LIBRARIAN_CACHE',str(ROOT/'.cache/hf')))
+    pinned=[('intfloat/multilingual-e5-small','614241f622f53c4eeff9890bdc4f31cfecc418b3'),
+            ('cross-encoder/mmarco-mMiniLMv2-L12-H384-v1','1427fd652930e4ba29e8149678df786c240d8825')]
+    if not all((cache/('models--'+name.replace('/','--'))/'snapshots'/revision/'model.safetensors').is_file() for name,revision in pinned):
+        with st.spinner('Připravuji připnuté modely pro vyhledávání…'):
+            from prepare_runtime_models import prepare
+            prepare()
+    return True

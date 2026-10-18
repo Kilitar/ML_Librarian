@@ -170,6 +170,8 @@ Source extension: [27 contrast pairs from9 additional sources](http://localhost:
 
 ## Instructor presentation and deployment
 
+**Current target:** module inside the existing Coderslab-DataScience Streamlit course. See [course integration](docs/COURSE_INTEGRATION.md). Standalone entrypoints below are development alternatives.
+
 In the sidebar choose **Pro lektora**: seven structured development chapters,
 actual experiment summaries/code, an archive of development documents and four
 Google Colab notebooks with downloadable ipynb files. No API key is needed for

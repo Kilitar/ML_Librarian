@@ -2,11 +2,12 @@
 from pathlib import Path
 import re
 
+import os
 import numpy as np
 
 MODEL_ID = "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1"
 REVISION = "1427fd652930e4ba29e8149678df786c240d8825"
-CACHE = Path(__file__).resolve().parents[2] / ".cache/hf"
+CACHE = Path(os.environ.get("ML_LIBRARIAN_CACHE", str(Path(__file__).resolve().parents[2] / ".cache/hf")))
 PARAMETERS = re.compile(r"\b(?:C|gamma|alpha|eps|min_samples|max_depth|n_estimators|learning_rate)\b", re.I)
 
 

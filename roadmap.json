@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Dokončujeme prezentaci: Pro lektora +4notebooky připraveny a lokálně ověřeny; cloudové nasazení rozpracované, vyžaduje účet/secrets/umístění ověřených dat. Lokální URL není veřejný deployment. Retrieval tuning zůstává odložen.",
+  "status_note": "Librarian integrován do navigace stávajícího Streamlit kurzu: /ml_librarian a /ml_librarian_lecturer. Lokální kurzový náhled http://localhost:8767/. Skutečné vyhledávání má shodných5výsledků se standalone. Veřejný rebuild kurzu/secrets/Groq kvalita zatím neověřeny. Lektorský redesign odložen.",
   "tasks": [
     {
       "id": "scope",
@@ -87,7 +87,7 @@
       "title": "Opravy, dokumentace a demo",
       "estimate_hours": 2.5,
       "status": "in_progress",
-      "detail": "Lektorská sekce hotová lokálně:7oblastí, archiv dokumentů, skutečné souhrny/kód,4Colab ipynb.23základních buněk provedeno lokálně nad skutečnými daty; trénink/neural search vypnuty, Colab UI/GPU neověřeny. Cloudentrypoint a SHA runtime7.8MB/development194KB připraveny.129testů + AppTest7sekcí. Chybí autentizované nasazení, HTTPSumístění dat a server Groq key; veřejná URL zatím neexistuje. docs/STREAMLIT_DEPLOYMENT.md."
+      "detail": "Nasazení jako modul kurzu, nikoli samostatná aplikace. Verzovaný source export +2tenkéviews, navigace36,Python3.11 zachován. Home→lektor→search→home a skutečná parita5výsledků ověřeny.129testů,221souborů navigace validní. Lokální kurz8767, veřejný rebuild/secrets stále potřeba. docs/COURSE_INTEGRATION.md. Lektorský layout nyní neměníme."
     },
     {
       "id": "buffer",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-18T08:06:14.682014+00:00",
+  "updated_at": "2026-10-18T08:28:02.993371+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10

@@ -1,3 +1,5 @@
+> Current target: integrate into the existing Streamlit course, not a new standalone deployment. See [COURSE_INTEGRATION.md](COURSE_INTEGRATION.md). The standalone procedure below remains a development alternative.
+
 # Streamlit Community Cloud deployment
 
 ## Current evidence (2026-10-18)
