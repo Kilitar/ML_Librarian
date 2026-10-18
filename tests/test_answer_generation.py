@@ -62,6 +62,22 @@ class AnswerTests(unittest.TestCase):
         self.assertIn('429',str(exc.exception));self.assertNotIn('secret',str(exc.exception))
         self.assertIsNone(NoRedirect().redirect_request(None,None,None,None,None,None))
 
+    def test_invalid_quote_gets_only_one_correction_with_same_sources(self):
+        bad=json.loads(json.dumps(self.answer))
+        bad['claims'][0]['citations'][0]['quote']='Invented quotation not present in source.'
+        def wire(answer):
+            return io.BytesIO(json.dumps({'choices':[{'finish_reason':'stop','message':{'content':json.dumps(answer)}}]}).encode())
+        transport=Mock(side_effect=[wire(bad),wire(self.answer)])
+        result=generate_answer('Question',self.rows,self.evidence,'fake','test-model',consent=True,transport=transport)
+        self.assertEqual(result['status'],'answered')
+        self.assertEqual(transport.call_count,2)
+        first,second=[json.loads(c.args[0].data) for c in transport.call_args_list]
+        self.assertEqual(first['messages'][:2],second['messages'][:2])
+        transport=Mock(side_effect=[wire(bad),wire(bad)])
+        with self.assertRaises(GenerationError):
+            generate_answer('Question',self.rows,self.evidence,'fake','test-model',consent=True,transport=transport)
+        self.assertEqual(transport.call_count,2)
+
     def test_diagnostic_categories_do_not_expose_exception_details(self):
         cases=[(urllib.error.URLError('fake-secret'), 'spojení'),
                (json.JSONDecodeError('fake-secret','',0), 'JSON'),

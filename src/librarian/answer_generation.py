@@ -88,13 +88,25 @@ def generate_answer(query, results, evidence, api_key, model, *, consent=False, 
                  'User-Agent':'ML-Librarian/1.0','Accept':'application/json'},method='POST')
     opener=transport or urllib.request.build_opener(NoRedirect()).open
     try:
-        with opener(request,timeout=45) as response:
-            raw=response.read(131073)
-        if len(raw)>131072:raise GenerationError('Odpověď poskytovatele je příliš dlouhá.')
-        message=json.loads(raw)['choices'][0]
-        if message.get('finish_reason')!='stop':raise GenerationError('Model odpověď nedokončil; zkus kratší otázku.')
-        parsed=json.loads(message['message']['content'])
-        return validate_answer(parsed,context)
+        for attempt in range(2):
+            with opener(request,timeout=45) as response:
+                raw=response.read(131073)
+            if len(raw)>131072:raise GenerationError('Odpověď poskytovatele je příliš dlouhá.')
+            message=json.loads(raw)['choices'][0]
+            if message.get('finish_reason')!='stop':raise GenerationError('Model odpověď nedokončil; zkus kratší otázku.')
+            content=message['message']['content']
+            parsed=json.loads(content)
+            try:
+                return validate_answer(parsed,context)
+            except GenerationError as exc:
+                if attempt or str(exc)!='Citace neodpovídá poskytnutému úryvku.':
+                    raise
+                # One bounded correction, same sources; exact validation remains mandatory.
+                payload['messages'].extend([
+                    {'role':'assistant','content':content},
+                    {'role':'user','content':'Citation validation failed. Return corrected JSON. Every quote must be copied EXACTLY as a contiguous substring from the text of its source_id, including punctuation, whitespace and Markdown. Do not translate or paraphrase quotes. Remove claims you cannot support with an exact quote. Return insufficient if necessary.'}])
+                request=urllib.request.Request(endpoint,data=json.dumps(payload).encode('utf-8'),
+                    headers=dict(request.header_items()),method='POST')
     except urllib.error.HTTPError as exc:
         # Never expose provider body, request headers, prompt, credentials or exception text.
         if exc.code==429: raise GenerationError('Limit generování je momentálně vyčerpaný (HTTP 429). Zkus to později; nalezené zdroje jsou stále dostupné.') from None
