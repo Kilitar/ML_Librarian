@@ -1,0 +1,15 @@
+{
+  "version":"supervised-pair-v2-contrast-check",
+  "scope":"New authored queries fixed before selecting test passages or fitting v2. Curated question-passage contrasts, not end-to-end retrieval or independent human acceptance. Each of three documents will be paired with two different meaningful questions via two distinct full chunks, each positive for one and negative for the other. Nonsense controls separately. Existing inspected tests are development only.",
+  "questions":[
+    {"id":"v201","group":"svm","kind":"meaningful","query":"How does the kernel trick let an SVM model a nonlinear boundary?"},
+    {"id":"v202","group":"svm","kind":"meaningful","query":"Why can differently scaled input features distort an SVM with an RBF kernel?"},
+    {"id":"v203","group":"svm","kind":"nonsense","query":"Which shoe polish should I rub on an SVM to bend its decision boundary?"},
+    {"id":"v204","group":"forest","kind":"meaningful","query":"Jak lze odhadnout chybu Random Forest pomocí out-of-bag vzorků?"},
+    {"id":"v205","group":"forest","kind":"meaningful","query":"Jak se počítá příznaková důležitost MDI u Random Forest a jaké má zkreslení?"},
+    {"id":"v206","group":"forest","kind":"nonsense","query":"Jakou barvou natřít Random Forest, aby měl přesnější out-of-bag skóre?"},
+    {"id":"v207","group":"pca","kind":"meaningful","query":"Dlaczego przed PCA odejmuje się średnią od każdej cechy?"},
+    {"id":"v208","group":"pca","kind":"meaningful","query":"Dlaczego liniowe PCA nie odtworzy dobrze danych leżących na zakrzywionej rozmaitości?"},
+    {"id":"v209","group":"pca","kind":"nonsense","query":"Jakim dzwonkiem zadzwonić do PCA, żeby wyprostowało zakrzywione dane?"}
+  ]
+}

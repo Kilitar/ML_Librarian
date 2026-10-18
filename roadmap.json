@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "První supervised fine-tuning:58 provizorních štítků pokrytí,40 binárních párů pro poslední blok+hlavu MiniLM(5epoch). Nová kontrola9 dotazů/45párů: recall přímých odpovědí3/4 a1/3 propouštěných nesmyslů beze změny. Kritéria nesplněna, produkce BEZE ZMĚNY.106 testů+ověření uložených vah prošlo. http://localhost:8765/eval/supervised_pair_review.local.html. Štítky a důvody: /eval/pair_coverage_review.local.html. Přejímka neprošla, BYOK odloženo.",
+  "status_note": "Supervised v2:48párů včetně8 kontrastů stejná smysluplná otázka/správná i chybná pasáž. Zdrojově sestavený test18párů: původní/v1/v2 řadí6/6 správně, ale přímé odpovědi při.50 klesají5/6→4/6→4/6. Nový přínos neprokázán; modely NENASAZENY, produkce beze změny.106 testů+kontrola uloženýchvah prošly. http://localhost:8765/eval/supervised_pair_v2_review.local.html. Přejímka neprošla/BYOK odloženo.",
   "tasks": [
     {
       "id": "scope",
@@ -79,7 +79,7 @@
       "title": "Held-out evaluace CZ/EN/PL",
       "estimate_hours": 2,
       "status": "in_progress",
-      "detail": "První supervised fine-tuning:58 provizorních štítků pokrytí,40 binárních párů pro poslední blok+hlavu MiniLM(5epoch). Nová kontrola9 dotazů/45párů: recall přímých odpovědí3/4 a1/3 propouštěných nesmyslů beze změny. Kritéria nesplněna, produkce BEZE ZMĚNY.106 testů+ověření uložených vah prošlo. http://localhost:8765/eval/supervised_pair_review.local.html. Štítky a důvody: /eval/pair_coverage_review.local.html. Přejímka neprošla, BYOK odloženo. Další:8 připravených kontrastů stejná smysluplná otázka/správná i tematicky chybná pasáž, další přímé pozitivní příklady a jiná fixovaná kontrola před dalším tréninkem. docs/SUPERVISED_PAIR_PILOT.md."
+      "detail": "Supervised v2:48párů včetně8 kontrastů stejná smysluplná otázka/správná i chybná pasáž. Zdrojově sestavený test18párů: původní/v1/v2 řadí6/6 správně, ale přímé odpovědi při.50 klesají5/6→4/6→4/6. Nový přínos neprokázán; modely NENASAZENY, produkce beze změny.106 testů+kontrola uloženýchvah prošly. http://localhost:8765/eval/supervised_pair_v2_review.local.html. Přejímka neprošla/BYOK odloženo. Další: uzavřít malé piloty, rozšířit/revidovat párovou gold sadu a oddělit train/kalibraci/netknutý test; nepřesouvat práh kvůli pozorovanému PCA. docs/SUPERVISED_PAIR_V2.md."
     },
     {
       "id": "demo",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-18T04:18:43.831969+00:00",
+  "updated_at": "2026-10-18T04:29:07.390244+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10

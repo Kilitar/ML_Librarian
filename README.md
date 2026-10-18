@@ -143,3 +143,9 @@ new questions its classification counts do not improve, so production is
 unchanged. Inspect `docs/SUPERVISED_PAIR_PILOT.md`, annotations at
 `http://localhost:8765/eval/pair_coverage_review.local.html` and all new results at
 `http://localhost:8765/eval/supervised_pair_review.local.html`.
+
+V2 adds eight same-meaningful-query wrong-passage negatives. On a source-informed
+reciprocal pair test, all models order6/6 correctly, but direct-answer recall
+falls from5/6 to4/6 in both fine-tuned variants. Neither is promoted. See
+`docs/SUPERVISED_PAIR_V2.md` and all excerpts/three-way scores at
+`http://localhost:8765/eval/supervised_pair_v2_review.local.html`.

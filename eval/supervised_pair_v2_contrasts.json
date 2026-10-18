@@ -1,0 +1,19 @@
+{
+  "version":"supervised-pair-v2-source-informed",
+  "scope":"Source-informed curated contrast benchmark fixed before any v2 fitting or base/v1/v2 scores on these pairs. Not blind question selection or end-to-end retrieval. Each full chunk is direct for one meaningful question and wrong-relation for the other. Topics/source families remain correlated with training. Codex provisional coverage labels, not human/factual acceptance.",
+  "coverage_probe_limits":"The earlier independently drafted v2 questions remain unchanged in supervised_pair_v2_questions.json. A dedicated RBF scale explanation and PCA centering rationale/nonlinear-manifold explanation were not established in the targeted chunks. Do not force positive labels or count this curated replacement as the original draft's successful validation.",
+  "groups":[
+    {"id":"svm","chunks":["ce103ee3f54223caea6a","c63d1c98f0be9e1c9c7a"],"questions":[
+      {"id":"vc01","query":"How does the kernel trick avoid explicitly calculating a high-dimensional feature transformation?","positive":0,"reason":"První text vysvětluje výpočet skalárního součinu K(x,y) bez explicitní phi; OvO/OvR tento mechanismus nemá."},
+      {"id":"vc02","query":"How many binary models does one-vs-one SVM train for K classes, and how are their votes combined?","positive":1,"reason":"Druhý text dává K(K-1)/2 a většinové hlasování; kernelový trik počet modelů ani hlasování nevysvětluje."}],
+      "nonsense":{"id":"vc03","query":"Which shoe polish should I rub on an SVM to bend its decision boundary?","reason":"Ani kernelový trik ani multiclass hlasování nezdůvodňují fyzické použití krému na boty na algoritmus."}},
+    {"id":"forest","chunks":["8c9f1718a7493935f576","6baa2f7f3ed05c613c9f"],"questions":[
+      {"id":"vc04","query":"Jak lze odhadnout chybu Random Forest pomocí out-of-bag vzorků?","positive":0,"reason":"První text používá jen stromy, které pozorování neviděly; MDI/permutační důležitost odhad OOB chyby neposkytuje."},
+      {"id":"vc05","query":"Jak se počítá příznaková důležitost MDI u Random Forest a jaké má zkreslení?","positive":1,"reason":"Druhý text popisuje pokles impurity a bias vysoké kardinality; OOB text neobsahuje výpočet ani zkreslení MDI."}],
+      "nonsense":{"id":"vc06","query":"Jakou barvou natřít Random Forest, aby měl přesnější out-of-bag skóre?","reason":"Žádný z obou textů nedává vztah mezi natíráním algoritmu barvou a skóre."}},
+    {"id":"pca","chunks":["7f6dbb7ee59501267234","1646f629c79198444642"],"questions":[
+      {"id":"vc07","query":"Jak w PCA centruje się każdą cechę przed obliczeniem kowariancji?","positive":0,"reason":"První text dává průměr sloupce a X minus průměr; vlastní čísla/vektory neukazují centrování."},
+      {"id":"vc08","query":"Co oznacza wartość własna w PCA, a co odpowiadający jej wektor własny?","positive":1,"reason":"Druhý text říká množství variance a směr komponenty; samotné centrování tyto významy neobsahuje."}],
+      "nonsense":{"id":"vc09","query":"Jakim dzwonkiem zadzwonić do PCA, żeby wyprostowało zakrzywione dane?","reason":"Centrování ani spektrální rozklad nedávají požadovaný vztah zvonění na algoritmus a narovnání dat."}}
+  ]
+}

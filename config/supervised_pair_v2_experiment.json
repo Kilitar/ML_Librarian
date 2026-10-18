@@ -1,0 +1,11 @@
+{
+  "version":"supervised-pair-v2",
+  "base_model":"cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+  "revision":"1427fd652930e4ba29e8149678df786c240d8825",
+  "seed":17,"epochs":5,"batch_size":4,"max_tokens":512,
+  "learning_rate_last_block":0.00005,"learning_rate_classifier":0.0005,
+  "weight_decay":0.01,"max_grad_norm":1.0,"threshold":0.5,
+  "change":"Same v1 hyperparameters and original pretrained start; add eight reviewed meaningful-question wrong-passage negatives. Do not continue v1 weights or tune epochs/threshold on this test. Compare original, persisted v1 and v2 on identical complete body+heading pairs without source names.",
+  "promotion_criteria":{"meaningful_contrast_correct_min":6,"direct_recall_min":0.8,"meaningful_negative_false_positive_max":1,"nonsense_supported_queries_max":0,"false_positive_reduction_min":1,"exact_train_test_query_or_text_overlap":0},
+  "limits":"Small provisional synthetic pair benchmark. No production promotion from training loss or ranking accuracy alone. Curated candidates are not current retrieval results; inspect absolute coverage and nonsense failures separately."
+}
