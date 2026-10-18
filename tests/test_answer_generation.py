@@ -73,6 +73,7 @@ class AnswerTests(unittest.TestCase):
         self.assertEqual(transport.call_count,2)
         first,second=[json.loads(c.args[0].data) for c in transport.call_args_list]
         self.assertEqual(first['messages'][:2],second['messages'][:2])
+        self.assertIsNone(transport.call_args_list[1].args[0].get_header('Content-length'))
         transport=Mock(side_effect=[wire(bad),wire(bad)])
         with self.assertRaises(GenerationError):
             generate_answer('Question',self.rows,self.evidence,'fake','test-model',consent=True,transport=transport)

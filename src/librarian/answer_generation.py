@@ -106,7 +106,8 @@ def generate_answer(query, results, evidence, api_key, model, *, consent=False, 
                     {'role':'assistant','content':content},
                     {'role':'user','content':'Citation validation failed. Return corrected JSON. Every quote must be copied EXACTLY as a contiguous substring from the text of its source_id, including punctuation, whitespace and Markdown. Do not translate or paraphrase quotes. Remove claims you cannot support with an exact quote. Return insufficient if necessary.'}])
                 request=urllib.request.Request(endpoint,data=json.dumps(payload).encode('utf-8'),
-                    headers=dict(request.header_items()),method='POST')
+                    headers={'Authorization':'Bearer '+api_key.strip(),'Content-Type':'application/json',
+                             'User-Agent':'ML-Librarian/1.0','Accept':'application/json'},method='POST')
     except urllib.error.HTTPError as exc:
         # Never expose provider body, request headers, prompt, credentials or exception text.
         if exc.code==429: raise GenerationError('Limit generování je momentálně vyčerpaný (HTTP 429). Zkus to později; nalezené zdroje jsou stále dostupné.') from None
