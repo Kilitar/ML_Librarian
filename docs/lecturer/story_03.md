@@ -1,6 +1,6 @@
 ## 3 · Dva dny jako rozpočtový rámec
 
-Cílem bylo udržet projekt ve dvoudenním pracovním rozsahu. Následující časová osa je **zpětná rekonstrukce rozumného plánu pro dva osmihodinové dny**, nikoli původní změřený harmonogram. Přesný výkaz odpracovaných hodin nemáme.
+Cílem bylo udržet projekt ve dvoudenním pracovním rozsahu. Původní roadmapa a implementační plán jsou dostupné v rozbalitelných podkladech pod touto kapitolou. Následující časová osa je **zpětné rozdělení práce do dvou osmihodinových dnů** pro přehlednou prezentaci, nikoli doslovná kopie původního plánu. Přesný výkaz odpracovaných hodin nemáme.
 
 | Časový blok | Hlavní výstup | Hranice rozsahu |
 |---|---|---|

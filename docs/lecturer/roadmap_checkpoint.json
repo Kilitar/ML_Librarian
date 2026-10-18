@@ -1,0 +1,115 @@
+{
+  "project": "RAG ML Librarian",
+  "started_at": "2026-10-17T09:18:56Z",
+  "total_estimate_hours": 16,
+  "recorded_actual_hours": 0,
+  "actual_tracking_started_at": "2026-10-17T09:18:56Z",
+  "status_note": "Librarian v pravém vysouvacím docku dostupný napříč kurzem. Funkčně ověřeno zachování dotazu/výsledků/odpovědi při změně lekce a zavření. Vizuální desktop/mobile kontrola čeká na uživatele. Veřejný provoz stále závisí na serverových datech a Groq konfiguraci.",
+  "tasks": [
+    {
+      "id": "scope",
+      "phase": "Příprava",
+      "title": "Workspace, scope a guardrails",
+      "estimate_hours": 1,
+      "status": "done",
+      "completed_at": "2026-10-17T09:18:56Z",
+      "detail": "Založen oddělený workspace, pravidla read-only kurzu, plán a handoff."
+    },
+    {
+      "id": "inventory",
+      "phase": "Příprava",
+      "title": "Read-only inventura a allowlist zdrojů",
+      "estimate_hours": 0.5,
+      "status": "done",
+      "detail": "Inventura složek a počtů hotová; ještě vymezit přesný allowlist a ověřit odkazy."
+    },
+    {
+      "id": "snapshot",
+      "phase": "Příprava",
+      "title": "Neměnný snapshot + hash manifest",
+      "estimate_hours": 0.5,
+      "status": "done",
+      "detail": "Zápisy pouze do ML-Librarian/data/snapshot."
+    },
+    {
+      "id": "extract",
+      "phase": "Příprava",
+      "title": "Extrakce a kontrola pokrytí korpusu",
+      "estimate_hours": 2.5,
+      "status": "done",
+      "detail": "Markdown, PDF po stranách, ipynb po buňkách, statická extrakce Streamlit textů."
+    },
+    {
+      "id": "chunks",
+      "phase": "Příprava",
+      "title": "Chunking, původ, deduplikace a mapování URL",
+      "estimate_hours": 1.5,
+      "status": "done",
+      "detail": "Stabilní chunk ID, metadata a kandidátní kurzové cesty. Lokální prohlížeč extrahovaného zdroje a stažení originálu s kontrolou manifestu hotové; živé odkazy do kurzové aplikace zůstávají neověřené."
+    },
+    {
+      "id": "retrieval",
+      "phase": "Příprava",
+      "title": "TF-IDF + vícejazyčný embedding retrieval",
+      "estimate_hours": 2,
+      "status": "done",
+      "detail": "Kurátorovaný TF-IDF/E5 full-corpus comparison a funkční lokální E5 search. Fingerprinted index/manifest, kontrola staleness, lokální cache only; smoke dotazy CZ/EN/PL.",
+      "completed_at": "2026-10-17T10:08:14Z"
+    },
+    {
+      "id": "llm",
+      "phase": "Neděle",
+      "title": "Generování pro prezentaci bez klíče lektora",
+      "estimate_hours": 2,
+      "status": "in_progress",
+      "detail": "Groq Free Plan přes serverový klíč provozovatele; návštěvník nevyplňuje klíč/model. Výslovné odeslání dotazu a úryvků, citace a fallback při limitu/chybě.125testů a AppTest s mockHTTP. Chybí jednorázová konfigurace server secrets a živé ověření kvality. Bez placeného fallbacku; účet musí být Free Plan, aplikace tarif sama neověří. docs/DEMO_GENERATION.md."
+    },
+    {
+      "id": "ui",
+      "phase": "Neděle",
+      "title": "Samostatné Streamlit UI",
+      "estimate_hours": 1.5,
+      "status": "done",
+      "completed_at": "2026-10-17T11:32:57Z",
+      "detail": "Retrieval-only Streamlit evidence browser běží na 127.0.0.1:8766. Výsledky mají štítek typu (knížka pro cvičení, lupa pro teorii/analýzu) a původu (lokální ikona Coderslab pro PDF); uživatel potvrdil, že ikony se zobrazují dobře. Číselná relevance a Markdown/matematika úryvků publikovány; uživatel potvrdil zlepšení čitelnosti. Nový výběr pasáží a viditelný E5 fallback funkčně ověřeny; relevance označena jako pořadové skóre. Bez opory: hláška a sbalené slabé shody; nejisté výsledky zůstávají viditelné. Funkčně ověřeno. HTML obaly úryvků převedeny na čitelný text/Markdown; kód a matematika zachovány. 35 testů prošlo. Srovnávací výsledky nyní seskupují doplňkové shody do sbaleného oddílu, původní pořadí a všech pět pasáží zachováno. 63 testů, 4 formuláře; viz docs/RESULT_PRESENTATION.md. Filtry typu a původu zdroje ve formuláři, vyřazení před retrievalem a doplnění povolených shod. 68 testů + 6 AppTest scénářů. docs/SOURCE_FILTERS.md. Otevřít zdroj: dialog extrahovaného textu, přepínání částí a hashově ověřený originál ke stažení. 74 testů, 3 AppTest otevření; docs/SOURCE_VIEWER.md."
+    },
+    {
+      "id": "eval",
+      "phase": "Neděle",
+      "title": "Held-out evaluace CZ/EN/PL",
+      "estimate_hours": 2,
+      "status": "deferred",
+      "detail": "Další ladění a kalibrace odloženy rozhodnutím uživatele. Evidence Search funkční se známými chybami; přejímka not_accepted, nikoli splněná. Anotace276párů a experimenty zachovány.12rezervovaných testových otázek nepoužito. Návrat k ladění podle dopadu na celý RAG."
+    },
+    {
+      "id": "demo",
+      "phase": "Neděle",
+      "title": "Opravy, dokumentace a demo",
+      "estimate_hours": 2.5,
+      "status": "in_progress",
+      "detail": "Nasazení jako modul kurzu, nikoli samostatná aplikace. Verzovaný source export +2tenkéviews, navigace36,Python3.11 zachován. Home→lektor→search→home a skutečná parita5výsledků ověřeny.129testů,221souborů navigace validní. Lokální kurz8767, veřejný rebuild/secrets stále potřeba. docs/COURSE_INTEGRATION.md. Lektorský layout nyní neměníme."
+    },
+    {
+      "id": "buffer",
+      "phase": "Rezerva",
+      "title": "Integrační rezerva",
+      "estimate_hours": 1,
+      "status": "todo",
+      "detail": "Použije se jen při reálné blokaci."
+    }
+  ],
+  "inventory": {
+    "pdf": 48,
+    "markdown": 50,
+    "notebooks": 79,
+    "streamlit_views": 220,
+    "json": 62,
+    "excluded_venv_files": 65048,
+    "excluded_scratch_python": 76,
+    "excluded_view_cache_png": 82
+  },
+  "updated_at": "2026-10-18T08:38:54.472252+00:00",
+  "human_equivalent_hours": 16,
+  "agent_speedup_min": 5,
+  "agent_speedup_max": 10
+}

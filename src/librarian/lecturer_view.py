@@ -11,6 +11,27 @@ def render_lecturer():
     st.markdown('**Záměr → volba nástrojů → dvoudenní plán → experimenty a slepé uličky → poučení**')
     for number in range(1,6):
         st.markdown((ROOT/f'docs/lecturer/story_{number:02d}.md').read_text(encoding='utf-8'))
+        if number==3:
+            with st.expander('Původní roadmapa a checklist · plán versus uložený průběh'):
+                st.caption('Původní dokumenty pocházejí z prvního commitu 988ebca. Pozdější checklist je uložený checkpoint, nikoli živý stav nasazení; jeho dobové poznámky mohou být překonané.')
+                original_tab,checkpoint_tab=st.tabs(['Původní roadmapa','Pozdější stav checklistu'])
+                for tab,filename,key in [(original_tab,'original_roadmap.json','original'),(checkpoint_tab,'roadmap_checkpoint.json','checkpoint')]:
+                    with tab:
+                        path=ROOT/'docs/lecturer'/filename
+                        roadmap=json.loads(path.read_text(encoding='utf-8'))
+                        st.write('Plánovaný rozsah: '+str(roadmap['total_estimate_hours'])+' hodin')
+                        if roadmap.get('updated_at'):st.caption('Checkpoint: '+roadmap['updated_at'])
+                        labels={'done':'☑ Hotovo','in_progress':'◐ Probíhá','deferred':'↷ Odloženo','todo':'☐ Čeká'}
+                        for task in roadmap['tasks']:
+                            st.markdown('**'+labels.get(task['status'],task['status'])+' · '+task['title']+'**')
+                            st.caption(task['phase']+' · odhad '+str(task['estimate_hours'])+' h')
+                            if task.get('detail'):st.write(task['detail'])
+                        st.download_button('Stáhnout roadmapu a checklist',path.read_bytes(),file_name=filename,mime='application/json',key='roadmap_download_'+key)
+            with st.expander('Původní implementační plán · úplné zadání'):
+                plan=ROOT/'docs/lecturer/original_implementation_plan.md'
+                st.caption('Historický dokument z commitu 988ebca, v původním znění. Pozdější integrace a rozhodnutí jsou popsány v příběhu projektu.')
+                st.markdown(plan.read_text(encoding='utf-8'))
+                st.download_button('Stáhnout původní plán',plan.read_bytes(),file_name='original_implementation_plan.md',mime='text/markdown')
         if number==4:
             with st.expander('Použité metody · navázat na výklad v kurzu'):
                 methods=[('Příprava dat, škálování a pipelines','views/00_prework_workflow.py'),
