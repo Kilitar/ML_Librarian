@@ -166,3 +166,37 @@ Keep base fixed-corpus query calibration separate from v1/v2 source-transfer
 requirements; finalize candidate/split/calibration artifact before executing the
 12 reserved questions. They remain unexecuted/unlabeled. Acceptance stays
 not_accepted and BYOK generation deferred.
+
+
+## Source contrast extension — 2026-10-18
+
+Added27 provisional Codex coverage pairs from9 previously unused source paths:
+9 direct and18 topic_only,9 queries in each language. Full passages were read
+before authoring contrasting questions. These are SOURCE-INFORMED constructed
+pairs, not fresh production-search outputs, a random calibration sample or
+independent human approval. Reusing one passage for3 questions does not create
+3 independent observations. No model scores were used or produced.
+
+[All27 questions,9 full passages and reasons](http://localhost:8765/eval/source_group_extension_review.local.html).
+Tracked notes bind chunk/source/locator/raw-text SHA and full corpus SHA.
+`audit_source_group_extension.py` validates all bindings and no exact normalized
+query overlap with earlier data or the reserved questions, then regroups all276
+pairs. It rejects ANY transitive query/source/exact-text bridge into prior data.
+Frozen artifact reruns require identical inputs including audit code; no inference.
+
+There are9 additional disconnected components under the current path/query/text
+rule,16 total,14 containing binary labels. Different paths and nonidentical text
+can still paraphrase the same course PDF: this is NOT semantic/topic/factual
+independence, and source-informed selection can bias calibration distribution.
+Combined original-base development pool86direct/125negative now meets numeric
+protocol floors, but this is ONLY data readiness, not successful calibration or
+model acceptance. The strict v1/v2 source-transfer pool is11direct/22negative,
+3languages with both classes,10families/10components; still short of30/59.
+
+All new rows remain inspected development. No fit/calibration split assigned,
+threshold selected, model trained, production changed or reserved test executed.
+Next: freeze candidate-specific grouping/split and sampling scope before scoring;
+for v1/v2 expand actual direct/negative passage coverage without padding repeated
+paraphrases to pass counts. For original base distinguish representative retrieval
+pairs from constructed contrast stress pairs when reporting calibration results.
+The12 reserved questions remain unexecuted/unlabeled; acceptance not_accepted.

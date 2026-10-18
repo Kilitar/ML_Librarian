@@ -164,3 +164,5 @@ Codex provisional42direct/36partial/42negative; no human approval or production
 change. Transitive source audit connects all new pairs to v1/v2 development;
 base combined pool still misses the unchanged source-component floor.
 See [calibration protocol and next step](docs/CALIBRATION_DATA.md).
+
+Source extension: [27 contrast pairs from9 additional sources](http://localhost:8765/eval/source_group_extension_review.local.html). Source-informed provisional labels, not retrieval test results. Numeric base development floors met; v1/v2 strict calibration still short. See docs/CALIBRATION_DATA.md.

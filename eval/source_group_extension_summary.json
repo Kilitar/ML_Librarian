@@ -1,0 +1,94 @@
+{
+  "input_hashes": {
+    "eval/source_group_extension_notes.json": "26dd70e2c2569ae18e33800c29b05f9f9054866d589dadb780dfef292ba3b7e8",
+    "data/normalized/chunks_curated.jsonl": "ff875dcb75c89960e774abe06e8a69c4f8a13eb84d840d7c359e4a06bf6d78c0",
+    "eval/calibration_collection_labeled.local.json": "d6c25d916ca6b8e35cb90fce95fd37f14289820c34c783cd88d8ca18570db952",
+    "eval/calibration_reserved_test_questions.json": "cf2f15861cb6bbe68ec79be6838072eb84971b5283a70d9c54e0fa20e54c84eb",
+    "config/calibration_protocol.json": "135ed042426f24f7ec112cd4abd2230e0a917a3cf719cbba34c9e61f28ab00a3",
+    "src/librarian/audit_source_group_extension.py": "bd1b2162e6378b2fb46516b8a5173acf5836899026d3b6ee31a6ce0a31180389",
+    "src/librarian/calibration_data.py": "c1529ca75f2a513c5990eb911acd8a9f5dbfe5efeb9e0bf82ebf79fc63749050"
+  },
+  "scope": "Codex provisional coverage after full passage reading; source-informed authored contrast pairs, NOT production retrieval outputs, random representative calibration, independent human approval or factual audit. One source passage reused for3 different questions, not3 independent samples. No model inference or training.",
+  "new_pairs": 27,
+  "new_passages": 9,
+  "new_source_groups": 9,
+  "labels": {
+    "direct": 9,
+    "topic_only": 18
+  },
+  "languages": {
+    "cs": 9,
+    "en": 9,
+    "pl": 9
+  },
+  "combined_pairs": 276,
+  "combined_components": 16,
+  "combined_base_development": {
+    "counts": {
+      "direct": 86,
+      "negative": 125,
+      "query_languages": 3,
+      "families": 40,
+      "source_groups": 14
+    },
+    "minimum_shortfalls": {},
+    "language_classes": {
+      "cs": {
+        "direct": 34,
+        "negative": 49
+      },
+      "en": {
+        "direct": 29,
+        "negative": 39
+      },
+      "pl": {
+        "direct": 23,
+        "negative": 37
+      }
+    },
+    "language_class_gaps": [],
+    "eligible": true
+  },
+  "strict_v1_v2_source_transfer": {
+    "counts": {
+      "direct": 11,
+      "negative": 22,
+      "query_languages": 3,
+      "families": 10,
+      "source_groups": 10
+    },
+    "minimum_shortfalls": {
+      "direct": {
+        "actual": 11,
+        "minimum": 30
+      },
+      "negative": {
+        "actual": 22,
+        "minimum": 59
+      }
+    },
+    "language_classes": {
+      "cs": {
+        "direct": 3,
+        "negative": 6
+      },
+      "en": {
+        "direct": 5,
+        "negative": 10
+      },
+      "pl": {
+        "direct": 3,
+        "negative": 6
+      }
+    },
+    "language_class_gaps": [],
+    "eligible": false
+  },
+  "production_changed": false,
+  "model_inference": false,
+  "training": false,
+  "threshold_selected": null,
+  "reserved_test_executed": 0,
+  "assignments": "All inspected development only. No new train/calibration/test split or release acceptance.",
+  "raw_sha256": "b0660dd05a3dd200d154d5bd3729412771bd34f744cfedb477703a194b26ad82"
+}

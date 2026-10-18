@@ -79,7 +79,7 @@
       "title": "Held-out evaluace CZ/EN/PL",
       "estimate_hours": 2,
       "status": "in_progress",
-      "detail": "Anotováno120pasáží:42direct/36partial/42negative, s důvody; Codex provisional, nikoli lidské schválení. Audit249párů:7skupin, všechny nové propojeny s v1/v2 tréninkem. Původní base77direct/107negative, ale5zdrojových skupin proti min8. Prahy/produkce beze změny;12testových dotazů nepoužito. Další: nové zdrojové skupiny a negativy, poté kandidátský split a kalibrace. docs/CALIBRATION_DATA.md. http://localhost:8765/eval/calibration_collection_labeled_review.local.html. Přejímka neprošla/BYOK odloženo."
+      "detail": "Doplněno27 kontrastních párů z9oddělených zdrojů:9direct/18topic_only,9dotazů každý jazyk. Sestaveno po čtení zdrojů, nikoli výsledky retrievalu nebo nezávislý test. Celkem276párů; původní base86direct/125negative a14binárních skupin splňuje početní minima. V1/v2 strict11direct/22negative stále nedostatek. Podobné zdroje mohou sdílet PDF; skupiny nejsou důkaz tematické nezávislosti. Produkce/prahy beze změny,12testových dotazů nepoužito. Další: kandidátský split a oddělení reprezentativních retrieval párů od kontrastních stress párů. docs/CALIBRATION_DATA.md; /eval/source_group_extension_review.local.html. Přejímka neprošla/BYOK odloženo."
     },
     {
       "id": "demo",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-18T04:56:23.801121+00:00",
+  "updated_at": "2026-10-18T05:02:15.779350+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10

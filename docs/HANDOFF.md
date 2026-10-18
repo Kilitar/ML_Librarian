@@ -181,3 +181,39 @@ Manualreview_answerability.py --pool calibration renders120sheet at /eval/calibr
 Latest annotation checkpoint (2026-10-18): NO production/model/UI change. Read all120 collection passages; Codex provisional coverage42direct/36partial/34topic_only/8irrelevant, each reason tracked in eval/calibration_collection_coverage_notes.json. Not human approval/factual audit. v3 query/rank/source/chunk/locator/body/heading binding validated by audit_calibration_collection_labels.py. New frozen labeled raw/report; original artifacts untouched. Combined249 rows:7 transitive components,largest223; ALL120 newly fit-connected to v1/v2 (direct source flags38 understated transitive connectivity). Strict clean pool still2direct/4negative/5partial, EN onecomponent. Original base not trained on labels: combined77direct107negative,31families,bothclasses3langs,but only5binary sourcecomponents vs8minimum. New pool42pos42neg onecomponent; floors unchanged. No threshold/inference/training/testexecution. Reserved12remainunexecuted. Report /eval/calibration_collection_labeled_review.local.html all120fullpassages+reasons. Next expand distinctsourcegroups/negatives; candidate-specific split before final calibration/test. Fixed-corpus new-query goal vs strictsource-transfer separate; don't declare all same-source data invalid. Acceptance notaccepted/BYOKdeferred.
 
 Verification:115unit tests pass;120v3 bindings, frozen rerun identical, all120full texts/reasons in report; report/apphealth HTTP200. No runtime/UI change. Publication NOT done: automatic approval review rejected combined commit/push to master for insufficient explicit disclosure/default-branch authorization. User explicitly authorized commit/push to origin master in the following go reply. Publication verification is recorded in the chat after push.
+
+
+## Source contrast extension — 2026-10-18
+
+Added27 provisional Codex coverage pairs from9 previously unused source paths:
+9 direct and18 topic_only,9 queries in each language. Full passages were read
+before authoring contrasting questions. These are SOURCE-INFORMED constructed
+pairs, not fresh production-search outputs, a random calibration sample or
+independent human approval. Reusing one passage for3 questions does not create
+3 independent observations. No model scores were used or produced.
+
+[All27 questions,9 full passages and reasons](http://localhost:8765/eval/source_group_extension_review.local.html).
+Tracked notes bind chunk/source/locator/raw-text SHA and full corpus SHA.
+`audit_source_group_extension.py` validates all bindings and no exact normalized
+query overlap with earlier data or the reserved questions, then regroups all276
+pairs. It rejects ANY transitive query/source/exact-text bridge into prior data.
+Frozen artifact reruns require identical inputs including audit code; no inference.
+
+There are9 additional disconnected components under the current path/query/text
+rule,16 total,14 containing binary labels. Different paths and nonidentical text
+can still paraphrase the same course PDF: this is NOT semantic/topic/factual
+independence, and source-informed selection can bias calibration distribution.
+Combined original-base development pool86direct/125negative now meets numeric
+protocol floors, but this is ONLY data readiness, not successful calibration or
+model acceptance. The strict v1/v2 source-transfer pool is11direct/22negative,
+3languages with both classes,10families/10components; still short of30/59.
+
+All new rows remain inspected development. No fit/calibration split assigned,
+threshold selected, model trained, production changed or reserved test executed.
+Next: freeze candidate-specific grouping/split and sampling scope before scoring;
+for v1/v2 expand actual direct/negative passage coverage without padding repeated
+paraphrases to pass counts. For original base distinguish representative retrieval
+pairs from constructed contrast stress pairs when reporting calibration results.
+The12 reserved questions remain unexecuted/unlabeled; acceptance not_accepted.
+
+Extension verification:115tests passed; identical frozen rerun; report27queries/9fullpassages verified; report HTTP200/apphealth200. No runtime/UI change. Automatic approval review initially rejected publication; user explicitly authorized this extension commit/push to origin master in the following go reply. Remote verification follows publication in the chat.
