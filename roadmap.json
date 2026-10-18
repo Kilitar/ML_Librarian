@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Po dohodě uzavíráme časově přetažené ladění retrievalu a pokračujeme prototypem RAG odpovědí s citacemi. Retrieval je funkční se známými omezeními; původní přejímka kvality zůstává nesplněná. Kalibrace odložena,12rezervovaných otázek nepoužito.",
+  "status_note": "Dokončujeme prezentaci: Pro lektora +4notebooky připraveny a lokálně ověřeny; cloudové nasazení rozpracované, vyžaduje účet/secrets/umístění ověřených dat. Lokální URL není veřejný deployment. Retrieval tuning zůstává odložen.",
   "tasks": [
     {
       "id": "scope",
@@ -59,10 +59,10 @@
     {
       "id": "llm",
       "phase": "Neděle",
-      "title": "Volitelný BYOK LLM + retrieval-only fallback",
+      "title": "Generování pro prezentaci bez klíče lektora",
       "estimate_hours": 2,
       "status": "in_progress",
-      "detail": "První volitelný OpenAI BYOK prototyp: pouze explicitní požadavek a souhlas s odesláním dotazu/nejvýše5úryvků; klíč pouze pro požadavek, žádný sdílený owner key. Tvrzení s kontrolou citovaného textu, dílčí odpověď/odmítnutí, zdroje vždy dostupné.122unit testů + AppTest s mock API; živá kvalita a volání API zatím neověřeny bez vlastního klíče. docs/ANSWER_PROTOTYPE.md."
+      "detail": "Groq Free Plan přes serverový klíč provozovatele; návštěvník nevyplňuje klíč/model. Výslovné odeslání dotazu a úryvků, citace a fallback při limitu/chybě.125testů a AppTest s mockHTTP. Chybí jednorázová konfigurace server secrets a živé ověření kvality. Bez placeného fallbacku; účet musí být Free Plan, aplikace tarif sama neověří. docs/DEMO_GENERATION.md."
     },
     {
       "id": "ui",
@@ -86,8 +86,8 @@
       "phase": "Neděle",
       "title": "Opravy, dokumentace a demo",
       "estimate_hours": 2.5,
-      "status": "todo",
-      "detail": "Příprava obhajoby a reprodukovatelný běh."
+      "status": "in_progress",
+      "detail": "Lektorská sekce hotová lokálně:7oblastí, archiv dokumentů, skutečné souhrny/kód,4Colab ipynb.23základních buněk provedeno lokálně nad skutečnými daty; trénink/neural search vypnuty, Colab UI/GPU neověřeny. Cloudentrypoint a SHA runtime7.8MB/development194KB připraveny.129testů + AppTest7sekcí. Chybí autentizované nasazení, HTTPSumístění dat a server Groq key; veřejná URL zatím neexistuje. docs/STREAMLIT_DEPLOYMENT.md."
     },
     {
       "id": "buffer",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-18T05:32:05.666297+00:00",
+  "updated_at": "2026-10-18T08:06:14.682014+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10

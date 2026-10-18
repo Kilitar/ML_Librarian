@@ -1,3 +1,14 @@
+# Current decision — 2026-10-18
+
+User clarified the goal: a lecturer opens the Streamlit presentation and can use
+RAG without supplying a key or installing a model. This SUPERSEDES the earlier
+BYOK-only interpretation below. Operator-configured Groq Free Plan is the primary
+path. It uses shared organization quota; it is not an anonymous credential-free
+provider API. No paid-provider fallback. See [setup](DEMO_GENERATION.md).
+Historical notes below explain the previous assumption and are not current policy.
+
+---
+
 # LLM provider and credit isolation (checked 2026-10-17)
 
 ## Constraint from the project brief

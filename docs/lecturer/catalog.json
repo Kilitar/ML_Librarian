@@ -1,0 +1,37 @@
+[
+  {
+    "id": "01_problem",
+    "title": "Zadání, data a architektura",
+    "path": "docs/lecturer/01_problem.md"
+  },
+  {
+    "id": "02_preparation",
+    "title": "Inventura a příprava dat",
+    "path": "docs/lecturer/02_preparation.md"
+  },
+  {
+    "id": "03_retrieval",
+    "title": "Reprezentace, retrieval a semantic layer",
+    "path": "docs/lecturer/03_retrieval.md"
+  },
+  {
+    "id": "04_evaluation",
+    "title": "Evaluace, leakage a kalibrace",
+    "path": "docs/lecturer/04_evaluation.md"
+  },
+  {
+    "id": "05_learning",
+    "title": "Iterace učení a rozhodnutí",
+    "path": "docs/lecturer/05_learning.md"
+  },
+  {
+    "id": "06_rabbit_holes",
+    "title": "Rabbit holes a poučení",
+    "path": "docs/lecturer/06_rabbit_holes.md"
+  },
+  {
+    "id": "07_reproduction",
+    "title": "Reprodukce a provoz",
+    "path": "docs/lecturer/07_reproduction.md"
+  }
+]

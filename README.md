@@ -19,7 +19,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe src\librarian\retrieval_tfidf.py
 .\.venv\Scripts\python.exe src\librarian\retrieval_e5.py --sample
 ```
-The first E5 run downloads weights from Hugging Face and caches them under `.cache/hf`. Search remains local and is the default. An optional OpenAI BYOK answer prototype sends the query and up to5 bounded excerpts only on explicit generation submission and consent; see docs/ANSWER_PROTOTYPE.md.
+The first E5 run downloads weights from Hugging Face and caches them under `.cache/hf`. Search remains local and is the default. The presentation uses operator-configured Groq Free Plan generation: lecturers enter no key/model. Query and up to5 bounded excerpts are sent only on explicit generation submission and consent. One-time server setup: docs/DEMO_GENERATION.md; no credential is currently configured.
 
 Build the curated local search index and run a query:
 
@@ -166,3 +166,16 @@ base combined pool still misses the unchanged source-component floor.
 See [calibration protocol and next step](docs/CALIBRATION_DATA.md).
 
 Source extension: [27 contrast pairs from9 additional sources](http://localhost:8765/eval/source_group_extension_review.local.html). Source-informed provisional labels, not retrieval test results. Numeric base development floors met; v1/v2 strict calibration still short. See docs/CALIBRATION_DATA.md.
+
+
+## Instructor presentation and deployment
+
+In the sidebar choose **Pro lektora**: seven structured development chapters,
+actual experiment summaries/code, an archive of development documents and four
+Google Colab notebooks with downloadable ipynb files. No API key is needed for
+the documentation or notebook analysis. Heavy notebook training/search is opt-in.
+
+Cloud entrypoint: `cloud_app.py`; dependency entrypoint: `requirements.txt`.
+Course artifacts remain outside Git and are installed from a SHA-verified,
+operator-controlled runtime bundle. See [deployment and outstanding checks](docs/STREAMLIT_DEPLOYMENT.md).
+No public hosting/live Groq quality/actual Colab UI execution is verified yet.

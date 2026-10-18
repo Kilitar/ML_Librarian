@@ -1,0 +1,24 @@
+{
+  "runtime.local.zip": {
+    "sha256": "9b2394abedaf3aac6c3b52d548f7d90aa32ee2310e9b89bb8b4b84d7b4cc2d78",
+    "bytes": 7769289,
+    "files": [
+      "data/index/multilingual_e5_curated.json",
+      "data/index/multilingual_e5_curated_11423d013eb8bd91.npy",
+      "data/normalized/chunks_curated.jsonl",
+      "data/normalized/documents.jsonl"
+    ]
+  },
+  "development.local.zip": {
+    "sha256": "61d350af5e85dcd048ab75cedf4ae891e5f484112533e919f7d7a26ced939353",
+    "bytes": 194377,
+    "files": [
+      "eval/source_group_extension.local.json",
+      "eval/supervised_pair.local.json",
+      "eval/supervised_pair_retrieval.local.json",
+      "eval/supervised_pair_test_notes.json",
+      "eval/supervised_pair_training.local.json",
+      "eval/supervised_pair_v2.local.json"
+    ]
+  }
+}

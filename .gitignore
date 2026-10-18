@@ -17,3 +17,6 @@ eval/retrieval_prototype_results.json
 eval/retrieval_curated_full_results.json
 eval/*.local.json
 eval/*.local.html
+
+/deployment/*.zip
+/deployment/*.local.json

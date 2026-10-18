@@ -67,17 +67,22 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
         return None
 
 
-def generate_answer(query, results, evidence, api_key, model, *, consent=False, transport=None):
+def generate_answer(query, results, evidence, api_key, model, *, consent=False, transport=None, provider="openai"):
     context=prepare_context(query,results,evidence)
+    if provider not in ("openai", "groq"): raise GenerationError("Neznámý poskytovatel.")
     if consent is not True:raise GenerationError('Nejdřív potvrď odeslání dotazu a úryvků poskytovateli.')
     if not isinstance(api_key,str) or not api_key.strip() or '\n' in api_key or '\r' in api_key:
         raise GenerationError('Zadej vlastní API klíč.')
-    if not isinstance(model,str) or not re.fullmatch(r'[A-Za-z0-9._:-]{1,100}',model):
+    if not isinstance(model,str) or not re.fullmatch(r'[A-Za-z0-9._:/-]{1,100}',model):
         raise GenerationError('Zadej identifikátor modelu ze svého API účtu.')
     payload=dict(model=model,store=False,max_completion_tokens=1800,
         response_format={'type':'json_object'},messages=[{'role':'system','content':SYSTEM},
         {'role':'user','content':json.dumps(context,ensure_ascii=False)}])
-    request=urllib.request.Request(ENDPOINT,data=json.dumps(payload).encode('utf-8'),
+    endpoint=ENDPOINT
+    if provider=='groq':
+        endpoint='https://api.groq.com/openai/v1/chat/completions'
+        payload.pop('store')  # Unsupported by Groq; not a zero-retention claim.
+    request=urllib.request.Request(endpoint,data=json.dumps(payload).encode('utf-8'),
         headers={'Authorization':'Bearer '+api_key.strip(),'Content-Type':'application/json'},method='POST')
     opener=transport or urllib.request.build_opener(NoRedirect()).open
     try:
@@ -90,6 +95,7 @@ def generate_answer(query, results, evidence, api_key, model, *, consent=False, 
         return validate_answer(parsed,context)
     except urllib.error.HTTPError as exc:
         # Never expose provider body, request headers, prompt, credentials or exception text.
+        if exc.code==429: raise GenerationError('Limit generování je momentálně vyčerpaný (HTTP 429). Zkus to později; nalezené zdroje jsou stále dostupné.') from None
         raise GenerationError(f'API požadavek selhal (HTTP {exc.code}). Zdroje zůstávají dostupné.') from None
     except GenerationError:
         raise

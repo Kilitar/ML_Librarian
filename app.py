@@ -16,7 +16,8 @@ from evidence_gate import assess_evidence  # noqa: E402
 from result_presentation import partition_results  # noqa: E402
 from source_filters import SOURCE_ROLES, SOURCE_ORIGINS  # noqa: E402
 from source_viewer import SourceCatalog, DOCUMENTS, initial_part  # noqa: E402
-from answer_generation import prepare_context, generate_answer, GenerationError  # noqa: E402
+from answer_generation import prepare_context, GenerationError  # noqa: E402
+from demo_generation import demo_config, generate_demo_answer  # noqa: E402
 
 
 st.set_page_config(page_title="ML Librarian · evidence search", page_icon="📚", layout="wide")
@@ -128,6 +129,12 @@ def render_result(rank, result, base_url, *, inline=False):
                 st.caption(f"Kandidátní cesta ve Streamlitu: /{route} · čeká na ověření odkazu")
 
 
+view = st.sidebar.radio("Sekce", ["Vyhledávání a odpovědi", "Pro lektora"], key="app_section")
+if view == "Pro lektora":
+    from lecturer_view import render_lecturer
+    render_lecturer()
+    st.stop()
+
 st.title("📚 ML Librarian")
 st.caption("Lokální vyhledávání ve studijních materiálech · CZ / EN / PL")
 
@@ -136,23 +143,19 @@ st.info("Vyhledávání běží lokálně. Volitelný prototyp odpovědi s citac
 
 
 def request_answer():
-    # Callback runs before widgets rerender; the key is consumed and removed here.
-    key = st.session_state.pop("llm_key", "")
+    # Provider credential is server-only; never part of session/widget state.
     st.session_state.pop("generated_answer", None)
     st.session_state.pop("generation_error", None)
     try:
         rows = st.session_state.get("evidence_results", [])
         question = st.session_state.get("evidence_query", "")
-        answer = generate_answer(question, rows, assess_evidence(rows, question), key,
-            st.session_state.get("llm_model", "").strip(),
+        answer = generate_demo_answer(question, rows, assess_evidence(rows, question), demo_config(st.secrets),
             consent=st.session_state.get("llm_consent", False))
         st.session_state["generated_answer"] = answer
     except GenerationError as exc:
         st.session_state["generation_error"] = str(exc)
     except Exception:
         st.session_state["generation_error"] = "Generování se nezdařilo. Nalezené zdroje jsou stále dostupné."
-    finally:
-        key = None
 
 
 with st.form("evidence_search", clear_on_submit=False):
@@ -246,12 +249,14 @@ if results is not None:
                 st.caption(source["source_id"]+" · "+source["source_path"])
                 st.text(source["text"])
                 if source["truncated"]: st.caption("Úryvek pro model je zkrácen na 4000 znaků.")
+        configured = bool(demo_config(st.secrets)["api_key"])
+        if not configured:
+            st.info("Generování prezentace ještě není nakonfigurované provozovatelem. Nalezené zdroje můžeš prohlížet už teď.")
         with st.form("answer_request", clear_on_submit=True):
-            st.text_input("Model v tvém OpenAI API účtu", placeholder="Identifikátor modelu podporujícího JSON odpovědi", key="llm_model", max_chars=100)
-            st.text_input("Vlastní OpenAI API klíč", type="password", key="llm_key")
-            st.checkbox("Souhlasím s odesláním tohoto dotazu a zobrazených úryvků do OpenAI API. Použije se moje API kvóta.", key="llm_consent")
-            st.caption("Klíč se použije pro tento požadavek a poté se pole vymaže. Aplikace jej nezapisuje do souborů ani logů. Vyhledávání API klíč nepotřebuje.")
-            st.form_submit_button("Vygenerovat odpověď s citacemi", on_click=request_answer)
+            st.caption("Prezentace používá Groq. API klíč ani výběr modelu nejsou potřeba. Při vyčerpání limitu zůstává dostupné vyhledávání.")
+            st.checkbox("Souhlasím s odesláním dotazu a výše uvedených úryvků službě Groq pro vytvoření odpovědi.", key="llm_consent")
+            st.form_submit_button("Vygenerovat odpověď s citacemi", on_click=request_answer, disabled=not configured)
+
     else:
         st.info("Bez ověřené opory se generování nespouští. Upřesni otázku nebo prohlédni nalezené pasáže.")
     if st.session_state.get("generation_error"):
@@ -274,4 +279,4 @@ if results is not None:
         if answer["limitation"]: st.text(answer["limitation"])
 
 st.divider()
-st.caption("Index i vyhledávání běží lokálně. Pouze výslovně vyžádané generování odešle dotaz a nejvýše 5 úryvků do OpenAI API.")
+st.caption("Index i vyhledávání běží lokálně. Pouze výslovně vyžádané generování odešle dotaz a nejvýše 5 úryvků službě Groq.")

@@ -1,3 +1,5 @@
+> Superseded visitor setup: see [DEMO_GENERATION.md](DEMO_GENERATION.md). Current presentation uses server-configured Groq Free Plan; no lecturer key/model fields. OpenAI BYOK below documents the earlier prototype, not the current visitor flow. Citation validation remains in use.
+
 # Answer prototype — 2026-10-18
 
 User explicitly chose to stop extending retrieval tuning and move to the complete
