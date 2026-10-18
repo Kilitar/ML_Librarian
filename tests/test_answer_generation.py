@@ -62,6 +62,17 @@ class AnswerTests(unittest.TestCase):
         self.assertIn('429',str(exc.exception));self.assertNotIn('secret',str(exc.exception))
         self.assertIsNone(NoRedirect().redirect_request(None,None,None,None,None,None))
 
+    def test_diagnostic_categories_do_not_expose_exception_details(self):
+        cases=[(urllib.error.URLError('fake-secret'), 'spojení'),
+               (json.JSONDecodeError('fake-secret','',0), 'JSON'),
+               (KeyError('fake-secret'), 'strukturu')]
+        for error, expected in cases:
+            with self.subTest(expected=expected):
+                with self.assertRaises(GenerationError) as caught:
+                    generate_answer('Question',self.rows,self.evidence,'fake-secret','test-model',consent=True,transport=Mock(side_effect=error))
+                self.assertIn(expected,str(caught.exception))
+                self.assertNotIn('fake-secret',str(caught.exception))
+
     def test_truncated_output_is_not_displayed(self):
         transport=Mock(return_value=io.BytesIO(json.dumps({'choices':[{'finish_reason':'length','message':{'content':json.dumps(self.answer)}}]}).encode()))
         with self.assertRaises(GenerationError):

@@ -1,6 +1,7 @@
 """Opt-in, request-scoped BYOK synthesis. No cache, disk writes or implicit API calls."""
 import json
 import re
+import ssl
 import urllib.error
 import urllib.request
 
@@ -100,5 +101,14 @@ def generate_answer(query, results, evidence, api_key, model, *, consent=False, 
         raise GenerationError(f'API požadavek selhal (HTTP {exc.code}). Zdroje zůstávají dostupné.') from None
     except GenerationError:
         raise
+    except urllib.error.URLError as exc:
+        category = 'TLS' if isinstance(exc.reason, ssl.SSLError) else 'spojení'
+        raise GenerationError(f'Nelze se spojit s API poskytovatele ({category}). Zdroje zůstávají dostupné.') from None
+    except (TimeoutError, ssl.SSLError):
+        raise GenerationError('Spojení s API vypršelo nebo selhalo ověření TLS. Zdroje zůstávají dostupné.') from None
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        raise GenerationError('API nevrátilo platnou JSON odpověď. Zdroje zůstávají dostupné.') from None
+    except (KeyError, IndexError, TypeError):
+        raise GenerationError('API vrátilo neočekávanou strukturu odpovědi. Zdroje zůstávají dostupné.') from None
     except Exception:
         raise GenerationError('Generování se nezdařilo nebo model vrátil neplatná data. Zdroje zůstávají dostupné.') from None
