@@ -10,7 +10,7 @@ understanding; ambiguous Czech `přesnost` alone is not treated as precision.
 ## Evidence coverage
 
 When the original winning passage is already supported (whole-query score at
-least .20), retain it first. Among the existing candidate pool, score at most12
+least .20), retain it first. Among the existing candidate pool, score at most 12
 passages that mention the requested error class and a literal word/prefix application
 anchor in their body. The auxiliary question asks when to minimize false positives
 for precision, or false negatives for recall, in the explicitly requested context.
@@ -48,17 +48,17 @@ in the teaching materials.
 
 ## Evaluation and limits
 
-Final paired run:36 full searches and40 fixed-passage replays, with zero gate
+Final paired run: 36 full searches and 40 fixed-passage replays, with zero gate
 status changes. Context was added for av02 (known English spam), mc01 (Czech spam),
 mc03 (recall/screening) and mc05 (English automated spam). In each, the original
 winner remains first. The known spam rationale is now second; heading-only
-ablation did not bring it into the first3. Static AST inspection matched the
+ablation did not bring it into the first 3. Static AST inspection matched the
 heading, formula call and body to the SHA-verified snapshot original.
 
 The Polish formulation mc02 still lacks the direct lost-email rationale in its
-first3; no score threshold or query alias was patched to force that case. Reverse
+first 3; no score threshold or query alias was patched to force that case. Reverse
 recall mc03 still leads with a precision-oriented clinical passage, followed by
-the added recall cost explanation; do not claim top1 quality improved. The new
+the added recall cost explanation; do not claim top 1 quality improved. The new
 adversarial metric/soup question remains no_support in both arms, while the older
 plain Polish soup query av11 remains uncertain. These are different cases.
 

@@ -9,7 +9,7 @@ yes/no token logits. It does not establish answerability accuracy for this cours
 ## Fixed inputs and limits
 
 - `config/answerability_experiment.json` fixes the instruction, .10 rejection
-  threshold, CPU batch2 and 768-token budget before any Qwen predictions.
+  threshold, CPU batch 2 and 768-token budget before any Qwen predictions.
 - `eval/answerability_questions.json` fixes nine new formulations: three
   nonsensical relations, three technical questions, three meaningful ML
   applications to food data, in CZ/EN/PL. Topic-correlated authored questions,
@@ -77,8 +77,8 @@ completed and its frozen raw/input/model hashes were verified.
 - Known soup/k-means and flour/PCA also remain supported. Oiling SVM gets a high
   Qwen score .9132, but remains no_support because the candidate never upgrades.
 - One fresh application `aq09` has a truncated passage; downgrade is disabled.
-- Extra five-passage scoring takes about4–9.21seconds per question; model startup
-  about1.07seconds in the measured warm-cache run, separate from scoring.
+- Extra five-passage scoring takes about 4–9.21 seconds per question; model startup
+  about 1.07 seconds in the measured warm-cache run, separate from scoring.
 
 The predeclared criteria fail: no production integration or default change.
 This is a different model, but still trained for ranking. Its custom instruction
@@ -87,13 +87,13 @@ threshold was retuned to repair these now-inspected cases. Original retrieval
 acceptance remains not_accepted and BYOK generation is deferred.
 
 106 existing unit tests and compilation pass. Frozen render-only rerun preserves
-raw SHA. Both reports returnHTTP200; app health returnsok. No AppTest/restart is
+raw SHA. Both reports return HTTP 200; app health returns ok. No AppTest/restart is
 needed because no production or UI code changed in this checkpoint.
 
 ## Pair labels for the next supervised step
 
 Run `.venv/Scripts/python.exe src/librarian/review_answerability.py`. It verifies
-the frozen raw SHA and renders125 **unlabeled** query–passage pairs at
+the frozen raw SHA and renders 125 **unlabeled** query–passage pairs at
 <http://localhost:8765/eval/answerability_labels.local.html>. Each has the actual
 excerpt and provenance, optional scores hidden initially, and four choices:
 whole-question coverage, partial/topic-only, irrelevant relation, unjudgeable.

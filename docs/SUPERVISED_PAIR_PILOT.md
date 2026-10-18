@@ -8,7 +8,7 @@ answerability verifier.
 
 All selected passages were read in full before assigning labels. The tracked
 `eval/pair_coverage_notes.json` and hash-bound `pair_coverage_judgments.json`
-contain58 pairs:25 direct,13 partial,20 topic_only. Annotations are by Codex,
+contain 58 pairs: 25 direct, 13 partial, 20 topic_only. Annotations are by Codex,
 not independent human judgments. Coverage does not validate the source's facts,
 absolute scaling claims, metric recommendations or numeric results.
 
@@ -29,14 +29,14 @@ Qwen trial's frozen preservation criterion still fails as recorded; this new
 coverage audit does not retroactively relabel that trial accepted. It explains
 why a downgrade alone was insufficient to diagnose a model regression.
 
-See all58 queries, excerpts, reasons and split statuses:
+See all 58 queries, excerpts, reasons and split statuses:
 <http://localhost:8765/eval/pair_coverage_review.local.html>.
 
 ## Fixed experiment
 
 `config/supervised_pair_experiment.json` and nine questions were fixed before
 fitting. Three new triples concern Naive Bayes, TF-IDF and k-NN: nonsense,
-technical question, meaningful application. All45 returned passages were read
+technical question, meaningful application. All 45 returned passages were read
 and labeled before seeing fine-tuned scores. Only four are direct positives
 (three TF-IDF, one k-NN); no returned passage answers the Naive Bayes assumption
 question. This is an observed retrieval gap, not an invalid question.
@@ -46,24 +46,24 @@ Two source files still overlap between train and check (the general Scikit-learn
 reference and DBSCAN implementation guide). This is not independent source or
 topic-level acceptance, and four direct positives cannot establish broad recall.
 
-The pilot uses40 binary pairs (25 positive/15 negative), full question+body and
+The pilot uses 40 binary pairs (25 positive/15 negative), full question+body and
 actual adjacent heading, no source names. It updates only the final transformer
-block and classifier (1,922,689 parameters) for5 epochs with fixed seed17,
+block and classifier (1, 922, 689 parameters) for 5 epochs with fixed seed17,
 last-block LR5e-5, head LR5e-4, balanced BCE and threshold.50. No model input
-exceeds512tokens here. Partial pairs do not enter primary binary metrics.
+exceeds 512 tokens here. Partial pairs do not enter primary binary metrics.
 
 Weights live only in ignored `.cache/supervised_pair_v1/trainable.safetensors`;
 the base cached model and production index/ranking/gate are unchanged. Safe
 checkpoint SHA and all input/raw hashes are recorded in the tracked summary.
-The measured training took15.05seconds. No epoch selection or hyperparameter /
+The measured training took 15.05 seconds. No epoch selection or hyperparameter /
 threshold tuning used the check predictions.
 
 ## Result: no demonstrated classification improvement
 
 At the fixed threshold, base text-only and fine-tuned models both have:
 
-- Direct recall3/4 (75%) and precision3/5 (60%).
-- Two false-positive pairs,23 true negatives,29 primary pairs;16 partial pairs
+- Direct recall 3/4 (75%) and precision 3/5 (60%).
+- Two false-positive pairs, 23 true negatives, 29 primary pairs; 16 partial pairs
   excluded and still fully visible.
 - One of three nonsense questions passes: the Polish soap/k-NN request.
 - Its two high scores fall .818→.594 and .811→.592, still above.50.
@@ -74,7 +74,7 @@ improve. Predeclared criteria fail; no promotion or broad release acceptance.
 Base here means text-only pair scores at.50, not the production source-aware
 ranking or its.10/.20 evidence gate. Do not report these as production metrics.
 
-All45 new pairs, labels, reasons, original/fine-tuned scores and full excerpts:
+All 45 new pairs, labels, reasons, original/fine-tuned scores and full excerpts:
 <http://localhost:8765/eval/supervised_pair_review.local.html>.
 
 ## Reproduce and validation
@@ -91,14 +91,14 @@ From the Librarian checkout:
    names, unchanged first encoder block and reproduction of three stored scores
    from a fresh model load. It is a persistence check, not fresh accuracy evidence.
 
-Use `.venv/Scripts/python.exe src/librarian/<script>.py`. Existing106 unit tests
-pass; checkpoint reload and render-only preservation pass. HTTP reports200 and
+Use `.venv/Scripts/python.exe src/librarian/<script>.py`. Existing 106 unit tests
+pass; checkpoint reload and render-only preservation pass. HTTP reports 200 and
 app healthok; no AppTest/restart because production/UI code did not change.
 
 Manual label export now uses schema `answerability-pair-review-v2`: direct,
 partial, topic_only, irrelevant, unjudgeable. This separates real partial answer
 content from topic-only matches. V1 exports must not be silently reinterpreted.
-The125-pair page remains unfilled and memory-only until explicit export. JS
+The 125-pair page remains unfilled and memory-only until explicit export. JS
 selection/count/note/export and default labels were rechecked with a simulated
 DOM; browser download/save and human visual review are not claimed.
 

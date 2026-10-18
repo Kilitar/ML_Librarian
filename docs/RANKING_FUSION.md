@@ -47,7 +47,7 @@ held-out improvement is claimed. Both arms share the exact same candidate
 predictions, with no second crossencoder inference or model changes.
 
 The known English PCA question now includes the direct variance-dominance passage
-`d82d1087d9b406592ceb` at rank3 instead of excluding it from all five. Its first
+`d82d1087d9b406592ceb` at rank 3 instead of excluding it from all five. Its first
 passage remains imperfect and its no_support status remains unchanged. A further
 English formulation still retrieves weak material; broad multilingual robustness
 is not established. Requests with any candidate whole-query score at least .10

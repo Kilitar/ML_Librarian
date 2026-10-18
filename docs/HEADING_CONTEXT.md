@@ -56,7 +56,7 @@ a newly passed release. BYOK generation remains deferred.
 Validation: 30 full-search pairs changed only the original English PCA status
 (no_support→supported). Forty fixed-passage replays changed no status. No absent
 question newly became supported, and no supported valid question became
-no_support in these checks. Top1 changed for the repaired English PCA, the new
+no_support in these checks. Top 1 changed for the repaired English PCA, the new
 Polish PCA formulation (broad summary→direct explanation), and the known ambiguous
 Czech control (still uncertain). The new English comparable-scales formulation
 still leads with a clustering passage; supported availability is not answer
@@ -73,10 +73,10 @@ these invalid/missing-input guards; actual form results match its after IDs.
 
 `compare_heading_context.py` shares baseline candidate predictions across paired
 full-search arms; the context arm scores only eligible additional inputs. Thirty
-full-search questions include the prior24 development formulations, five newly
+full-search questions include the prior 24 development formulations, five newly
 fixed formulations and the known `Which is better?` ambiguity control (not fresh
-evidence). Another40 historical questions replay their fixed five passages only,
-which does not validate full retrieval behavior on those40 queries.
+evidence). Another 40 historical questions replay their fixed five passages only,
+which does not validate full retrieval behavior on those 40 queries.
 
 Run `.venv/Scripts/python.exe src/librarian/compare_heading_context.py` from the
 Librarian workspace. First run freezes code/input hashes and all excerpts in

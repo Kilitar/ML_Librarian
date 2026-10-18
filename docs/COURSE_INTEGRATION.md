@@ -9,8 +9,8 @@ is an optional development entrypoint, not the presentation deployment target.
 
 ## Architecture
 
-Host repository: `Kilitar/Coderslab-DataScience`, existing `app.py` and Python3.11.
-Append group36with routes `/ml_librarian` and `/ml_librarian_lecturer`. Thin views
+Host repository: `Kilitar/Coderslab-DataScience`, existing `app.py` and Python 3.11.
+Append group 36 with routes `/ml_librarian` and `/ml_librarian_lecturer`. Thin views
 call the versioned `components/ml_librarian/embedded.py`. Host owns page config,
 navigation, hosting URL and secrets. Librarian does not create a second sidebar
 navigation in embedded mode. Lecturer view does not initialize neural models.
@@ -42,8 +42,8 @@ Models are pinned public E5 and MiniLM; first module initialization may download
 weights, query-time execution is offline. Default cache is inside the exported
 module's ignored.cache/hf. Optional server environment ML_LIBRARIAN_CACHE may
 point to an existing compatible cache for local development. It is not needed
-on Cloud. Course requires Librarian dependencies and Streamlit>=1.50; Python3.11
-stays unchanged. Linux3.11 memory/startup/actual hosted generation still require
+on Cloud. Course requires Librarian dependencies and Streamlit>=1.50; Python 3.11
+stays unchanged. Linux 3.11 memory/startup/actual hosted generation still require
 verification after the existing course deployment rebuilds.
 
 Local integration does not update the immutable retrieval snapshot to include

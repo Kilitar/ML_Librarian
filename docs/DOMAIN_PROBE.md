@@ -31,7 +31,7 @@ Six new formulations were fixed in `eval/support_repair_questions.json` before
 testing. Unchanged production availability statuses match all six expectations
 (three supported, three no_support); classifier domain predictions also match.
 This is **not** six correct answers: the first PCA passages remain broad summaries,
-with direct variance explanation second for Czech and absent from Polish top3.
+with direct variance explanation second for Czech and absent from Polish top 3.
 No independent human or factual-quality acceptance is claimed. These formulations
 are now inspected regression data.
 

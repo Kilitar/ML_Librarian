@@ -4,7 +4,7 @@
 
 User explicitly chose to stop extending retrieval tuning and move to the complete
 RAG prototype. Evaluation is DEFERRED, not passed. Earlier acceptance remains
-not_accepted; the12 reserved questions remain unused. No ranking, model weights,
+not_accepted; the 12 reserved questions remain unused. No ranking, model weights,
 corpus, index, calibration threshold or evidence policy changed.
 
 ## Use
@@ -32,7 +32,7 @@ validation do not prove entailment, factual correctness or injection immunity.
 Known high-score nonsense failures in retrieval remain possible.
 
 Each factual claim needs a valid supplied source ID and a contiguous verbatim
-quote of at least20 characters. Unknown IDs, invented quotes, uncited claims,
+quote of at least 20 characters. Unknown IDs, invented quotes, uncited claims,
 invalid JSON and incomplete output are rejected. The app builds source controls
 from actual retrieval metadata, not model-generated URLs. Text renders as plain
 text, preventing generated Markdown/HTML links. All original result cards remain.
@@ -40,7 +40,7 @@ A new search clears the old answer even if search fails. Provider errors also
 clear the previous answer; generic errors never display provider bodies/headers.
 
 Fixed endpoint https://api.openai.com/v1/chat/completions; no redirects, no tools,
-no retry,45s timeout,5sources x4000characters,6claims,1800completiontokens,
+no retry, 45s timeout, 5sources x4000 characters, 6claims, 1800completiontokens,
 128KiB response cap,store=false. Preview marks source truncation. Character caps
 are not token counts; provider may reject unsupported models or context sizes.
 store=false does not claim zero provider retention; consult your provider terms.

@@ -1,6 +1,6 @@
 # Guardrails
 
-- Source course `D:\Antigravity Projects\Data-Science` is read-only by default. User explicitly authorized minimal Librarian deployment integration on2026-10-18: navigation, thin views, versioned module export, required dependencies/config/docs and focused integration checks/publication are in scope. Do not edit unrelated course content or regenerate the immutable snapshot.
+- Source course `D:\Antigravity Projects\Data-Science` is read-only by default. User explicitly authorized minimal Librarian deployment integration on 2026-10-18: navigation, thin views, versioned module export, required dependencies/config/docs and focused integration checks/publication are in scope. Do not edit unrelated course content or regenerate the immutable snapshot.
 - All generated files, virtual environments, indexes, cache, tests, logs, and app code stay in ML-Librarian.
 - Resolve output paths and reject anything outside this workspace, including symlink/reparse-point escapes.
 - Read an explicit allowlist only; exclude `.git`, `.venv`, secrets, caches, logs, scratch, and unknown binaries.

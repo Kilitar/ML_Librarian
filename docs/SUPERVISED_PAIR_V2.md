@@ -1,10 +1,10 @@
 # Same-query contrast pilot v2 (2026-10-18)
 
 **Not promoted.** Eight meaningful-question hard negatives were added to the
-original40 binary pairs. V2 fits a new copy of the original pretrained model,
+original 40 binary pairs. V2 fits a new copy of the original pretrained model,
 with the same seed17, five epochs, last-block/head learning rates and .50
 threshold as v1. It does not continue from the v1 checkpoint. Training uses
-25 direct and23 negative pairs. Every new negative has an existing direct
+25 direct and 23 negative pairs. Every new negative has an existing direct
 passage for the exact same question, often about the same algorithm.
 
 This removes the possibility of perfectly fitting these contrasts using only
@@ -30,11 +30,11 @@ Three groups use two full source chunks each:
 - PCA mean subtraction versus eigenvalue/eigenvector meanings.
 
 Each group has two meaningful questions with reciprocal direct/wrong-relation
-passages and one nonsensical question against both passages:18 pairs total,
-six direct and12 negative. The same passage is positive for one question and
+passages and one nonsensical question against both passages: 18 pairs total,
+six direct and 12 negative. The same passage is positive for one question and
 negative for the other. No exact training question or input text overlaps test.
 Topics/source families remain correlated with the training data. All complete
-pairs fit512 tokens (test maximum360); none is silently truncated.
+pairs fit 512 tokens (test maximum 360); none is silently truncated.
 
 ## Result
 
@@ -53,13 +53,13 @@ v2 .380. The direct PCA eigenvalue explanation remains missed by all three
 ordering and absolute coverage decisions are different tasks; neither a good
 ordering nor a conservative score proves answerability.
 
-V2 training takes10.87seconds; training loss .446→.395. Predeclared promotion
+V2 training takes 10.87 seconds; training loss .446→.395. Predeclared promotion
 criteria fail. No threshold/epoch/LR retuning used this test. The small pilot
 does not justify further production weight changes or a general accuracy claim.
 Base here is raw body-only scoring at.50, not production source-aware ranking
 or its.10/.20 evidence gate.
 
-Full queries, all18 excerpts and original/v1/v2 scores, plus the eight training
+Full queries, all 18 excerpts and original/v1/v2 scores, plus the eight training
 contrasts and reasons:
 <http://localhost:8765/eval/supervised_pair_v2_review.local.html>.
 
@@ -67,15 +67,15 @@ contrasts and reasons:
 
 Run `.venv/Scripts/python.exe src/librarian/train_supervised_pair_v2.py` from
 Librarian. The first run validates original annotation/v1 checkpoint hashes,
-same-query positive controls, distinct48 training pairs, no exact test overlap,
+same-query positive controls, distinct 48 training pairs, no exact test overlap,
 complete token budgets and unchanged input fingerprints. Weights are saved only
 under ignored `.cache/supervised_pair_v2/trainable.safetensors`. Tracked summary
 binds input/raw/checkpoint hashes. Reruns verify raw SHA and render only.
 
 Run `check_supervised_pair_checkpoint.py --trial v2` to validate checkpoint SHA,
 allowed parameter names, unchanged first encoder block and three reloaded scores.
-This persistence check passes; render-only replay and106 existing unit tests
-pass. Report HTTP200 and app healthok are verified separately. No AppTest/restart
+This persistence check passes; render-only replay and 106 existing unit tests
+pass. Report HTTP 200 and app healthok are verified separately. No AppTest/restart
 is needed because production search, gate, UI, index and model are unchanged.
 
 Next: stop treating more tiny last-block runs as a release path. Expand and

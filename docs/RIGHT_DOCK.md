@@ -23,10 +23,10 @@ validation remain unchanged. No-support/unassessed cannot generate; uncertain
 answers stay qualified. Generation still needs operator Groq configuration.
 There is no lecturer API key or model field. Failed/new searches clear old answers.
 
-Functional validation: course AppTest closed lazy state, open, actualcd01search
-with same5frozen IDs, navigation home→lecturer, close→home→reopen preserves query
+Functional validation: course AppTest closed lazy state, open, actual cd01 search
+with same 5 frozen IDs, navigation home→lecturer, close→home→reopen preserves query
 and results. Instructor docs remain available with no second sidebar. Backend
-unit suite129tests remains relevant. CSS desktop/mobile positioning, color,
+unit suite 129 tests remains relevant. CSS desktop/mobile positioning, color,
 contrast, touch targets and scrolling require the user's actual visual review;
 AppTest is not a browser screenshot and does not validate CSS geometry.
 
@@ -37,4 +37,4 @@ Source APIs consulted:
 CSS targets only module-owned st-key classes. Future Streamlit frontend changes
 may require styling adjustment; no global lesson layout CSS is modified.
 
-Visual feedback fix: launcher moved to5rem above viewport bottom plus mobile safe-area inset; open panel bottom raised correspondingly. This leaves room for Streamlit Cloud bottom-right controls without hiding provider controls.
+Visual feedback fix: launcher moved to 5 rem above viewport bottom plus mobile safe-area inset; open panel bottom raised correspondingly. This leaves room for Streamlit Cloud bottom-right controls without hiding provider controls.

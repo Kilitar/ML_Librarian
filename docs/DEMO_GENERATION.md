@@ -48,8 +48,8 @@ remain on server, without displaying/logging them.
 
 API has no parameter that proves account billing is free. Using a paid Groq
 account could incur charges: the operator must configure a Free Plan account.
-Limits are organization-wide and may change. HTTP429 displays quota exhaustion
-and retains all evidence. Prompt limit5x4000characters plus bounded output may
+Limits are organization-wide and may change. HTTP 429 displays quota exhaustion
+and retains all evidence. Prompt limit 5 × 4 000 characters plus bounded output may
 also exceed token-per-minute quota; no claim of unlimited/free guaranteed uptime.
 Different character/token counts and shared classroom traffic matter.
 
@@ -60,6 +60,6 @@ Sources checked 2026-10-18:
 - [Provider data handling](https://console.groq.com/docs/your-data)
 
 Groq does not retain inference content by default, but reliability/abuse logs
-may retain content up to30days subject to exceptions/settings. Do not describe
+may retain content up to 30 days subject to exceptions/settings. Do not describe
 this as guaranteed zero retention. Source citation verification is not proof of
-factual correctness or complete answer coverage.12reserved questions stay unused.
+factual correctness or complete answer coverage.12 reserved questions stay unused.
