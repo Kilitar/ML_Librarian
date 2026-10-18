@@ -1,0 +1,225 @@
+{
+  "version": 1,
+  "sources": {
+    "02_Classification/theory/07_day_2_summary.md": {
+      "page": "views/02_day_2_summary.py",
+      "kind": "related"
+    },
+    "03_Advanced_ML_Neural_Networks/theory/01_hyperparameter_tuning_theory.md": {
+      "page": "views/03_hyperparameter_tuning_theory.py",
+      "kind": "related"
+    },
+    "03_Advanced_ML_Neural_Networks/theory/02_hyperparameter_optimization_implementation_guide.md": {
+      "page": "views/03_hyperparameter_optimization_sample.py",
+      "kind": "related"
+    },
+    "03_Advanced_ML_Neural_Networks/theory/03_introduction_to_neural_networks.md": {
+      "page": "views/03_prework_neural_networks_intro.py",
+      "kind": "related"
+    },
+    "03_Advanced_ML_Neural_Networks/theory/04_ensemble_methods_and_bagging_theory.md": {
+      "page": "views/03_ensemble_bagging_theory.py",
+      "kind": "related"
+    },
+    "03_Advanced_ML_Neural_Networks/theory/05_random_forest_theory_and_implementation.md": {
+      "page": "views/03_random_forest_theory_and_implementation.py",
+      "kind": "related"
+    },
+    "03_Advanced_ML_Neural_Networks/theory/06_boosting_and_xgboost_theory.md": {
+      "page": "views/03_boosting_xgboost_theory.py",
+      "kind": "related"
+    },
+    "03_Advanced_ML_Neural_Networks/theory/07_neural_networks_and_keras_theory.md": {
+      "page": "views/03_neural_networks_theory.py",
+      "kind": "related"
+    },
+    "03_Advanced_ML_Neural_Networks/theory/08_day_3_summary_and_synthesis.md": {
+      "page": "views/03_day_3_summary.py",
+      "kind": "related"
+    },
+    "04_NLP/theory/01_introduction_to_nlp.md": {
+      "page": "views/04_prework_nlp_intro.py",
+      "kind": "related"
+    },
+    "04_NLP/theory/02_nltk_and_spacy_guide.md": {
+      "page": "views/04_prework_nltk_spacy.py",
+      "kind": "related"
+    },
+    "04_NLP/theory/03_key_principles_of_working_with_text.md": {
+      "page": "views/04_nlp_text_preprocessing_theory.py",
+      "kind": "related"
+    },
+    "04_NLP/theory/04_bag_of_words_and_tfidf.md": {
+      "page": "views/04_nlp_bow_tfidf_theory.py",
+      "kind": "related"
+    },
+    "04_NLP/theory/05_word2vec_and_embeddings.md": {
+      "page": "views/04_nlp_word2vec_theory.py",
+      "kind": "related"
+    },
+    "04_NLP/theory/06_word2vec_gensim_implementation.md": {
+      "page": "views/04_nlp_word2vec_implementation.py",
+      "kind": "related"
+    },
+    "04_NLP/theory/07_how_transformers_work.md": {
+      "page": "views/04_nlp_transformer_theory.py",
+      "kind": "related"
+    },
+    "04_NLP/theory/08_bert_architecture_and_applications.md": {
+      "page": "views/04_nlp_bert_theory.py",
+      "kind": "related"
+    },
+    "04_NLP/theory/09_day_4_nlp_summary.md": {
+      "page": "views/04_nlp_day_4_summary.py",
+      "kind": "related"
+    },
+    "05_Unsupervised_Learning/theory/01_clustering_theory.md": {
+      "page": "views/05_prework_unsupervised_learning_intro.py",
+      "kind": "related"
+    },
+    "05_Unsupervised_Learning/theory/01_kmeans_clustering_theory.md": {
+      "page": "views/05_kmeans_theory.py",
+      "kind": "related"
+    },
+    "05_Unsupervised_Learning/theory/02_kmeans_sample_implementation_guide.md": {
+      "page": "views/05_kmeans_sample_implementation.py",
+      "kind": "related"
+    },
+    "05_Unsupervised_Learning/theory/03_dbscan_sample_implementation_guide.md": {
+      "page": "views/05_dbscan_sample_implementation.py",
+      "kind": "related"
+    },
+    "05_Unsupervised_Learning/theory/04_dbscan_moons_exercise_guide.md": {
+      "page": "views/05_dbscan_moons_exercise.py",
+      "kind": "related"
+    },
+    "05_Unsupervised_Learning/theory/05_anomaly_detection_lof_theory.md": {
+      "page": "views/05_anomaly_detection_lof_theory.py",
+      "kind": "related"
+    },
+    "05_Unsupervised_Learning/theory/06_lof_sample_implementation_guide.md": {
+      "page": "views/05_anomaly_detection_lof.py",
+      "kind": "related"
+    },
+    "05_Unsupervised_Learning/theory/07_lof_blobs_exercise_guide.md": {
+      "page": "views/05_lof_blobs_exercise.py",
+      "kind": "related"
+    },
+    "05_Unsupervised_Learning/theory/08_isolation_forest_theory_and_implementation.md": {
+      "page": "views/05_isolation_forest_theory.py",
+      "kind": "related"
+    },
+    "05_Unsupervised_Learning/theory/09_isolation_forest_student_scores_exercise_guide.md": {
+      "page": "views/05_isolation_forest_student_scores_exercise.py",
+      "kind": "related"
+    },
+    "05_Unsupervised_Learning/theory/10_day_5_unsupervised_learning_summary.md": {
+      "page": "views/05_day_5_summary.py",
+      "kind": "related"
+    },
+    "06_Final_Project/theory/01_machine_learning_course_summary.md": {
+      "page": "views/06_course_summary_recap.py",
+      "kind": "related"
+    },
+    "06_Final_Project/theory/02_productionizing_machine_learning_models.md": {
+      "page": "views/06_mlops_productionizing.py",
+      "kind": "related"
+    },
+    "06_Final_Project/theory/03_further_development_and_ai_trends.md": {
+      "page": "views/06_career_and_ai_trends.py",
+      "kind": "related"
+    },
+    "06_Final_Project/theory/04_modern_ml_2026_rag_agents_lora.md": {
+      "page": "views/06_modern_ml_rag_agents.py",
+      "kind": "related"
+    },
+    "MACHINE_LEARNING_SYLLABUS.md": {
+      "page": "views/00_home.py",
+      "kind": "related"
+    },
+    "02_Classification/01_knn_penguins_exercise.ipynb": {
+      "page": "views/02_knn_penguins_nb.py",
+      "kind": "related"
+    },
+    "00_Prework/01_google_colab_exercise.ipynb": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Tento přípravný notebook nemá vlastní stránku v kurzu; dostupný je nalezený textový úryvek."
+    },
+    "00_Prework/02_python_test_exercise.ipynb": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Tento přípravný notebook nemá vlastní stránku v kurzu; dostupný je nalezený textový úryvek."
+    },
+    "00_Prework/03_pandas_loans_exercise.ipynb": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Tento přípravný notebook nemá vlastní stránku v kurzu; dostupný je nalezený textový úryvek."
+    },
+    "00_Prework/04_matplotlib_loans_exercise.ipynb": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Tento přípravný notebook nemá vlastní stránku v kurzu; dostupný je nalezený textový úryvek."
+    },
+    "00_Prework/05_plotly_loans_exercise.ipynb": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Tento přípravný notebook nemá vlastní stránku v kurzu; dostupný je nalezený textový úryvek."
+    },
+    "00_Prework/06_statistics_exercise_1.ipynb": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Tento přípravný notebook nemá vlastní stránku v kurzu; dostupný je nalezený textový úryvek."
+    },
+    "00_Prework/07_statistics_exercise_2_wine.ipynb": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Tento přípravný notebook nemá vlastní stránku v kurzu; dostupný je nalezený textový úryvek."
+    },
+    "00_Prework/08_scikit_learn_exercise.ipynb": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Tento přípravný notebook nemá vlastní stránku v kurzu; dostupný je nalezený textový úryvek."
+    },
+    "00_Prework/09_data_preparation_cancer_project.ipynb": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Tento přípravný notebook nemá vlastní stránku v kurzu; dostupný je nalezený textový úryvek."
+    },
+    "00_Prework/10_cleaning_data_heart_exercise.ipynb": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Tento přípravný notebook nemá vlastní stránku v kurzu; dostupný je nalezený textový úryvek."
+    },
+    "00_Prework/11_processing_categorical_data_heart_exercise.ipynb": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Tento přípravný notebook nemá vlastní stránku v kurzu; dostupný je nalezený textový úryvek."
+    },
+    "00_Prework/12_normalization_standardization_heart_exercise.ipynb": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Tento přípravný notebook nemá vlastní stránku v kurzu; dostupný je nalezený textový úryvek."
+    },
+    "00_Prework/13_train_valid_test_split_heart_exercise.ipynb": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Tento přípravný notebook nemá vlastní stránku v kurzu; dostupný je nalezený textový úryvek."
+    },
+    "03_Advanced_ML_Neural_Networks/SESSION_2_DATA_LANDSCAPE.md": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Přehled datových sad nemá samostatnou stránku v kurzu; dostupný je nalezený úryvek."
+    },
+    "README.md": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Projektový README nemá samostatnou stránku v kurzu; dostupný je nalezený úryvek."
+    },
+    "views/notebook_renderer.py": {
+      "page": null,
+      "kind": "unavailable",
+      "reason": "Jde o pomocný modul aplikace, nikoli samostatnou stránku kurzu."
+    }
+  }
+}

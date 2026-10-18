@@ -10,6 +10,10 @@ ROOT=Path(__file__).resolve().parents[2]
 def export(course, *, include_runtime=False):
     course=course.resolve(strict=True)
     if not (course/'app.py').is_file() or not (course/'views').is_dir():raise ValueError('Expected course checkout')
+    if include_runtime:
+        from course_links import audit_course_links
+        rows=[json.loads(line) for line in (ROOT/'data/normalized/chunks_curated.jsonl').read_text(encoding='utf-8').splitlines()]
+        print('Course link coverage:',json.dumps(audit_course_links(course,rows)))
     dest=course/'components/ml_librarian'
     if not dest.resolve().is_relative_to(course):raise ValueError('Export escapes course')
     files=[ROOT/'app.py',ROOT/'embedded.py',ROOT/'dock.py',ROOT/'requirements-librarian.txt']

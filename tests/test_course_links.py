@@ -1,7 +1,7 @@
 import sys,tempfile,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src/librarian'))
-from course_links import source_pages, course_link_info, RELATED_PAGES
+from course_links import source_pages, course_link_info, RELATED_PAGES, audit_course_links
 from unittest.mock import patch
 
 class CourseLinkTests(unittest.TestCase):
@@ -36,5 +36,20 @@ class CourseLinkTests(unittest.TestCase):
                 self.assertIn('Coders Lab',info['notice'])
                 self.assertIn('nejsou veřejně dostupné',info['notice'])
                 mapping.assert_not_called()
+
+    def test_release_gate_rejects_new_sources_and_stale_targets(self):
+        with patch('course_links.source_pages',return_value={}):
+            with self.assertRaisesRegex(ValueError,'classification'):
+                audit_course_links('unused',[{'source_path':'new-topic.md'}])
+            source=next(iter(RELATED_PAGES))
+            with self.assertRaisesRegex(ValueError,'no longer registered'):
+                audit_course_links('unused',[{'source_path':source}])
+
+    def test_all_chunks_share_source_policy_and_are_counted(self):
+        source=next(iter(RELATED_PAGES));target=RELATED_PAGES[source]
+        rows=[{'source_path':source,'chunk_id':str(i)} for i in range(3)]
+        with patch('course_links.source_pages',return_value={target:target}):
+            report=audit_course_links('unused',rows)
+        self.assertEqual(report,{'sources':{'related':1},'chunks':{'related':3}})
 
 if __name__=='__main__':unittest.main()

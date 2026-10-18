@@ -1,5 +1,7 @@
 """Resolve corpus sources to registered course pages without executing course code."""
 import ast
+import json
+from collections import Counter
 from functools import lru_cache
 from pathlib import Path
 
@@ -48,11 +50,10 @@ def source_pages(course_root):
     return mapping
 
 
-# Reviewed editorial associations, not claims that page text equals source text.
-RELATED_PAGES = {
-    '06_Final_Project/theory/04_modern_ml_2026_rag_agents_lora.md':
-        'views/06_modern_ml_rag_agents.py',
-}
+# Catalog is keyed by source file, so every chunk and citation shares its policy.
+CATALOG_PATH=Path(__file__).resolve().parents[2]/'config/course_source_catalog.json'
+CATALOG=json.loads(CATALOG_PATH.read_text(encoding='utf-8'))['sources']
+RELATED_PAGES={source:entry['page'] for source,entry in CATALOG.items() if entry['kind']=='related'}
 PDF_NOTICE = ('Zdrojová PDF nejsou součástí veřejné webové aplikace; obsahuje pouze jejich '
               'zpracované textové úryvky (chunks). Materiály jsou autorským majetkem Coders Lab '
               'a jsou určeny studentům a absolventům kurzu, nejsou veřejně dostupné. '
@@ -64,17 +65,40 @@ def course_link_info(source, course_root):
     lower=path.lower()
     pdf=(source.get('source_origin')=='Coderslab PDF' or lower.endswith('.pdf') or
          (lower.startswith('resources/') and ('pdf' in lower or source.get('source_kind')=='pdf')))
-    if pdf:return {'page':None,'label':None,'notice':PDF_NOTICE}
+    if pdf:return {'page':None,'label':None,'notice':PDF_NOTICE,'status':'pdf'}
     mapping=source_pages(str(course_root))
     page=mapping.get(path)
-    if page:return {'page':page,'label':'Otevřít v kurzu','notice':None}
+    if page:return {'page':page,'label':'Otevřít v kurzu','notice':None,'status':'direct'}
     related=RELATED_PAGES.get(path)
     if related and mapping.get(related)==related:
         return {'page':related,'label':'Související stránka kurzu',
-                'notice':'Stránka vysvětluje stejné téma; její obsah se může lišit od nalezeného úryvku.'}
-    return {'page':None,'label':None,
+                'notice':'Stránka vysvětluje stejné téma; její obsah se může lišit od nalezeného úryvku.','status':'related'}
+    entry=CATALOG.get(path,{})
+    if entry.get('kind')=='unavailable':
+        return {'page':None,'label':None,'notice':entry['reason'],'status':'unavailable'}
+    return {'page':None,'label':None,'status':'unmapped',
             'notice':'Materiál nemá samostatnou stránku v kurzu; nalezený úryvek je níže.'}
 
+
+
+def audit_course_links(course_root, rows):
+    """Release gate: no unknown sources or stale editorial page targets."""
+    rows=list(rows)
+    known={row['source_path'] for row in rows}
+    mapping=source_pages(str(course_root))
+    for source,entry in CATALOG.items():
+        if source not in known:continue
+        target=entry.get('page')
+        if target and mapping.get(target)!=target:
+            raise ValueError('Catalog target is no longer registered: '+target)
+    sources={}
+    chunks=Counter()
+    for row in rows:
+        info=course_link_info(row,course_root)
+        if info['status']=='unmapped':raise ValueError('Source needs course-link classification: '+row['source_path'])
+        sources[row['source_path']]=info['status']
+        chunks[info['status']]+=1
+    return {'sources':dict(Counter(sources.values())),'chunks':dict(chunks)}
 
 def render_course_link(source):
     # Only embedded in the host that owns st.navigation; standalone keeps its viewer.
