@@ -40,6 +40,7 @@ def render_dock():
         from snippet_format import format_snippet
         from demo_generation import demo_config,generate_demo_answer
         from answer_generation import GenerationError
+        from course_links import render_course_link
         with st.form('ml_dock_search'):
             query=st.text_input('Dotaz ke kurzu',value=state['query'],max_chars=1000,key='ml_dock_query')
             with st.expander('Filtry zdrojů'):
@@ -80,12 +81,15 @@ def render_dock():
                 st.text(claim['text'])
                 for citation in claim['citations']:
                     source=next(s for s in answer['sources'] if s['source_id']==citation['source_id'])
-                    with st.expander(citation['source_id']+' · '+source['source_path']):st.text(citation['quote'])
+                    with st.expander(citation['source_id']+' · '+source['source_path']):
+                        render_course_link(source)
+                        st.text(citation['quote'])
             if answer['limitation']:st.text(answer['limitation'])
         st.caption('Nalezené zdroje · relevance není pravděpodobnost správnosti')
         for rank,row in enumerate(results,1):
             score=row['whole_query_score'] if row.get('ranking_policy')=='weak-fusion-v2' else row.get('ranking_score',row['score'])
             with st.expander(f'{rank}. {row["source_path"]} · {score:.3f}'):
+                render_course_link(row)
                 st.caption(str(row.get('source_role',''))+' · '+str(row.get('source_origin','')))
                 st.markdown(format_snippet(row['text']),unsafe_allow_html=False)
                 st.caption(str(row.get('locator'))+' · '+row['chunk_id'])
