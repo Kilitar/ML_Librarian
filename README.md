@@ -136,3 +136,10 @@ It is not integrated into production. See `docs/ANSWERABILITY_EXPERIMENT.md`,
 all scores at `http://localhost:8765/eval/answerability_review.local.html`, and
 the optional manual pair-label sheet at
 `http://localhost:8765/eval/answerability_labels.local.html`.
+
+The first supervised pair pilot now has58 provisional coverage labels and
+fine-tunes the last MiniLM block/head on40 selected binary pairs. On nine fixed
+new questions its classification counts do not improve, so production is
+unchanged. Inspect `docs/SUPERVISED_PAIR_PILOT.md`, annotations at
+`http://localhost:8765/eval/pair_coverage_review.local.html` and all new results at
+`http://localhost:8765/eval/supervised_pair_review.local.html`.

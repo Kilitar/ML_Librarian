@@ -1,0 +1,15 @@
+{
+  "version":"supervised-pair-check-v1",
+  "scope":"Fixed before training or seeing retrieval/model outputs. Three algorithm families not used as the focus of annotated training pairs: Naive Bayes, TF-IDF, k-NN. Authored correlated triples, not independent human acceptance. Meaningful requests are not automatically answerable from returned passages.",
+  "questions":[
+    {"id":"sp01","kind":"nonsense","query":"Na kolik stupňů upéct Naive Bayes, aby lépe klasifikoval text?"},
+    {"id":"sp02","kind":"meaningful_technical","query":"Jak předpoklad podmíněné nezávislosti příznaků zjednodušuje Naive Bayes?"},
+    {"id":"sp03","kind":"meaningful_application","query":"Jak klasifikovat recenze restaurací pomocí Naive Bayes a textových příznaků?"},
+    {"id":"sp04","kind":"nonsense","query":"Which blanket should I wrap around TF-IDF to make rare words weigh more?"},
+    {"id":"sp05","kind":"meaningful_technical","query":"Why does TF-IDF downweight terms that appear in almost every document?"},
+    {"id":"sp06","kind":"meaningful_application","query":"How can I represent restaurant menus as TF-IDF vectors before comparing them?"},
+    {"id":"sp07","kind":"nonsense","query":"Jakim mydłem umyć k-NN, żeby trafniej wybierał sąsiadów?"},
+    {"id":"sp08","kind":"meaningful_technical","query":"Dlaczego przed k-NN warto standaryzować cechy o różnych skalach?"},
+    {"id":"sp09","kind":"meaningful_application","query":"Jak użyć k-NN do klasyfikacji owoców według masy i zawartości cukru?"}
+  ]
+}

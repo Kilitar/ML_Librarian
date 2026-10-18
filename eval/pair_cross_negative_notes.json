@@ -1,0 +1,17 @@
+{
+  "version":"pair-cross-negatives-next-v1",
+  "scope":"Provisional Codex review of already read passages. Prepared AFTER the v1 pilot; NOT used in its training or metrics. Future training needs a new version and different frozen validation. Same meaningful query must have both a direct and a wrong-relation passage to rule out query-only shortcuts.",
+  "source_raw_sha256":"0a7ebfed8cb936b183a0ae4cebb07ca36304cc51132ec8f0b5115c0bbae69da7",
+  "derived_query_source":"eval/pair_coverage_notes.json; one-based index in derived_positive_questions",
+  "pairs":[
+    {"query_id":"aq02","negative_source":["aq01",2],"positive_source":["aq02",2],"label":"topic_only","reason":"Výsledek RF bez ladění neříká jak ladit parametry; správný protějšek dává mřížku a GridSearchCV/MSE."},
+    {"query_id":"mi05","negative_source":["mi04",1],"positive_source":["mi05",1],"label":"topic_only","reason":"Inicializace k-means++ neodpovídá na výběr příznaků ke škálování, byť jde o stejný algoritmus."},
+    {"query_id":"mi08","negative_source":["mi07",2],"positive_source":["mi08",2],"label":"topic_only","reason":"Kovariance PCA neříká jak vybrat počet komponent podle variance."},
+    {"query_id":"mi08","negative_source":["mi08",4],"positive_source":["mi08",2],"label":"topic_only","reason":"Obecné doporučení pro škály a nelineární PCA neposkytuje kritérium počtu komponent."},
+    {"query_id":"gc04","negative_source":["mi01",2],"positive_source":["gc04",1],"label":"irrelevant","reason":"Typy uzlů stromu nevysvětlují zkratku ML."},
+    {"derived_query_index":7,"negative_source":["mi01",2],"positive_source":["mi01",1],"label":"topic_only","reason":"Stejná otázka na počet GridSearchCV fitů: popis uzlů neposkytuje požadované počty."},
+    {"derived_query_index":8,"negative_source":["mi01",1],"positive_source":["mi01",2],"label":"topic_only","reason":"Stejná otázka na typy uzlů: počet kombinací GridSearchCV nedává kořen/vnitřní/listový uzel."},
+    {"derived_query_index":14,"negative_source":["mi10",1],"positive_source":["mi10",2],"label":"topic_only","reason":"Obecné ladění SVM neposkytuje požadované ROC-AUC/Recall ani doporučený posun prahu z výsledkové pasáže."}
+  ],
+  "limits":"Not a second training result, no measured benefit claimed. No automatic human validation. Facts remain separate from coverage."
+}

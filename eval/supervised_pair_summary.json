@@ -1,0 +1,80 @@
+{
+  "created_at": "2026-10-18T04:13:17.863457+00:00",
+  "hashes": {
+    "config/supervised_pair_experiment.json": "6ac4320ed97e2ccbf82c75c65ade98c81974c0b1f5ea8ada57e00097c2a77fcb",
+    "eval/pair_coverage_notes.json": "92faa49753d02640710fe192ae284c9b5d0351e3def967004cc096745ca243d1",
+    "eval/pair_coverage_judgments.json": "7a362b5de741d97c1ff699e26493ae8666d3921801297e3ffcaa081653996895",
+    "eval/supervised_pair_training.local.json": "5c102e1b1f1c74dca13dcc6b9b995bf3724266c0f575d1bd3c9c592c4bf778c5",
+    "eval/supervised_pair_questions.json": "283ce2ab74a2ea72d35568962fb262bf37695f4afcf536818345293b71505ae1",
+    "eval/supervised_pair_retrieval.local.json": "bd8a6db6aa84adc6d1b78e174148984570db51a6a6a12ba7d3f15d0380942113",
+    "eval/supervised_pair_test_notes.json": "e3e6e3a2884dbd801f8dc74434ba60fe281736c0585511ee804986d3b091d95c",
+    "src/librarian/train_supervised_pairs.py": "e4e2459d83e94b33258afacea4d52e185e77335f6f8c23ea575c593e59677b63",
+    "src/librarian/prepare_supervised_pairs.py": "6458f3e4043ab36ad3dbd8463337603cec33ecb29759dc24558c7c5a7d4dab38",
+    "eval/supervised_pair_split.json": "2bcc76cc31d24881290955a7972703c7108bbc6e456365a83d5f278b70d2ace1"
+  },
+  "checks": {
+    "before": {
+      "tp": 3,
+      "fn": 1,
+      "fp": 2,
+      "tn": 23,
+      "direct_recall": 0.75,
+      "direct_precision": 0.6,
+      "primary_pair_count": 29,
+      "complete_nonsense_questions": [
+        "sp01",
+        "sp04",
+        "sp07"
+      ],
+      "nonsense_supported_questions": [
+        "sp07"
+      ],
+      "nonsense_false_positive_rate": 0.3333333333333333
+    },
+    "after": {
+      "tp": 3,
+      "fn": 1,
+      "fp": 2,
+      "tn": 23,
+      "direct_recall": 0.75,
+      "direct_precision": 0.6,
+      "primary_pair_count": 29,
+      "complete_nonsense_questions": [
+        "sp01",
+        "sp04",
+        "sp07"
+      ],
+      "nonsense_supported_questions": [
+        "sp07"
+      ],
+      "nonsense_false_positive_rate": 0.3333333333333333
+    },
+    "train_test_overlap": [],
+    "training_pairs_used": 40,
+    "reserved_annotation_ids": [
+      "db08_1",
+      "db08_2",
+      "db08_3",
+      "db08_4",
+      "db08_5"
+    ],
+    "positive_count": 25,
+    "negative_count": 15,
+    "training_over_limit": [],
+    "test_over_limit": [],
+    "predeclared_criteria_met": false,
+    "production_changed": false,
+    "broad_release_accepted": false
+  },
+  "training_seconds": 15.049637799995253,
+  "epoch_loss": [
+    0.4164310313761234,
+    0.370018520578742,
+    0.35077971369028094,
+    0.34709773436188696,
+    0.33803416341543197
+  ],
+  "trainable_parameters": 1922689,
+  "checkpoint_sha256": "69a0c7c6850236258e91357fa579dc10490f418e8fdc370b3f4ed945e589f74d",
+  "raw_sha256": "3ac4178d77245a7f4845a1a4ea130d08915854d1907ad2dc431080e2e44825b4"
+}

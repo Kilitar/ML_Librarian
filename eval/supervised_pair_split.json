@@ -1,0 +1,6 @@
+{
+  "version":"supervised-pair-split-v1",
+  "excluded_training_question_ids":["db08"],
+  "reason":"Before fitting, reserve the known k-NN scale audit rather than training on a family used in the new check. Two of its passage bodies recur in the new retrieval. All five db08 annotations remain visible but are excluded from training; no test result is removed. No model predictions were used for this split.",
+  "require_no_exact_query_or_passage_overlap":true
+}

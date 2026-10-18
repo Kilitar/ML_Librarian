@@ -1,0 +1,20 @@
+{
+  "version":"supervised-pair-v1",
+  "base_model":"cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+  "revision":"1427fd652930e4ba29e8149678df786c240d8825",
+  "input":"Original question paired with body plus actual adjacent heading, never source path/title. Only complete untruncated pairs train or enter primary metrics.",
+  "target":"direct=1; topic_only or irrelevant=0; partial and unjudgeable excluded. Provisional Codex coverage labels, not factual/human validation.",
+  "seed":17,
+  "epochs":5,
+  "batch_size":4,
+  "max_tokens":512,
+  "learning_rate_last_block":0.00005,
+  "learning_rate_classifier":0.0005,
+  "weight_decay":0.01,
+  "max_grad_norm":1.0,
+  "trainable":"Last transformer block and classification head only; rest frozen. Separate safe numeric checkpoint, production weights untouched.",
+  "positive_loss_weight":"negative_count/positive_count",
+  "threshold":0.5,
+  "promotion_criteria":{"heldout_direct_recall_min":0.8,"heldout_nonsense_false_positive_rate_max":0.2,"nonsense_false_positive_reduction_min":0.2,"exact_train_test_query_or_text_overlap":0},
+  "limits":"Small synthetic supervised pilot; no search/gate promotion on training fit or familiar question improvements. No threshold, prompt, epoch or learning-rate tuning on heldout scores. Factual source correctness assessed separately."
+}

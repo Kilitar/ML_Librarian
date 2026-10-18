@@ -32,13 +32,14 @@ def main():
             if result.get('heading_context'):
                 page.append('<p>Nadpis ve zdroji: '+esc(result['heading_context']['text'])+'</p>')
             page.append('<pre>'+esc(result['text'])+'</pre>')
-            for value,label in [('direct','Odpovídá na celou otázku'),('partial','Jen dílčí opora nebo společné téma'),('irrelevant','Na požadovaný vztah neodpovídá'),('unjudgeable','Nedokážu rozhodnout')]:
+            for value,label in [('direct','Odpovídá na celou otázku'),('partial','Odpovídá jen na část otázky'),('topic_only','Pouze společné téma; požadovaný vztah chybí'),('irrelevant','S otázkou nesouvisí'),('unjudgeable','Nedokážu rozhodnout')]:
                 page.append(f'<label><input type="radio" name="{key}" value="{value}"> {label}</label>')
             page.append(f'<label>Poznámka <input type="text" data-note="{key}" maxlength="1000"></label><details><summary>Zobrazit modelová skóre</summary>Původní whole {result["whole_query_score"]:.4f}; Qwen yes {score:.4f}</details></article>')
-    payload={'version':'answerability-pair-review-v1','frozen_raw_sha256':raw_sha,
+    payload={'version':'answerability-pair-review-v2','frozen_raw_sha256':raw_sha,
              'scope':'Manual labels, not automatically approved or used for training',
-             'labels':{'direct':'Whole-question answer coverage','partial':'Partial coverage or topic only',
-                       'irrelevant':'Does not answer requested relation','unjudgeable':'Needs further review'},'pairs':pairs}
+             'labels':{'direct':'Whole-question answer coverage','partial':'Actual partial answer coverage',
+                       'topic_only':'Topic match without requested relation',
+                       'irrelevant':'Unrelated to question','unjudgeable':'Needs further review'},'pairs':pairs}
     # Never interpolate query/source strings into executable JavaScript.
     safe=json.dumps(payload,ensure_ascii=False).replace('<','\\u003c').replace('>','\\u003e').replace('&','\\u0026')
     page.append('<script type="application/json" id="data">'+safe+'</script>')
