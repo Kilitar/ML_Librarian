@@ -36,3 +36,5 @@ Source APIs consulted:
 
 CSS targets only module-owned st-key classes. Future Streamlit frontend changes
 may require styling adjustment; no global lesson layout CSS is modified.
+
+Visual feedback fix: launcher moved to5rem above viewport bottom plus mobile safe-area inset; open panel bottom raised correspondingly. This leaves room for Streamlit Cloud bottom-right controls without hiding provider controls.

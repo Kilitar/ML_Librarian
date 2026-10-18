@@ -4,10 +4,10 @@ import sys
 import streamlit as st
 ROOT=Path(__file__).resolve().parent
 CSS="""<style>
-.st-key-ml_librarian_launcher {position:fixed;right:1rem;bottom:1rem;width:auto;z-index:990;}
-.st-key-ml_librarian_dock {position:fixed;right:1rem;top:4rem;bottom:4.8rem;width:min(440px,calc(100vw - 2rem));max-width:calc(100vw - 2rem);overflow-y:auto;overscroll-behavior:contain;padding:1rem;background:var(--st-background-color,var(--background-color,#0e1117));color:var(--st-text-color,var(--text-color,#fafafa));border:1px solid #80808066;border-radius:12px;box-shadow:0 8px 40px #0004;z-index:989;animation:mlDockIn .18s ease-out;}
+.st-key-ml_librarian_launcher {position:fixed;right:1rem;bottom:calc(5rem + env(safe-area-inset-bottom, 0px));width:auto;z-index:990;}
+.st-key-ml_librarian_dock {position:fixed;right:1rem;top:4rem;bottom:calc(8.8rem + env(safe-area-inset-bottom, 0px));width:min(440px,calc(100vw - 2rem));max-width:calc(100vw - 2rem);overflow-y:auto;overscroll-behavior:contain;padding:1rem;background:var(--st-background-color,var(--background-color,#0e1117));color:var(--st-text-color,var(--text-color,#fafafa));border:1px solid #80808066;border-radius:12px;box-shadow:0 8px 40px #0004;z-index:989;animation:mlDockIn .18s ease-out;}
 @keyframes mlDockIn {from{transform:translateX(24px);opacity:0}to{transform:translateX(0);opacity:1}}
-@media(max-width:600px){.st-key-ml_librarian_dock{right:.5rem;top:3.5rem;bottom:4.5rem;width:calc(100vw - 1rem);max-width:calc(100vw - 1rem);}}
+@media(max-width:600px){.st-key-ml_librarian_dock{right:.5rem;top:3.5rem;bottom:calc(8.5rem + env(safe-area-inset-bottom, 0px));width:calc(100vw - 1rem);max-width:calc(100vw - 1rem);}}
 @media(prefers-reduced-motion:reduce){.st-key-ml_librarian_dock{animation:none}}
 </style>"""
 

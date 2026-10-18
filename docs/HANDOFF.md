@@ -247,3 +247,5 @@ INTEGRATION PUBLICATION VERIFIED: source implementation ce55d19 onML_Librarian o
 Dockadditionalverification:mockHTTP(validsourcequote)answerdisplay/persistenceafterpagechange passed; failednewsearchclearsstaleanswer/results. No realAPIcall. Addedsharedembeddedindexfactoryfordock/fullpage toavoidduplicateweights.129backendtests pass. CSSvisualreviewstillpending; no lecturer redesign.
 
 DOCKPUBLICATIONVERIFIED:sourceed7f0ce onML_Librarian/master,course5dde82e onCoderslab-DataScience/main;remoteSHAequalboth. SharedindexfactoryAppTest verifiedsingleloadacrossdock/fullpage. Courseapp8767restartafterverifiedexactprocesscommand; desktop/mobilevisualreviewpending. No liveGroq/publichostCSSclaim; nolecturerredesign.
+
+2026-10-18 user screenshot confirms Cloud controls overlap docklauncher atbottom1rem. Movedlauncher tobottomcalc(5rem+safe-area), panelbottom8.8rem/8.5rem mobile; no controlhiding or backendchange. Syntax/diffchecks; visualfinalreviewafterCloudrebuild.
