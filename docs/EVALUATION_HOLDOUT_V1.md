@@ -3,7 +3,7 @@
 ## Method
 
 Nine new questions were fixed before retrieving their results on the repaired
-4,189-chunk index. Six course questions balance CZ/EN/PL and conceptual/practical
+4, 189-chunk index. Six course questions balance CZ/EN/PL and conceptual/practical
 intent; three ask for private or live facts outside the corpus. Some subjects
 overlap earlier course topics, so these are new question/task formulations, not
 an entirely unseen domain benchmark. No ranking, alias, curation or index changes

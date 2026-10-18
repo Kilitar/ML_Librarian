@@ -15,7 +15,7 @@ conditional safety signal, not an unrestricted domain classifier.
 ## Model and reproducibility
 
 Balanced logistic regression, C=10, seed0, on frozen multilingual E5 query
-embeddings from 37 historical synthetic evaluation questions (25 course,12 absent).
+embeddings from 37 historical synthetic evaluation questions (25 course, 12 absent).
 The labels originally described evidence availability and are only provisional
 domain labels. Ambiguous training questions are excluded. No dish/forbidden-word
 list is used. There was no hyperparameter or threshold tuning on the new set.

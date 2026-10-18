@@ -10,9 +10,9 @@ No application control or API key was added; the live app continues its E5 path.
 ## Implementation and reproduction
 
 The optional `mode="hybrid"` lazily builds a TF-IDF matrix over the existing
-4,189 chunks (no embedding rebuild, pickle, external call or source change).
+4, 189 chunks (no embedding rebuild, pickle, external call or source change).
 It uses accent-insensitive word unigrams/bigrams, sublinear TF, English stopwords,
-and at most 100,000 features. The final tokenizer requires at least two characters.
+and at most 100, 000 features. The final tokenizer requires at least two characters.
 
 Equal-weight reciprocal-rank fusion uses `k=60`:
 `0.5 * 61/(60 + semantic_rank) + 0.5 * 61/(60 + lexical_rank)`.

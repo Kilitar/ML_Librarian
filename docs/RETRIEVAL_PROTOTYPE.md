@@ -6,7 +6,7 @@
 
 ## Current local search
 
-The curated corpus has 4,196 chunks from 347 sources. Full indexing runs locally on CPU in roughly 2 minutes on this development machine. Nothing is sent to an embedding API. The versioned matrix and manifest are stored under ignored `data/index/` paths. Each manifest identifies the model, exact ordered corpus fingerprint, dimensions, and index filename; the search service refuses stale or unsafe index references. Rebuilds create a new fingerprinted matrix and only switch the manifest after the new matrix is complete, leaving the previous matrix available. Runtime model loading is restricted to the local cache, so query-time search does not contact Hugging Face.
+The curated corpus has 4, 196 chunks from 347 sources. Full indexing runs locally on CPU in roughly 2 minutes on this development machine. Nothing is sent to an embedding API. The versioned matrix and manifest are stored under ignored `data/index/` paths. Each manifest identifies the model, exact ordered corpus fingerprint, dimensions, and index filename; the search service refuses stale or unsafe index references. Rebuilds create a new fingerprinted matrix and only switch the manifest after the new matrix is complete, leaving the previous matrix available. Runtime model loading is restricted to the local cache, so query-time search does not contact Hugging Face.
 
 Build the search index and try a query:
 

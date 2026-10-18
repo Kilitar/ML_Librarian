@@ -1,6 +1,6 @@
 # Local source verification
 
-Each result card includes “Otevřít zdroj”. The dialog shows its source path, the extracted source text and a selector for PDF pages, notebook cells or presentation text parts when the source has multiple records. It initially selects the exact matching locator, falling back to the first part if unmatched. A very long part is previewed up to 150,000 characters; the original remains the complete source.
+Each result card includes “Otevřít zdroj”. The dialog shows its source path, the extracted source text and a selector for PDF pages, notebook cells or presentation text parts when the source has multiple records. It initially selects the exact matching locator, falling back to the first part if unmatched. A very long part is previewed up to 150, 000 characters; the original remains the complete source.
 
 “Stáhnout původní soubor” serves immutable snapshot bytes, not an exported snippet. The source must occur in both `documents.jsonl` and the snapshot manifest. The download checks size and SHA-256 against the manifest and rejects paths outside the resolved snapshot. Downloads above 25 MiB are unavailable while extracted text remains readable. Original source code/notebooks are downloaded as files, never imported or executed. No course checkout writes, external requests or live course-page execution occur.
 

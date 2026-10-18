@@ -2,7 +2,7 @@
 
 ## Scope
 
-This offline comparison scores the same 12 authored questions (four topics in Czech, English, and Polish) against the full curated instructional-text corpus. The corpus contains 4,196 chunks from 347 source files. It keeps course notes, PDF text, notebook markdown, and longer instructional Streamlit text; notebook code, Python comments/docstrings, and short UI literals are excluded. The source files and curation rules are recorded separately in the workspace.
+This offline comparison scores the same 12 authored questions (four topics in Czech, English, and Polish) against the full curated instructional-text corpus. The corpus contains 4, 196 chunks from 347 source files. It keeps course notes, PDF text, notebook markdown, and longer instructional Streamlit text; notebook code, Python comments/docstrings, and short UI literals are excluded. The source files and curation rules are recorded separately in the workspace.
 
 The retrievers are word/character-independent TF-IDF (unigrams and bigrams) and `intfloat/multilingual-e5-small`, with E5's `query:` and `passage:` prefixes. Both rank the same candidates. Metrics are page-level Recall@5 and MRR@5: a result counts as relevant when its source path matches one of the provisional expected paths. Queries whose expected paths are absent from the corpus are excluded from aggregate metrics and reported explicitly.
 

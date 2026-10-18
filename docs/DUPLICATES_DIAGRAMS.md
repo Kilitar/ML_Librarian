@@ -15,13 +15,13 @@ Reported diagram: old chunk `96ad59d81dea150585e1` from
 - Corpus construction collapsed repeated spaces in all text, including ASCII
   diagrams and Python code. `chunk_text.py` now treats fenced blocks atomically,
   preserves their internal whitespace and blank lines, and only normalizes prose.
-  A fenced block may exceed the 1,100-character prose target to avoid splitting
+  A fenced block may exceed the 1, 100-character prose target to avoid splitting
   its fence. The embedding model's own token limit still applies.
 - Added the Polish `k-średnich` algorithm alias for K-Means.
 
 Rebuilt from existing Librarian normalized source records, without touching the
-course checkout or immutable snapshot. Corpus now contains 4,189 chunks from
-347 sources (previously 4,196). Rebuilt offline index fingerprint:
+course checkout or immutable snapshot. Corpus now contains 4, 189 chunks from
+347 sources (previously 4, 196). Rebuilt offline index fingerprint:
 `11423d013eb8bd91` (prefix; full hash in the local index manifest).
 Prior corpus and manifest: `logs/pre-format-fix/`; old versioned index remains.
 Historical evaluation judgments and before/after reports describe the prior
