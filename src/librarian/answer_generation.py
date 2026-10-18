@@ -110,5 +110,7 @@ def generate_answer(query, results, evidence, api_key, model, *, consent=False, 
         raise GenerationError('API nevrátilo platnou JSON odpověď. Zdroje zůstávají dostupné.') from None
     except (KeyError, IndexError, TypeError):
         raise GenerationError('API vrátilo neočekávanou strukturu odpovědi. Zdroje zůstávají dostupné.') from None
-    except Exception:
-        raise GenerationError('Generování se nezdařilo nebo model vrátil neplatná data. Zdroje zůstávají dostupné.') from None
+    except Exception as exc:
+        # Class name only: never include exception text, headers or provider body.
+        code = type(exc).__name__ if type(exc).__module__ == 'builtins' else 'InternalError'
+        raise GenerationError(f'Generování selhalo ({code}). Zdroje zůstávají dostupné.') from None
