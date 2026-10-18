@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Datový/kalibrační krok: audit129 známých párů,48 přímo fitovaných a118 propojených se zdroji/otázkami; přísný v1/v2 source-transfer pool má jen2 direct+4 negative. Původní textový model: na100 známých binárních párech nelze dosáhnout80% recall bez chybných přijetí(max60%). Nově24dotazů/120 NEANOTOVANÝCH pasáží,8dotazů/jazyk,19okruhů;12 dalších otázek rezervováno bez spuštění. Produkce/prahy beze změny.115testů prošlo. http://localhost:8765/eval/calibration_collection_review.local.html.",
+  "status_note": "Po dohodě uzavíráme časově přetažené ladění retrievalu a pokračujeme prototypem RAG odpovědí s citacemi. Retrieval je funkční se známými omezeními; původní přejímka kvality zůstává nesplněná. Kalibrace odložena,12rezervovaných otázek nepoužito.",
   "tasks": [
     {
       "id": "scope",
@@ -61,8 +61,8 @@
       "phase": "Neděle",
       "title": "Volitelný BYOK LLM + retrieval-only fallback",
       "estimate_hours": 2,
-      "status": "todo",
-      "detail": "Odloženo: přejímka retrievalu v1 zatím nesplnila předem stanovená kritéria. Budoucí generování volitelně BYOK, citace a retrieval-only fallback; bez sdíleného owner key."
+      "status": "in_progress",
+      "detail": "První volitelný OpenAI BYOK prototyp: pouze explicitní požadavek a souhlas s odesláním dotazu/nejvýše5úryvků; klíč pouze pro požadavek, žádný sdílený owner key. Tvrzení s kontrolou citovaného textu, dílčí odpověď/odmítnutí, zdroje vždy dostupné.122unit testů + AppTest s mock API; živá kvalita a volání API zatím neověřeny bez vlastního klíče. docs/ANSWER_PROTOTYPE.md."
     },
     {
       "id": "ui",
@@ -78,8 +78,8 @@
       "phase": "Neděle",
       "title": "Held-out evaluace CZ/EN/PL",
       "estimate_hours": 2,
-      "status": "in_progress",
-      "detail": "Doplněno27 kontrastních párů z9oddělených zdrojů:9direct/18topic_only,9dotazů každý jazyk. Sestaveno po čtení zdrojů, nikoli výsledky retrievalu nebo nezávislý test. Celkem276párů; původní base86direct/125negative a14binárních skupin splňuje početní minima. V1/v2 strict11direct/22negative stále nedostatek. Podobné zdroje mohou sdílet PDF; skupiny nejsou důkaz tematické nezávislosti. Produkce/prahy beze změny,12testových dotazů nepoužito. Další: kandidátský split a oddělení reprezentativních retrieval párů od kontrastních stress párů. docs/CALIBRATION_DATA.md; /eval/source_group_extension_review.local.html. Přejímka neprošla/BYOK odloženo."
+      "status": "deferred",
+      "detail": "Další ladění a kalibrace odloženy rozhodnutím uživatele. Evidence Search funkční se známými chybami; přejímka not_accepted, nikoli splněná. Anotace276párů a experimenty zachovány.12rezervovaných testových otázek nepoužito. Návrat k ladění podle dopadu na celý RAG."
     },
     {
       "id": "demo",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-18T05:02:15.779350+00:00",
+  "updated_at": "2026-10-18T05:32:05.666297+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10

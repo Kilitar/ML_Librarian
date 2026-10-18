@@ -19,7 +19,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe src\librarian\retrieval_tfidf.py
 .\.venv\Scripts\python.exe src\librarian\retrieval_e5.py --sample
 ```
-The first E5 run downloads weights from Hugging Face and caches them under `.cache/hf`. Current prototype is retrieval-only; it does not call an LLM API.
+The first E5 run downloads weights from Hugging Face and caches them under `.cache/hf`. Search remains local and is the default. An optional OpenAI BYOK answer prototype sends the query and up to5 bounded excerpts only on explicit generation submission and consent; see docs/ANSWER_PROTOTYPE.md.
 
 Build the curated local search index and run a query:
 

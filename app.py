@@ -16,6 +16,7 @@ from evidence_gate import assess_evidence  # noqa: E402
 from result_presentation import partition_results  # noqa: E402
 from source_filters import SOURCE_ROLES, SOURCE_ORIGINS  # noqa: E402
 from source_viewer import SourceCatalog, DOCUMENTS, initial_part  # noqa: E402
+from answer_generation import prepare_context, generate_answer, GenerationError  # noqa: E402
 
 
 st.set_page_config(page_title="ML Librarian · evidence search", page_icon="📚", layout="wide")
@@ -130,10 +131,29 @@ def render_result(rank, result, base_url, *, inline=False):
 st.title("📚 ML Librarian")
 st.caption("Lokální vyhledávání ve studijních materiálech · CZ / EN / PL")
 
-st.info(
-    "Toto je zatím režim **Evidence Search**: ukazuje nalezené úryvky a jejich původ. "
-    "Odpověď generovaná LLM ještě není zapojena. Dotaz se ukládá pouze do paměti této relace."
-)
+st.info("Vyhledávání běží lokálně. Volitelný prototyp odpovědi s citacemi najdeš pod nalezenými zdroji. "
+        "Dotazy a odpovědi se uchovávají pouze v paměti této relace.")
+
+
+def request_answer():
+    # Callback runs before widgets rerender; the key is consumed and removed here.
+    key = st.session_state.pop("llm_key", "")
+    st.session_state.pop("generated_answer", None)
+    st.session_state.pop("generation_error", None)
+    try:
+        rows = st.session_state.get("evidence_results", [])
+        question = st.session_state.get("evidence_query", "")
+        answer = generate_answer(question, rows, assess_evidence(rows, question), key,
+            st.session_state.get("llm_model", "").strip(),
+            consent=st.session_state.get("llm_consent", False))
+        st.session_state["generated_answer"] = answer
+    except GenerationError as exc:
+        st.session_state["generation_error"] = str(exc)
+    except Exception:
+        st.session_state["generation_error"] = "Generování se nezdařilo. Nalezené zdroje jsou stále dostupné."
+    finally:
+        key = None
+
 
 with st.form("evidence_search", clear_on_submit=False):
     query = st.text_input(
@@ -149,6 +169,9 @@ with st.form("evidence_search", clear_on_submit=False):
     submitted = st.form_submit_button("Vyhledat zdroje", type="primary")
 
 if submitted:
+    st.session_state.pop("generated_answer", None)
+    st.session_state.pop("generation_error", None)
+    st.session_state.pop("evidence_results", None)
     if not query.strip():
         st.warning("Nejdřív napiš dotaz.")
         st.session_state.pop("evidence_results", None)
@@ -211,5 +234,44 @@ if results is not None:
             for rank, result in additional:
                 render_result(rank, result, base_url, inline=True)
 
+    st.subheader("Odpověď nad zdroji · prototyp")
+    st.caption("Citace ověřujeme proti textu úryvků. Samotná přítomnost citace nezaručuje správnost tvrzení; opora retrievalu má známá omezení.")
+    if evidence["status"] in ("supported", "uncertain") and results:
+        if evidence["status"] == "uncertain":
+            st.warning("Opora je nejistá. Případná odpověď bude označena jako dílčí a je potřeba ji zkontrolovat.")
+        with st.expander("Co se odešle modelu", expanded=False):
+            context = prepare_context(st.session_state["evidence_query"], results, evidence)
+            st.write(context["question"])
+            for source in context["sources"]:
+                st.caption(source["source_id"]+" · "+source["source_path"])
+                st.text(source["text"])
+                if source["truncated"]: st.caption("Úryvek pro model je zkrácen na 4000 znaků.")
+        with st.form("answer_request", clear_on_submit=True):
+            st.text_input("Model v tvém OpenAI API účtu", placeholder="Identifikátor modelu podporujícího JSON odpovědi", key="llm_model", max_chars=100)
+            st.text_input("Vlastní OpenAI API klíč", type="password", key="llm_key")
+            st.checkbox("Souhlasím s odesláním tohoto dotazu a zobrazených úryvků do OpenAI API. Použije se moje API kvóta.", key="llm_consent")
+            st.caption("Klíč se použije pro tento požadavek a poté se pole vymaže. Aplikace jej nezapisuje do souborů ani logů. Vyhledávání API klíč nepotřebuje.")
+            st.form_submit_button("Vygenerovat odpověď s citacemi", on_click=request_answer)
+    else:
+        st.info("Bez ověřené opory se generování nespouští. Upřesni otázku nebo prohlédni nalezené pasáže.")
+    if st.session_state.get("generation_error"):
+        st.warning(st.session_state["generation_error"])
+    answer = st.session_state.get("generated_answer")
+    if answer:
+        if answer["status"] == "insufficient": st.info("Model v úryvcích nenašel dostatečnou odpověď.")
+        elif answer["status"] == "partial": st.warning("Dílčí odpověď — podklady nepokrývají spolehlivě celou otázku.")
+        else: st.caption("Návrh odpovědi z nalezených podkladů · ověř citace")
+        sources = {source["source_id"]: source for source in answer["sources"]}
+        for i, claim in enumerate(answer["claims"], 1):
+            # Plain text prevents generated links/HTML from becoming actionable UI.
+            st.text(claim["text"])
+            for j, citation in enumerate(claim["citations"], 1):
+                source = sources[citation["source_id"]]
+                with st.expander(citation["source_id"]+" · "+source["source_path"]+" · "+str(source["locator"])):
+                    st.text(citation["quote"])
+                    match = next(r for r in results if r["chunk_id"] == source["chunk_id"])
+                    if st.button("Otevřít citovaný zdroj", key=f"citation_{i}_{j}"): show_source(match)
+        if answer["limitation"]: st.text(answer["limitation"])
+
 st.divider()
-st.caption("Index i embedding model běží lokálně. Vyhledávání neposílá obsah kurzu do externího API.")
+st.caption("Index i vyhledávání běží lokálně. Pouze výslovně vyžádané generování odešle dotaz a nejvýše 5 úryvků do OpenAI API.")
