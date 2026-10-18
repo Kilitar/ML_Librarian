@@ -83,7 +83,8 @@ notebook is executed. See `docs/SOURCE_VIEWER.md` for limits and verification.
 
 The first frozen cross-topic acceptance check remains **not accepted**. Its
 historical PCA rejection and known English spam rationale have been repaired;
-the out-of-domain recipe and some multilingual formulations remain unresolved.
+the known Polish soup case is now filtered by a narrow domain guard. New pancake
+and multilingual retrieval failures still block acceptance.
 See `docs/ACCEPTANCE_V1.md` and the
 preserved original review at `http://localhost:8765/eval/acceptance_v1_review.local.html`.
 
@@ -107,3 +108,12 @@ pool. The known English spam query now shows the lost-work-email rationale secon
 the context opens automatically and never supplies the original question's support
 score. PL cost coverage still has gaps. See `docs/METRIC_CHOICE.md` and all paired
 excerpts at `http://localhost:8765/eval/metric_choice_review.local.html`.
+
+Evidence-v5 optionally uses a locally fitted logistic domain classifier only in
+the original reranker's [.10,.20) grey band. Strong results and structural rules
+keep their previous behavior; query vectors are reused and passage order/scores
+are unchanged. The known Polish soup query becomes no_support. The new Polish
+pancake query still incorrectly receives supported, and a valid feature-scaling
+question remains hard rejected; no broad reliability claim is made. See
+`docs/GREY_DOMAIN_GUARD.md` and the complete query/excerpt review at
+`http://localhost:8765/eval/grey_domain_review.local.html`.

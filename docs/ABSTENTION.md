@@ -1,5 +1,10 @@
 # Evidence availability / abstention — 2026-10-17
 
+Current policy is evidence-v5: the optional learned grey-band domain guard is
+described in `GREY_DOMAIN_GUARD.md`. Thresholds and structural exceptions below
+remain; only ordinary uncertain results with a validated outside-domain signal
+can become no_support. Historical evaluation figures below are preserved.
+
 ## User-visible behavior
 
 For `kolik je hodin`, the app now says it did not find sufficient support in the

@@ -4,7 +4,7 @@
   "total_estimate_hours": 16,
   "recorded_actual_hours": 0,
   "actual_tracking_started_at": "2026-10-17T09:18:56Z",
-  "status_note": "Doplněn kontext ceny chyb při prioritě precision/recall: známý EN spam a nové CZ/EN varianty mají důvod ztráty důležitého emailu druhý; recall/screening má druhý rozbor FN. První výsledek a skóre opory původní otázky zachovány. 36 full-search párů+40 fixed-passage replayů: 0 změn gate;97 testů+7 AppTest. PL varianta stále bez přímého důvodu v top3, starý recept PL uncertain; přejímka v1 zůstává historicky neprošlá. http://localhost:8765/eval/metric_choice_review.local.html. Další: hraniční opora mimo kurz a nová nezávislá přejímka; BYOK odloženo.",
+  "status_note": "Nasazena úzká doménová pojistka evidence-v5 pro nejisté skóre [.10,.20): známá polská polévka nyní no_support; pořadí/skóre pasáží nemění. 24 nových formulací+4 kontroly skutečně vyhledány,36 starších výsledků jen policy replay. Žádný nový odborný dotaz nebyl pojistkou odmítnut; nové formulace nezměnily stav.106 testů+7 AppTest. Celková přejímka NEPROŠLA: nový dotaz Jak zrobić naleśniki? chybně supported(.203), platné PL škálování gd11 stále no_support. Model také palačinky řadí dovnitř(.559); pouhé rozšíření pásma nepomůže. http://localhost:8765/eval/grey_domain_review.local.html. BYOK odloženo.",
   "tasks": [
     {
       "id": "scope",
@@ -79,7 +79,7 @@
       "title": "Held-out evaluace CZ/EN/PL",
       "estimate_hours": 2,
       "status": "in_progress",
-      "detail": "Původní přejímka v1 uchována/not_accepted. PCA EN opraveno zdrojovým nadpisem. Kontext ceny chyb doplněn pro známý EN spam a nové CZ/EN priority; PL varianta nevyřešena. 36 full-search párů+40 pevných replayů se stejnými gate stavy;97 unit testů a7 skutečných formulářů. Nejde o nezávislé lidské schválení. Další: spolehlivé rozlišení hraničních nesouvisejících dotazů a nová fixovaná přejímka. docs/METRIC_CHOICE.md."
+      "detail": "Přejímka v1 uchována/not_accepted. PCA EN a kontext známého EN spamu opraveny; PL volba metrik stále slabá. Úzký classifier z37 historických štítků nyní odmítá známou PL polévku jen v pásmu [.10,.20). Nová kontrola24+4 plných vyhledání a36 policy replayů: žádné nové odmítnutí validní otázky, žádná změna stavů na nové sadě. Nové chyby: palačinky PL supported a validní PL škálování no_support.106 testů+7 AppTest. Další: širší, různorodější doménová data a nová fixovaná validace; ne rozšíření prahů podle jednoho příkladu. docs/GREY_DOMAIN_GUARD.md."
     },
     {
       "id": "demo",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-17T18:11:58.498891+00:00",
+  "updated_at": "2026-10-18T03:23:02.370393+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10

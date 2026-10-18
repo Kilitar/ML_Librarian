@@ -1,0 +1,67 @@
+{
+  "scope": "Limited conditional repair; not accepted release. 24 fresh formulations plus4 controls full search;36 fixed-result policy replays. Topic families correlate with training.",
+  "raw_sha256": "285bf5514a9ab0401371e1f2d6ef2180e6d9967d2eb34d3f1d81c39da4bc971c",
+  "source_hashes_pre_default_promotion": {
+    "eval/grey_domain_questions.json": "dbea5a87a7113fae0c8f0d797535c5ed3c453b376f948d4a129f32131a07e7f9",
+    "eval/domain_probe_training.json": "91bcb7bcd1b7f73ef9efaf36b09021d10c01ea5dc2ce6a260edc28131c27a501",
+    "config/grey_domain_v1.json": "d13b7a43c2764c72f8db1183cd096b931978e4534f79d3bdfaf625da1c35e31f",
+    "src/librarian/domain_guard.py": "2695856417a05cf77e6a275685e481d34ce74d5a93ed9be0611c4d269e3d47c4",
+    "src/librarian/train_domain_guard.py": "8f8ec655dfdaf3148529624b13e46cea7fc24ae5d67239de301194566b2a8afd",
+    "src/librarian/evaluate_grey_domain.py": "798972f5215f95ea46414f8aab2ce39a4d5a1086a74869bfe7e08967347dc21b",
+    "src/librarian/search.py": "3955380182323850cfc65a15200cec2cadd09b43656fbb0998784c1c00e2efc4",
+    "src/librarian/evidence_gate.py": "6795c0b6dda2be851ee1324887829fcd5d0841f9097fec3fb415b787aac783e6",
+    "src/librarian/rerank.py": "5c5be05721c17af8d58aecdfb7d9e8c8f908ef36044ae5b745ff9f92fda400c7",
+    "src/librarian/heading_context.py": "803cc9012e360b785bc0a99ebc0f6d01127a846b2b7e699c60bbcdbe5eabbbb6",
+    "src/librarian/metric_choice.py": "e5e9e0a5b2d5931a7962c8419dc0ab224916fb232c1bc46b82c087ad9fb42c6f",
+    "src/librarian/ranking_fusion.py": "26f1814254a56f33bff7a7e04c6128c21d12e2c71e7f9bc5fcaae432ddbd63ca",
+    "data/index/multilingual_e5_curated.json": "713bb8c4afaefdf5780c08c7e55558aa2bc47f93f2d2af952c8d358ce75dfa5e",
+    "eval/metric_choice.local.json": "a44c42df8fd4eaf85be5b629a64fe71b6e1f9cf4e3ecc133286244ac2b978b56",
+    "eval/grey_domain_training.local.json": "505eed44b07b02487a08049c51e52d6b284848a1c279b336806a018192c3fbe1"
+  },
+  "checks": {
+    "known_polish_soup_no_support": true,
+    "new_valid_to_no_support": [],
+    "supported_status_changes": [],
+    "new_supported_absent": [],
+    "ranking_id_changes": 0,
+    "historical_loo_new_valid_rejections": []
+  },
+  "status_changes": [
+    {
+      "id": "av11",
+      "before": "uncertain",
+      "after": "no_support"
+    }
+  ],
+  "fresh_status_changes": 0,
+  "remaining_absent_supported": [
+    "gd14"
+  ],
+  "remaining_valid_no_support": [
+    "gd11",
+    "rf01"
+  ],
+  "broad_release_accepted": false,
+  "live_pipeline_parity_cases": [
+    "av11",
+    "gd12",
+    "gd14"
+  ],
+  "app_test_cases": [
+    "av11",
+    "gd12",
+    "gc01",
+    "gc04",
+    "gc02",
+    "gd14",
+    "av11_hidePDF"
+  ],
+  "unit_tests_passed": 106,
+  "limits": [
+    "No fresh query changed status; utility shown only on known soup case",
+    "Pancake query gd14: whole .2027, domain .559; widening band alone will not fix it",
+    "Valid Polish feature-scale gd11 remains no_support",
+    "Class scores are not calibrated answer probabilities",
+    "No independent human/factual acceptance; original v1 freeze preserved"
+  ]
+}

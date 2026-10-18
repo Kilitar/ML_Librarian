@@ -2,8 +2,9 @@
 import math
 from rerank import REVISION
 from constraints import normalize
+from domain_guard import outside_domain
 
-POLICY_VERSION = "evidence-v4"
+POLICY_VERSION = "evidence-v5"
 LOW_SUPPORT = 0.10
 SUFFICIENT_SUPPORT = 0.20
 
@@ -32,5 +33,8 @@ def assess_evidence(results: list[dict], query: str = "") -> dict:
                 "reason": "related_concept_evidence"}
     if any(result.get('requested_acronym') and result.get('acronym_definition') for result in results):
         return {"status": "supported", "policy": POLICY_VERSION, "score": best, "reason": "explicit_acronym_definition"}
+    if LOW_SUPPORT<=best<SUFFICIENT_SUPPORT and outside_domain(results,query):
+        return {"status":"no_support","policy":POLICY_VERSION,"score":best,
+                "reason":"out_of_domain_grey_band","domain_score":results[0]['domain_signal']['score']}
     status = "supported" if best >= SUFFICIENT_SUPPORT else "uncertain" if best >= LOW_SUPPORT else "no_support"
     return {"status": status, "policy": POLICY_VERSION, "score": best}

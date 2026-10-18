@@ -1,5 +1,9 @@
 # Domain classification diagnostic — not promoted
 
+Historical unconditional-classifier diagnostic. A later, strictly conditional
+grey-band use is described in `GREY_DOMAIN_GUARD.md`; the unrestricted classifier
+remains rejected and this original report is preserved.
+
 The cross-topic acceptance remains **not accepted**. No production retrieval,
 gate thresholds, corpus, index, UI or model weights changed in this checkpoint.
 

@@ -8,11 +8,14 @@ from evidence_gate import assess_evidence
 
 ROOT = Path(__file__).resolve().parents[2]
 FILES = ('search.py','semantic_layer.py','domain_concepts.json','concepts.py','acronyms.py',
-         'rerank.py','heading_context.py','ranking_fusion.py','metric_choice.py','constraints.py','diversify.py','evidence_gate.py','hybrid.py','chunk_text.py','snippet_format.py','comparisons.py','source_filters.py')
+         'rerank.py','heading_context.py','ranking_fusion.py','metric_choice.py','domain_guard.py','constraints.py','diversify.py','evidence_gate.py','hybrid.py','chunk_text.py','snippet_format.py','comparisons.py','source_filters.py')
 
 
 def fingerprints():
-    return {n: hashlib.sha256((ROOT / 'src/librarian' / n).read_bytes()).hexdigest() for n in FILES}
+    hashes={n: hashlib.sha256((ROOT / 'src/librarian' / n).read_bytes()).hexdigest() for n in FILES}
+    for n in ('config/grey_domain_v1.json','eval/domain_probe_training.json'):
+        hashes[n]=hashlib.sha256((ROOT/n).read_bytes()).hexdigest()
+    return hashes
 
 
 def main():

@@ -21,6 +21,7 @@ from comparisons import comparison_aspects, coverage_order, approved_pair, compa
 from source_filters import SOURCE_ROLES, SOURCE_ORIGINS, exclusions, allowed_indices
 from ranking_fusion import weak_fusion, VERSION as FUSION_VERSION
 from metric_choice import plan as metric_plan, eligible as metric_eligible, coverage_order as metric_coverage_order
+from domain_guard import make_signal, ENCODER_REVISION
 
 ROOT = Path(__file__).resolve().parents[2]
 CHUNKS = ROOT / "data/normalized/chunks_curated.jsonl"
@@ -125,12 +126,13 @@ def corpus_fingerprint(documents: list[dict[str, Any]]) -> str:
 
 class E5SearchIndex:
     def __init__(self, documents: list[dict[str, Any]], embeddings: np.ndarray,
-                 model: SentenceTransformer) -> None:
+                 model: SentenceTransformer, *, encoder_revision=None) -> None:
         if embeddings.ndim != 2 or embeddings.shape[0] != len(documents):
             raise ValueError("Index dimensions do not match the curated corpus")
         self.documents = documents
         self.embeddings = embeddings.astype(np.float32, copy=False)
         self.model = model
+        self.encoder_revision = encoder_revision
         self.lexical_index = None
         self.passage_reranker = None
 
@@ -159,15 +161,16 @@ class E5SearchIndex:
         if list(embeddings.shape) != manifest.get("shape"):
             raise ValueError("Embedding matrix shape does not match its manifest")
         model = SentenceTransformer(
-            MODEL_ID, cache_folder=str(CACHE), device="cpu", local_files_only=True,
+            MODEL_ID, revision=ENCODER_REVISION, cache_folder=str(CACHE), device="cpu", local_files_only=True,
         )
-        return cls(documents, embeddings, model)
+        return cls(documents, embeddings, model, encoder_revision=ENCODER_REVISION)
 
     def search(self, query: str, *, limit: int = 5,
                match_constraints: bool = True, mode: str = "e5", semantic_layer: bool = True,
                semantic_experiment: bool = False, comparison_tuning: bool = True,
                comparison_experiment: bool = False, comparison_strategy: str = 'contextual',
-               excluded_roles=None, excluded_origins=None, ranking_strategy='weak_fusion', metric_choice_tuning=True) -> list[dict[str, Any]]:
+               excluded_roles=None, excluded_origins=None, ranking_strategy='weak_fusion', metric_choice_tuning=True,
+               domain_guard_tuning=True) -> list[dict[str, Any]]:
         query = " ".join(query.split())
         if not query:
             raise ValueError("Enter a non-empty query")
@@ -189,13 +192,14 @@ class E5SearchIndex:
                 return []
             # A per-request view prevents candidates, neighbors and fallback from
             # leaking excluded groups. Shared models stay loaded; corpus unchanged.
-            view = E5SearchIndex([self.documents[i] for i in allowed], self.embeddings[allowed], self.model)
+            view = E5SearchIndex([self.documents[i] for i in allowed], self.embeddings[allowed], self.model,
+                                 encoder_revision=self.encoder_revision)
             view.passage_reranker = self.passage_reranker
             results = view.search(query, limit=limit, match_constraints=match_constraints, mode=mode,
                                   semantic_layer=semantic_layer, semantic_experiment=semantic_experiment,
                                   comparison_tuning=comparison_tuning, comparison_experiment=comparison_experiment,
                                   comparison_strategy=comparison_strategy, ranking_strategy=ranking_strategy,
-                                  metric_choice_tuning=metric_choice_tuning)
+                                  metric_choice_tuning=metric_choice_tuning, domain_guard_tuning=domain_guard_tuning)
             self.passage_reranker = view.passage_reranker
             return results
         original_query = query
@@ -368,4 +372,10 @@ class E5SearchIndex:
                 "streamlit_title": document.get("streamlit_title"),
                 "route_status": document.get("route_status", "unmapped"),
             })
+        if domain_guard_tuning and mode=='rerank' and results and not (aspects or semantic_plan or acronym or related_only):
+            best=max(r['whole_query_score'] for r in results)
+            if .10<=best<.20:
+                signal=make_signal(query_vector,original_query,self.encoder_revision)
+                if signal:
+                    for result in results:result['domain_signal']=signal
         return results
