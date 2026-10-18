@@ -79,7 +79,7 @@
       "title": "Held-out evaluace CZ/EN/PL",
       "estimate_hours": 2,
       "status": "in_progress",
-      "detail": "Datový/kalibrační krok: audit129 známých párů,48 přímo fitovaných a118 propojených se zdroji/otázkami; přísný v1/v2 source-transfer pool má jen2 direct+4 negative. Původní textový model: na100 známých binárních párech nelze dosáhnout80% recall bez chybných přijetí(max60%). Nově24dotazů/120 NEANOTOVANÝCH pasáží,8dotazů/jazyk,19okruhů;12 dalších otázek rezervováno bez spuštění. Produkce/prahy beze změny.115testů prošlo. http://localhost:8765/eval/calibration_collection_review.local.html. Další: označit skutečné pokrytí120pasáží a přepočítat skupiny, oddělit kalibraci konkrétního kandidáta od tréninku/testu. docs/CALIBRATION_DATA.md. Přejímka neprošla/BYOK odloženo."
+      "detail": "Anotováno120pasáží:42direct/36partial/42negative, s důvody; Codex provisional, nikoli lidské schválení. Audit249párů:7skupin, všechny nové propojeny s v1/v2 tréninkem. Původní base77direct/107negative, ale5zdrojových skupin proti min8. Prahy/produkce beze změny;12testových dotazů nepoužito. Další: nové zdrojové skupiny a negativy, poté kandidátský split a kalibrace. docs/CALIBRATION_DATA.md. http://localhost:8765/eval/calibration_collection_labeled_review.local.html. Přejímka neprošla/BYOK odloženo."
     },
     {
       "id": "demo",
@@ -108,7 +108,7 @@
     "excluded_scratch_python": 76,
     "excluded_view_cache_png": 82
   },
-  "updated_at": "2026-10-18T04:49:55.986503+00:00",
+  "updated_at": "2026-10-18T04:56:23.801121+00:00",
   "human_equivalent_hours": 16,
   "agent_speedup_min": 5,
   "agent_speedup_max": 10

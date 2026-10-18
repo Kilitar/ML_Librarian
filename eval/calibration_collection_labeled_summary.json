@@ -1,0 +1,148 @@
+{
+  "input_hashes": {
+    "eval/calibration_collection.local.json": "59bd407c7f0c0e1aeea9888609a9b57d88806b77818b6d448cbe291162c43b79",
+    "eval/calibration_collection_coverage_notes.json": "465ee2aac7f29d4bb2759e5c80cd812f11bd804f031352785b8eaf92bf13a797",
+    "eval/calibration_data_audit.local.json": "94dc854a458e1c08d189874bc345cc42ab3ddfc3357b3d628fd6d8c9cbbe0095",
+    "eval/calibration_reserved_test_questions.json": "cf2f15861cb6bbe68ec79be6838072eb84971b5283a70d9c54e0fa20e54c84eb",
+    "config/calibration_protocol.json": "135ed042426f24f7ec112cd4abd2230e0a917a3cf719cbba34c9e61f28ab00a3"
+  },
+  "annotator": "Codex provisional coverage judgments after reading all120 full retrieved passages; not human approval or factual validation",
+  "labels": {
+    "partial": 36,
+    "topic_only": 34,
+    "direct": 42,
+    "irrelevant": 8
+  },
+  "total_pairs": 249,
+  "components": 7,
+  "largest_component": 223,
+  "new_fit_connected": 120,
+  "new_binary": 84,
+  "new_pool_coverage": {
+    "counts": {
+      "direct": 42,
+      "negative": 42,
+      "query_languages": 3,
+      "families": 19,
+      "source_groups": 1
+    },
+    "minimum_shortfalls": {
+      "negative": {
+        "actual": 42,
+        "minimum": 59
+      },
+      "source_groups": {
+        "actual": 1,
+        "minimum": 8
+      }
+    },
+    "language_classes": {
+      "cs": {
+        "direct": 15,
+        "negative": 16
+      },
+      "en": {
+        "direct": 11,
+        "negative": 12
+      },
+      "pl": {
+        "direct": 16,
+        "negative": 14
+      }
+    },
+    "language_class_gaps": [],
+    "eligible": false
+  },
+  "combined_base_development_coverage": {
+    "counts": {
+      "direct": 77,
+      "negative": 107,
+      "query_languages": 3,
+      "families": 31,
+      "source_groups": 5
+    },
+    "minimum_shortfalls": {
+      "source_groups": {
+        "actual": 5,
+        "minimum": 8
+      }
+    },
+    "language_classes": {
+      "cs": {
+        "direct": 31,
+        "negative": 43
+      },
+      "en": {
+        "direct": 26,
+        "negative": 33
+      },
+      "pl": {
+        "direct": 20,
+        "negative": 31
+      }
+    },
+    "language_class_gaps": [],
+    "eligible": false
+  },
+  "strict_v1_v2_source_transfer_coverage": {
+    "counts": {
+      "direct": 2,
+      "negative": 4,
+      "query_languages": 1,
+      "families": 1,
+      "source_groups": 1
+    },
+    "minimum_shortfalls": {
+      "direct": {
+        "actual": 2,
+        "minimum": 30
+      },
+      "negative": {
+        "actual": 4,
+        "minimum": 59
+      },
+      "query_languages": {
+        "actual": 1,
+        "minimum": 3
+      },
+      "families": {
+        "actual": 1,
+        "minimum": 6
+      },
+      "source_groups": {
+        "actual": 1,
+        "minimum": 8
+      }
+    },
+    "language_classes": {
+      "cs": {
+        "direct": 0,
+        "negative": 0
+      },
+      "en": {
+        "direct": 2,
+        "negative": 4
+      },
+      "pl": {
+        "direct": 0,
+        "negative": 0
+      }
+    },
+    "language_class_gaps": [
+      "cs",
+      "pl"
+    ],
+    "eligible": false
+  },
+  "reserved_test_executions": 0,
+  "model_inference": false,
+  "training": false,
+  "threshold_selected": null,
+  "production_changed": false,
+  "assignments": {
+    "original_base": "inspected development pool; no new fit, not untouched test",
+    "v1_v2": "fit-connected components excluded from source-transfer calibration",
+    "final_test": "12 reserved questions remain unexecuted and unlabeled"
+  },
+  "raw_sha256": "d6c25d916ca6b8e35cb90fce95fd37f14289820c34c783cd88d8ca18570db952"
+}

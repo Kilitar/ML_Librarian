@@ -157,3 +157,10 @@ cutoff retains80% direct answers with zero false acceptance; production threshol
 remain unchanged. See `docs/CALIBRATION_DATA.md`, the new collection at
 `http://localhost:8765/eval/calibration_collection_review.local.html` and its
 annotation sheet at `http://localhost:8765/eval/calibration_collection_labels.local.html`.
+
+
+Coverage review (2026-10-18): [120 passages with labels and reasons](http://localhost:8765/eval/calibration_collection_labeled_review.local.html).
+Codex provisional42direct/36partial/42negative; no human approval or production
+change. Transitive source audit connects all new pairs to v1/v2 development;
+base combined pool still misses the unchanged source-component floor.
+See [calibration protocol and next step](docs/CALIBRATION_DATA.md).

@@ -1,0 +1,728 @@
+{
+  "version": "calibration-coverage-notes-v1",
+  "annotator": "Codex provisional coverage judgments after reading all120 full retrieved passages; not human approval or factual validation",
+  "frozen_raw_sha256": "59bd407c7f0c0e1aeea9888609a9b57d88806b77818b6d448cbe291162c43b79",
+  "scope": "Coverage only; no model scores used for labels. Multi-part questions require all essential parts for direct. Transfer to another task or train/test instead of validation is partial. Factual accuracy of source claims is not certified.",
+  "pairs": [
+    {
+      "question_id": "cd01",
+      "rank": 1,
+      "label": "partial",
+      "note": "Poměr RMSE/MAE a extrémní chyby ilustrují rozdíl citlivosti, chybí definice MAE."
+    },
+    {
+      "question_id": "cd01",
+      "rank": 2,
+      "label": "topic_only",
+      "note": "Uvádí pouze naměřené hodnoty metrik několika modelů, nevysvětluje jejich rozdíl."
+    },
+    {
+      "question_id": "cd01",
+      "rank": 3,
+      "label": "direct",
+      "note": "Tabulka porovnává definice MAE a RMSE, jednotky i vliv velkých chyb."
+    },
+    {
+      "question_id": "cd01",
+      "rank": 4,
+      "label": "direct",
+      "note": "Oba vzorce přímo rozlišují absolutní chybu od odmocniny průměru čtverců."
+    },
+    {
+      "question_id": "cd01",
+      "rank": 5,
+      "label": "direct",
+      "note": "Výslovně porovnává RMSE s MAE a vysvětluje vliv extrémních chyb."
+    },
+    {
+      "question_id": "cd02",
+      "rank": 1,
+      "label": "topic_only",
+      "note": "Kód metriku počítá, význam záporného výsledku nevykládá."
+    },
+    {
+      "question_id": "cd02",
+      "rank": 2,
+      "label": "topic_only",
+      "note": "Zadání požaduje výpočet train/test metrik, nikoli interpretaci záporného R²."
+    },
+    {
+      "question_id": "cd02",
+      "rank": 3,
+      "label": "partial",
+      "note": "Vzorec a rozsah připouštějí záporné R², chybí výklad horší predikce než průměr."
+    },
+    {
+      "question_id": "cd02",
+      "rank": 4,
+      "label": "topic_only",
+      "note": "Výpočet R² a tuning neposkytují interpretaci záporného skóre."
+    },
+    {
+      "question_id": "cd02",
+      "rank": 5,
+      "label": "topic_only",
+      "note": "Řeší ladění na testu a únik informací, nikoli význam záporného R²."
+    },
+    {
+      "question_id": "cd03",
+      "rank": 1,
+      "label": "topic_only",
+      "note": "Doporučuje standardizaci a diagnostiku, ale nevykládá změnu cíle na jednotku příznaku."
+    },
+    {
+      "question_id": "cd03",
+      "rank": 2,
+      "label": "direct",
+      "note": "Příklad násobí koeficient změnou plochy a interpretuje změnu ceny; upozorňuje na měřítko."
+    },
+    {
+      "question_id": "cd03",
+      "rank": 3,
+      "label": "topic_only",
+      "note": "Popisuje workflow regrese diamantů bez interpretace směrnice."
+    },
+    {
+      "question_id": "cd03",
+      "rank": 4,
+      "label": "topic_only",
+      "note": "Hodnotí výkon modelu pomocí chyb a R², nikoli koeficient."
+    },
+    {
+      "question_id": "cd03",
+      "rank": 5,
+      "label": "topic_only",
+      "note": "Interpretaci koeficientů pouze ukládá jako úkol, odpověď neobsahuje."
+    },
+    {
+      "question_id": "cd04",
+      "rank": 1,
+      "label": "partial",
+      "note": "Uvádí grafy reziduí a QQ plot jako kontrolu, ale nevysvětluje důvod těchto kontrol."
+    },
+    {
+      "question_id": "cd04",
+      "rank": 2,
+      "label": "partial",
+      "note": "Jmenuje očekávané vlastnosti reziduí, ale důsledky jejich porušení nevykládá."
+    },
+    {
+      "question_id": "cd04",
+      "rank": 3,
+      "label": "topic_only",
+      "note": "Diagnostiku reziduí pouze doporučuje jako další analýzu."
+    },
+    {
+      "question_id": "cd04",
+      "rank": 4,
+      "label": "irrelevant",
+      "note": "Vysvětluje klasifikační práh; závěrečná zmínka RSS neřeší diagnostiku reziduí."
+    },
+    {
+      "question_id": "cd04",
+      "rank": 5,
+      "label": "topic_only",
+      "note": "Řeší regularizaci a kolinearitu, nikoli proč kontrolovat rezidua."
+    },
+    {
+      "question_id": "cd05",
+      "rank": 1,
+      "label": "partial",
+      "note": "Aktualizační vzorec ukazuje roli learning rate, velikost dávky chybí."
+    },
+    {
+      "question_id": "cd05",
+      "rank": 2,
+      "label": "partial",
+      "note": "Vysvětluje krok záporného gradientu a rychlost učení u boostingu, ne batch size při GD."
+    },
+    {
+      "question_id": "cd05",
+      "rank": 3,
+      "label": "topic_only",
+      "note": "Ukazuje jediný pevný batch size a křivky učení, nikoli vliv jeho volby."
+    },
+    {
+      "question_id": "cd05",
+      "rank": 4,
+      "label": "partial",
+      "note": "Číselný příklad ukazuje learning rate ve změně váhy, batch size neřeší."
+    },
+    {
+      "question_id": "cd05",
+      "rank": 5,
+      "label": "topic_only",
+      "note": "Pouze vypočítává hyperparametry a obecně slibuje rychlejší trénování bez vysvětlení jejich vlivu."
+    },
+    {
+      "question_id": "cd06",
+      "rank": 1,
+      "label": "partial",
+      "note": "Princip zastavení při zhoršování validace je popsán pro boosting, ne neuronovou síť."
+    },
+    {
+      "question_id": "cd06",
+      "rank": 2,
+      "label": "direct",
+      "note": "V kontextu regularizace sítě popisuje patience, sledování validace a obnovení nejlepších vah."
+    },
+    {
+      "question_id": "cd06",
+      "rank": 3,
+      "label": "direct",
+      "note": "Křivky neuronové sítě ukazují rostoucí validační loss a důvod včas ukončit přeučování."
+    },
+    {
+      "question_id": "cd06",
+      "rank": 4,
+      "label": "direct",
+      "note": "Pro neuronovou síť doporučuje zastavení při stagnaci validační MSE."
+    },
+    {
+      "question_id": "cd06",
+      "rank": 5,
+      "label": "topic_only",
+      "note": "Řeší jiné techniky regularizace a plánování LR, early stopping chybí."
+    },
+    {
+      "question_id": "cd07",
+      "rank": 1,
+      "label": "direct",
+      "note": "Přímo kontrastuje po částech lineární ReLU a hladkou sigmoid z hlediska hranice."
+    },
+    {
+      "question_id": "cd07",
+      "rank": 2,
+      "label": "direct",
+      "note": "Přímo srovnává derivace sigmoidy a ReLU a jejich vliv na gradient."
+    },
+    {
+      "question_id": "cd07",
+      "rank": 3,
+      "label": "topic_only",
+      "note": "Obě funkce jen vyjmenovává jako nelineární aktivace, jejich rozdíl neuvádí."
+    },
+    {
+      "question_id": "cd07",
+      "rank": 4,
+      "label": "direct",
+      "note": "Porovnává saturující derivaci sigmoid s kladnou větví ReLU v hlubokých sítích."
+    },
+    {
+      "question_id": "cd07",
+      "rank": 5,
+      "label": "partial",
+      "note": "Navrhuje přepínací experiment a uvádí rozdíl učení, ale mechanismus a definice funkcí chybí."
+    },
+    {
+      "question_id": "cd08",
+      "rank": 1,
+      "label": "direct",
+      "note": "Přímo rozlišuje heuristické ořezání a gramatický základ na příkladu."
+    },
+    {
+      "question_id": "cd08",
+      "rank": 2,
+      "label": "direct",
+      "note": "Kontrastuje možný neplatný kmen a platný slovníkový tvar."
+    },
+    {
+      "question_id": "cd08",
+      "rank": 3,
+      "label": "direct",
+      "note": "Definuje oba postupy a porovnává morfologii, příklady i náročnost."
+    },
+    {
+      "question_id": "cd08",
+      "rank": 4,
+      "label": "direct",
+      "note": "Přímo rozlišuje pravidla ořezávání bez gramatiky od morfologické analýzy."
+    },
+    {
+      "question_id": "cd08",
+      "rank": 5,
+      "label": "direct",
+      "note": "Výslovně porovnává heuristický stemming a lemma se zohledněním POS."
+    },
+    {
+      "question_id": "cd09",
+      "rank": 1,
+      "label": "direct",
+      "note": "Popisuje ztrátu syntaktických vazeb a koreference po odstranění stop words v transformerech."
+    },
+    {
+      "question_id": "cd09",
+      "rank": 2,
+      "label": "direct",
+      "note": "Výslovně uvádí ztrátu gramatických závislostí a negací."
+    },
+    {
+      "question_id": "cd09",
+      "rank": 3,
+      "label": "direct",
+      "note": "Uvádí dopad na slovník, matici příznaků a zaměření na obsahová slova."
+    },
+    {
+      "question_id": "cd09",
+      "rank": 4,
+      "label": "direct",
+      "note": "Spojuje odstranění stop slov se snížením dimenzionality a výběrem klíčových slov."
+    },
+    {
+      "question_id": "cd09",
+      "rank": 5,
+      "label": "direct",
+      "note": "Vysvětluje dopad na velikost frekvenční reprezentace, šum a výpočty."
+    },
+    {
+      "question_id": "cd10",
+      "rank": 1,
+      "label": "direct",
+      "note": "Přímo váže TF v dokumentu s korpusovou vzácností IDF."
+    },
+    {
+      "question_id": "cd10",
+      "rank": 2,
+      "label": "direct",
+      "note": "Popisuje potlačení korpusově běžných slov a dokumentovou TF včetně vzorce."
+    },
+    {
+      "question_id": "cd10",
+      "rank": 3,
+      "label": "topic_only",
+      "note": "TF-IDF jen pojmenovává, detailně vysvětluje BoW."
+    },
+    {
+      "question_id": "cd10",
+      "rank": 4,
+      "label": "direct",
+      "note": "Uvádí princip dokumentové důležitosti, korpusové vzácnosti a součin TF a IDF."
+    },
+    {
+      "question_id": "cd10",
+      "rank": 5,
+      "label": "topic_only",
+      "note": "Vysvětluje jen četnosti BoW, korpusové vážení IDF chybí."
+    },
+    {
+      "question_id": "cd11",
+      "rank": 1,
+      "label": "partial",
+      "note": "Absence kontextu a sousedství vysvětluje část problému, negaci samotnou neukazuje."
+    },
+    {
+      "question_id": "cd11",
+      "rank": 2,
+      "label": "partial",
+      "note": "Uvádí ignorování pořadí a gramatiky, ale chybí vztah ke ztrátě negace."
+    },
+    {
+      "question_id": "cd11",
+      "rank": 3,
+      "label": "direct",
+      "note": "Konkrétní chybná predikce vysvětluje odstranění nebo oddělení negace od slova."
+    },
+    {
+      "question_id": "cd11",
+      "rank": 4,
+      "label": "direct",
+      "note": "Uvádí ztrátu negací u unigramů a příklad not recommended."
+    },
+    {
+      "question_id": "cd11",
+      "rank": 5,
+      "label": "partial",
+      "note": "Nabízí bigramy a ochranu negací, ale původní mechanismus selhání jen nepřímo naznačuje."
+    },
+    {
+      "question_id": "cd12",
+      "rank": 1,
+      "label": "direct",
+      "note": "Výslovně popisuje opačný směr predikce CBOW a skip-gram."
+    },
+    {
+      "question_id": "cd12",
+      "rank": 2,
+      "label": "topic_only",
+      "note": "Volbu architektury pouze zadává jako hyperparametr cvičení."
+    },
+    {
+      "question_id": "cd12",
+      "rank": 3,
+      "label": "topic_only",
+      "note": "Obě architektury jen jmenuje v anotaci tématu."
+    },
+    {
+      "question_id": "cd12",
+      "rank": 4,
+      "label": "direct",
+      "note": "Přímo kontrastuje predikci slova z kontextu a kontextu ze slova."
+    },
+    {
+      "question_id": "cd12",
+      "rank": 5,
+      "label": "direct",
+      "note": "Uvádí směr predikce obou architektur i jejich vlastnosti."
+    },
+    {
+      "question_id": "cd13",
+      "rank": 1,
+      "label": "topic_only",
+      "note": "Pouze vypočítává možné imputátory, kritérium volby neuvádí."
+    },
+    {
+      "question_id": "cd13",
+      "rank": 2,
+      "label": "partial",
+      "note": "Vysvětluje robustnost mediánu a šikmost, ale nevztahuje volbu přímo k imputaci."
+    },
+    {
+      "question_id": "cd13",
+      "rank": 3,
+      "label": "direct",
+      "note": "Pro imputaci výslovně volí medián u šikmých a průměr u normálních rozdělení."
+    },
+    {
+      "question_id": "cd13",
+      "rank": 4,
+      "label": "topic_only",
+      "note": "Medián používá ve škálování, rozhodnutí o imputaci neřeší."
+    },
+    {
+      "question_id": "cd13",
+      "rank": 5,
+      "label": "direct",
+      "note": "Uvádí konkrétní volbu imputace podle šikmosti rozdělení."
+    },
+    {
+      "question_id": "cd14",
+      "rank": 1,
+      "label": "direct",
+      "note": "Přímo kontrastuje binární sloupce OHE a rostoucí číselné kódy ordinálních kategorií."
+    },
+    {
+      "question_id": "cd14",
+      "rank": 2,
+      "label": "partial",
+      "note": "Ukazuje vytvoření binárních indikátorů, celočíselné kódy neporovnává."
+    },
+    {
+      "question_id": "cd14",
+      "rank": 3,
+      "label": "partial",
+      "note": "Vysvětluje ordinální kódy a binární dvoutřídní příklad, obecné OHE s více sloupci chybí."
+    },
+    {
+      "question_id": "cd14",
+      "rank": 4,
+      "label": "partial",
+      "note": "Popisuje převod na dummy sloupce, rozdíl proti číselným kódům chybí."
+    },
+    {
+      "question_id": "cd14",
+      "rank": 5,
+      "label": "direct",
+      "note": "Příklady 1..k oproti 0/1 dummy sloupcům a jejich umocnění ukazují rozdílnou reprezentaci."
+    },
+    {
+      "question_id": "cd15",
+      "rank": 1,
+      "label": "direct",
+      "note": "Výslovně ukazuje únik testového průměru do fitu a správný train-only fit."
+    },
+    {
+      "question_id": "cd15",
+      "rank": 2,
+      "label": "direct",
+      "note": "Vysvětluje únik validačního průměru a rozptylu do škálování trainu; stejný mechanismus platí pro test."
+    },
+    {
+      "question_id": "cd15",
+      "rank": 3,
+      "label": "irrelevant",
+      "note": "Popisuje body DBSCAN a tvary shluků, škálování a únik testu chybí."
+    },
+    {
+      "question_id": "cd15",
+      "rank": 4,
+      "label": "partial",
+      "note": "Vysvětluje ztrátu nezávislosti testu při tuningu, nikoli fit scaleru."
+    },
+    {
+      "question_id": "cd15",
+      "rank": 5,
+      "label": "irrelevant",
+      "note": "Řeší volbu epsilon a HDBSCAN, ne scaler nebo testovou sadu."
+    },
+    {
+      "question_id": "cd16",
+      "rank": 1,
+      "label": "topic_only",
+      "note": "Zachování stratifikace pouze požaduje v zadání."
+    },
+    {
+      "question_id": "cd16",
+      "rank": 2,
+      "label": "direct",
+      "note": "Přímo uvádí stratify=y a zachování podílu diabetiček v obou sadách."
+    },
+    {
+      "question_id": "cd16",
+      "rank": 3,
+      "label": "topic_only",
+      "note": "Tvrdí zlepšení přesnosti stratifikací, princip zachování poměrů nevykládá."
+    },
+    {
+      "question_id": "cd16",
+      "rank": 4,
+      "label": "direct",
+      "note": "Explicitně spojuje stratifikaci s uchováním přibližných podílů diagnóz ve třech sadách."
+    },
+    {
+      "question_id": "cd16",
+      "rank": 5,
+      "label": "direct",
+      "note": "Definuje zachování procent tříd v každém foldu proti původnímu souboru."
+    },
+    {
+      "question_id": "cd17",
+      "rank": 1,
+      "label": "direct",
+      "note": "Popisuje K cyklů a vzorec průměru skóre validačních foldů."
+    },
+    {
+      "question_id": "cd17",
+      "rank": 2,
+      "label": "partial",
+      "note": "Uvádí rozptyl výsledků mezi foldy, ale ne princip průměrování K validací."
+    },
+    {
+      "question_id": "cd17",
+      "rank": 3,
+      "label": "irrelevant",
+      "note": "Popisuje DBSCAN, nikoli k-fold validaci."
+    },
+    {
+      "question_id": "cd17",
+      "rank": 4,
+      "label": "irrelevant",
+      "note": "Definuje sousedskou a dosahovou vzdálenost, nikoli validační foldy."
+    },
+    {
+      "question_id": "cd17",
+      "rank": 5,
+      "label": "partial",
+      "note": "Ukazuje rozložení přesností přes deset foldů, ale nevysvětluje průměrování."
+    },
+    {
+      "question_id": "cd18",
+      "rank": 1,
+      "label": "partial",
+      "note": "Vysvětluje robustnost škálování mediánem, ale neporovnává přímo posun průměru a mediánu."
+    },
+    {
+      "question_id": "cd18",
+      "rank": 2,
+      "label": "direct",
+      "note": "Explicitně porovnává citlivost průměru a robustnost mediánu k outlierům."
+    },
+    {
+      "question_id": "cd18",
+      "rank": 3,
+      "label": "topic_only",
+      "note": "Definuje rozptyl a kvartily, změnu průměru proti mediánu neřeší."
+    },
+    {
+      "question_id": "cd18",
+      "rank": 4,
+      "label": "topic_only",
+      "note": "Řeší robustní ztrátové funkce, nikoli míry polohy."
+    },
+    {
+      "question_id": "cd18",
+      "rank": 5,
+      "label": "partial",
+      "note": "Volba mediánu pro šikmá rozdělení je podpůrná, přímý vliv outlierů na obě míry chybí."
+    },
+    {
+      "question_id": "cd19",
+      "rank": 1,
+      "label": "topic_only",
+      "note": "Uvádí jen vypočtené metriky a výsledky, rozdíl definic chybí."
+    },
+    {
+      "question_id": "cd19",
+      "rank": 2,
+      "label": "direct",
+      "note": "Vzorce i slovní výklad rozlišují TP/(TP+FP) a TP/(TP+FN)."
+    },
+    {
+      "question_id": "cd19",
+      "rank": 3,
+      "label": "partial",
+      "note": "Konkrétně vysvětluje vztah FP a precision, recall chybí."
+    },
+    {
+      "question_id": "cd19",
+      "rank": 4,
+      "label": "partial",
+      "note": "Popisuje trade-off prahu a vzorec recall, definice precision v matici chybí."
+    },
+    {
+      "question_id": "cd19",
+      "rank": 5,
+      "label": "topic_only",
+      "note": "Vysvětluje F skóre a vážení, nikoli definice precision proti recall."
+    },
+    {
+      "question_id": "cd20",
+      "rank": 1,
+      "label": "direct",
+      "note": "Příklad vždy negativního modelu ukazuje vysokou accuracy i nulový záchyt vzácných pozitiv."
+    },
+    {
+      "question_id": "cd20",
+      "rank": 2,
+      "label": "topic_only",
+      "note": "Řeší ROC a PR křivku při vzácné třídě, nikoli proč selhává accuracy."
+    },
+    {
+      "question_id": "cd20",
+      "rank": 3,
+      "label": "topic_only",
+      "note": "Řeší log loss a sebejistotu kNN, ne nevyváženost a accuracy."
+    },
+    {
+      "question_id": "cd20",
+      "rank": 4,
+      "label": "topic_only",
+      "note": "Definuje log loss, důvod zavádějící accuracy chybí."
+    },
+    {
+      "question_id": "cd20",
+      "rank": 5,
+      "label": "partial",
+      "note": "Tvrdí zavádějící accuracy při nerovnováze a ukazuje matici, mechanismus převahy většiny nevysvětluje."
+    },
+    {
+      "question_id": "cd21",
+      "rank": 1,
+      "label": "partial",
+      "note": "Popisuje cenu FN a hledání optimálního prahu, neříká směr jeho posunu."
+    },
+    {
+      "question_id": "cd21",
+      "rank": 2,
+      "label": "direct",
+      "note": "Explicitně doporučuje snížit práh a spojuje nízký práh s vysokým recall a málo FN."
+    },
+    {
+      "question_id": "cd21",
+      "rank": 3,
+      "label": "irrelevant",
+      "note": "Řeší negace při reprezentaci textu, ne falešně negativní klasifikaci a práh."
+    },
+    {
+      "question_id": "cd21",
+      "rank": 4,
+      "label": "irrelevant",
+      "note": "Řeší LOF kontaminaci při detekci anomálií, ne snížení FN rozhodovacím prahem."
+    },
+    {
+      "question_id": "cd21",
+      "rank": 5,
+      "label": "partial",
+      "note": "Definuje recall a motivaci omezit FN, samotný práh neřeší."
+    },
+    {
+      "question_id": "cd22",
+      "rank": 1,
+      "label": "topic_only",
+      "note": "Malý podíl používá jako důvod mazání, původ chybění ani riziko selekce nekontroluje."
+    },
+    {
+      "question_id": "cd22",
+      "rank": 2,
+      "label": "irrelevant",
+      "note": "Řeší tuning ridge na testové sadě, nikoli původ chybějících dat."
+    },
+    {
+      "question_id": "cd22",
+      "rank": 3,
+      "label": "partial",
+      "note": "Popisuje obecné zkreslení z nekvalitní přípravy, chybí konkrétní mechanismus mazání podle chybění."
+    },
+    {
+      "question_id": "cd22",
+      "rank": 4,
+      "label": "partial",
+      "note": "Vyžaduje zcela náhodné chybění před mazáním, ale nevysvětluje zkreslení při nesplnění."
+    },
+    {
+      "question_id": "cd22",
+      "rank": 5,
+      "label": "topic_only",
+      "note": "Pouze nabízí imputaci místo mazání bez důvodu kontroly původu chybění."
+    },
+    {
+      "question_id": "cd23",
+      "rank": 1,
+      "label": "partial",
+      "note": "Přímo jmenuje shlukování témat stížností, ale chybí postup a textové příznaky."
+    },
+    {
+      "question_id": "cd23",
+      "rank": 2,
+      "label": "partial",
+      "note": "Nabízí přenositelný Word2Vec+SVM postup pro sentiment recenzí, nikoli klasifikaci témat."
+    },
+    {
+      "question_id": "cd23",
+      "rank": 3,
+      "label": "partial",
+      "note": "Ukazuje vektorizaci a trénink klasifikátoru sentimentu, chybí štítky témat stížností."
+    },
+    {
+      "question_id": "cd23",
+      "rank": 4,
+      "label": "topic_only",
+      "note": "Řeší metriky spam filtru, ne tvorbu tematického klasifikátoru stížností."
+    },
+    {
+      "question_id": "cd23",
+      "rank": 5,
+      "label": "partial",
+      "note": "Jmenuje BERTopic/LDA a extrakci témat, ale ne postup s příznaky a cílovými kategoriemi."
+    },
+    {
+      "question_id": "cd24",
+      "rank": 1,
+      "label": "partial",
+      "note": "Vysvětluje role train a validation, nikoli rozpoznání přeučení podle výsledků."
+    },
+    {
+      "question_id": "cd24",
+      "rank": 2,
+      "label": "partial",
+      "note": "Ukazuje diagnostický train/test gap, nikoli validační průběh; test nesmí být ladicí sada."
+    },
+    {
+      "question_id": "cd24",
+      "rank": 3,
+      "label": "topic_only",
+      "note": "Řeší proměnlivost splitu a tuning na testu, ne srovnání train a validation výkonu."
+    },
+    {
+      "question_id": "cd24",
+      "rank": 4,
+      "label": "partial",
+      "note": "Výrazný train/test rozdíl ilustruje overfitting, validační porovnání chybí."
+    },
+    {
+      "question_id": "cd24",
+      "rank": 5,
+      "label": "partial",
+      "note": "Zadává spočítat train/test metriky, neposkytuje interpretaci validačního rozdílu."
+    }
+  ]
+}

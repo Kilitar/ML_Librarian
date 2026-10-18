@@ -126,3 +126,43 @@ recompute groups and candidate-specific train/calibration assignments. Expand
 missing language/class/source coverage instead of relaxing floors to make the
 old data pass. Keep the12 reserved questions unused during those decisions.
 Original acceptance remains not_accepted; BYOK generation stays deferred.
+
+
+## Coverage annotation checkpoint — 2026-10-18
+
+All120 new passages were read in full and provisionally annotated by Codex:
+42 direct,36 partial,34 topic_only,8 irrelevant. Each judgment has a reason in
+`eval/calibration_collection_coverage_notes.json`. These are coverage labels,
+not independent human approval or factual validation of source assertions.
+Partial labels remain excluded from binary training/calibration targets.
+
+`audit_calibration_collection_labels.py` binds every label to frozen query,
+rank, chunk, source, locator, body and actual heading hashes through the v3
+import validator. It emits a new frozen labeled artifact and a report containing
+all120 full passages and reasons; earlier collection/audit artifacts stay intact.
+Reruns require identical inputs/artifact and perform no inference.
+
+Report: <http://localhost:8765/eval/calibration_collection_labeled_review.local.html>.
+
+Recomputing transitive query/source/text groups across all249 inspected pairs
+finds7 components, largest223. All120 new pairs connect transitively to sources
+used by v1/v2, despite only38 having direct known-source flags at collection.
+The strict source-transfer pool for these fine-tuned variants therefore stays
+at2 direct and4 negative (plus5 partial), one language/component. No new pair
+is assigned independent source-transfer calibration for v1/v2.
+
+The original pretrained base has not been fitted on these labels: its combined
+inspected development pool has77 direct/107 negative,31 families and both
+classes in all3 languages. It still has only5 binary source components against
+the unchanged minimum8. New pool alone has42 direct/42 negative and one
+component. These counts are not184 independent observations or model accuracy.
+Shared sources do not by themselves invalidate new-query evaluation on a fixed
+corpus; the strict source-transfer stress question is separate. No eligibility
+floor was relaxed, threshold selected, model trained or production policy changed.
+
+Next: expand genuinely distinct source groups and negatives with separately
+fixed questions, rather than repeatedly sampling the same broad summary sources.
+Keep base fixed-corpus query calibration separate from v1/v2 source-transfer
+requirements; finalize candidate/split/calibration artifact before executing the
+12 reserved questions. They remain unexecuted/unlabeled. Acceptance stays
+not_accepted and BYOK generation deferred.
