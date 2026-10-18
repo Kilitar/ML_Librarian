@@ -123,3 +123,9 @@ queries it rejects three unrelated results without rejecting a valid question,
 but the known pancake query still fails the predeclared strong-result rule.
 No production change was made. See `docs/DOMAIN_BREADTH.md` and full results at
 `http://localhost:8765/eval/domain_breadth_review.local.html`.
+
+Mixed nonsense plus ML terminology can still score highly: the schnitzel/tree
+query is not fixed. Twelve contrastive searches show that removing source
+metadata alone does not solve answerability. The UI now states this limit of
+relevance scores explicitly. See `docs/MIXED_INTENT.md` and all paired scores and
+excerpts at `http://localhost:8765/eval/mixed_intent_review.local.html`.

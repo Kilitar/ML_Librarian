@@ -189,7 +189,10 @@ if results is not None:
         f"Dotaz: {st.session_state.get('evidence_query', '')} · pořadí podle relevance úryvku a záměru dotazu"
     )
     st.caption("📓 Cvičení / úkol · 🔎 Teorie / analýza · 🟨 ikona Coderslab označuje původní materiál z jeho PDF")
-    st.caption("Relevance je pořadové skóre, nikoli pravděpodobnost správnosti.")
+    st.caption(
+        "Relevance hodnotí tematickou shodu. Ani vysoké skóre neověřuje, "
+        "že úryvek odpovídá na celou otázku nebo že je otázka smysluplná."
+    )
     active_filters = st.session_state.get("evidence_filters", [])
     if active_filters:
         st.caption("Skryté skupiny: " + " · ".join(active_filters))

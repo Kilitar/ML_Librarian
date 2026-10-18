@@ -1,0 +1,42 @@
+{
+  "version": "mixed-intent-v1",
+  "created_at": "2026-10-18T03:41:39.371172+00:00",
+  "hashes": {
+    "eval/mixed_intent_questions.json": "2c44534621e60280c2b493820b596e6604556dc9d6bfbdfb2f92607b32411c57",
+    "src/librarian/evaluate_mixed_intent.py": "ce49de3bc8340ae09566ca96385627c5e43c9e11fa8cab3baac537fdeeccf06f",
+    "src/librarian/search.py": "c8e5b47806ea958ada0e80c161bdb18329ba975aa25cd69c67242340fe5147b1",
+    "src/librarian/rerank.py": "5c5be05721c17af8d58aecdfb7d9e8c8f908ef36044ae5b745ff9f92fda400c7",
+    "src/librarian/evidence_gate.py": "6795c0b6dda2be851ee1324887829fcd5d0841f9097fec3fb415b787aac783e6",
+    "src/librarian/heading_context.py": "803cc9012e360b785bc0a99ebc0f6d01127a846b2b7e699c60bbcdbe5eabbbb6",
+    "src/librarian/domain_guard.py": "2695856417a05cf77e6a275685e481d34ce74d5a93ed9be0611c4d269e3d47c4",
+    "src/librarian/metric_choice.py": "e5e9e0a5b2d5931a7962c8419dc0ab224916fb232c1bc46b82c087ad9fb42c6f",
+    "src/librarian/ranking_fusion.py": "26f1814254a56f33bff7a7e04c6128c21d12e2c71e7f9bc5fcaae432ddbd63ca",
+    "config/grey_domain_v1.json": "d13b7a43c2764c72f8db1183cd096b931978e4534f79d3bdfaf625da1c35e31f",
+    "eval/domain_probe_training.json": "91bcb7bcd1b7f73ef9efaf36b09021d10c01ea5dc2ce6a260edc28131c27a501",
+    "data/index/multilingual_e5_curated.json": "713bb8c4afaefdf5780c08c7e55558aa2bc47f93f2d2af952c8d358ce75dfa5e",
+    "data/normalized/documents.jsonl": "8d2b81901ffc80c707a814c29fe8d4c74ef1ffb2816c0fc257e30141e67f4ba4",
+    "data/normalized/chunks_curated.jsonl": "ff875dcb75c89960e774abe06e8a69c4f8a13eb84d840d7c359e4a06bf6d78c0"
+  },
+  "checks": {
+    "nonsense_supported_by_production": [
+      "mi01",
+      "mi04",
+      "mi07"
+    ],
+    "nonsense_text_only_at_least_point2": [
+      "mi01",
+      "mi04",
+      "mi07",
+      "mi10"
+    ],
+    "meaningful_supported_but_text_only_below_point2": [],
+    "metadata_removal_solves_all_nonsense": false,
+    "production_gate_changed": false,
+    "independent_answerability_verified": false
+  },
+  "raw_sha256": "2d2d4ba07ba430f835ed8921fbfe36136a64f0025b2e3a59e3b8d6e26fe6d6e8",
+  "full_search_count": 12,
+  "fresh_formulations": 11,
+  "known_formulations": 1,
+  "broad_release_accepted": false
+}

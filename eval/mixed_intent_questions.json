@@ -1,0 +1,19 @@
+{
+  "version": "mixed-intent-v1",
+  "scope": "Fixed before scores except the explicitly known schnitzel example. Contrast nonsense with meaningful technical requests and legitimate food-domain ML applications. Meaningful request is not a claim that the corpus answers it. Topic-correlated authored checks, not independent human acceptance.",
+  "hypothesis": "Removing source metadata from pair scoring may eliminate false support for mixed nonsensical requests. Diagnostic only: no thresholds fitted, no new gate promoted. Compare production and raw text-only score for every returned passage.",
+  "questions": [
+    {"id":"mi01","group":"tree_cs","kind":"nonsense","known":true,"query":"Který řízek je nejlepší pro decision tree?"},
+    {"id":"mi02","group":"tree_cs","kind":"meaningful_technical","query":"Které kritérium je nejlepší pro decision tree?"},
+    {"id":"mi03","group":"tree_cs","kind":"meaningful_application","query":"Jak pomocí decision tree předpovídat cenu jídla z jeho vlastností?"},
+    {"id":"mi04","group":"kmeans_en","kind":"nonsense","query":"Which soup should I pour into k-means to improve clustering?"},
+    {"id":"mi05","group":"kmeans_en","kind":"meaningful_technical","query":"Which features should I scale before applying k-means?"},
+    {"id":"mi06","group":"kmeans_en","kind":"meaningful_application","query":"How can I cluster foods by their nutritional features using k-means?"},
+    {"id":"mi07","group":"pca_pl","kind":"nonsense","query":"Jaką mąkę dodać do PCA, żeby zwiększyć wyjaśnioną wariancję?"},
+    {"id":"mi08","group":"pca_pl","kind":"meaningful_technical","query":"Jak wybrać liczbę składowych PCA na podstawie wyjaśnionej wariancji?"},
+    {"id":"mi09","group":"pca_pl","kind":"meaningful_application","query":"Jak zastosować PCA do danych o wartościach odżywczych produktów?"},
+    {"id":"mi10","group":"svm_cs","kind":"nonsense","query":"Jakým olejem namazat SVM, aby mělo větší margin?"},
+    {"id":"mi11","group":"svm_cs","kind":"meaningful_technical","query":"Jak parametr C ovlivňuje šířku marginu u SVM?"},
+    {"id":"mi12","group":"svm_cs","kind":"meaningful_application","query":"Jak pomocí SVM klasifikovat potraviny podle naměřených vlastností?"}
+  ]
+}
