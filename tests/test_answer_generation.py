@@ -45,6 +45,7 @@ class AnswerTests(unittest.TestCase):
         result=generate_answer('What is precision?',self.rows,self.evidence,'fake-secret','test-model',consent=True,transport=transport)
         request=transport.call_args.args[0];payload=json.loads(request.data)
         self.assertEqual(result['status'],'answered')
+        self.assertEqual(request.get_header('User-agent'),'ML-Librarian/1.0')
         self.assertFalse(payload['store']);self.assertEqual(payload['max_completion_tokens'],1800)
         self.assertNotIn('fake-secret',request.data.decode())
         self.assertEqual(transport.call_args.kwargs['timeout'],45)

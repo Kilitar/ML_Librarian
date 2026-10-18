@@ -83,7 +83,8 @@ def generate_answer(query, results, evidence, api_key, model, *, consent=False, 
         endpoint='https://api.groq.com/openai/v1/chat/completions'
         payload.pop('store')  # Unsupported by Groq; not a zero-retention claim.
     request=urllib.request.Request(endpoint,data=json.dumps(payload).encode('utf-8'),
-        headers={'Authorization':'Bearer '+api_key.strip(),'Content-Type':'application/json'},method='POST')
+        headers={'Authorization':'Bearer '+api_key.strip(),'Content-Type':'application/json',
+                 'User-Agent':'ML-Librarian/1.0','Accept':'application/json'},method='POST')
     opener=transport or urllib.request.build_opener(NoRedirect()).open
     try:
         with opener(request,timeout=45) as response:
