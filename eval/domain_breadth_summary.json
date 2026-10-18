@@ -1,0 +1,41 @@
+{
+  "version": "domain-breadth-check-v1",
+  "created_at": "2026-10-18T03:32:14.663755+00:00",
+  "hashes": {
+    "eval/domain_probe_training.json": "91bcb7bcd1b7f73ef9efaf36b09021d10c01ea5dc2ce6a260edc28131c27a501",
+    "eval/domain_breadth_training.json": "0ce60aef726a4ac10b05be464b75f28cfe7415f833b3684446cb7dc1f74cc1ea",
+    "eval/domain_breadth_questions.json": "4cf03d06ca77ee6168da1388c54bc48ab067e2963e9bcfbab2d1f6aa3b2684bc",
+    "eval/grey_domain.local.json": "285bf5514a9ab0401371e1f2d6ef2180e6d9967d2eb34d3f1d81c39da4bc971c",
+    "config/grey_domain_v1.json": "d13b7a43c2764c72f8db1183cd096b931978e4534f79d3bdfaf625da1c35e31f",
+    "data/index/multilingual_e5_curated.json": "713bb8c4afaefdf5780c08c7e55558aa2bc47f93f2d2af952c8d358ce75dfa5e",
+    "src/librarian/evaluate_domain_breadth.py": "d1e2d966bd00b3b003dc612eec9819565ed89331a3956be7a48984d0f92bb870",
+    "src/librarian/search.py": "c8e5b47806ea958ada0e80c161bdb18329ba975aa25cd69c67242340fe5147b1",
+    "src/librarian/rerank.py": "5c5be05721c17af8d58aecdfb7d9e8c8f908ef36044ae5b745ff9f92fda400c7",
+    "src/librarian/evidence_gate.py": "6795c0b6dda2be851ee1324887829fcd5d0841f9097fec3fb415b787aac783e6",
+    "src/librarian/domain_guard.py": "2695856417a05cf77e6a275685e481d34ce74d5a93ed9be0611c4d269e3d47c4",
+    "src/librarian/heading_context.py": "803cc9012e360b785bc0a99ebc0f6d01127a846b2b7e699c60bbcdbe5eabbbb6",
+    "src/librarian/metric_choice.py": "e5e9e0a5b2d5931a7962c8419dc0ab224916fb232c1bc46b82c087ad9fb42c6f",
+    "src/librarian/ranking_fusion.py": "26f1814254a56f33bff7a7e04c6128c21d12e2c71e7f9bc5fcaae432ddbd63ca"
+  },
+  "raw_sha256": "1496b5038307347a5715c1c4057b99839148bc27790fd15240b0acd26545658e",
+  "model_sha256": "1211fb0545b17469557312d18a2eea2dc29f32824510669c5b08d4f56d22b78f",
+  "training_count": 109,
+  "fresh_full_search_count": 24,
+  "known_fixed_result_replay_count": 28,
+  "production_changed": false,
+  "broad_release_accepted": false,
+  "checks": {
+    "fresh_valid_new_rejections": [],
+    "fresh_absent_improved": [
+      "db13",
+      "db21",
+      "db24"
+    ],
+    "fresh_absent_supported_remaining": [],
+    "known_pancake_rejected": false,
+    "fresh_valid_still_no_support": [],
+    "fresh_domain_misclassifications_at_half": [],
+    "known_valid_new_rejections": [],
+    "predeclared_criteria_met": false
+  }
+}

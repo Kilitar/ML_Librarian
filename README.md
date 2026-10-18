@@ -117,3 +117,9 @@ pancake query still incorrectly receives supported, and a valid feature-scaling
 question remains hard rejected; no broad reliability claim is made. See
 `docs/GREY_DOMAIN_GUARD.md` and the complete query/excerpt review at
 `http://localhost:8765/eval/grey_domain_review.local.html`.
+
+A broader 109-example domain model remains experimental: on 24 newly fixed
+queries it rejects three unrelated results without rejecting a valid question,
+but the known pancake query still fails the predeclared strong-result rule.
+No production change was made. See `docs/DOMAIN_BREADTH.md` and full results at
+`http://localhost:8765/eval/domain_breadth_review.local.html`.

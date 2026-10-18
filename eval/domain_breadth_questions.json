@@ -1,0 +1,33 @@
+{
+  "version": "domain-breadth-check-v1",
+  "scope": "Fixed before fitting v2 or seeing scores. Synthetic new formulations; topic correlation with training remains. Known gd cases reported separately, never counted as fresh.",
+  "model": {"C": 10, "class_weight": "balanced", "seed": 0},
+  "candidate_policy": "Ordinary queries only, best whole >= .10. Reject if v2 domain < .50 for [.10,.20), or < .20 for >=.20. Preserve ambiguity, comparisons, semantic plans, related-only, acronym cases and unassessed fallback. Never upgrade evidence or change ranking.",
+  "promotion_criteria": {"fresh_valid_new_rejections": 0, "fresh_absent_improved_min": 2, "fresh_absent_supported_remaining": 0, "known_pancake_rejected": true},
+  "questions": [
+    {"id":"db01","kind":"course","query":"Jak najít chybějící hodnoty v DataFrame?"},
+    {"id":"db02","kind":"course","query":"How can I keep preprocessing from leaking test information?"},
+    {"id":"db03","kind":"course","query":"Jak dobrać parametr eps podczas grupowania DBSCAN?"},
+    {"id":"db04","kind":"course","query":"Proč nestačí vysoká accuracy při vzácné pozitivní třídě?"},
+    {"id":"db05","kind":"course","query":"How should I measure a regression model's prediction errors?"},
+    {"id":"db06","kind":"course","query":"Jak przygotować tekst do klasyfikacji dokumentów?"},
+    {"id":"db07","kind":"course","query":"Jaký vliv má regularizace na přeučení?"},
+    {"id":"db08","kind":"course","query":"Why do large numeric ranges distort nearest-neighbour distances?"},
+    {"id":"db09","kind":"course","query":"Jak sprawdzić udział wariancji zachowanej przez PCA?"},
+    {"id":"db10","kind":"course","query":"Jak sestavit matici korelací v pandas?"},
+    {"id":"db11","kind":"course","query":"What does a random forest combine to make predictions?"},
+    {"id":"db12","kind":"course","query":"Jak oddzielić etykiety od danych wejściowych przed uczeniem?"},
+    {"id":"db13","kind":"absent","query":"Jak připravit houskové knedlíky?"},
+    {"id":"db14","kind":"absent","query":"How do I bake sourdough bread at home?"},
+    {"id":"db15","kind":"absent","query":"Jak zrobić gofry na śniadanie?"},
+    {"id":"db16","kind":"absent","query":"Jak odvzdušnit radiátor v koupelně?"},
+    {"id":"db17","kind":"absent","query":"How can I fix a punctured inflatable mattress?"},
+    {"id":"db18","kind":"absent","query":"Jak usunąć plamę z kawy na koszuli?"},
+    {"id":"db19","kind":"absent","query":"Jak přesadit pokojovou palmu?"},
+    {"id":"db20","kind":"absent","query":"How do I fold a fitted bed sheet?"},
+    {"id":"db21","kind":"absent","query":"Jak nauczyć się pływać kraulem?"},
+    {"id":"db22","kind":"absent","query":"Kde mohu dnes koupit lístky do divadla?"},
+    {"id":"db23","kind":"absent","query":"How do I check in online for my flight?"},
+    {"id":"db24","kind":"absent","query":"Jak odnowić kartę biblioteczną?"}
+  ]
+}
