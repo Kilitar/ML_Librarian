@@ -1,0 +1,36 @@
+{
+  "created_at": "2026-10-18T04:43:04.304448+00:00",
+  "hashes": {
+    "config/base_pair_calibration_diagnostic.json": "260c097a5b0f2a5a9b71685a671965a88ae9ed2e0e9bc4bcdf1144035b06d9c1",
+    "eval/calibration_data_audit.local.json": "94dc854a458e1c08d189874bc345cc42ab3ddfc3357b3d628fd6d8c9cbbe0095",
+    "eval/calibration_data_summary.json": "3c12d396f173f762470d1bef998659a4575e2760bfbf31c29a608d716f34a0f4",
+    "eval/calibration_reserved_test_questions.json": "cf2f15861cb6bbe68ec79be6838072eb84971b5283a70d9c54e0fa20e54c84eb",
+    "src/librarian/diagnose_base_calibration.py": "d198ace98432d20f833ab11ceca8147fedbeda2d0188e3e6f8857e3b87bcc47a",
+    "src/librarian/calibration_data.py": "c1529ca75f2a513c5990eb911acd8a9f5dbfe5efeb9e0bf82ebf79fc63749050"
+  },
+  "checks": {
+    "binary_development_pairs": 100,
+    "direct_count": 35,
+    "negative_count": 65,
+    "over_budget": [],
+    "selection": {
+      "status": "infeasible",
+      "threshold": null,
+      "reason": "No threshold meets fixed calibration targets"
+    },
+    "max_direct_recall_with_zero_empirical_fp": 0.6,
+    "lowest_positive": {
+      "id": "annotations:gc04_1",
+      "score": 0.03336813300848007
+    },
+    "highest_negative": {
+      "id": "annotations:mi02_2",
+      "score": 0.9347041249275208
+    },
+    "operational_threshold": null,
+    "reserved_test_executed": 0,
+    "production_changed": false,
+    "broad_release_accepted": false
+  },
+  "raw_sha256": "db1bf8f74b01538f1991779552560c49427c1e9ddc06ad6817544b30189786a6"
+}

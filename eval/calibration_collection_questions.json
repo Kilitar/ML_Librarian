@@ -1,0 +1,30 @@
+{
+  "version":"calibration-collection-v1",
+  "scope":"Authored development/calibration collection, not final acceptance. Meaningful ordinary questions and legitimate applications; irrelevant/partial results must be labeled from actual passages. No automatic label from query validity. No visitor history. Exactly8 questions per language; source/query contamination audited after retrieval, never silently filtered.",
+  "questions":[
+    {"id":"cd01","language":"cs","family":"regression_metrics","query":"Jaký je rozdíl mezi MAE a RMSE při hodnocení regrese?"},
+    {"id":"cd02","language":"en","family":"regression_metrics","query":"What does a negative R-squared score mean on test data?"},
+    {"id":"cd03","language":"pl","family":"linear_regression","query":"Jak interpretować współczynnik kierunkowy w regresji liniowej?"},
+    {"id":"cd04","language":"cs","family":"linear_assumptions","query":"Proč se u lineární regrese kontrolují rezidua?"},
+    {"id":"cd05","language":"en","family":"optimization","query":"How do learning rate and batch size affect gradient descent?"},
+    {"id":"cd06","language":"pl","family":"neural_training","query":"Po co stosować early stopping podczas uczenia sieci neuronowej?"},
+    {"id":"cd07","language":"cs","family":"activations","query":"Jaký je rozdíl mezi funkcí ReLU a sigmoid?"},
+    {"id":"cd08","language":"en","family":"text_preprocessing","query":"What is the difference between stemming and lemmatization?"},
+    {"id":"cd09","language":"pl","family":"text_preprocessing","query":"Jak usuwanie stop words wpływa na reprezentację tekstu?"},
+    {"id":"cd10","language":"cs","family":"text_representation","query":"Jak TF-IDF zohledňuje četnost slova v dokumentu a v korpusu?"},
+    {"id":"cd11","language":"en","family":"text_representation","query":"Why can a bag-of-words model miss negation?"},
+    {"id":"cd12","language":"pl","family":"embeddings","query":"Jak word2vec rozróżnia CBOW i skip-gram?"},
+    {"id":"cd13","language":"cs","family":"missing_values","query":"Kdy je vhodné použít medián místo průměru při imputaci?"},
+    {"id":"cd14","language":"en","family":"encoding","query":"How does one-hot encoding differ from assigning integer category codes?"},
+    {"id":"cd15","language":"pl","family":"leakage","query":"Dlaczego nie należy dopasowywać skalera na zbiorze testowym?"},
+    {"id":"cd16","language":"cs","family":"validation","query":"Jak stratifikace zachovává poměr tříd při rozdělení dat?"},
+    {"id":"cd17","language":"en","family":"validation","query":"What does k-fold cross-validation average across?"},
+    {"id":"cd18","language":"pl","family":"robust_statistics","query":"Jak wpływają odstające obserwacje na średnią i medianę?"},
+    {"id":"cd19","language":"cs","family":"classification_metrics","query":"Jaký je rozdíl mezi precision a recall v matici záměn?"},
+    {"id":"cd20","language":"en","family":"classification_metrics","query":"Why is accuracy unreliable when positive cases are rare?"},
+    {"id":"cd21","language":"pl","family":"threshold_choice","query":"Jak ustawić próg decyzyjny, aby ograniczyć fałszywe negatywy?"},
+    {"id":"cd22","language":"cs","family":"data_quality","query":"Proč je nevhodné mazat řádky bez kontroly původu chybějících dat?"},
+    {"id":"cd23","language":"en","family":"text_application","query":"How would I classify customer complaints by topic using text features?"},
+    {"id":"cd24","language":"pl","family":"overfitting","query":"Jak sprawdzić, czy model jest przeuczony na podstawie wyników treningowych i walidacyjnych?"}
+  ]
+}

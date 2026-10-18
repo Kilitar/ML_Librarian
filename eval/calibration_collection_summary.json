@@ -1,0 +1,42 @@
+{
+  "created_at": "2026-10-18T04:41:14.877435+00:00",
+  "hashes": {
+    "eval/calibration_collection_questions.json": "8d2020336117559f70bb1c484a91d65921e447c2ac69f537782be79644e3184d",
+    "eval/calibration_reserved_test_questions.json": "cf2f15861cb6bbe68ec79be6838072eb84971b5283a70d9c54e0fa20e54c84eb",
+    "eval/calibration_data_audit.local.json": "94dc854a458e1c08d189874bc345cc42ab3ddfc3357b3d628fd6d8c9cbbe0095",
+    "eval/calibration_data_summary.json": "3c12d396f173f762470d1bef998659a4575e2760bfbf31c29a608d716f34a0f4",
+    "src/librarian/collect_calibration_pairs.py": "7bb549206427630d0a1f73eeef588b9882c5a9452a2096ddb10ad65eeca7ceb6",
+    "src/librarian/calibration_data.py": "c1529ca75f2a513c5990eb911acd8a9f5dbfe5efeb9e0bf82ebf79fc63749050",
+    "src/librarian/search.py": "c8e5b47806ea958ada0e80c161bdb18329ba975aa25cd69c67242340fe5147b1",
+    "src/librarian/rerank.py": "5c5be05721c17af8d58aecdfb7d9e8c8f908ef36044ae5b745ff9f92fda400c7",
+    "src/librarian/evidence_gate.py": "6795c0b6dda2be851ee1324887829fcd5d0841f9097fec3fb415b787aac783e6",
+    "src/librarian/domain_guard.py": "2695856417a05cf77e6a275685e481d34ce74d5a93ed9be0611c4d269e3d47c4",
+    "src/librarian/heading_context.py": "803cc9012e360b785bc0a99ebc0f6d01127a846b2b7e699c60bbcdbe5eabbbb6",
+    "src/librarian/metric_choice.py": "e5e9e0a5b2d5931a7962c8419dc0ab224916fb232c1bc46b82c087ad9fb42c6f",
+    "config/grey_domain_v1.json": "d13b7a43c2764c72f8db1183cd096b931978e4534f79d3bdfaf625da1c35e31f",
+    "eval/domain_probe_training.json": "91bcb7bcd1b7f73ef9efaf36b09021d10c01ea5dc2ce6a260edc28131c27a501",
+    "data/index/multilingual_e5_curated.json": "713bb8c4afaefdf5780c08c7e55558aa2bc47f93f2d2af952c8d358ce75dfa5e",
+    "data/normalized/chunks_curated.jsonl": "ff875dcb75c89960e774abe06e8a69c4f8a13eb84d840d7c359e4a06bf6d78c0",
+    "data/normalized/documents.jsonl": "8d2b81901ffc80c707a814c29fe8d4c74ef1ffb2816c0fc257e30141e67f4ba4"
+  },
+  "checks": {
+    "queries": 24,
+    "pairs": 120,
+    "languages": {
+      "cs": 8,
+      "en": 8,
+      "pl": 8
+    },
+    "families": 19,
+    "known_source_passages": 38,
+    "known_text_passages": 9,
+    "known_query_requests": 0,
+    "coverage_annotations": 0,
+    "reserved_test_queries": 12,
+    "reserved_test_executed": 0,
+    "threshold_selected": null,
+    "production_changed": false,
+    "broad_release_accepted": false
+  },
+  "raw_sha256": "59bd407c7f0c0e1aeea9888609a9b57d88806b77818b6d448cbe291162c43b79"
+}

@@ -1,0 +1,357 @@
+{
+  "created_at": "2026-10-18T04:35:33.214398+00:00",
+  "hashes": {
+    "config/calibration_protocol.json": "135ed042426f24f7ec112cd4abd2230e0a917a3cf719cbba34c9e61f28ab00a3",
+    "eval/pair_coverage_judgments.json": "7a362b5de741d97c1ff699e26493ae8666d3921801297e3ffcaa081653996895",
+    "eval/supervised_pair_training.local.json": "5c102e1b1f1c74dca13dcc6b9b995bf3724266c0f575d1bd3c9c592c4bf778c5",
+    "eval/supervised_pair.local.json": "3ac4178d77245a7f4845a1a4ea130d08915854d1907ad2dc431080e2e44825b4",
+    "eval/supervised_pair_summary.json": "6eb81dbd83e4cf7d8393e7a81935d2539e3f5c68f3ae57fc903a04a3153ad612",
+    "eval/supervised_pair_v2.local.json": "3ae1e258c59d2a6723f18455b276377f6c6eb6fca690365cd4a4b346bbe13747",
+    "eval/supervised_pair_v2_summary.json": "0e58df382fd01623f948c188326d7b1f8f3f2a6e31d675e7ce85b1a4de9c5953",
+    "eval/pair_cross_negative_notes.json": "17847fe217832e25bae0e8748529f82dbfeaabb31c1dbf9ac571abe72ed83394",
+    "eval/pair_coverage_notes.json": "92faa49753d02640710fe192ae284c9b5d0351e3def967004cc096745ca243d1",
+    "eval/answerability.local.json": "0a7ebfed8cb936b183a0ae4cebb07ca36304cc51132ec8f0b5115c0bbae69da7",
+    "eval/supervised_pair_split.json": "2bcc76cc31d24881290955a7972703c7108bbc6e456365a83d5f278b70d2ace1",
+    "src/librarian/calibration_data.py": "c1529ca75f2a513c5990eb911acd8a9f5dbfe5efeb9e0bf82ebf79fc63749050",
+    "src/librarian/audit_calibration_data.py": "acdee2f3cd99c9dff06a78a40110b6919a8e0ef3fa66dfbb88181957e4fcc2ef"
+  },
+  "checks": {
+    "total_pairs": 129,
+    "labels": {
+      "topic_only": 59,
+      "direct": 35,
+      "partial": 29,
+      "irrelevant": 6
+    },
+    "historically_fitted_pairs": 48,
+    "source_query_connected_components": 10,
+    "largest_component_pairs": 81,
+    "fit_connected_pairs": 118,
+    "clean_calibration_candidate_pairs": 11,
+    "clean_candidate_coverage": {
+      "counts": {
+        "direct": 2,
+        "negative": 4,
+        "query_languages": 1,
+        "families": 1,
+        "source_groups": 1
+      },
+      "minimum_shortfalls": {
+        "direct": {
+          "actual": 2,
+          "minimum": 30
+        },
+        "negative": {
+          "actual": 4,
+          "minimum": 59
+        },
+        "query_languages": {
+          "actual": 1,
+          "minimum": 3
+        },
+        "families": {
+          "actual": 1,
+          "minimum": 6
+        },
+        "source_groups": {
+          "actual": 1,
+          "minimum": 8
+        }
+      },
+      "language_classes": {
+        "cs": {
+          "direct": 0,
+          "negative": 0
+        },
+        "en": {
+          "direct": 2,
+          "negative": 4
+        },
+        "pl": {
+          "direct": 0,
+          "negative": 0
+        }
+      },
+      "language_class_gaps": [
+        "cs",
+        "pl"
+      ],
+      "eligible": false
+    },
+    "duplicate_pairs": [],
+    "label_disagreements": [],
+    "untouched_test_count": 0,
+    "threshold_selected": null,
+    "calibration_status": "blocked_data_requirements",
+    "production_changed": false,
+    "broad_release_accepted": false
+  },
+  "components": [
+    {
+      "id": "283e6f453d770e4c",
+      "pairs": 6,
+      "role": "calibration_candidate_development",
+      "fitted_versions": [],
+      "labels": {
+        "direct": 2,
+        "topic_only": 4
+      },
+      "languages": [
+        "en"
+      ],
+      "families": [
+        "svm"
+      ],
+      "sources": [
+        "02_Classification/theory/06_svm_theory.md"
+      ]
+    },
+    {
+      "id": "2ce15cba395f52e1",
+      "pairs": 81,
+      "role": "fit_connected_development",
+      "fitted_versions": [
+        "v1",
+        "v2"
+      ],
+      "labels": {
+        "topic_only": 38,
+        "partial": 22,
+        "direct": 16,
+        "irrelevant": 5
+      },
+      "languages": [
+        "cs",
+        "en",
+        "pl"
+      ],
+      "families": [
+        "dbscan",
+        "feature_scale",
+        "kmeans",
+        "knn",
+        "leakage",
+        "naive_bayes",
+        "pca",
+        "tfidf"
+      ],
+      "sources": [
+        "00_Prework/theory/03_data_prep_scikit_workflow.md",
+        "01_Regression/theory/03_regularization_theory.md",
+        "02_Classification/01_knn_penguins_exercise.ipynb",
+        "02_Classification/16_homework_diabetes_knn.ipynb",
+        "02_Classification/18_homework_diabetes_svm.ipynb",
+        "02_Classification/theory/01_knn_theory.md",
+        "02_Classification/theory/02_knn_implementation_guide.md",
+        "03_Advanced_ML_Neural_Networks/theory/06_boosting_and_xgboost_theory.md",
+        "03_Advanced_ML_Neural_Networks/theory/08_day_3_summary_and_synthesis.md",
+        "04_NLP/04_tfidf_exercise.ipynb",
+        "04_NLP/theory/01_introduction_to_nlp.md",
+        "04_NLP/theory/04_bag_of_words_and_tfidf.md",
+        "04_NLP/theory/05_word2vec_and_embeddings.md",
+        "04_NLP/theory/09_day_4_nlp_summary.md",
+        "05_Unsupervised_Learning/01_pca_diamonds_exercise.ipynb",
+        "05_Unsupervised_Learning/03_dbscan_circles_exercise.ipynb",
+        "05_Unsupervised_Learning/theory/01_clustering_theory.md",
+        "05_Unsupervised_Learning/theory/01_kmeans_clustering_theory.md",
+        "05_Unsupervised_Learning/theory/03_dbscan_sample_implementation_guide.md",
+        "05_Unsupervised_Learning/theory/10_day_5_unsupervised_learning_summary.md",
+        "06_Final_Project/theory/01_machine_learning_course_summary.md",
+        "Resources/Day 0 Prework PDF/8-Scikit_learn.txt",
+        "views/02_knn_penguins_critique.py",
+        "views/04_nlp_bow_tfidf_theory.py",
+        "views/04_nlp_exercise_2.py",
+        "views/04_nlp_exercise_2_critique.py",
+        "views/04_nlp_exercise_bow.py",
+        "views/04_nlp_exercise_tfidf.py",
+        "views/04_nlp_word2vec_theory.py",
+        "views/04_prework_nlp_intro.py",
+        "views/05_kmeans_theory.py",
+        "views/05_pca_diamonds_exercise.py",
+        "views/05_pca_dimensionality_reduction_theory.py"
+      ]
+    },
+    {
+      "id": "72b0a6feaedfdc12",
+      "pairs": 2,
+      "role": "fit_connected_development",
+      "fitted_versions": [
+        "v1",
+        "v2"
+      ],
+      "labels": {
+        "partial": 1,
+        "topic_only": 1
+      },
+      "languages": [
+        "cs"
+      ],
+      "families": [
+        "decision_tree"
+      ],
+      "sources": [
+        "views/01_decision_tree_diam_critique.py",
+        "views/02_decision_tree_theory.py"
+      ]
+    },
+    {
+      "id": "7e54117425fc71fb",
+      "pairs": 13,
+      "role": "fit_connected_development",
+      "fitted_versions": [
+        "v1",
+        "v2"
+      ],
+      "labels": {
+        "topic_only": 7,
+        "direct": 6
+      },
+      "languages": [
+        "cs"
+      ],
+      "families": [
+        "random_forest"
+      ],
+      "sources": [
+        "03_Advanced_ML_Neural_Networks/06_xgboost_heart_exercise_1.ipynb",
+        "03_Advanced_ML_Neural_Networks/theory/05_random_forest_theory_and_implementation.md",
+        "04_Homework/02_car_price_random_forest.ipynb",
+        "views/03_extras_hyperparam_cheatsheet.py"
+      ]
+    },
+    {
+      "id": "9b930cd283a2cd3f",
+      "pairs": 2,
+      "role": "calibration_candidate_development",
+      "fitted_versions": [],
+      "labels": {
+        "partial": 2
+      },
+      "languages": [
+        "cs"
+      ],
+      "families": [
+        "missing_values"
+      ],
+      "sources": [
+        "01_Regression/01_linear_regression_exercise_1.ipynb",
+        "01_Regression/02_linear_regression_exercise_2.ipynb"
+      ]
+    },
+    {
+      "id": "a0e0991c0617a9d7",
+      "pairs": 2,
+      "role": "calibration_candidate_development",
+      "fitted_versions": [],
+      "labels": {
+        "partial": 2
+      },
+      "languages": [
+        "cs"
+      ],
+      "families": [
+        "svm"
+      ],
+      "sources": [
+        "views/02_svm_sample.py",
+        "views/02_svm_theory.py"
+      ]
+    },
+    {
+      "id": "afe9b3ee5c7b8bdc",
+      "pairs": 5,
+      "role": "fit_connected_development",
+      "fitted_versions": [
+        "v1",
+        "v2"
+      ],
+      "labels": {
+        "topic_only": 3,
+        "direct": 2
+      },
+      "languages": [
+        "cs"
+      ],
+      "families": [
+        "svm"
+      ],
+      "sources": [
+        "views/02_homework_diabetes_svm.py",
+        "views/02_svm_lumbar_exercise_1.py"
+      ]
+    },
+    {
+      "id": "d7bacc0349e80f6c",
+      "pairs": 10,
+      "role": "fit_connected_development",
+      "fitted_versions": [
+        "v1",
+        "v2"
+      ],
+      "labels": {
+        "partial": 1,
+        "topic_only": 4,
+        "direct": 4,
+        "irrelevant": 1
+      },
+      "languages": [
+        "cs",
+        "en"
+      ],
+      "families": [
+        "decision_tree",
+        "logistic_regression",
+        "ml_definition"
+      ],
+      "sources": [
+        "00_Prework/theory/01_ml_foundations.md",
+        "02_Classification/theory/05_decision_tree_classification_theory.md",
+        "views/01_homework_concrete_decision_tree.py"
+      ]
+    },
+    {
+      "id": "da467ccb027ee7ff",
+      "pairs": 1,
+      "role": "calibration_candidate_development",
+      "fitted_versions": [],
+      "labels": {
+        "partial": 1
+      },
+      "languages": [
+        "cs"
+      ],
+      "families": [
+        "svm"
+      ],
+      "sources": [
+        "02_Classification/14_svm_lumbar_exercise_1.ipynb"
+      ]
+    },
+    {
+      "id": "e5df6b947ccf78fb",
+      "pairs": 7,
+      "role": "fit_connected_development",
+      "fitted_versions": [
+        "v1",
+        "v2"
+      ],
+      "labels": {
+        "topic_only": 2,
+        "direct": 5
+      },
+      "languages": [
+        "en"
+      ],
+      "families": [
+        "logistic_regression"
+      ],
+      "sources": [
+        "01_Regression/12_homework_concrete_regularization.ipynb",
+        "02_Classification/theory/04_logistic_regression_theory.md",
+        "views/01_homework_concrete_regularization.py",
+        "views/02_homework_diabetes_logistic_regression.py"
+      ]
+    }
+  ],
+  "raw_sha256": "94dc854a458e1c08d189874bc345cc42ab3ddfc3357b3d628fd6d8c9cbbe0095"
+}

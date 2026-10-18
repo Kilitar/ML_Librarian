@@ -1,0 +1,11 @@
+{
+  "version":"pair-calibration-protocol-v1",
+  "scope":"Development calibration only. Existing inspected annotations are never an untouched test. No production gate change or automatic acceptance.",
+  "grouping":"Connected components over normalized query, normalized source path and exact normalized raw passage text. Any component containing a historically fitted pair is excluded from independent calibration of v1/v2.",
+  "minimums":{"direct":30,"negative":59,"query_languages":3,"families":6,"source_groups":8},
+  "selection":{"min_direct_recall":0.8,"max_empirical_false_positive_rate":0.0,"accept_rule":"score >= threshold","tie_break":"max recall, min false positives, highest threshold"},
+  "uncertainty":"With zero false positives among n independent negatives, 1-0.05^(1/n) is a one-sided95% upper bound. Authored correlated examples do NOT satisfy independence; show it only as a sample-size diagnostic, never a deployment guarantee.",
+  "locked_test":"A separately frozen, unseen query/source group set must remain excluded from calibration selection. Existing examples have all been inspected; untouched_test_count=0.",
+  "labels":{"positive":["direct"],"negative":["topic_only","irrelevant"],"excluded":["partial","unjudgeable"]},
+  "provenance":"All current labels are provisional Codex coverage judgments. Factual accuracy and independent human acceptance remain separate."
+}

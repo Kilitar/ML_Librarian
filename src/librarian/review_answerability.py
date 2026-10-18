@@ -2,14 +2,19 @@
 import hashlib
 import html
 import json
+import argparse
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
 
 
 def main():
-    raw=ROOT/'eval/answerability.local.json'
-    summary=json.loads((ROOT/'eval/answerability_summary.json').read_text(encoding='utf-8'))
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--pool',choices=['original','calibration'],default='original')
+    pool=parser.parse_args().pool
+    prefix='answerability' if pool=='original' else 'calibration_collection'
+    raw=ROOT/f'eval/{prefix}.local.json'
+    summary=json.loads((ROOT/f'eval/{prefix}_summary.json').read_text(encoding='utf-8'))
     raw_sha=hashlib.sha256(raw.read_bytes()).hexdigest()
     if raw_sha!=summary['raw_sha256']:raise ValueError('Frozen raw hash mismatch')
     data=json.loads(raw.read_text(encoding='utf-8'));esc=lambda s:html.escape(str(s))
@@ -20,13 +25,14 @@ def main():
         '<p><a href="/eval/answerability_review.local.html">Modelové srovnání</a> · <a href="http://localhost:8766/">Librarian</a></p>',
         '<div class="toolbar"><span id="progress">0 hodnocení</span> · <button id="export">Exportovat hodnocení JSON</button></div>']
     for row in data['rows']:
-        page.append(f"<h2>{esc(row['id'])}</h2><blockquote>{esc(row['query'])}</blockquote><p>{esc(row['split'])}; {esc(row['kind'])}</p>")
-        for rank,(result,score) in enumerate(zip(row['results'],row['scores']),1):
+        page.append(f"<h2>{esc(row['id'])}</h2><blockquote>{esc(row['query'])}</blockquote><p>{esc(row.get('split','unlabeled_calibration_collection'))}; {esc(row.get('kind',row.get('family','unknown')))}</p>")
+        for rank,(result,score) in enumerate(zip(row['results'],row.get('scores',[None]*len(row['results']))),1):
             key=f"pair_{len(pairs)}"
             pairs.append({'key':key,'question_id':row['id'],'query':row['query'],
                 'query_sha256':hashlib.sha256(row['query'].encode('utf-8')).hexdigest(),
                 'chunk_id':result['chunk_id'],'rank':rank,'source_path':result['source_path'],
                 'locator':result.get('locator'),'text_sha256':hashlib.sha256(result['text'].encode('utf-8')).hexdigest(),
+                'input_sha256':hashlib.sha256(((result['heading_context']['text']+'\n\n' if result.get('heading_context') else '')+result['text']).encode('utf-8')).hexdigest(),
                 'label':None,'note':''})
             page.append(f"<article><h3>{rank}. {esc(result['source_path'])}</h3><p>{esc(result['chunk_id'])} · {esc(result.get('locator'))}</p>")
             if result.get('heading_context'):
@@ -34,8 +40,9 @@ def main():
             page.append('<pre>'+esc(result['text'])+'</pre>')
             for value,label in [('direct','Odpovídá na celou otázku'),('partial','Odpovídá jen na část otázky'),('topic_only','Pouze společné téma; požadovaný vztah chybí'),('irrelevant','S otázkou nesouvisí'),('unjudgeable','Nedokážu rozhodnout')]:
                 page.append(f'<label><input type="radio" name="{key}" value="{value}"> {label}</label>')
-            page.append(f'<label>Poznámka <input type="text" data-note="{key}" maxlength="1000"></label><details><summary>Zobrazit modelová skóre</summary>Původní whole {result["whole_query_score"]:.4f}; Qwen yes {score:.4f}</details></article>')
-    payload={'version':'answerability-pair-review-v2','frozen_raw_sha256':raw_sha,
+            score_text='' if score is None else f'; Qwen yes {score:.4f}'
+            page.append(f'<label>Poznámka <input type="text" data-note="{key}" maxlength="1000"></label><details><summary>Zobrazit modelová skóre</summary>Původní whole {result["whole_query_score"]:.4f}{score_text}</details></article>')
+    payload={'version':'answerability-pair-review-v3','pool':pool,'frozen_raw_sha256':raw_sha,
              'scope':'Manual labels, not automatically approved or used for training',
              'labels':{'direct':'Whole-question answer coverage','partial':'Actual partial answer coverage',
                        'topic_only':'Topic match without requested relation',
@@ -51,7 +58,7 @@ document.addEventListener('input',e=>{if(e.target.dataset.note)byKey.get(e.targe
 document.getElementById('export').addEventListener('click',()=>{const out={...data,exported_at:new Date().toISOString()};const blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='answerability-pair-labels.local.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 document.getElementById('progress').textContent='0 / '+data.pairs.length+' hodnocení';
 </script>''')
-    target=ROOT/'eval/answerability_labels.local.html'
+    target=ROOT/f'eval/{prefix}_labels.local.html'
     target.write_text('\n'.join(page),encoding='utf-8')
     print('Rendered',len(pairs),'unlabeled frozen pairs:',target)
 

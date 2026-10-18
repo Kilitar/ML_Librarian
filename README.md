@@ -149,3 +149,11 @@ reciprocal pair test, all models order6/6 correctly, but direct-answer recall
 falls from5/6 to4/6 in both fine-tuned variants. Neither is promoted. See
 `docs/SUPERVISED_PAIR_V2.md` and all excerpts/three-way scores at
 `http://localhost:8765/eval/supervised_pair_v2_review.local.html`.
+
+Calibration groundwork now audits129 inspected labels and collects120 new
+unlabeled passages from24 balanced CZ/EN/PL queries. Twelve other queries remain
+reserved/unexecuted. On the100 old binary pairs, no original text-only score
+cutoff retains80% direct answers with zero false acceptance; production thresholds
+remain unchanged. See `docs/CALIBRATION_DATA.md`, the new collection at
+`http://localhost:8765/eval/calibration_collection_review.local.html` and its
+annotation sheet at `http://localhost:8765/eval/calibration_collection_labels.local.html`.

@@ -1,0 +1,19 @@
+{
+  "version":"reserved-unexecuted-check-v1",
+  "state":"reserved_unexecuted_unlabeled",
+  "scope":"Reserved before collecting the calibration pool. Do not use in training, model/prompt selection or threshold selection. No results or labels yet; not a completed untouched test. Collector hashes this file but never sends these questions to any model. A later final evaluation requires a frozen calibration/model artifact and its own explicit execution step, not a user-permission flow.",
+  "questions":[
+    {"id":"rt01","language":"cs","query":"Jak se liší macro F1 a weighted F1 při výrazně nerovnoměrných třídách?"},
+    {"id":"rt02","language":"en","query":"Why can permutation importance measured on training data be misleading?"},
+    {"id":"rt03","language":"pl","query":"Czym różni się funkcja softmax od sigmoidy przy przewidywaniu klas?"},
+    {"id":"rt04","language":"cs","query":"Jaký je rozdíl mezi náhodným a časovým rozdělením dat při predikci budoucnosti?"},
+    {"id":"rt05","language":"en","query":"When would a character n-gram representation help with misspelled text?"},
+    {"id":"rt06","language":"pl","query":"Dlaczego walidacja krzyżowa powinna obejmować dopasowanie imputera wewnątrz każdego podziału?"},
+    {"id":"rt07","language":"cs","query":"Jak poznám, že přidaný polynomiální stupeň zlepšil jen trénovací výsledek?"},
+    {"id":"rt08","language":"en","query":"How does class weighting differ from moving a classifier's decision threshold?"},
+    {"id":"rt09","language":"pl","query":"Dlaczego rzadkie kategorie mogą utrudnić ocenę modelu po kodowaniu one-hot?"},
+    {"id":"rt10","language":"cs","query":"Kterou nabíječkou dobít logistickou regresi, aby zvýšila recall?"},
+    {"id":"rt11","language":"en","query":"Which scarf should I put on cross-validation to make it less biased?"},
+    {"id":"rt12","language":"pl","query":"Jak użyć klasyfikatora do sortowania produktów według ich zmierzonych cech?"}
+  ]
+}

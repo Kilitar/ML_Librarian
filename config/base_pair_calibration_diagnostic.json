@@ -1,0 +1,11 @@
+{
+  "version":"base-pair-calibration-diagnostic-v1",
+  "candidate":"Original unmodified pretrained MiniLM weights, body plus genuine heading only. No v1/v2 trained weights and no production source-aware reranking. Data fitted by other variants may be used only because this candidate has never been fine-tuned on them.",
+  "base_model":"cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+  "revision":"1427fd652930e4ba29e8149678df786c240d8825",
+  "max_tokens":512,"batch_size":8,
+  "targets":{"min_direct_recall":0.8,"max_empirical_false_positive_rate":0.0},
+  "scope":"Feasibility diagnostic on already inspected development labels. Does any global score cutoff satisfy the fixed targets? Not an independent calibrated threshold, production score or release acceptance. Operational threshold stays null even if a development candidate exists. Exclude partial labels and complete pairs over budget. Reserved test is never scored.",
+  "generalization_target":"New questions over the existing fixed course. Strict source-disjoint grouping is an additional transfer stress audit; it does not imply all source-overlapping data are unusable for original-model development calibration.",
+  "uncertainty":"Authored correlated labels, language/family imbalance and known-case selection remain. No iid probability guarantee, no probability calibration."
+}
