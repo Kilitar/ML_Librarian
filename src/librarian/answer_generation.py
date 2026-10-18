@@ -110,6 +110,13 @@ def generate_answer(query, results, evidence, api_key, model, *, consent=False, 
                              'User-Agent':'ML-Librarian/1.0','Accept':'application/json'},method='POST')
     except urllib.error.HTTPError as exc:
         # Never expose provider body, request headers, prompt, credentials or exception text.
+        if exc.code==400:
+            try:
+                provider_code=json.loads(exc.read(131072)).get('error',{}).get('code')
+            except Exception:
+                provider_code=None
+            if provider_code in ('json_validate_failed','context_length_exceeded','model_not_found','invalid_api_key'):
+                raise GenerationError(f'API požadavek selhal (HTTP 400, {provider_code}). Zdroje zůstávají dostupné.') from None
         if exc.code==429: raise GenerationError('Limit generování je momentálně vyčerpaný (HTTP 429). Zkus to později; nalezené zdroje jsou stále dostupné.') from None
         raise GenerationError(f'API požadavek selhal (HTTP {exc.code}). Zdroje zůstávají dostupné.') from None
     except GenerationError:
